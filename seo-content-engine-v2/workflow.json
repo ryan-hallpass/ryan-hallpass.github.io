@@ -195,6 +195,191 @@
       "position": [100, 300],
       "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6f",
       "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.brand_guidelines_table_id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [400, 100],
+      "id": "c4a1e7f0-1b2d-4f8a-9c3e-5d6f7a8b9c0d",
+      "name": "Get Brand Context"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.search.brave.com/res/v1/web/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $('Workflow Settings').item.json.seed_keyword }}"
+            },
+            {
+              "name": "count",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 300],
+      "id": "d5b2f8a1-2c3e-4a9b-0d4f-6e7a8b9c0d1e",
+      "name": "Brave Search Direct"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.search.brave.com/res/v1/web/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $('Workflow Settings').item.json.seed_keyword }} software tools"
+            },
+            {
+              "name": "count",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 500],
+      "id": "e6c3a9b2-3d4f-4b0c-1e5a-7f8b9c0d1e2f",
+      "name": "Brave Search Commercial"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.search.brave.com/res/v1/web/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $('Workflow Settings').item.json.seed_keyword }} site:reddit.com OR site:quora.com"
+            },
+            {
+              "name": "count",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [400, 700],
+      "id": "f7d4b0c3-4e5a-4c1d-2f6b-8a9c0d1e2f3a",
+      "name": "Brave Search Reddit"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [700, 500],
+      "id": "a8e5c1d4-5f6b-4d2e-3a7c-9b0d1e2f3a4b",
+      "name": "Aggregate Search Results"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Seed Keyword: {{ $('Workflow Settings').item.json.seed_keyword }}\n\nBrand Context:\n{{ $('Get Brand Context').item.json }}\n\nSearch Results:\n{{ JSON.stringify($json) }}",
+        "options": {
+          "systemMessage": "You are an SEO keyword research expert. Given a seed keyword, brand context, and search results, generate exactly 25 long-tail keyword variations. Output as a JSON array of objects with fields: keyword, category (one of: question, comparison, problem-aware, commercial, long-tail), search_intent (informational, commercial, transactional, navigational). Wrap output in a json code block."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [900, 300],
+      "id": "b9f6d2e5-6a7c-4e3f-4b8d-0c1e2f3a4b5c",
+      "name": "Claude KW Expansion"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [900, 520],
+      "id": "c0a7e3f6-7b8d-4f4a-5c9e-1d2f3a4b5c6d",
+      "name": "Anthropic Model KW"
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nlet keywords;\ntry { keywords = JSON.parse(response); } catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) keywords = JSON.parse(match[1]);\n  else throw new Error('Could not parse keywords');\n}\nif (!Array.isArray(keywords)) keywords = keywords.keywords || [];\nreturn keywords.map(k => ({ json: k }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1100, 300],
+      "id": "d1b8f4a7-8c9e-4a5b-6d0f-2e3a4b5c6d7e",
+      "name": "Parse Keywords"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_keywords_table_id }}",
+          "mode": "id"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "keyword": "={{ $json.keyword }}",
+            "seed_keyword": "={{ $('Workflow Settings').item.json.seed_keyword }}",
+            "category": "={{ $json.category }}",
+            "status": "pending_serp",
+            "brand_id": "={{ $('Workflow Settings').item.json.brand_id }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [1300, 300],
+      "id": "e2c9a5b8-9d0f-4b6c-7e1a-3f4b5c6d7e8f",
+      "name": "Save Keywords"
     }
   ],
   "connections": {
@@ -217,6 +402,68 @@
             "type": "main",
             "index": 0
           }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          { "node": "Get Brand Context", "type": "main", "index": 0 },
+          { "node": "Brave Search Direct", "type": "main", "index": 0 },
+          { "node": "Brave Search Commercial", "type": "main", "index": 0 },
+          { "node": "Brave Search Reddit", "type": "main", "index": 0 }
+        ],
+        [],
+        [],
+        []
+      ]
+    },
+    "Brave Search Direct": {
+      "main": [
+        [
+          { "node": "Aggregate Search Results", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Brave Search Commercial": {
+      "main": [
+        [
+          { "node": "Aggregate Search Results", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Brave Search Reddit": {
+      "main": [
+        [
+          { "node": "Aggregate Search Results", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Aggregate Search Results": {
+      "main": [
+        [
+          { "node": "Claude KW Expansion", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model KW": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude KW Expansion", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude KW Expansion": {
+      "main": [
+        [
+          { "node": "Parse Keywords", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse Keywords": {
+      "main": [
+        [
+          { "node": "Save Keywords", "type": "main", "index": 0 }
         ]
       ]
     }
