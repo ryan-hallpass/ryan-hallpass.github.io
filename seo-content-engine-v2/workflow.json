@@ -9,7 +9,10 @@
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [-500, 300],
+      "position": [
+        -500,
+        300
+      ],
       "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
       "name": "Webhook"
     },
@@ -83,7 +86,10 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [-200, 300],
+      "position": [
+        -200,
+        300
+      ],
       "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5e",
       "name": "Workflow Settings"
     },
@@ -192,7 +198,10 @@
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
-      "position": [100, 300],
+      "position": [
+        100,
+        300
+      ],
       "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6f",
       "name": "Switch"
     },
@@ -213,7 +222,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [400, 100],
+      "position": [
+        400,
+        100
+      ],
       "id": "c4a1e7f0-1b2d-4f8a-9c3e-5d6f7a8b9c0d",
       "name": "Get Brand Context"
     },
@@ -240,7 +252,10 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [400, 300],
+      "position": [
+        400,
+        300
+      ],
       "id": "d5b2f8a1-2c3e-4a9b-0d4f-6e7a8b9c0d1e",
       "name": "Brave Search Direct"
     },
@@ -267,7 +282,10 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [400, 500],
+      "position": [
+        400,
+        500
+      ],
       "id": "e6c3a9b2-3d4f-4b0c-1e5a-7f8b9c0d1e2f",
       "name": "Brave Search Commercial"
     },
@@ -294,7 +312,10 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [400, 700],
+      "position": [
+        400,
+        700
+      ],
       "id": "f7d4b0c3-4e5a-4c1d-2f6b-8a9c0d1e2f3a",
       "name": "Brave Search Reddit"
     },
@@ -305,7 +326,10 @@
       },
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
-      "position": [700, 500],
+      "position": [
+        700,
+        500
+      ],
       "id": "a8e5c1d4-5f6b-4d2e-3a7c-9b0d1e2f3a4b",
       "name": "Aggregate Search Results"
     },
@@ -314,12 +338,15 @@
         "promptType": "define",
         "text": "=Seed Keyword: {{ $('Workflow Settings').item.json.seed_keyword }}\n\nBrand Context:\n{{ $('Get Brand Context').item.json }}\n\nSearch Results:\n{{ JSON.stringify($json) }}",
         "options": {
-          "systemMessage": "You are an SEO keyword research expert. Given a seed keyword, brand context, and search results, generate exactly 25 long-tail keyword variations. Output as a JSON array of objects with fields: keyword, category (one of: question, comparison, problem-aware, commercial, long-tail), search_intent (informational, commercial, transactional, navigational). Wrap output in a json code block."
+          "systemMessage": "You are an expert SEO keyword researcher. Your job is to generate exactly 25 high-quality long-tail keyword variations from a seed keyword.\n\nINPUT: You'll receive a seed keyword, brand/business context, and Brave Search results showing what's currently ranking.\n\nRULES:\n1. Generate exactly 25 keywords, mixing these categories:\n   - Question keywords (5-7): \"how to [solve problem]\", \"what is [concept]\", \"why [pain point] happens\", \"when to [action]\"\n   - Comparison keywords (3-5): \"[brand] vs [competitor]\", \"best [category] for [use case]\", \"[product] alternatives\"\n   - Problem-aware keywords (4-6): \"how to [achieve goal] without [pain]\", \"[problem] for [industry]\", \"fix [issue] in [context]\"\n   - Commercial intent keywords (3-5): \"best [product type] for [persona]\", \"[product type] pricing [year]\", \"top [category] tools\"\n   - Long-tail variations (4-6): combine seed with modifiers like industry, region, use case, audience\n\n2. Every keyword MUST be 4+ words (true long-tail)\n3. Use the brand context to understand the product, competitors, and target audience\n4. Use the search results to understand what's actually being searched and what angles exist\n5. Avoid generic/broad terms \u2014 be specific and targeted\n6. Include the seed keyword or close variation in most keywords\n\nOUTPUT: A JSON array wrapped in a ```json code block. Each item must have:\n- \"keyword\": the long-tail keyword string\n- \"category\": one of \"question\", \"comparison\", \"problem-aware\", \"commercial\", \"long-tail\"\n- \"search_intent\": one of \"informational\", \"commercial\", \"transactional\", \"navigational\"\n\nExample:\n```json\n[\n  {\"keyword\": \"how to automate email marketing for small business\", \"category\": \"question\", \"search_intent\": \"informational\"},\n  {\"keyword\": \"mailchimp vs convertkit for ecommerce stores\", \"category\": \"comparison\", \"search_intent\": \"commercial\"}\n]\n```"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [900, 300],
+      "position": [
+        900,
+        300
+      ],
       "id": "b9f6d2e5-6a7c-4e3f-4b8d-0c1e2f3a4b5c",
       "name": "Claude KW Expansion"
     },
@@ -335,17 +362,23 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [900, 520],
+      "position": [
+        900,
+        520
+      ],
       "id": "c0a7e3f6-7b8d-4f4a-5c9e-1d2f3a4b5c6d",
       "name": "Anthropic Model KW"
     },
     {
       "parameters": {
-        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nlet keywords;\ntry { keywords = JSON.parse(response); } catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) keywords = JSON.parse(match[1]);\n  else throw new Error('Could not parse keywords');\n}\nif (!Array.isArray(keywords)) keywords = keywords.keywords || [];\nreturn keywords.map(k => ({ json: k }));"
+        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nif (!response || !response.trim()) {\n  throw new Error('No response received from Claude KW Expansion');\n}\nlet keywords;\ntry {\n  keywords = JSON.parse(response);\n} catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) {\n    try {\n      keywords = JSON.parse(match[1]);\n    } catch(e2) {\n      throw new Error('Could not parse keywords JSON: ' + e2.message);\n    }\n  } else {\n    throw new Error('Could not find JSON in response');\n  }\n}\nif (!Array.isArray(keywords)) keywords = keywords.keywords || [];\nif (keywords.length === 0) throw new Error('No keywords generated');\nreturn keywords.map(k => ({ json: k }));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1100, 300],
+      "position": [
+        1100,
+        300
+      ],
       "id": "d1b8f4a7-8c9e-4a5b-6d0f-2e3a4b5c6d7e",
       "name": "Parse Keywords"
     },
@@ -377,7 +410,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [1300, 300],
+      "position": [
+        1300,
+        300
+      ],
       "id": "e2c9a5b8-9d0f-4b6c-7e1a-3f4b5c6d7e8f",
       "name": "Save Keywords"
     },
@@ -398,7 +434,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [400, 1200],
+      "position": [
+        400,
+        1200
+      ],
       "id": "3a1b2c3d-4e5f-4a6b-7c8d-9e0f1a2b3c4d",
       "name": "Get Keyword for SERP"
     },
@@ -425,17 +464,23 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [700, 1200],
+      "position": [
+        700,
+        1200
+      ],
       "id": "4b2c3d4e-5f6a-4b7c-8d9e-0f1a2b3c4d5e",
       "name": "Brave SERP Search"
     },
     {
       "parameters": {
-        "jsCode": "const results = $input.first().json.web?.results || [];\nconst urls = results\n  .filter(r => r.url && !r.url.match(/youtube|twitter|facebook|instagram|linkedin/i))\n  .slice(0, 10)\n  .map((r, i) => ({ url: r.url, title: r.title, position: i + 1 }));\nreturn urls.map(u => ({ json: u }));"
+        "jsCode": "const results = $input.first().json.web?.results || [];\nif (results.length === 0) {\n  throw new Error('No search results returned from Brave');\n}\nconst urls = results\n  .filter(r => r.url && !r.url.match(/youtube|twitter|facebook|instagram|linkedin/i))\n  .slice(0, 10)\n  .map((r, i) => ({ url: r.url, title: r.title || '', position: i + 1 }));\nif (urls.length === 0) {\n  throw new Error('No valid URLs found after filtering social media sites');\n}\nreturn urls.map(u => ({ json: u }));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1000, 1200],
+      "position": [
+        1000,
+        1200
+      ],
       "id": "5c3d4e5f-6a7b-4c8d-9e0f-1a2b3c4d5e6f",
       "name": "Extract Top 10 URLs"
     },
@@ -455,7 +500,10 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1200, 1200],
+      "position": [
+        1200,
+        1200
+      ],
       "id": "6d4e5f6a-7b8c-4d9e-0f1a-2b3c4d5e6f7a",
       "name": "Scrape Page"
     },
@@ -484,27 +532,36 @@
       },
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
-      "position": [1400, 1200],
+      "position": [
+        1400,
+        1200
+      ],
       "id": "7e5f6a7b-8c9d-4e0f-1a2b-3c4d5e6f7a8b",
       "name": "Filter Successful Scrapes"
     },
     {
       "parameters": {
-        "jsCode": "const html = $input.first().json.data || '';\nlet text = html.replace(/<script[\\s\\S]*?<\\/script>/gi, '').replace(/<style[\\s\\S]*?<\\/style>/gi, '');\nconst headings = [];\nconst headingRegex = /<(h[1-3])[^>]*>([\\s\\S]*?)<\\/\\1>/gi;\nlet match;\nwhile ((match = headingRegex.exec(html)) !== null) {\n  headings.push({ level: match[1], text: match[2].replace(/<[^>]+>/g, '').trim() });\n}\nconst imageCount = (html.match(/<img/gi) || []).length;\ntext = text.replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\nconst wordCount = text.split(/\\s+/).length;\nreturn [{\n  json: {\n    clean_text: text.substring(0, 15000),\n    headings, word_count: wordCount, image_count: imageCount,\n    url: $input.first().json.url || ''\n  }\n}];"
+        "jsCode": "const html = $input.first().json.data || $input.first().json.body || '';\nif (!html || !html.trim()) {\n  return [{ json: { clean_text: '', headings: [], word_count: 0, image_count: 0, url: $input.first().json.url || '' } }];\n}\nlet text = html.replace(/<script[\\s\\S]*?<\\/script>/gi, '').replace(/<style[\\s\\S]*?<\\/style>/gi, '');\nconst headings = [];\nconst headingRegex = /<(h[1-3])[^>]*>([\\s\\S]*?)<\\/\\1>/gi;\nlet match;\nwhile ((match = headingRegex.exec(html)) !== null) {\n  headings.push({ level: match[1], text: match[2].replace(/<[^>]+>/g, '').trim() });\n}\nconst imageCount = (html.match(/<img/gi) || []).length;\ntext = text.replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\nconst wordCount = text.split(/\\s+/).filter(w => w).length;\nreturn [{\n  json: {\n    clean_text: text.substring(0, 15000),\n    headings, word_count: wordCount, image_count: imageCount,\n    url: $input.first().json.url || ''\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1600, 1200],
+      "position": [
+        1600,
+        1200
+      ],
       "id": "8f6a7b8c-9d0e-4f1a-2b3c-4d5e6f7a8b9c",
       "name": "Strip HTML to Text"
     },
     {
       "parameters": {
-        "jsCode": "const items = $input.all(); return items.slice(0, 5);"
+        "jsCode": "const items = $input.all();\nif (items.length === 0) {\n  return [{ json: { error: 'No pages to process' } }];\n}\nreturn items.slice(0, 5);"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1800, 1200],
+      "position": [
+        1800,
+        1200
+      ],
       "id": "9a7b8c9d-0e1f-4a2b-3c4d-5e6f7a8b9c0d",
       "name": "Limit to 5 Pages"
     },
@@ -515,7 +572,10 @@
       },
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
-      "position": [2000, 1200],
+      "position": [
+        2000,
+        1200
+      ],
       "id": "0b8c9d0e-1f2a-4b3c-4d5e-6f7a8b9c0d1e",
       "name": "Aggregate Scraped Pages"
     },
@@ -525,7 +585,10 @@
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2200, 1200],
+      "position": [
+        2200,
+        1200
+      ],
       "id": "1c9d0e1f-2a3b-4c4d-5e6f-7a8b9c0d1e2f",
       "name": "Set Confidence Level"
     },
@@ -534,12 +597,15 @@
         "promptType": "define",
         "text": "=Keyword: {{ $('Get Keyword for SERP').item.json.fields.keyword }}\n\nScraped Pages:\n{{ JSON.stringify($json) }}",
         "options": {
-          "systemMessage": "You are an SEO SERP analyst. Analyze the scraped competitor pages and extract: 1) NLP terms (20-30 terms appearing in 3+ pages), 2) Heading structure (H1-H3), 3) PAA questions (6-8), 4) Average word count, 5) Average image count, 6) Average H2 sections, 7) Content gaps. Output as JSON with fields: nlp_terms (array), heading_structure (string), paa_questions (array), target_word_count (number), target_images (number), target_h2_sections (number), content_gaps (array). Wrap in json code block."
+          "systemMessage": "You are an expert SEO SERP analyst. You analyze competitor pages that rank in the top 5 for a target keyword and extract the intelligence needed to outrank them.\n\nINPUT: You'll receive a target keyword and the scraped content of up to 5 top-ranking pages (clean text + heading structure + word/image counts).\n\nYOUR ANALYSIS MUST EXTRACT:\n\n1. **NLP Terms (20-30 terms)**\n   - Find terms/phrases that appear in 3 or more of the 5 pages\n   - These are the semantic terms Google's algorithm expects to see\n   - Include ALL variations: singular/plural, with/without accents, abbreviations AND full forms, synonyms\n   - Prioritize terms that appear in headings (H1-H3) \u2014 these carry more weight\n   - Include both single words and multi-word phrases (2-3 word phrases are most valuable)\n\n2. **Heading Structure**\n   - Analyze the H1-H3 structure of the best-ranking competitor\n   - Improve it: better organization, clearer hierarchy, more descriptive headings\n   - Place high-value NLP terms IN the headings themselves\n   - Output as a markdown outline with # for H1, ## for H2, ### for H3\n\n3. **PAA Questions (6-8)**\n   - Extract questions from competitor FAQ sections\n   - Include variations of common questions about this topic\n   - These should be questions a reader would actually ask\n   - Prioritize questions that competitors answer poorly or incompletely\n\n4. **Metrics**\n   - target_word_count: Average word count of the 5 pages (round to nearest 100)\n   - target_images: Average image count\n   - target_h2_sections: Average number of H2 sections\n\n5. **Content Gaps**\n   - What do ALL competitors miss or cover poorly?\n   - What angles, subtopics, or questions are underserved?\n   - Where can we provide unique value?\n\nOUTPUT: JSON wrapped in a ```json code block with these exact fields:\n{\n  \"nlp_terms\": [\"term1\", \"term2\", ...],\n  \"heading_structure\": \"# Title\\n## Section 1\\n### Subsection\\n## Section 2\\n...\",\n  \"paa_questions\": [\"question1?\", \"question2?\", ...],\n  \"target_word_count\": 2100,\n  \"target_images\": 4,\n  \"target_h2_sections\": 7,\n  \"content_gaps\": [\"gap1\", \"gap2\", ...]\n}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [2400, 1200],
+      "position": [
+        2400,
+        1200
+      ],
       "id": "2d0e1f2a-3b4c-4d5e-6f7a-8b9c0d1e2f3a",
       "name": "Claude SERP Analyzer"
     },
@@ -555,17 +621,23 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [2400, 1420],
+      "position": [
+        2400,
+        1420
+      ],
       "id": "3e1f2a3b-4c5d-4e6f-7a8b-9c0d1e2f3a4b",
       "name": "Anthropic Model SERP"
     },
     {
       "parameters": {
-        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nlet brief;\ntry { brief = JSON.parse(response); } catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) brief = JSON.parse(match[1]);\n  else throw new Error('Could not parse SERP brief');\n}\nreturn [{ json: brief }];"
+        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nif (!response || !response.trim()) {\n  throw new Error('No response received from Claude SERP Analyzer');\n}\nlet brief;\ntry {\n  brief = JSON.parse(response);\n} catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) {\n    try {\n      brief = JSON.parse(match[1]);\n    } catch(e2) {\n      throw new Error('Could not parse SERP brief JSON: ' + e2.message);\n    }\n  } else {\n    throw new Error('Could not find JSON in SERP analyzer response');\n  }\n}\n// Ensure required fields exist with defaults\nbrief.nlp_terms = brief.nlp_terms || [];\nbrief.heading_structure = brief.heading_structure || '';\nbrief.paa_questions = brief.paa_questions || [];\nbrief.target_word_count = brief.target_word_count || 2000;\nbrief.target_images = brief.target_images || 3;\nbrief.target_h2_sections = brief.target_h2_sections || 6;\nbrief.content_gaps = brief.content_gaps || [];\nreturn [{ json: brief }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2600, 1200],
+      "position": [
+        2600,
+        1200
+      ],
       "id": "4f2a3b4c-5d6e-4f7a-8b9c-0d1e2f3a4b5c",
       "name": "Parse SERP Brief"
     },
@@ -601,7 +673,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [2800, 1200],
+      "position": [
+        2800,
+        1200
+      ],
       "id": "5a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
       "name": "Save SERP Brief"
     },
@@ -630,7 +705,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [3000, 1200],
+      "position": [
+        3000,
+        1200
+      ],
       "id": "6b4c5d6e-7f8a-4b9c-0d1e-2f3a4b5c6d7e",
       "name": "Update Keyword Status SERP"
     },
@@ -651,7 +729,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [400, 2400],
+      "position": [
+        400,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c01",
       "name": "Get Keyword Data"
     },
@@ -673,7 +754,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [400, 2600],
+      "position": [
+        400,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c02",
       "name": "Get SERP Brief"
     },
@@ -694,7 +778,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [400, 2800],
+      "position": [
+        400,
+        2800
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c03",
       "name": "Get Brand Context Writing"
     },
@@ -750,7 +837,10 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [700, 2600],
+      "position": [
+        700,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c04",
       "name": "Set Writer Context"
     },
@@ -759,12 +849,15 @@
         "promptType": "define",
         "text": "=Keyword: {{ $json.keyword }}\n\nNLP Terms to include:\n{{ $json.nlp_terms }}\n\nCompetitor Heading Structure:\n{{ $json.heading_structure }}\n\nPAA Questions:\n{{ $json.paa_questions }}\n\nTarget Word Count: {{ $json.target_word_count }}\n\nBrand Context:\n{{ $json.brandGuidelines }}\n\nArticle Type: {{ $json.article_type }}",
         "options": {
-          "systemMessage": "You are an SEO content strategist. Create a detailed article outline using the provided SERP brief. Follow the competitor heading structure as a skeleton. Place NLP terms in H2/H3 headings. Include every PAA question as a section or subsection. Plan comparison tables where relevant. Output as markdown with ## for H2 sections and ### for H3 subsections. Start with an H1 title line."
+          "systemMessage": "You are an SEO content strategist creating an article outline optimized for search rankings.\n\nYou will receive a keyword, a SERP brief (NLP terms, competitor heading structure, PAA questions, word count target), and brand context.\n\nRULES:\n1. Use the SERP brief's heading structure as your skeleton \u2014 this structure is what Google is already rewarding\n2. IMPROVE the structure: better flow, clearer hierarchy, more comprehensive coverage\n3. Place high-value NLP terms directly IN your H2 and H3 headings \u2014 this significantly impacts rankings\n4. Include EVERY PAA question as a section or subsection (weave them in naturally, don't create a separate FAQ unless competitors do)\n5. Plan comparison tables where the brand can be compared to competitors\n6. Plan for the target word count \u2014 distribute content evenly across sections\n7. Start with a compelling H1 title that includes the primary keyword\n\nOUTPUT: Markdown outline using:\n- # for H1 (title \u2014 one only)\n- ## for H2 sections (main sections)\n- ### for H3 subsections\n- Brief notes under each heading about what to cover (1-2 lines max)\n\nDo NOT write the actual content \u2014 just the outline structure with brief notes."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [900, 2600],
+      "position": [
+        900,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c05",
       "name": "Claude Outline Agent"
     },
@@ -780,7 +873,10 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [900, 2820],
+      "position": [
+        900,
+        2820
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c06",
       "name": "Anthropic Model Outline"
     },
@@ -830,17 +926,23 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [1100, 2600],
+      "position": [
+        1100,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c07",
       "name": "Set Outline"
     },
     {
       "parameters": {
-        "jsCode": "const outlineData = $input.first().json.outline || '';\nconst nlpTerms = JSON.parse($input.first().json.nlp_terms || '[]');\nconst lines = outlineData.split('\\n');\nconst sections = [];\nlet currentSection = null;\nlet currentContent = [];\nfor (const line of lines) {\n  if (line.startsWith('## ')) {\n    if (currentSection) {\n      sections.push({ sectionTitle: currentSection, sectionContent: currentContent.join('\\n') });\n    }\n    currentSection = line.substring(3).trim();\n    currentContent = [line];\n  } else if (currentSection) {\n    currentContent.push(line);\n  }\n}\nif (currentSection) {\n  sections.push({ sectionTitle: currentSection, sectionContent: currentContent.join('\\n') });\n}\nconst termsPerSection = Math.ceil(nlpTerms.length / Math.max(sections.length, 1));\nreturn sections.map((s, i) => ({\n  json: {\n    ...s,\n    assigned_nlp_terms: nlpTerms.slice(i * termsPerSection, (i + 1) * termsPerSection),\n    brandGuidelines: $input.first().json.brandGuidelines || '',\n    keyword: $input.first().json.keyword || '',\n    paa_questions: $input.first().json.paa_questions || '[]',\n    target_word_count: $input.first().json.target_word_count || 0\n  }\n}));"
+        "jsCode": "const outlineData = $input.first().json.outline || '';\nif (!outlineData || !outlineData.trim()) {\n  throw new Error('No outline data received');\n}\nconst nlpTermsRaw = $input.first().json.nlp_terms || '[]';\nconst nlpTerms = typeof nlpTermsRaw === 'string' ? JSON.parse(nlpTermsRaw) : nlpTermsRaw;\nconst lines = outlineData.split('\\n');\nconst sections = [];\nlet currentSection = null;\nlet currentContent = [];\nfor (const line of lines) {\n  if (line.startsWith('## ')) {\n    if (currentSection) {\n      sections.push({ sectionTitle: currentSection, sectionContent: currentContent.join('\\n') });\n    }\n    currentSection = line.substring(3).trim();\n    currentContent = [line];\n  } else if (currentSection) {\n    currentContent.push(line);\n  }\n}\nif (currentSection) {\n  sections.push({ sectionTitle: currentSection, sectionContent: currentContent.join('\\n') });\n}\nif (sections.length === 0) {\n  throw new Error('No H2 sections found in outline');\n}\nconst termsPerSection = Math.ceil(nlpTerms.length / Math.max(sections.length, 1));\nreturn sections.map((s, i) => ({\n  json: {\n    ...s,\n    assigned_nlp_terms: nlpTerms.slice(i * termsPerSection, (i + 1) * termsPerSection),\n    brandGuidelines: $input.first().json.brandGuidelines || '',\n    keyword: $input.first().json.keyword || '',\n    paa_questions: $input.first().json.paa_questions || '[]',\n    target_word_count: $input.first().json.target_word_count || 0\n  }\n}));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1300, 2600],
+      "position": [
+        1300,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c08",
       "name": "Split Outline into Sections"
     },
@@ -849,12 +951,15 @@
         "promptType": "define",
         "text": "=Section: {{ $json.sectionTitle }}\n\nOutline:\n{{ $json.sectionContent }}\n\nAssigned NLP Terms to include:\n{{ JSON.stringify($json.assigned_nlp_terms) }}\n\nBrand Voice:\n{{ $json.brandGuidelines }}\n\nKeyword: {{ $json.keyword }}",
         "options": {
-          "systemMessage": "You are an SEO content writer. Write a comprehensive section based on the outline. Rules: 1) Naturally incorporate ALL assigned NLP terms. 2) Place key terms in subheadings where possible. 3) Use the brand voice provided. 4) Answer any PAA questions relevant to this section. 5) Include comparison tables if comparing products/services. 6) Position the brand first in any comparisons. 7) Include real metrics when available. Output only the HTML for this section with proper H2/H3 heading tags."
+          "systemMessage": "You are an expert SEO content writer. Write a single section of a blog article.\n\nCRITICAL SEO RULES \u2014 follow ALL of these:\n1. Naturally incorporate ALL assigned NLP terms \u2014 spread them throughout, don't stuff them\n2. Place key NLP terms in any H3 subheadings within this section\n3. Use the brand voice provided \u2014 match the tone, style, and terminology\n4. Answer any PAA questions that are relevant to this section's topic\n5. If comparing products or services, include a comparison table and position the brand FIRST\n6. Include real metrics, statistics, or proof points from the brand context when relevant\n7. Write substantive, valuable content \u2014 not filler. Every paragraph should teach or inform\n8. Use short paragraphs (2-4 sentences), bullet points, and numbered lists for readability\n\nOUTPUT: HTML only for this section. Use proper tags:\n- <h2> for the section heading\n- <h3> for subsections\n- <p> for paragraphs\n- <ul>/<ol> for lists\n- <table> for comparison tables\n- <strong> for emphasis on key terms\n\nDo NOT include any preamble, commentary, or markdown. Output raw HTML only."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [1500, 2600],
+      "position": [
+        1500,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c09",
       "name": "Claude Section Writer"
     },
@@ -870,7 +975,10 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [1500, 2820],
+      "position": [
+        1500,
+        2820
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c10",
       "name": "Anthropic Model Section"
     },
@@ -896,17 +1004,23 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [1700, 2600],
+      "position": [
+        1700,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c11",
       "name": "Set Section Content"
     },
     {
       "parameters": {
-        "jsCode": "const items = $input.all();\nconst combined = items.map(item => item.json.section_html || '').join('\\n\\n');\nreturn [{ json: { body_html: combined, section_count: items.length } }];"
+        "jsCode": "const items = $input.all();\nif (items.length === 0) {\n  return [{ json: { body_html: '', section_count: 0 } }];\n}\nconst combined = items.map(item => item.json.section_html || '').filter(h => h).join('\\n\\n');\nreturn [{ json: { body_html: combined, section_count: items.length } }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1900, 2600],
+      "position": [
+        1900,
+        2600
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c12",
       "name": "Combine All Sections"
     },
@@ -915,12 +1029,15 @@
         "promptType": "define",
         "text": "=Keyword: {{ $('Set Writer Context').item.json.keyword }}\n\nArticle Body Summary (first 2000 chars):\n{{ $json.body_html.substring(0, 2000) }}\n\nBrand Context:\n{{ $('Set Writer Context').item.json.brandGuidelines }}\n\nPAA Questions:\n{{ $('Set Writer Context').item.json.paa_questions }}",
         "options": {
-          "systemMessage": "Write an engaging introduction for a blog article. Hook the reader with a compelling opening. Include the primary keyword in the first paragraph. Reference key points from the article body. Use the brand voice. Output as HTML paragraphs only (no heading tags - the H1 title is separate)."
+          "systemMessage": "Write an engaging introduction for a blog article.\n\nRULES:\n1. Hook the reader in the first sentence \u2014 use a surprising stat, bold claim, or relatable problem\n2. Include the primary keyword naturally in the first paragraph\n3. Preview what the reader will learn (without giving everything away)\n4. Match the brand voice provided\n5. Keep it to 2-3 paragraphs (150-250 words)\n6. Build credibility by referencing real data or expertise\n\nOUTPUT: HTML paragraphs only (<p> tags). Do NOT include the H1 title or any heading tags. No preamble or commentary."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [2100, 2400],
+      "position": [
+        2100,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c13",
       "name": "Claude Intro Writer"
     },
@@ -936,7 +1053,10 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [2100, 2620],
+      "position": [
+        2100,
+        2620
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c14",
       "name": "Anthropic Model Intro"
     },
@@ -962,7 +1082,10 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [2300, 2400],
+      "position": [
+        2300,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c15",
       "name": "Set Intro"
     },
@@ -971,12 +1094,15 @@
         "promptType": "define",
         "text": "=Keyword: {{ $('Set Writer Context').item.json.keyword }}\n\nArticle Body Summary (last 2000 chars):\n{{ $json.body_html.substring($json.body_html.length - 2000) }}\n\nBrand Context:\n{{ $('Set Writer Context').item.json.brandGuidelines }}",
         "options": {
-          "systemMessage": "Write a compelling conclusion for a blog article. Summarize key points. Include a clear call-to-action. Mention the brand naturally. Output as HTML paragraphs."
+          "systemMessage": "Write a compelling conclusion for a blog article.\n\nRULES:\n1. Summarize the 3-4 most important takeaways (don't just repeat the intro)\n2. Include a clear, specific call-to-action relevant to the brand\n3. Mention the brand naturally \u2014 position it as the solution\n4. End with a forward-looking statement or thought-provoking question\n5. Keep it to 2-3 paragraphs (100-200 words)\n6. Match the brand voice\n\nOUTPUT: HTML paragraphs only (<p> tags). No heading tags, preamble, or commentary."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [2500, 2400],
+      "position": [
+        2500,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c16",
       "name": "Claude Conclusion Writer"
     },
@@ -992,7 +1118,10 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [2500, 2620],
+      "position": [
+        2500,
+        2620
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c17",
       "name": "Anthropic Model Conclusion"
     },
@@ -1024,7 +1153,10 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [2700, 2400],
+      "position": [
+        2700,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c18",
       "name": "Set Conclusion"
     },
@@ -1033,12 +1165,15 @@
         "promptType": "define",
         "text": "=Keyword: {{ $('Set Writer Context').item.json.keyword }}\n\nFull Article HTML:\n{{ $json.intro_html }}\n{{ $json.body_html }}\n{{ $json.conclusion_html }}",
         "options": {
-          "systemMessage": "Generate SEO metadata for a blog article. Output as JSON with fields: title (compelling H1), meta_description (150-160 chars including primary keyword), slug (lowercase-hyphenated URL), key_takeaways (array of 5-7 bullet points). Wrap in json code block."
+          "systemMessage": "Generate SEO metadata for a blog article.\n\nOUTPUT: JSON wrapped in a ```json code block with these exact fields:\n{\n  \"title\": \"Compelling H1 title (50-60 chars, includes primary keyword near the start)\",\n  \"meta_description\": \"Engaging meta description (150-160 chars exactly, includes primary keyword, has a call-to-action or value prop)\",\n  \"slug\": \"lowercase-hyphenated-url-friendly-slug\",\n  \"key_takeaways\": [\n    \"Takeaway 1 \u2014 one sentence summarizing a key point\",\n    \"Takeaway 2\",\n    \"Takeaway 3\",\n    \"Takeaway 4\",\n    \"Takeaway 5\"\n  ]\n}\n\nRULES:\n- Title must be compelling AND include the keyword \u2014 balance SEO with click-worthiness\n- Meta description must be EXACTLY 150-160 characters (count carefully)\n- Slug should be short (3-6 words) and keyword-rich\n- Key takeaways should be actionable, not vague"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
-      "position": [2900, 2400],
+      "position": [
+        2900,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c19",
       "name": "Claude Meta Generator"
     },
@@ -1054,17 +1189,23 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
       "typeVersion": 1.3,
-      "position": [2900, 2620],
+      "position": [
+        2900,
+        2620
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c20",
       "name": "Anthropic Model Meta"
     },
     {
       "parameters": {
-        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nlet meta;\ntry { meta = JSON.parse(response); } catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) meta = JSON.parse(match[1]);\n  else meta = { title: 'Untitled', meta_description: '', slug: 'untitled', key_takeaways: [] };\n}\nreturn [{ json: meta }];"
+        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nif (!response || !response.trim()) {\n  return [{ json: { title: 'Untitled', meta_description: '', slug: 'untitled', key_takeaways: [] } }];\n}\nlet meta;\ntry {\n  meta = JSON.parse(response);\n} catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) {\n    try {\n      meta = JSON.parse(match[1]);\n    } catch(e2) {\n      meta = { title: 'Untitled', meta_description: '', slug: 'untitled', key_takeaways: [] };\n    }\n  } else {\n    meta = { title: 'Untitled', meta_description: '', slug: 'untitled', key_takeaways: [] };\n  }\n}\n// Ensure all required fields\nmeta.title = meta.title || 'Untitled';\nmeta.meta_description = meta.meta_description || '';\nmeta.slug = meta.slug || 'untitled';\nmeta.key_takeaways = meta.key_takeaways || [];\nreturn [{ json: meta }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [3100, 2400],
+      "position": [
+        3100,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c21",
       "name": "Parse Meta"
     },
@@ -1108,17 +1249,23 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
-      "position": [3300, 2400],
+      "position": [
+        3300,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c22",
       "name": "Assemble Article"
     },
     {
       "parameters": {
-        "jsCode": "const article = $input.first().json.html_content || '';\nconst nlpTermsRaw = $('Set Writer Context').item.json.nlp_terms || '[]';\nconst nlpTerms = typeof nlpTermsRaw === 'string' ? JSON.parse(nlpTermsRaw) : nlpTermsRaw;\nconst articleLower = article.toLowerCase();\nlet found = 0;\nconst missing = [];\nfor (const term of nlpTerms) {\n  const t = typeof term === 'string' ? term : term.term || '';\n  if (articleLower.includes(t.toLowerCase())) { found++; } else { missing.push(t); }\n}\nconst score = nlpTerms.length > 0 ? Math.round((found / nlpTerms.length) * 100) : 0;\nconst wordCount = article.replace(/<[^>]+>/g, ' ').split(/\\s+/).filter(w => w).length;\nreturn [{ json: { ...$input.first().json, nlp_score: score, word_count: wordCount, missing_terms: missing } }];"
+        "jsCode": "const article = $input.first().json.html_content || '';\nif (!article || !article.trim()) {\n  return [{ json: { ...$input.first().json, nlp_score: 0, word_count: 0, missing_terms: [] } }];\n}\nconst nlpTermsRaw = $('Set Writer Context').item.json.nlp_terms || '[]';\nconst nlpTerms = typeof nlpTermsRaw === 'string' ? JSON.parse(nlpTermsRaw) : nlpTermsRaw;\nconst articleLower = article.toLowerCase();\nlet found = 0;\nconst missing = [];\nfor (const term of nlpTerms) {\n  const t = typeof term === 'string' ? term : term.term || '';\n  if (!t) continue;\n  if (articleLower.includes(t.toLowerCase())) { found++; } else { missing.push(t); }\n}\nconst score = nlpTerms.length > 0 ? Math.round((found / nlpTerms.length) * 100) : 0;\nconst wordCount = article.replace(/<[^>]+>/g, ' ').split(/\\s+/).filter(w => w).length;\nreturn [{ json: { ...$input.first().json, nlp_score: score, word_count: wordCount, missing_terms: missing } }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [3500, 2400],
+      "position": [
+        3500,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c23",
       "name": "NLP Term Check"
     },
@@ -1155,7 +1302,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [3700, 2400],
+      "position": [
+        3700,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c24",
       "name": "Save Article"
     },
@@ -1184,7 +1334,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [3900, 2400],
+      "position": [
+        3900,
+        2400
+      ],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c25",
       "name": "Update Keyword Written"
     },
@@ -1205,17 +1358,23 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [400, 3600],
+      "position": [
+        400,
+        3600
+      ],
       "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f1",
       "name": "Get Article to Publish"
     },
     {
       "parameters": {
-        "jsCode": "const article = $input.first().json.fields || $input.first().json;\nconst doc = {\n  mutations: [{\n    createOrReplace: {\n      _type: 'post',\n      _id: 'v2-' + (article.slug || 'untitled'),\n      title: article.title || 'Untitled',\n      slug: { _type: 'slug', current: article.slug || 'untitled' },\n      body: article.html_content || '',\n      metaDescription: article.meta_description || '',\n      publishedAt: new Date().toISOString()\n    }\n  }]\n};\nreturn [{ json: doc }];"
+        "jsCode": "const article = $input.first().json.fields || $input.first().json;\nconst slug = article.slug || 'untitled';\nconst doc = {\n  mutations: [{\n    createOrReplace: {\n      _type: 'post',\n      _id: 'v2-' + slug,\n      title: article.title || 'Untitled',\n      slug: { _type: 'slug', current: slug },\n      body: article.html_content || '',\n      metaDescription: article.meta_description || '',\n      publishedAt: new Date().toISOString()\n    }\n  }]\n};\nreturn [{ json: doc }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [700, 3600],
+      "position": [
+        700,
+        3600
+      ],
       "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f2",
       "name": "Convert to Sanity Format"
     },
@@ -1237,7 +1396,10 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1000, 3600],
+      "position": [
+        1000,
+        3600
+      ],
       "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f3",
       "name": "Upload to Sanity",
       "credentials": {
@@ -1273,7 +1435,10 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [1300, 3600],
+      "position": [
+        1300,
+        3600
+      ],
       "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f4",
       "name": "Update Article Status"
     },
@@ -1302,9 +1467,92 @@
       },
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
-      "position": [1600, 3600],
+      "position": [
+        1600,
+        3600
+      ],
       "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f5",
       "name": "Update Keyword Published"
+    },
+    {
+      "parameters": {
+        "content": "## SEO Content Engine v2 \u2014 Setup\n\n### Credentials Required\n1. **Brave Search API** \u2014 HTTP Header Auth, header: X-Subscription-Token\n   Get free key at brave.com/search/api\n2. **Anthropic API** \u2014 Add as Anthropic credential\n3. **Airtable** \u2014 Use existing Airtable credential\n4. **Sanity CMS** \u2014 HTTP Bearer Auth token\n\n### Airtable Tables to Create\nCreate 3 new tables in base appAXh47Y24CIZp8A:\n- v2_keywords (fields: keyword, seed_keyword, category, status, brand_id)\n- v2_serp_briefs (fields: keyword, nlp_terms, heading_structure, paa_questions, target_word_count, target_images, target_h2_sections, competitor_urls, content_gaps, confidence)\n- v2_articles (fields: keyword, serp_brief, title, slug, meta_description, html_content, key_takeaways, word_count, nlp_score, status, sanity_id, live_url)\n\nThen update the table IDs in the Workflow Settings node.",
+        "height": 600,
+        "width": 800,
+        "color": 1
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        -200
+      ],
+      "id": "e0e921b3-fb62-4d4b-9909-ee7716117996",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Stage 1: Keyword Research\nBrave Search + Claude generates 25 long-tail keywords from seed keyword.\nTrigger: { \"status\": \"keyword_research\", \"seed_keyword\": \"...\", \"brand_id\": \"rec...\" }",
+        "height": 200,
+        "width": 1000,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        350,
+        -50
+      ],
+      "id": "0b72adb7-da0a-4fc8-a04f-b723b9f95c57",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Stage 2: SERP Analysis (Core)\nScrapes top 5 ranking pages. Claude extracts NLP terms, heading structure, PAA questions.\nTrigger: { \"status\": \"serp_analysis\", \"keyword_id\": \"rec...\" }",
+        "height": 200,
+        "width": 2800,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        350,
+        1050
+      ],
+      "id": "8e11b69f-f30b-466d-a1bb-2a2087a22add",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Stage 3: Write Article\nClaude agents write article section-by-section using SERP brief. Checks NLP term coverage.\nTrigger: { \"status\": \"write_article\", \"keyword_id\": \"rec...\" }",
+        "height": 200,
+        "width": 3800,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        350,
+        2250
+      ],
+      "id": "d5874b2b-0b86-434b-a949-61558358d33e",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Stage 4: Publish to Sanity\nPushes article to Sanity CMS. Updates Airtable status.\nTrigger: { \"status\": \"publish_article\", \"article_id\": \"rec...\" }",
+        "height": 200,
+        "width": 1400,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        350,
+        3450
+      ],
+      "id": "ef99aa32-74fd-45fb-bbab-90f7e931a4bf",
+      "name": "Sticky Note4"
     }
   ],
   "connections": {
@@ -1333,355 +1581,575 @@
     "Switch": {
       "main": [
         [
-          { "node": "Get Brand Context", "type": "main", "index": 0 },
-          { "node": "Brave Search Direct", "type": "main", "index": 0 },
-          { "node": "Brave Search Commercial", "type": "main", "index": 0 },
-          { "node": "Brave Search Reddit", "type": "main", "index": 0 }
+          {
+            "node": "Get Brand Context",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Brave Search Direct",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Brave Search Commercial",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Brave Search Reddit",
+            "type": "main",
+            "index": 0
+          }
         ],
         [
-          { "node": "Get Keyword for SERP", "type": "main", "index": 0 }
+          {
+            "node": "Get Keyword for SERP",
+            "type": "main",
+            "index": 0
+          }
         ],
         [
-          { "node": "Get Keyword Data", "type": "main", "index": 0 }
+          {
+            "node": "Get Keyword Data",
+            "type": "main",
+            "index": 0
+          }
         ],
         [
-          { "node": "Get Article to Publish", "type": "main", "index": 0 }
+          {
+            "node": "Get Article to Publish",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Brave Search Direct": {
       "main": [
         [
-          { "node": "Aggregate Search Results", "type": "main", "index": 0 }
+          {
+            "node": "Aggregate Search Results",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Brave Search Commercial": {
       "main": [
         [
-          { "node": "Aggregate Search Results", "type": "main", "index": 0 }
+          {
+            "node": "Aggregate Search Results",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Brave Search Reddit": {
       "main": [
         [
-          { "node": "Aggregate Search Results", "type": "main", "index": 0 }
+          {
+            "node": "Aggregate Search Results",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Aggregate Search Results": {
       "main": [
         [
-          { "node": "Claude KW Expansion", "type": "main", "index": 0 }
+          {
+            "node": "Claude KW Expansion",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model KW": {
       "ai_languageModel": [
         [
-          { "node": "Claude KW Expansion", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude KW Expansion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude KW Expansion": {
       "main": [
         [
-          { "node": "Parse Keywords", "type": "main", "index": 0 }
+          {
+            "node": "Parse Keywords",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Parse Keywords": {
       "main": [
         [
-          { "node": "Save Keywords", "type": "main", "index": 0 }
+          {
+            "node": "Save Keywords",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Get Keyword for SERP": {
       "main": [
         [
-          { "node": "Brave SERP Search", "type": "main", "index": 0 }
+          {
+            "node": "Brave SERP Search",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Brave SERP Search": {
       "main": [
         [
-          { "node": "Extract Top 10 URLs", "type": "main", "index": 0 }
+          {
+            "node": "Extract Top 10 URLs",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Extract Top 10 URLs": {
       "main": [
         [
-          { "node": "Scrape Page", "type": "main", "index": 0 }
+          {
+            "node": "Scrape Page",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Scrape Page": {
       "main": [
         [
-          { "node": "Filter Successful Scrapes", "type": "main", "index": 0 }
+          {
+            "node": "Filter Successful Scrapes",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Filter Successful Scrapes": {
       "main": [
         [
-          { "node": "Strip HTML to Text", "type": "main", "index": 0 }
+          {
+            "node": "Strip HTML to Text",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Strip HTML to Text": {
       "main": [
         [
-          { "node": "Limit to 5 Pages", "type": "main", "index": 0 }
+          {
+            "node": "Limit to 5 Pages",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Limit to 5 Pages": {
       "main": [
         [
-          { "node": "Aggregate Scraped Pages", "type": "main", "index": 0 }
+          {
+            "node": "Aggregate Scraped Pages",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Aggregate Scraped Pages": {
       "main": [
         [
-          { "node": "Set Confidence Level", "type": "main", "index": 0 }
+          {
+            "node": "Set Confidence Level",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Set Confidence Level": {
       "main": [
         [
-          { "node": "Claude SERP Analyzer", "type": "main", "index": 0 }
+          {
+            "node": "Claude SERP Analyzer",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model SERP": {
       "ai_languageModel": [
         [
-          { "node": "Claude SERP Analyzer", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude SERP Analyzer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude SERP Analyzer": {
       "main": [
         [
-          { "node": "Parse SERP Brief", "type": "main", "index": 0 }
+          {
+            "node": "Parse SERP Brief",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Parse SERP Brief": {
       "main": [
         [
-          { "node": "Save SERP Brief", "type": "main", "index": 0 }
+          {
+            "node": "Save SERP Brief",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Save SERP Brief": {
       "main": [
         [
-          { "node": "Update Keyword Status SERP", "type": "main", "index": 0 }
+          {
+            "node": "Update Keyword Status SERP",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Get Keyword Data": {
       "main": [
         [
-          { "node": "Get SERP Brief", "type": "main", "index": 0 }
+          {
+            "node": "Get SERP Brief",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Get SERP Brief": {
       "main": [
         [
-          { "node": "Get Brand Context Writing", "type": "main", "index": 0 }
+          {
+            "node": "Get Brand Context Writing",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Get Brand Context Writing": {
       "main": [
         [
-          { "node": "Set Writer Context", "type": "main", "index": 0 }
+          {
+            "node": "Set Writer Context",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Set Writer Context": {
       "main": [
         [
-          { "node": "Claude Outline Agent", "type": "main", "index": 0 }
+          {
+            "node": "Claude Outline Agent",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model Outline": {
       "ai_languageModel": [
         [
-          { "node": "Claude Outline Agent", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude Outline Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude Outline Agent": {
       "main": [
         [
-          { "node": "Set Outline", "type": "main", "index": 0 }
+          {
+            "node": "Set Outline",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Set Outline": {
       "main": [
         [
-          { "node": "Split Outline into Sections", "type": "main", "index": 0 }
+          {
+            "node": "Split Outline into Sections",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Split Outline into Sections": {
       "main": [
         [
-          { "node": "Claude Section Writer", "type": "main", "index": 0 }
+          {
+            "node": "Claude Section Writer",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model Section": {
       "ai_languageModel": [
         [
-          { "node": "Claude Section Writer", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude Section Writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude Section Writer": {
       "main": [
         [
-          { "node": "Set Section Content", "type": "main", "index": 0 }
+          {
+            "node": "Set Section Content",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Set Section Content": {
       "main": [
         [
-          { "node": "Combine All Sections", "type": "main", "index": 0 }
+          {
+            "node": "Combine All Sections",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Combine All Sections": {
       "main": [
         [
-          { "node": "Claude Intro Writer", "type": "main", "index": 0 }
+          {
+            "node": "Claude Intro Writer",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model Intro": {
       "ai_languageModel": [
         [
-          { "node": "Claude Intro Writer", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude Intro Writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude Intro Writer": {
       "main": [
         [
-          { "node": "Set Intro", "type": "main", "index": 0 }
+          {
+            "node": "Set Intro",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Set Intro": {
       "main": [
         [
-          { "node": "Claude Conclusion Writer", "type": "main", "index": 0 }
+          {
+            "node": "Claude Conclusion Writer",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model Conclusion": {
       "ai_languageModel": [
         [
-          { "node": "Claude Conclusion Writer", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude Conclusion Writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude Conclusion Writer": {
       "main": [
         [
-          { "node": "Set Conclusion", "type": "main", "index": 0 }
+          {
+            "node": "Set Conclusion",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Set Conclusion": {
       "main": [
         [
-          { "node": "Claude Meta Generator", "type": "main", "index": 0 }
+          {
+            "node": "Claude Meta Generator",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Anthropic Model Meta": {
       "ai_languageModel": [
         [
-          { "node": "Claude Meta Generator", "type": "ai_languageModel", "index": 0 }
+          {
+            "node": "Claude Meta Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
         ]
       ]
     },
     "Claude Meta Generator": {
       "main": [
         [
-          { "node": "Parse Meta", "type": "main", "index": 0 }
+          {
+            "node": "Parse Meta",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Parse Meta": {
       "main": [
         [
-          { "node": "Assemble Article", "type": "main", "index": 0 }
+          {
+            "node": "Assemble Article",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Assemble Article": {
       "main": [
         [
-          { "node": "NLP Term Check", "type": "main", "index": 0 }
+          {
+            "node": "NLP Term Check",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "NLP Term Check": {
       "main": [
         [
-          { "node": "Save Article", "type": "main", "index": 0 }
+          {
+            "node": "Save Article",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Save Article": {
       "main": [
         [
-          { "node": "Update Keyword Written", "type": "main", "index": 0 }
+          {
+            "node": "Update Keyword Written",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Get Article to Publish": {
       "main": [
         [
-          { "node": "Convert to Sanity Format", "type": "main", "index": 0 }
+          {
+            "node": "Convert to Sanity Format",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Convert to Sanity Format": {
       "main": [
         [
-          { "node": "Upload to Sanity", "type": "main", "index": 0 }
+          {
+            "node": "Upload to Sanity",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Upload to Sanity": {
       "main": [
         [
-          { "node": "Update Article Status", "type": "main", "index": 0 }
+          {
+            "node": "Update Article Status",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
     "Update Article Status": {
       "main": [
         [
-          { "node": "Update Keyword Published", "type": "main", "index": 0 }
+          {
+            "node": "Update Keyword Published",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     }
