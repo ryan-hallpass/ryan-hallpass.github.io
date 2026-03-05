@@ -380,6 +380,259 @@
       "position": [1300, 300],
       "id": "e2c9a5b8-9d0f-4b6c-7e1a-3f4b5c6d7e8f",
       "name": "Save Keywords"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_keywords_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Workflow Settings').item.json.keyword_id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [400, 1200],
+      "id": "3a1b2c3d-4e5f-4a6b-7c8d-9e0f1a2b3c4d",
+      "name": "Get Keyword for SERP"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.search.brave.com/res/v1/web/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.fields.keyword }}"
+            },
+            {
+              "name": "count",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 1200],
+      "id": "4b2c3d4e-5f6a-4b7c-8d9e-0f1a2b3c4d5e",
+      "name": "Brave SERP Search"
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = $input.first().json.web?.results || [];\nconst urls = results\n  .filter(r => r.url && !r.url.match(/youtube|twitter|facebook|instagram|linkedin/i))\n  .slice(0, 10)\n  .map((r, i) => ({ url: r.url, title: r.title, position: i + 1 }));\nreturn urls.map(u => ({ json: u }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 1200],
+      "id": "5c3d4e5f-6a7b-4c8d-9e0f-1a2b3c4d5e6f",
+      "name": "Extract Top 10 URLs"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          },
+          "timeout": 10000
+        },
+        "onError": "continueRegularOutput"
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 1200],
+      "id": "6d4e5f6a-7b8c-4d9e-0f1a-2b3c4d5e6f7a",
+      "name": "Scrape Page"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "isNotEmpty"
+              },
+              "id": "7e5f6a7b-8c9d-4e0f-1a2b-3c4d5e6f7a8b"
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [1400, 1200],
+      "id": "7e5f6a7b-8c9d-4e0f-1a2b-3c4d5e6f7a8b",
+      "name": "Filter Successful Scrapes"
+    },
+    {
+      "parameters": {
+        "jsCode": "const html = $input.first().json.data || '';\nlet text = html.replace(/<script[\\s\\S]*?<\\/script>/gi, '').replace(/<style[\\s\\S]*?<\\/style>/gi, '');\nconst headings = [];\nconst headingRegex = /<(h[1-3])[^>]*>([\\s\\S]*?)<\\/\\1>/gi;\nlet match;\nwhile ((match = headingRegex.exec(html)) !== null) {\n  headings.push({ level: match[1], text: match[2].replace(/<[^>]+>/g, '').trim() });\n}\nconst imageCount = (html.match(/<img/gi) || []).length;\ntext = text.replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ').trim();\nconst wordCount = text.split(/\\s+/).length;\nreturn [{\n  json: {\n    clean_text: text.substring(0, 15000),\n    headings, word_count: wordCount, image_count: imageCount,\n    url: $input.first().json.url || ''\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1600, 1200],
+      "id": "8f6a7b8c-9d0e-4f1a-2b3c-4d5e6f7a8b9c",
+      "name": "Strip HTML to Text"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all(); return items.slice(0, 5);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1800, 1200],
+      "id": "9a7b8c9d-0e1f-4a2b-3c4d-5e6f7a8b9c0d",
+      "name": "Limit to 5 Pages"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [2000, 1200],
+      "id": "0b8c9d0e-1f2a-4b3c-4d5e-6f7a8b9c0d1e",
+      "name": "Aggregate Scraped Pages"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json.data || [];\nconst pageCount = Array.isArray(data) ? data.length : 1;\nlet confidence = 'high';\nif (pageCount < 5) confidence = 'medium';\nif (pageCount < 3) confidence = 'low';\nreturn [{ json: { ...($input.first().json), confidence, page_count: pageCount } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2200, 1200],
+      "id": "1c9d0e1f-2a3b-4c4d-5e6f-7a8b9c0d1e2f",
+      "name": "Set Confidence Level"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Keyword: {{ $('Get Keyword for SERP').item.json.fields.keyword }}\n\nScraped Pages:\n{{ JSON.stringify($json) }}",
+        "options": {
+          "systemMessage": "You are an SEO SERP analyst. Analyze the scraped competitor pages and extract: 1) NLP terms (20-30 terms appearing in 3+ pages), 2) Heading structure (H1-H3), 3) PAA questions (6-8), 4) Average word count, 5) Average image count, 6) Average H2 sections, 7) Content gaps. Output as JSON with fields: nlp_terms (array), heading_structure (string), paa_questions (array), target_word_count (number), target_images (number), target_h2_sections (number), content_gaps (array). Wrap in json code block."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [2400, 1200],
+      "id": "2d0e1f2a-3b4c-4d5e-6f7a-8b9c0d1e2f3a",
+      "name": "Claude SERP Analyzer"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [2400, 1420],
+      "id": "3e1f2a3b-4c5d-4e6f-7a8b-9c0d1e2f3a4b",
+      "name": "Anthropic Model SERP"
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nlet brief;\ntry { brief = JSON.parse(response); } catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) brief = JSON.parse(match[1]);\n  else throw new Error('Could not parse SERP brief');\n}\nreturn [{ json: brief }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2600, 1200],
+      "id": "4f2a3b4c-5d6e-4f7a-8b9c-0d1e2f3a4b5c",
+      "name": "Parse SERP Brief"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_serp_briefs_table_id }}",
+          "mode": "id"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nlp_terms": "={{ JSON.stringify($json.nlp_terms) }}",
+            "heading_structure": "={{ $json.heading_structure }}",
+            "paa_questions": "={{ JSON.stringify($json.paa_questions) }}",
+            "target_word_count": "={{ $json.target_word_count }}",
+            "target_images": "={{ $json.target_images }}",
+            "target_h2_sections": "={{ $json.target_h2_sections }}",
+            "competitor_urls": "={{ JSON.stringify($json.competitor_urls) }}",
+            "content_gaps": "={{ JSON.stringify($json.content_gaps) }}",
+            "confidence": "={{ $('Set Confidence Level').item.json.confidence }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [2800, 1200],
+      "id": "5a3b4c5d-6e7f-4a8b-9c0d-1e2f3a4b5c6d",
+      "name": "Save SERP Brief"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_keywords_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Workflow Settings').item.json.keyword_id }}",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "serp_complete"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [3000, 1200],
+      "id": "6b4c5d6e-7f8a-4b9c-0d1e-2f3a4b5c6d7e",
+      "name": "Update Keyword Status SERP"
     }
   ],
   "connections": {
@@ -413,7 +666,9 @@
           { "node": "Brave Search Commercial", "type": "main", "index": 0 },
           { "node": "Brave Search Reddit", "type": "main", "index": 0 }
         ],
-        [],
+        [
+          { "node": "Get Keyword for SERP", "type": "main", "index": 0 }
+        ],
         [],
         []
       ]
@@ -464,6 +719,97 @@
       "main": [
         [
           { "node": "Save Keywords", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Keyword for SERP": {
+      "main": [
+        [
+          { "node": "Brave SERP Search", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Brave SERP Search": {
+      "main": [
+        [
+          { "node": "Extract Top 10 URLs", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Extract Top 10 URLs": {
+      "main": [
+        [
+          { "node": "Scrape Page", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Scrape Page": {
+      "main": [
+        [
+          { "node": "Filter Successful Scrapes", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Filter Successful Scrapes": {
+      "main": [
+        [
+          { "node": "Strip HTML to Text", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Strip HTML to Text": {
+      "main": [
+        [
+          { "node": "Limit to 5 Pages", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Limit to 5 Pages": {
+      "main": [
+        [
+          { "node": "Aggregate Scraped Pages", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Aggregate Scraped Pages": {
+      "main": [
+        [
+          { "node": "Set Confidence Level", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Confidence Level": {
+      "main": [
+        [
+          { "node": "Claude SERP Analyzer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model SERP": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude SERP Analyzer", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude SERP Analyzer": {
+      "main": [
+        [
+          { "node": "Parse SERP Brief", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse SERP Brief": {
+      "main": [
+        [
+          { "node": "Save SERP Brief", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Save SERP Brief": {
+      "main": [
+        [
+          { "node": "Update Keyword Status SERP", "type": "main", "index": 0 }
         ]
       ]
     }
