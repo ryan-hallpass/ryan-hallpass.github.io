@@ -633,6 +633,560 @@
       "position": [3000, 1200],
       "id": "6b4c5d6e-7f8a-4b9c-0d1e-2f3a4b5c6d7e",
       "name": "Update Keyword Status SERP"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_keywords_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Workflow Settings').item.json.keyword_id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [400, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c01",
+      "name": "Get Keyword Data"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_serp_briefs_table_id }}",
+          "mode": "id"
+        },
+        "filterByFormula": "={keyword_id} = '{{ $('Workflow Settings').item.json.keyword_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [400, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c02",
+      "name": "Get SERP Brief"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.brand_guidelines_table_id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [400, 2800],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c03",
+      "name": "Get Brand Context Writing"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d01",
+              "name": "keyword",
+              "type": "string",
+              "value": "={{ $('Get Keyword Data').item.json.fields.keyword }}"
+            },
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d02",
+              "name": "nlp_terms",
+              "type": "string",
+              "value": "={{ $('Get SERP Brief').item.json.fields.nlp_terms || '[]' }}"
+            },
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d03",
+              "name": "heading_structure",
+              "type": "string",
+              "value": "={{ $('Get SERP Brief').item.json.fields.heading_structure || '' }}"
+            },
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d04",
+              "name": "paa_questions",
+              "type": "string",
+              "value": "={{ $('Get SERP Brief').item.json.fields.paa_questions || '[]' }}"
+            },
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d05",
+              "name": "target_word_count",
+              "type": "number",
+              "value": "={{ $('Get SERP Brief').item.json.fields.target_word_count || 1500 }}"
+            },
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d06",
+              "name": "brandGuidelines",
+              "type": "string",
+              "value": "={{ JSON.stringify($('Get Brand Context Writing').item.json.fields) }}"
+            },
+            {
+              "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d07",
+              "name": "article_type",
+              "type": "string",
+              "value": "={{ $('Get Keyword Data').item.json.fields.category || 'informational' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [700, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c04",
+      "name": "Set Writer Context"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Keyword: {{ $json.keyword }}\n\nNLP Terms to include:\n{{ $json.nlp_terms }}\n\nCompetitor Heading Structure:\n{{ $json.heading_structure }}\n\nPAA Questions:\n{{ $json.paa_questions }}\n\nTarget Word Count: {{ $json.target_word_count }}\n\nBrand Context:\n{{ $json.brandGuidelines }}\n\nArticle Type: {{ $json.article_type }}",
+        "options": {
+          "systemMessage": "You are an SEO content strategist. Create a detailed article outline using the provided SERP brief. Follow the competitor heading structure as a skeleton. Place NLP terms in H2/H3 headings. Include every PAA question as a section or subsection. Plan comparison tables where relevant. Output as markdown with ## for H2 sections and ### for H3 subsections. Start with an H1 title line."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [900, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c05",
+      "name": "Claude Outline Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [900, 2820],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c06",
+      "name": "Anthropic Model Outline"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e01",
+              "name": "outline",
+              "type": "string",
+              "value": "={{ $json.output || $json.text }}"
+            },
+            {
+              "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e02",
+              "name": "brandGuidelines",
+              "type": "string",
+              "value": "={{ $('Set Writer Context').item.json.brandGuidelines }}"
+            },
+            {
+              "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e03",
+              "name": "nlp_terms",
+              "type": "string",
+              "value": "={{ $('Set Writer Context').item.json.nlp_terms }}"
+            },
+            {
+              "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e04",
+              "name": "paa_questions",
+              "type": "string",
+              "value": "={{ $('Set Writer Context').item.json.paa_questions }}"
+            },
+            {
+              "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e05",
+              "name": "keyword",
+              "type": "string",
+              "value": "={{ $('Set Writer Context').item.json.keyword }}"
+            },
+            {
+              "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e06",
+              "name": "target_word_count",
+              "type": "number",
+              "value": "={{ $('Set Writer Context').item.json.target_word_count }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1100, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c07",
+      "name": "Set Outline"
+    },
+    {
+      "parameters": {
+        "jsCode": "const outlineData = $input.first().json.outline || '';\nconst nlpTerms = JSON.parse($input.first().json.nlp_terms || '[]');\nconst lines = outlineData.split('\\n');\nconst sections = [];\nlet currentSection = null;\nlet currentContent = [];\nfor (const line of lines) {\n  if (line.startsWith('## ')) {\n    if (currentSection) {\n      sections.push({ sectionTitle: currentSection, sectionContent: currentContent.join('\\n') });\n    }\n    currentSection = line.substring(3).trim();\n    currentContent = [line];\n  } else if (currentSection) {\n    currentContent.push(line);\n  }\n}\nif (currentSection) {\n  sections.push({ sectionTitle: currentSection, sectionContent: currentContent.join('\\n') });\n}\nconst termsPerSection = Math.ceil(nlpTerms.length / Math.max(sections.length, 1));\nreturn sections.map((s, i) => ({\n  json: {\n    ...s,\n    assigned_nlp_terms: nlpTerms.slice(i * termsPerSection, (i + 1) * termsPerSection),\n    brandGuidelines: $input.first().json.brandGuidelines || '',\n    keyword: $input.first().json.keyword || '',\n    paa_questions: $input.first().json.paa_questions || '[]',\n    target_word_count: $input.first().json.target_word_count || 0\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1300, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c08",
+      "name": "Split Outline into Sections"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Section: {{ $json.sectionTitle }}\n\nOutline:\n{{ $json.sectionContent }}\n\nAssigned NLP Terms to include:\n{{ JSON.stringify($json.assigned_nlp_terms) }}\n\nBrand Voice:\n{{ $json.brandGuidelines }}\n\nKeyword: {{ $json.keyword }}",
+        "options": {
+          "systemMessage": "You are an SEO content writer. Write a comprehensive section based on the outline. Rules: 1) Naturally incorporate ALL assigned NLP terms. 2) Place key terms in subheadings where possible. 3) Use the brand voice provided. 4) Answer any PAA questions relevant to this section. 5) Include comparison tables if comparing products/services. 6) Position the brand first in any comparisons. 7) Include real metrics when available. Output only the HTML for this section with proper H2/H3 heading tags."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [1500, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c09",
+      "name": "Claude Section Writer"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [1500, 2820],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c10",
+      "name": "Anthropic Model Section"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d3e4f5a6-b7c8-4d9e-0f1a-2b3c4d5e6f01",
+              "name": "section_html",
+              "type": "string",
+              "value": "={{ $json.output || $json.text }}"
+            },
+            {
+              "id": "d3e4f5a6-b7c8-4d9e-0f1a-2b3c4d5e6f02",
+              "name": "sectionTitle",
+              "type": "string",
+              "value": "={{ $json.sectionTitle }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [1700, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c11",
+      "name": "Set Section Content"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst combined = items.map(item => item.json.section_html || '').join('\\n\\n');\nreturn [{ json: { body_html: combined, section_count: items.length } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1900, 2600],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c12",
+      "name": "Combine All Sections"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Keyword: {{ $('Set Writer Context').item.json.keyword }}\n\nArticle Body Summary (first 2000 chars):\n{{ $json.body_html.substring(0, 2000) }}\n\nBrand Context:\n{{ $('Set Writer Context').item.json.brandGuidelines }}\n\nPAA Questions:\n{{ $('Set Writer Context').item.json.paa_questions }}",
+        "options": {
+          "systemMessage": "Write an engaging introduction for a blog article. Hook the reader with a compelling opening. Include the primary keyword in the first paragraph. Reference key points from the article body. Use the brand voice. Output as HTML paragraphs only (no heading tags - the H1 title is separate)."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [2100, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c13",
+      "name": "Claude Intro Writer"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [2100, 2620],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c14",
+      "name": "Anthropic Model Intro"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a01",
+              "name": "intro_html",
+              "type": "string",
+              "value": "={{ $json.output || $json.text }}"
+            },
+            {
+              "id": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a02",
+              "name": "body_html",
+              "type": "string",
+              "value": "={{ $('Combine All Sections').item.json.body_html }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2300, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c15",
+      "name": "Set Intro"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Keyword: {{ $('Set Writer Context').item.json.keyword }}\n\nArticle Body Summary (last 2000 chars):\n{{ $json.body_html.substring($json.body_html.length - 2000) }}\n\nBrand Context:\n{{ $('Set Writer Context').item.json.brandGuidelines }}",
+        "options": {
+          "systemMessage": "Write a compelling conclusion for a blog article. Summarize key points. Include a clear call-to-action. Mention the brand naturally. Output as HTML paragraphs."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [2500, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c16",
+      "name": "Claude Conclusion Writer"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [2500, 2620],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c17",
+      "name": "Anthropic Model Conclusion"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b01",
+              "name": "conclusion_html",
+              "type": "string",
+              "value": "={{ $json.output || $json.text }}"
+            },
+            {
+              "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b02",
+              "name": "intro_html",
+              "type": "string",
+              "value": "={{ $('Set Intro').item.json.intro_html }}"
+            },
+            {
+              "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b03",
+              "name": "body_html",
+              "type": "string",
+              "value": "={{ $('Set Intro').item.json.body_html }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [2700, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c18",
+      "name": "Set Conclusion"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Keyword: {{ $('Set Writer Context').item.json.keyword }}\n\nFull Article HTML:\n{{ $json.intro_html }}\n{{ $json.body_html }}\n{{ $json.conclusion_html }}",
+        "options": {
+          "systemMessage": "Generate SEO metadata for a blog article. Output as JSON with fields: title (compelling H1), meta_description (150-160 chars including primary keyword), slug (lowercase-hyphenated URL), key_takeaways (array of 5-7 bullet points). Wrap in json code block."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [2900, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c19",
+      "name": "Claude Meta Generator"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [2900, 2620],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c20",
+      "name": "Anthropic Model Meta"
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json.output || $input.first().json.text || '';\nlet meta;\ntry { meta = JSON.parse(response); } catch(e) {\n  const match = response.match(/```(?:json)?\\s*([\\s\\S]*?)```/);\n  if (match) meta = JSON.parse(match[1]);\n  else meta = { title: 'Untitled', meta_description: '', slug: 'untitled', key_takeaways: [] };\n}\nreturn [{ json: meta }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3100, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c21",
+      "name": "Parse Meta"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c01",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c02",
+              "name": "slug",
+              "type": "string",
+              "value": "={{ $json.slug }}"
+            },
+            {
+              "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c03",
+              "name": "meta_description",
+              "type": "string",
+              "value": "={{ $json.meta_description }}"
+            },
+            {
+              "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c04",
+              "name": "key_takeaways",
+              "type": "string",
+              "value": "={{ JSON.stringify($json.key_takeaways) }}"
+            },
+            {
+              "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c05",
+              "name": "html_content",
+              "type": "string",
+              "value": "={{ '<h1>' + $json.title + '</h1>\\n\\n' + $('Set Intro').item.json.intro_html + '\\n\\n' + $('Combine All Sections').item.json.body_html + '\\n\\n' + $('Set Conclusion').item.json.conclusion_html }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [3300, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c22",
+      "name": "Assemble Article"
+    },
+    {
+      "parameters": {
+        "jsCode": "const article = $input.first().json.html_content || '';\nconst nlpTermsRaw = $('Set Writer Context').item.json.nlp_terms || '[]';\nconst nlpTerms = typeof nlpTermsRaw === 'string' ? JSON.parse(nlpTermsRaw) : nlpTermsRaw;\nconst articleLower = article.toLowerCase();\nlet found = 0;\nconst missing = [];\nfor (const term of nlpTerms) {\n  const t = typeof term === 'string' ? term : term.term || '';\n  if (articleLower.includes(t.toLowerCase())) { found++; } else { missing.push(t); }\n}\nconst score = nlpTerms.length > 0 ? Math.round((found / nlpTerms.length) * 100) : 0;\nconst wordCount = article.replace(/<[^>]+>/g, ' ').split(/\\s+/).filter(w => w).length;\nreturn [{ json: { ...$input.first().json, nlp_score: score, word_count: wordCount, missing_terms: missing } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3500, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c23",
+      "name": "NLP Term Check"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_articles_table_id }}",
+          "mode": "id"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "title": "={{ $json.title }}",
+            "slug": "={{ $json.slug }}",
+            "meta_description": "={{ $json.meta_description }}",
+            "html_content": "={{ $json.html_content }}",
+            "key_takeaways": "={{ $json.key_takeaways }}",
+            "word_count": "={{ $json.word_count }}",
+            "nlp_score": "={{ $json.nlp_score }}",
+            "status": "ready",
+            "keyword_id": "={{ $('Workflow Settings').item.json.keyword_id }}",
+            "brand_id": "={{ $('Workflow Settings').item.json.brand_id }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [3700, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c24",
+      "name": "Save Article"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_keywords_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Workflow Settings').item.json.keyword_id }}",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "article_written"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [3900, 2400],
+      "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c25",
+      "name": "Update Keyword Written"
     }
   ],
   "connections": {
@@ -669,7 +1223,9 @@
         [
           { "node": "Get Keyword for SERP", "type": "main", "index": 0 }
         ],
-        [],
+        [
+          { "node": "Get Keyword Data", "type": "main", "index": 0 }
+        ],
         []
       ]
     },
@@ -810,6 +1366,174 @@
       "main": [
         [
           { "node": "Update Keyword Status SERP", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Keyword Data": {
+      "main": [
+        [
+          { "node": "Get SERP Brief", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get SERP Brief": {
+      "main": [
+        [
+          { "node": "Get Brand Context Writing", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Brand Context Writing": {
+      "main": [
+        [
+          { "node": "Set Writer Context", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Writer Context": {
+      "main": [
+        [
+          { "node": "Claude Outline Agent", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model Outline": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude Outline Agent", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude Outline Agent": {
+      "main": [
+        [
+          { "node": "Set Outline", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Outline": {
+      "main": [
+        [
+          { "node": "Split Outline into Sections", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Split Outline into Sections": {
+      "main": [
+        [
+          { "node": "Claude Section Writer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model Section": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude Section Writer", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude Section Writer": {
+      "main": [
+        [
+          { "node": "Set Section Content", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Section Content": {
+      "main": [
+        [
+          { "node": "Combine All Sections", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Combine All Sections": {
+      "main": [
+        [
+          { "node": "Claude Intro Writer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model Intro": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude Intro Writer", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude Intro Writer": {
+      "main": [
+        [
+          { "node": "Set Intro", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Intro": {
+      "main": [
+        [
+          { "node": "Claude Conclusion Writer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model Conclusion": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude Conclusion Writer", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude Conclusion Writer": {
+      "main": [
+        [
+          { "node": "Set Conclusion", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Set Conclusion": {
+      "main": [
+        [
+          { "node": "Claude Meta Generator", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Anthropic Model Meta": {
+      "ai_languageModel": [
+        [
+          { "node": "Claude Meta Generator", "type": "ai_languageModel", "index": 0 }
+        ]
+      ]
+    },
+    "Claude Meta Generator": {
+      "main": [
+        [
+          { "node": "Parse Meta", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse Meta": {
+      "main": [
+        [
+          { "node": "Assemble Article", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Assemble Article": {
+      "main": [
+        [
+          { "node": "NLP Term Check", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "NLP Term Check": {
+      "main": [
+        [
+          { "node": "Save Article", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Save Article": {
+      "main": [
+        [
+          { "node": "Update Keyword Written", "type": "main", "index": 0 }
         ]
       ]
     }
