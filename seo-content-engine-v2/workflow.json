@@ -1,0 +1,232 @@
+{
+  "name": "SEO Content Engine v2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "seo_content_engine_v2_trigger",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-500, 300],
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f7e6d5c4-b3a2-4190-8081-716253443526",
+              "name": "status",
+              "type": "string",
+              "value": "={{ $json.status }}"
+            },
+            {
+              "id": "a1b2c3d4-5678-4abc-9def-0123456789ab",
+              "name": "seed_keyword",
+              "type": "string",
+              "value": "={{ $json.seed_keyword }}"
+            },
+            {
+              "id": "b2c3d4e5-6789-4bcd-aef0-123456789abc",
+              "name": "keyword_id",
+              "type": "string",
+              "value": "={{ $json.keyword_id }}"
+            },
+            {
+              "id": "c3d4e5f6-789a-4cde-bf01-23456789abcd",
+              "name": "article_id",
+              "type": "string",
+              "value": "={{ $json.article_id }}"
+            },
+            {
+              "id": "d4e5f6a7-89ab-4def-c012-3456789abcde",
+              "name": "brand_id",
+              "type": "string",
+              "value": "={{ $json.brand_id }}"
+            },
+            {
+              "id": "e5f6a7b8-9abc-4ef0-d123-456789abcdef",
+              "name": "base_id",
+              "type": "string",
+              "value": "appAXh47Y24CIZp8A"
+            },
+            {
+              "id": "f6a7b8c9-abcd-4f01-e234-56789abcdef0",
+              "name": "v2_keywords_table_id",
+              "type": "string",
+              "value": "REPLACE_WITH_TABLE_ID"
+            },
+            {
+              "id": "a7b8c9d0-bcde-4012-f345-6789abcdef01",
+              "name": "v2_serp_briefs_table_id",
+              "type": "string",
+              "value": "REPLACE_WITH_TABLE_ID"
+            },
+            {
+              "id": "b8c9d0e1-cdef-4123-a456-789abcdef012",
+              "name": "v2_articles_table_id",
+              "type": "string",
+              "value": "REPLACE_WITH_TABLE_ID"
+            },
+            {
+              "id": "c9d0e1f2-def0-4234-b567-89abcdef0123",
+              "name": "brand_guidelines_table_id",
+              "type": "string",
+              "value": "tblNyxqTNSLUbjybg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [-200, 300],
+      "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5e",
+      "name": "Workflow Settings"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "keyword_research",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d0e1f2a3-ef01-4345-c678-9abcdef01234"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "keyword_research"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "serp_analysis",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "e1f2a3b4-f012-4456-d789-abcdef012345"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "serp_analysis"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "write_article",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f2a3b4c5-0123-4567-e89a-bcdef0123456"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "write_article"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "publish_article",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "a3b4c5d6-1234-4678-f9ab-cdef01234567"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "publish_article"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [100, 300],
+      "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6f",
+      "name": "Switch"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Workflow Settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Settings": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
