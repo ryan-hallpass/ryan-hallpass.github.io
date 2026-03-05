@@ -1187,6 +1187,124 @@
       "position": [3900, 2400],
       "id": "a0b1c2d3-e4f5-4a6b-7c8d-9e0f1a2b3c25",
       "name": "Update Keyword Written"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_articles_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Workflow Settings').item.json.article_id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [400, 3600],
+      "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f1",
+      "name": "Get Article to Publish"
+    },
+    {
+      "parameters": {
+        "jsCode": "const article = $input.first().json.fields || $input.first().json;\nconst doc = {\n  mutations: [{\n    createOrReplace: {\n      _type: 'post',\n      _id: 'v2-' + (article.slug || 'untitled'),\n      title: article.title || 'Untitled',\n      slug: { _type: 'slug', current: article.slug || 'untitled' },\n      body: article.html_content || '',\n      metaDescription: article.meta_description || '',\n      publishedAt: new Date().toISOString()\n    }\n  }]\n};\nreturn [{ json: doc }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 3600],
+      "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f2",
+      "name": "Convert to Sanity Format"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://f8pskp0q.api.sanity.io/v2021-06-07/data/mutate/production",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1000, 3600],
+      "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f3",
+      "name": "Upload to Sanity",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "",
+          "name": ""
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_articles_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Workflow Settings').item.json.article_id }}",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "published",
+            "sanity_id": "={{ $json.results[0].id || '' }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [1300, 3600],
+      "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f4",
+      "name": "Update Article Status"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.base_id }}",
+          "mode": "id"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $('Workflow Settings').item.json.v2_keywords_table_id }}",
+          "mode": "id"
+        },
+        "id": "={{ $('Get Article to Publish').item.json.fields.keyword_id || '' }}",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "published"
+          },
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [1600, 3600],
+      "id": "d1e2f3a4-b5c6-4d7e-8f90-a1b2c3d4e5f5",
+      "name": "Update Keyword Published"
     }
   ],
   "connections": {
@@ -1226,7 +1344,9 @@
         [
           { "node": "Get Keyword Data", "type": "main", "index": 0 }
         ],
-        []
+        [
+          { "node": "Get Article to Publish", "type": "main", "index": 0 }
+        ]
       ]
     },
     "Brave Search Direct": {
@@ -1534,6 +1654,34 @@
       "main": [
         [
           { "node": "Update Keyword Written", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Get Article to Publish": {
+      "main": [
+        [
+          { "node": "Convert to Sanity Format", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Convert to Sanity Format": {
+      "main": [
+        [
+          { "node": "Upload to Sanity", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Upload to Sanity": {
+      "main": [
+        [
+          { "node": "Update Article Status", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Update Article Status": {
+      "main": [
+        [
+          { "node": "Update Keyword Published", "type": "main", "index": 0 }
         ]
       ]
     }
