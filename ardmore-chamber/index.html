@@ -179,7 +179,7 @@
   .cover-hero {
     position: relative;
     min-height: 100vh;
-    background: url('img-cafe.jpg') center / cover no-repeat;
+    background: url('https://i.pinimg.com/736x/48/8b/5f/488b5fb60b0eaeec5a111607c78b5a40.jpg') center / cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -191,7 +191,12 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(26,26,24,0.7);
+    background: linear-gradient(
+      to top,
+      rgba(26,26,24,0.85) 0%,
+      rgba(26,26,24,0.6) 40%,
+      rgba(122,158,126,0.3) 100%
+    );
     z-index: 0;
   }
 
