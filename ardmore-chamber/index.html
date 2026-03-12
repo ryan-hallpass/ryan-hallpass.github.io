@@ -175,41 +175,38 @@
 
   .slide--dark .tag { border-color: rgba(242,239,232,0.2); }
 
-  /* ── COVER SLIDE ── */
-  .cover-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+  /* ── COVER SLIDE (full-bleed hero) ── */
+  .cover-hero {
+    position: relative;
     min-height: 100vh;
-  }
-
-  .cover-left {
-    background: var(--ink);
-    color: var(--cream);
-    padding: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px);
+    background: url('img-cafe.jpg') center / cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
+    padding: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px);
     overflow: hidden;
   }
 
-  .cover-left::before {
+  .cover-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(242,239,232,0.06) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background: rgba(26,26,24,0.7);
+    z-index: 0;
   }
 
-  .cover-right {
-    background: var(--sage-light);
-    padding: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  .cover-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: 0;
+  }
+
+  .cover-hero > * {
     position: relative;
-    overflow: hidden;
+    z-index: 1;
   }
 
   .wordmark {
@@ -245,12 +242,11 @@
 
   .cover-headline {
     font-family: var(--serif);
-    font-size: clamp(40px, 5vw, 58px);
+    font-size: clamp(44px, 6vw, 72px);
     font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.02em;
-    position: relative;
-    z-index: 1;
+    color: var(--cream);
   }
 
   .cover-headline em {
@@ -259,42 +255,42 @@
   }
 
   .cover-sub {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 300;
     opacity: 0.6;
     margin-top: 20px;
     line-height: 1.6;
-    position: relative;
-    z-index: 1;
+    color: var(--cream);
   }
 
-  .cover-right-text {
-    position: relative;
-    z-index: 1;
-    color: var(--ink);
+  .cover-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--cream);
   }
 
-  .cover-right-label {
+  .cover-bottom-label {
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    opacity: 0.5;
-    margin-bottom: 12px;
+    opacity: 0.45;
   }
 
-  .cover-right-title {
+  .cover-bottom-title {
     font-family: var(--serif);
-    font-size: clamp(22px, 2.8vw, 32px);
+    font-size: clamp(18px, 2.2vw, 24px);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.3;
+    opacity: 0.8;
   }
 
-  .cover-right-date {
+  .cover-bottom-date {
     font-size: 12px;
-    opacity: 0.5;
-    margin-top: 16px;
+    opacity: 0.4;
     letter-spacing: 0.08em;
+    margin-top: 4px;
   }
 
   /* ── TWO-COL ── */
@@ -334,7 +330,7 @@
   }
 
   .problem-list li::before {
-    content: '—';
+    content: '\2014';
     color: var(--sage);
     font-family: var(--serif);
     flex-shrink: 0;
@@ -545,7 +541,7 @@
   }
 
   .price-items li::before {
-    content: '↗';
+    content: '\2197';
     position: absolute;
     left: 0;
     font-size: 10px;
@@ -661,12 +657,228 @@
     line-height: 1.4;
   }
 
+  /* ── SLIDE IMAGES ── */
+  .slide-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-top: 24px;
+  }
+
+  .slide-bg-img {
+    position: relative;
+  }
+
+  .slide-bg-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  /* ── TOWNSPARK MOCKUP ── */
+  .mockup-browser {
+    border: 1px solid rgba(26,26,24,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--warm-white);
+    box-shadow: 0 4px 24px rgba(26,26,24,0.08);
+  }
+
+  .mockup-toolbar {
+    background: var(--cream);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(26,26,24,0.1);
+  }
+
+  .mockup-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(26,26,24,0.12);
+  }
+
+  .mockup-dot:first-child { background: #FF5F57; }
+  .mockup-dot:nth-child(2) { background: #FEBC2E; }
+  .mockup-dot:nth-child(3) { background: #28C840; }
+
+  .mockup-url {
+    flex: 1;
+    background: var(--warm-white);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    opacity: 0.6;
+    margin-left: 8px;
+  }
+
+  .mockup-content {
+    padding: 0;
+  }
+
+  .mockup-header {
+    background: var(--sage);
+    padding: 24px 28px;
+    color: white;
+  }
+
+  .mockup-biz-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .mockup-biz-tagline {
+    font-size: 12px;
+    opacity: 0.8;
+    font-weight: 300;
+  }
+
+  .mockup-sections {
+    padding: 20px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mockup-section {
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .mockup-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .mockup-section-title {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+
+  .mockup-section-body {
+    font-size: 11px;
+    line-height: 1.5;
+    font-weight: 300;
+    opacity: 0.7;
+  }
+
+  .mockup-badge {
+    background: var(--sage-wash);
+    padding: 12px 28px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border-top: 1px solid rgba(26,26,24,0.08);
+  }
+
+  /* ── DATA GAP DIAGRAM ── */
+  .data-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-top: 40px;
+  }
+
+  .data-sources {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .data-box {
+    border: 2px solid rgba(242,239,232,0.3);
+    border-radius: 6px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 180px;
+  }
+
+  .data-box-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 6px;
+  }
+
+  .data-box-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .data-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+    position: relative;
+  }
+
+  .data-dashed-line {
+    width: 2px;
+    height: 24px;
+    border-left: 2px dashed rgba(242,239,232,0.25);
+  }
+
+  .data-arrow {
+    font-size: 20px;
+    opacity: 0.5;
+    margin: 4px 0;
+  }
+
+  .data-dashed-h {
+    width: 48px;
+    height: 0;
+    border-top: 2px dashed rgba(242,239,232,0.25);
+  }
+
+  .data-result {
+    border: 2px solid var(--sage);
+    border-radius: 6px;
+    padding: 20px 36px;
+    text-align: center;
+    background: rgba(122,158,126,0.1);
+  }
+
+  .data-result-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 6px;
+  }
+
+  .data-result-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--sage-light);
+  }
+
   /* ── SCROLL REVEAL ── */
   [data-reveal] {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(36px);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
@@ -676,19 +888,18 @@
   }
 
   /* stagger children within a slide */
-  [data-reveal][data-delay="1"] { transition-delay: 0.1s; }
-  [data-reveal][data-delay="2"] { transition-delay: 0.2s; }
-  [data-reveal][data-delay="3"] { transition-delay: 0.32s; }
-  [data-reveal][data-delay="4"] { transition-delay: 0.44s; }
-  [data-reveal][data-delay="5"] { transition-delay: 0.56s; }
-  [data-reveal][data-delay="6"] { transition-delay: 0.68s; }
-  [data-reveal][data-delay="7"] { transition-delay: 0.8s; }
+  [data-reveal][data-delay="1"] { transition-delay: 0.15s; }
+  [data-reveal][data-delay="2"] { transition-delay: 0.35s; }
+  [data-reveal][data-delay="3"] { transition-delay: 0.55s; }
+  [data-reveal][data-delay="4"] { transition-delay: 0.75s; }
+  [data-reveal][data-delay="5"] { transition-delay: 0.95s; }
+  [data-reveal][data-delay="6"] { transition-delay: 1.15s; }
+  [data-reveal][data-delay="7"] { transition-delay: 1.35s; }
 
   /* cover slide gets a fade-in on load, not on scroll */
-  .cover-left [data-reveal],
-  .cover-right [data-reveal] {
+  .cover-hero [data-reveal] {
     transform: translateY(20px);
-    transition-duration: 0.9s;
+    transition-duration: 1.2s;
   }
 
   /* cards and price cards get a subtle scale too */
@@ -706,7 +917,7 @@
   .rule[data-reveal] {
     transform: none;
     width: 0;
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
                 width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -762,32 +973,27 @@
 
   @media (max-width: 700px) {
     .slide { padding: 48px 28px; min-height: auto; }
-    .cover-grid { grid-template-columns: 1fr; }
-    .cover-right { min-height: 260px; }
+    .cover-hero { min-height: 100vh; }
     .card-grid, .price-grid, .metric-strip, .two-col, .two-col-tight { grid-template-columns: 1fr; }
     .display { font-size: 32px; }
+    .data-sources { flex-direction: column; gap: 16px; }
   }
 </style>
 </head>
 <body>
 <div class="deck">
 
-  <!-- ══ COVER ══ -->
-  <div class="cover-grid">
-    <div class="cover-left">
-      <div class="wordmark" data-reveal data-delay="1"><img src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
-      <div>
-        <div class="cover-headline" data-reveal data-delay="2">Making your<br>members feel<br><em>seen.</em></div>
-        <div class="cover-sub" data-reveal data-delay="3">A member engagement & visibility proposal<br>for the Ardmore Chamber of Commerce</div>
-      </div>
-      <div data-reveal data-delay="4" style="font-size:11px;opacity:0.3;letter-spacing:0.08em;">March 2026</div>
+  <!-- ══ COVER (full-bleed hero) ══ -->
+  <div class="cover-hero">
+    <div class="wordmark" data-reveal data-delay="1"><img src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+    <div>
+      <div class="cover-headline" data-reveal data-delay="2">Making your<br>members feel<br><em>seen.</em></div>
+      <div class="cover-sub" data-reveal data-delay="3">A member engagement &amp; visibility proposal<br>for the Ardmore Chamber of Commerce</div>
     </div>
-    <div class="cover-right">
-      <div class="cover-right-text">
-        <div class="cover-right-label" data-reveal data-delay="2">Prepared for</div>
-        <div class="cover-right-title" data-reveal data-delay="3">Ardmore Chamber<br>of Commerce</div>
-        <div class="cover-right-date" data-reveal data-delay="4">March 2026</div>
-      </div>
+    <div class="cover-bottom" data-reveal data-delay="4">
+      <div class="cover-bottom-label">Prepared for</div>
+      <div class="cover-bottom-title">Ardmore Chamber of Commerce</div>
+      <div class="cover-bottom-date">March 2026</div>
     </div>
   </div>
 
@@ -885,6 +1091,7 @@
           <li style="font-size:13px;">"How to Get Value from Your Membership" guide</li>
           <li style="font-size:13px;">Prospect-facing overview (two versions)</li>
         </ul>
+        <img src="img-storefront.jpg" alt="Local storefront" class="slide-img" data-reveal data-delay="4">
       </div>
     </div>
     <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
@@ -931,16 +1138,23 @@
   </div>
 
   <!-- ══ TOWNSPARK / IMPACT DECKS ══ -->
-  <div class="slide slide--dark">
+  <div class="slide slide--dark" style="position:relative;">
     <span class="slide-num">07</span>
-    <div class="eyebrow" data-reveal>Initiative 03 — Flagship</div>
-    <div class="display" data-reveal data-delay="1" style="color:var(--cream);">Member Impact Decks,<br>powered by <em>TownSpark.</em></div>
-    <div class="rule" data-reveal data-delay="2"></div>
-    <div class="body" data-reveal data-delay="3" style="color:var(--cream);">TownSpark is a platform we've built — originally for nonprofits — that generates story-driven digital profiles from a business's existing web presence. We're adapting it specifically for chambers of commerce, and Ardmore will be its first pilot.</div>
-    <div class="feature-block" data-reveal data-delay="4">
-      <div class="feature-label">How it works</div>
-      <div class="feature-title">Enter a URL. Get a <em>shareable story.</em></div>
-      <div class="feature-body">We enter a member's website URL. TownSpark scrapes the site, runs it through our AI generation layer, and produces a polished, story-driven profile page — structured around who the business serves, what they offer, why customers choose them, and how to reach them. The Chamber can share it. The business can share it. And we can track how many people viewed it.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div>
+        <div class="eyebrow" data-reveal>Initiative 03 — Flagship</div>
+        <div class="display" data-reveal data-delay="1" style="color:var(--cream);">Member Impact Decks,<br>powered by <em>TownSpark.</em></div>
+        <div class="rule" data-reveal data-delay="2"></div>
+        <div class="body" data-reveal data-delay="3" style="color:var(--cream);">TownSpark is a platform we've built — originally for nonprofits — that generates story-driven digital profiles from a business's existing web presence. We're adapting it specifically for chambers of commerce, and Ardmore will be its first pilot.</div>
+        <div class="feature-block" data-reveal data-delay="4">
+          <div class="feature-label">How it works</div>
+          <div class="feature-title">Enter a URL. Get a <em>shareable story.</em></div>
+          <div class="feature-body">We enter a member's website URL. TownSpark scrapes the site, runs it through our AI generation layer, and produces a polished, story-driven profile page — structured around who the business serves, what they offer, why customers choose them, and how to reach them. The Chamber can share it. The business can share it. And we can track how many people viewed it.</div>
+        </div>
+      </div>
+      <div data-reveal data-delay="5">
+        <img src="img-shopowner.jpg" alt="Local shop owner" style="width:100%;height:360px;object-fit:cover;border-radius:4px;opacity:0.85;">
+      </div>
     </div>
     <div class="slide-footer" style="color:var(--cream);"><span>Ardmore Chamber of Commerce</span><img class="logo-light" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
   </div>
@@ -962,19 +1176,45 @@
           <li style="font-size:13px;">"Proud Member of the Ardmore Chamber" badge</li>
           <li style="font-size:13px;">Contact, website, and CTA links</li>
         </ul>
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:500;margin-bottom:14px;letter-spacing:0.05em;">What the Chamber can do with it</div>
-        <ul class="problem-list" style="gap:10px;">
-          <li style="font-size:13px;">Feature in monthly newsletter</li>
-          <li style="font-size:13px;">Share on Facebook as a member spotlight</li>
-          <li style="font-size:13px;">Use in new member recruitment ("look what you get")</li>
-          <li style="font-size:13px;">Link from the Chamber website directory</li>
-          <li style="font-size:13px;">Include in the annual Member Visibility Report</li>
-        </ul>
         <div style="background:var(--sage-wash);padding:20px;margin-top:20px;border-left:3px solid var(--sage);">
           <div style="font-size:12px;font-weight:500;margin-bottom:6px;">Pilot note</div>
           <div style="font-size:12px;font-weight:300;line-height:1.55;opacity:0.8;">Ardmore is TownSpark's founding pilot client. You'll get this at a founder rate — and when it works, it becomes a case study for chambers nationwide. You're not paying for a prototype. You're getting a proven platform adapted for your context.</div>
+        </div>
+      </div>
+      <div>
+        <!-- TownSpark Mockup -->
+        <div class="mockup-browser" data-reveal data-delay="3">
+          <div class="mockup-toolbar">
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-url">townspark.co/ardmore/bellas-bakery</div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-header">
+              <div class="mockup-biz-name">Bella's Bakery &amp; Caf&eacute;</div>
+              <div class="mockup-biz-tagline">Fresh-baked goods &amp; specialty coffee in the heart of Ardmore</div>
+            </div>
+            <div class="mockup-sections">
+              <div class="mockup-section">
+                <div class="mockup-section-title">About</div>
+                <div class="mockup-section-body">A family-owned bakery and gathering place that's been serving the Ardmore community since 2016. Known for scratch-made pastries, locally roasted coffee, and a warm atmosphere.</div>
+              </div>
+              <div class="mockup-section">
+                <div class="mockup-section-title">What We Offer</div>
+                <div class="mockup-section-body">Artisan breads, custom cakes, seasonal pastries, specialty lattes, private event catering, and a cozy space for meetings and study sessions.</div>
+              </div>
+              <div class="mockup-section">
+                <div class="mockup-section-title">Why Customers Choose Us</div>
+                <div class="mockup-section-body">"Best cinnamon rolls in Carter County." 4.9 stars across 200+ reviews. Locally sourced ingredients and a commitment to community.</div>
+              </div>
+              <div class="mockup-section">
+                <div class="mockup-section-title">Visit Us</div>
+                <div class="mockup-section-body">123 Main Street, Ardmore, OK 73401 — Open Mon-Sat 6am-6pm</div>
+              </div>
+            </div>
+            <div class="mockup-badge">Proud Member of the Ardmore Chamber of Commerce</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1016,9 +1256,46 @@
     <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
   </div>
 
+  <!-- ══ DATA GAP (ChamberMaster + Mailchimp) ══ -->
+  <div class="slide slide--dark">
+    <span class="slide-num">10</span>
+    <div class="eyebrow" data-reveal style="color:var(--sage-light);">The Hidden Problem</div>
+    <div class="display" data-reveal data-delay="1" style="color:var(--cream);max-width:700px;">Your data lives in two places<br>that don't <em>talk to each other.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <div class="body" data-reveal data-delay="3" style="color:var(--cream);max-width:640px;">The Chamber tracks member relationships in ChamberMaster and sends communications through Mailchimp. These systems don't share data — meaning engagement insights, email opens, event attendance, and renewal signals are scattered across two disconnected platforms. The Visibility Reports and renewal strategy we're proposing would bridge this gap by pulling activity from both systems into a single, member-facing view.</div>
+
+    <!-- Data diagram -->
+    <div class="data-diagram" data-reveal data-delay="4">
+      <div class="data-sources">
+        <div class="data-box">
+          <div class="data-box-label">CRM</div>
+          <div class="data-box-name">ChamberMaster</div>
+        </div>
+        <div class="data-dashed-h"></div>
+        <div style="font-size:11px;opacity:0.35;letter-spacing:0.12em;text-transform:uppercase;">no sync</div>
+        <div class="data-dashed-h"></div>
+        <div class="data-box">
+          <div class="data-box-label">Email</div>
+          <div class="data-box-name">Mailchimp</div>
+        </div>
+      </div>
+      <div class="data-connector">
+        <div class="data-dashed-line"></div>
+        <div class="data-arrow">&darr;</div>
+        <div class="data-dashed-line"></div>
+      </div>
+      <div class="data-result">
+        <div class="data-result-label">What we build</div>
+        <div class="data-result-name">Unified Member View</div>
+      </div>
+    </div>
+
+    <div class="slide-footer" style="color:var(--cream);"><span>Ardmore Chamber of Commerce</span><img class="logo-light" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
   <!-- ══ TIMELINE ══ -->
   <div class="slide">
-    <span class="slide-num">10</span>
+    <span class="slide-num">11</span>
     <div class="eyebrow" data-reveal>Implementation</div>
     <div class="display-sm" data-reveal data-delay="1">Three phases.<br>Results visible by <em>month two.</em></div>
     <div class="phase-list">
@@ -1049,7 +1326,7 @@
 
   <!-- ══ INVESTMENT ══ -->
   <div class="slide">
-    <span class="slide-num">11</span>
+    <span class="slide-num">12</span>
     <div class="eyebrow" data-reveal>Investment Options</div>
     <div class="display-sm" data-reveal data-delay="1">Choose your starting point.<br>Scale from there.</div>
     <div class="price-grid">
@@ -1103,9 +1380,10 @@
   </div>
 
   <!-- ══ CLOSING ══ -->
-  <div class="slide slide--dark" style="min-height:500px;">
-    <span class="slide-num">12</span>
-    <div class="closing-inner">
+  <div class="slide slide--dark" style="min-height:500px;background-image:url('img-handshake.jpg');background-size:cover;background-position:center;">
+    <div style="position:absolute;inset:0;background:rgba(26,26,24,0.82);z-index:0;"></div>
+    <span class="slide-num" style="z-index:1;">13</span>
+    <div class="closing-inner" style="z-index:1;">
       <div class="eyebrow" data-reveal style="color:var(--sage-light);">Next Step</div>
       <div class="display" data-reveal data-delay="1" style="color:var(--cream);max-width:520px;">Let's find the scope that<br>feels right and <em>get started.</em></div>
       <div class="rule" data-reveal data-delay="2"></div>
@@ -1115,8 +1393,8 @@
         <div style="font-size:13px;opacity:0.6;color:var(--cream);">hallpassdigital.com</div>
       </div>
     </div>
-    <div class="big-number">→</div>
-    <div class="slide-footer" style="color:var(--cream);"><span>Ardmore Chamber of Commerce</span><img class="logo-light" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+    <div class="big-number" style="z-index:1;">&rarr;</div>
+    <div class="slide-footer" style="color:var(--cream);z-index:1;"><span>Ardmore Chamber of Commerce</span><img class="logo-light" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
   </div>
 
 </div><!-- /deck -->
@@ -1127,7 +1405,7 @@
   if (!els.length) return;
 
   // Cover elements: reveal immediately on load
-  var coverEls = document.querySelectorAll('.cover-left [data-reveal], .cover-right [data-reveal]');
+  var coverEls = document.querySelectorAll('.cover-hero [data-reveal]');
   setTimeout(function () {
     coverEls.forEach(function (el) { el.classList.add('is-visible'); });
   }, 120);
@@ -1141,13 +1419,13 @@
       }
     });
   }, {
-    threshold: 0.15,
+    threshold: 0.08,
     rootMargin: '0px 0px -40px 0px'
   });
 
   els.forEach(function (el) {
     // Skip cover elements (handled above)
-    if (el.closest('.cover-left') || el.closest('.cover-right')) return;
+    if (el.closest('.cover-hero')) return;
     observer.observe(el);
   });
 })();
