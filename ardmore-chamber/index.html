@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ardmore Chamber of Commerce — Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F2EFE8;
+    --ink: #1A1A18;
+    --ink-soft: #3D3D38;
+    --sage: #7A9E7E;
+    --sage-light: #B8D0BB;
+    --sage-wash: #EAF0EB;
+    --warm-white: #FAFAF7;
+    --rule: rgba(26,26,24,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── SLIDE SHELL ── */
+  .deck {
+    width: 100%;
+    padding: 0;
+  }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: clamp(40px, 7vw, 96px) clamp(32px, 8vw, 120px);
+    margin-bottom: 2px;
+    background: var(--warm-white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide:first-child { margin-top: 0; }
+
+  /* dot grid bg */
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(26,26,24,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .slide--dark {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .slide--sage {
+    background: var(--sage-wash);
+  }
+
+  .slide--accent {
+    background: var(--sage);
+    color: var(--warm-white);
+  }
+
+  /* ── SLIDE COUNTER ── */
+  .slide-num {
+    position: absolute;
+    top: 28px;
+    right: 36px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    opacity: 0.35;
+  }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 20px;
+  }
+
+  /* ── DISPLAY TYPE ── */
+  .display {
+    font-family: var(--serif);
+    font-size: clamp(38px, 5.5vw, 64px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .display em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  .slide--dark .display em { color: var(--sage-light); }
+  .slide--accent .display em { color: var(--warm-white); opacity: 0.7; }
+
+  .display-sm {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .display-sm em { font-style: italic; color: var(--sage); }
+  .slide--dark .display-sm em { color: var(--sage-light); }
+  .slide--sage .display-sm em { color: var(--sage); }
+
+  /* ── BODY ── */
+  .body {
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 560px;
+    opacity: 0.8;
+    margin-top: 20px;
+  }
+
+  .body-lg {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 600px;
+    margin-top: 24px;
+  }
+
+  /* ── RULE ── */
+  .rule {
+    width: 48px;
+    height: 2px;
+    background: var(--sage);
+    margin: 28px 0;
+  }
+
+  .slide--dark .rule { background: var(--sage-light); }
+
+  /* ── TAG ── */
+  .tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .slide--dark .tag { border-color: rgba(242,239,232,0.2); }
+
+  /* ── COVER SLIDE ── */
+  .cover-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 100vh;
+  }
+
+  .cover-left {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(242,239,232,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .cover-right {
+    background: var(--sage-light);
+    padding: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wordmark {
+    position: relative;
+    z-index: 1;
+  }
+
+  .wordmark img {
+    height: 22px;
+    width: auto;
+    filter: invert(1);
+    opacity: 0.55;
+    display: block;
+  }
+
+  /* logo on light backgrounds */
+  .logo-dark {
+    height: 18px;
+    width: auto;
+    filter: none;
+    opacity: 0.4;
+    display: block;
+  }
+
+  /* logo on dark backgrounds */
+  .logo-light {
+    height: 18px;
+    width: auto;
+    filter: invert(1);
+    opacity: 0.4;
+    display: block;
+  }
+
+  .cover-headline {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-headline em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  .cover-sub {
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 0.6;
+    margin-top: 20px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-right-text {
+    position: relative;
+    z-index: 1;
+    color: var(--ink);
+  }
+
+  .cover-right-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 12px;
+  }
+
+  .cover-right-title {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .cover-right-date {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-top: 16px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── TWO-COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 40px;
+  }
+
+  .two-col-tight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+    margin-top: 32px;
+  }
+
+  /* ── PROBLEM ITEMS ── */
+  .problem-list {
+    list-style: none;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .problem-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  .problem-list li::before {
+    content: '—';
+    color: var(--sage);
+    font-family: var(--serif);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── SOLUTION CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .card {
+    background: var(--cream);
+    padding: 32px 28px;
+    position: relative;
+  }
+
+  .card-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--sage);
+    opacity: 0.7;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .card-body {
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 300;
+    opacity: 0.7;
+  }
+
+  /* ── TOWNSPARK FEATURE ── */
+  .feature-block {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px 44px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-block::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: var(--sage);
+    opacity: 0.15;
+  }
+
+  .feature-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 12px;
+  }
+
+  .feature-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .feature-title em { font-style: italic; color: var(--sage-light); }
+
+  .feature-body {
+    font-size: 13px;
+    line-height: 1.65;
+    font-weight: 300;
+    opacity: 0.75;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── PHASE TIMELINE ── */
+  .phase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 36px;
+  }
+
+  .phase-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .phase-item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .phase-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    padding-top: 3px;
+  }
+
+  .phase-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .phase-body {
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 300;
+    opacity: 0.7;
+  }
+
+  /* ── PRICING ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .price-card {
+    background: var(--cream);
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-card--featured {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .price-tier {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 16px;
+  }
+
+  .price-card--featured .price-tier { opacity: 0.6; color: var(--sage-light); }
+
+  .price-amount {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-period {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-bottom: 20px;
+  }
+
+  .price-rule {
+    width: 32px;
+    height: 1px;
+    background: var(--rule);
+    margin-bottom: 20px;
+  }
+
+  .price-card--featured .price-rule { background: rgba(242,239,232,0.2); }
+
+  .price-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+  }
+
+  .price-items li {
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.45;
+    opacity: 0.75;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .price-items li::before {
+    content: '↗';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    color: var(--sage);
+    top: 1px;
+  }
+
+  .price-card--featured .price-items li::before { color: var(--sage-light); }
+
+  .price-note {
+    font-size: 11px;
+    opacity: 0.45;
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* ── CLOSING ── */
+  .closing-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .big-number {
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 400;
+    line-height: 0.9;
+    color: var(--sage-light);
+    opacity: 0.15;
+    position: absolute;
+    bottom: -20px;
+    right: 40px;
+    letter-spacing: -0.04em;
+  }
+
+  /* ── FOOTER ── */
+  .slide-footer {
+    position: absolute;
+    bottom: 28px;
+    left: clamp(32px, 8vw, 120px);
+    right: clamp(32px, 8vw, 120px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    opacity: 0.35;
+  }
+
+  .slide--dark .slide-footer { opacity: 0.3; color: var(--cream); }
+
+  /* ── INLINE HIGHLIGHT ── */
+  .hl {
+    background: var(--sage-light);
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-style: normal;
+    color: var(--ink);
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-block {
+    border-left: 3px solid var(--sage);
+    padding-left: 24px;
+    margin-top: 36px;
+  }
+
+  .quote-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+
+  .quote-attr {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-top: 12px;
+  }
+
+  /* ── METRIC STRIP ── */
+  .metric-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+  }
+
+  .metric {
+    background: var(--cream);
+    padding: 28px 32px;
+  }
+
+  .metric-value {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.55;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 700px) {
+    .slide { padding: 48px 28px; min-height: auto; }
+    .cover-grid { grid-template-columns: 1fr; }
+    .cover-right { min-height: 260px; }
+    .card-grid, .price-grid, .metric-strip, .two-col, .two-col-tight { grid-template-columns: 1fr; }
+    .display { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- ══ COVER ══ -->
+  <div class="cover-grid">
+    <div class="cover-left">
+      <div class="wordmark"><img src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+      <div>
+        <div class="cover-headline">Making your<br>members feel<br><em>seen.</em></div>
+        <div class="cover-sub">A member engagement & visibility proposal<br>for the Ardmore Chamber of Commerce</div>
+      </div>
+      <div style="font-size:11px;opacity:0.3;letter-spacing:0.08em;">March 2026</div>
+    </div>
+    <div class="cover-right">
+      <div class="cover-right-text">
+        <div class="cover-right-label">Prepared for</div>
+        <div class="cover-right-title">Ardmore Chamber<br>of Commerce</div>
+        <div class="cover-right-date">March 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ THE HONEST OBSERVATION ══ -->
+  <div class="slide">
+    <span class="slide-num">01</span>
+    <div class="eyebrow">The Starting Point</div>
+    <div class="display">The Chamber is working.<br>It just isn't <em>visible</em> enough<br>to the people it's working for.</div>
+    <div class="rule"></div>
+    <div class="body">You have ribbon cuttings. Networking events. A newsletter. A Facebook page with 6,000 followers. Resources most small businesses would actually find useful — if they knew about them. The problem isn't what you offer. It's that members don't feel the value accumulating between renewals.</div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ THE PROBLEM ══ -->
+  <div class="slide slide--sage">
+    <span class="slide-num">02</span>
+    <div class="eyebrow">What We Heard</div>
+    <div class="display-sm">A few patterns that<br>came up in conversation.</div>
+    <ul class="problem-list">
+      <li>New members join, attend a ribbon cutting, and then go quiet — because nobody follows up.</li>
+      <li>Members who don't renew probably didn't feel like anything happened for them. We just don't know because there's no exit survey.</li>
+      <li>The current membership packet is dense and wordy. Busy business owners don't read it.</li>
+      <li>The value is real — networking, promotion, events, visibility — but it's not documented anywhere the member can see.</li>
+      <li>Small businesses (the ones most likely to churn) are also the ones least likely to seek out their benefits proactively.</li>
+    </ul>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ THE REFRAME ══ -->
+  <div class="slide slide--dark">
+    <span class="slide-num">03</span>
+    <div class="eyebrow">The Strategic Shift</div>
+    <div class="display" style="color: var(--cream);">From hosting events<br>to <em>actively promoting</em><br>local businesses.</div>
+    <div class="rule"></div>
+    <div class="body" style="color:var(--cream);">That's a meaningful psychological shift — both for members deciding whether to renew, and for prospects deciding whether to join. The Chamber already does this. The goal is to make it impossible to miss.</div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ SOLUTIONS OVERVIEW ══ -->
+  <div class="slide">
+    <span class="slide-num">04</span>
+    <div class="eyebrow">What We're Proposing</div>
+    <div class="display-sm">Five interconnected<br>initiatives.</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Collateral & Messaging Overhaul</div>
+        <div class="card-body">Replace the dense folder with a clean, scannable one-pager that communicates value at a glance.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">New Member Onboarding System</div>
+        <div class="card-body">A structured 90-day touchpoint sequence so joining actually feels like something.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">Member Impact Decks</div>
+        <div class="card-body">AI-generated, story-driven business profiles — shareable, promotable, and trackable.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <div class="card-title">Renewal & Retention Strategy</div>
+        <div class="card-body">Renewal shouldn't arrive as a cold invoice. It should arrive after a year of feeling valued.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">05</div>
+        <div class="card-title">Member Visibility Reports</div>
+        <div class="card-body">An annual summary of exactly how the Chamber promoted each member business over the past year.</div>
+      </div>
+      <div class="card" style="background: var(--sage-wash);">
+        <div class="card-num" style="opacity:0.15;">+</div>
+        <div class="card-title">Optional: Video Spotlights</div>
+        <div class="card-body">Short interview-style videos for member businesses — social-ready, professionally edited.</div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ COLLATERAL ══ -->
+  <div class="slide">
+    <span class="slide-num">05</span>
+    <div class="eyebrow">Initiative 01</div>
+    <div class="display-sm">Collateral that does<br>the work for you.</div>
+    <div class="rule"></div>
+    <div class="two-col">
+      <div>
+        <div class="body" style="margin-top:0;">The current membership packet contains valuable information. But it's formatted for readers, not skimmers — and today, everyone skims.</div>
+        <div class="body" style="margin-top:16px;">We'll replace it with a clean visual leave-behind that answers three questions in under 10 seconds: <em>What does the Chamber do? What do I get? What does it cost?</em></div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:14px;letter-spacing:0.05em;">Deliverables</div>
+        <ul class="problem-list" style="gap:10px;">
+          <li style="font-size:13px;">Simplified membership one-pager</li>
+          <li style="font-size:13px;">Updated new member welcome materials</li>
+          <li style="font-size:13px;">"How to Get Value from Your Membership" guide</li>
+          <li style="font-size:13px;">Prospect-facing overview (two versions)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ ONBOARDING ══ -->
+  <div class="slide slide--sage">
+    <span class="slide-num">06</span>
+    <div class="eyebrow">Initiative 02</div>
+    <div class="display-sm">The first 90 days<br>set the tone for everything.</div>
+    <div class="rule"></div>
+    <div class="body">Most members who churn probably made the decision to churn within the first 90 days — they just didn't act on it until renewal. A structured onboarding sequence fixes this by creating regular moments of contact and value delivery right when the relationship is being formed.</div>
+    <div class="phase-list" style="margin-top:28px;">
+      <div class="phase-item">
+        <div class="phase-label">Day 1</div>
+        <div>
+          <div class="phase-title">Welcome & What's Next</div>
+          <div class="phase-body">Personal welcome email, intro to benefits, ribbon cutting scheduling prompt.</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Day 14</div>
+        <div>
+          <div class="phase-title">First Value Touch</div>
+          <div class="phase-body">Member spotlight questionnaire + invite to next Business After Hours.</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Day 45</div>
+        <div>
+          <div class="phase-title">Engagement Check-In</div>
+          <div class="phase-body">Upcoming events, Facebook page reminder, Chambermaster setup prompt.</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Day 90</div>
+        <div>
+          <div class="phase-title">First Quarter Review</div>
+          <div class="phase-body">Summary of Chamber activity, upcoming opportunities, personal note from Kelly.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ TOWNSPARK / IMPACT DECKS ══ -->
+  <div class="slide slide--dark">
+    <span class="slide-num">07</span>
+    <div class="eyebrow">Initiative 03 — Flagship</div>
+    <div class="display" style="color:var(--cream);">Member Impact Decks,<br>powered by <em>TownSpark.</em></div>
+    <div class="rule"></div>
+    <div class="body" style="color:var(--cream);">This is where the proposal gets interesting. TownSpark is a platform we've built — originally for nonprofits — that generates story-driven digital profiles from a business's existing web presence. We're adapting it specifically for chambers of commerce, and Ardmore will be its first pilot.</div>
+    <div class="feature-block">
+      <div class="feature-label">How it works</div>
+      <div class="feature-title">Enter a URL. Get a <em>shareable story.</em></div>
+      <div class="feature-body">We enter a member's website URL. TownSpark scrapes the site, runs it through our AI generation layer, and produces a polished, story-driven profile page — structured around who the business serves, what they offer, why customers choose them, and how to reach them. The Chamber can share it. The business can share it. And we can track how many people viewed it.</div>
+    </div>
+    <div class="slide-footer" style="color:var(--cream);"><span>Ardmore Chamber of Commerce</span><img class="logo-light" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ TOWNSPARK DETAIL ══ -->
+  <div class="slide">
+    <span class="slide-num">08</span>
+    <div class="eyebrow">TownSpark — What a Member Gets</div>
+    <div class="display-sm">A shareable page that<br>tells their <em>real</em> story.</div>
+    <div class="two-col" style="margin-top:32px;">
+      <div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:14px;letter-spacing:0.05em;">Each Impact Deck includes</div>
+        <ul class="problem-list" style="gap:10px;">
+          <li style="font-size:13px;">Business overview & positioning</li>
+          <li style="font-size:13px;">Who they serve in the community</li>
+          <li style="font-size:13px;">Core services & what makes them different</li>
+          <li style="font-size:13px;">Trust signals (years in business, specialties)</li>
+          <li style="font-size:13px;">Social proof section (if available)</li>
+          <li style="font-size:13px;">"Proud Member of the Ardmore Chamber" badge</li>
+          <li style="font-size:13px;">Contact, website, and CTA links</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:14px;letter-spacing:0.05em;">What the Chamber can do with it</div>
+        <ul class="problem-list" style="gap:10px;">
+          <li style="font-size:13px;">Feature in monthly newsletter</li>
+          <li style="font-size:13px;">Share on Facebook as a member spotlight</li>
+          <li style="font-size:13px;">Use in new member recruitment ("look what you get")</li>
+          <li style="font-size:13px;">Link from the Chamber website directory</li>
+          <li style="font-size:13px;">Include in the annual Member Visibility Report</li>
+        </ul>
+        <div style="background:var(--sage-wash);padding:20px;margin-top:20px;border-left:3px solid var(--sage);">
+          <div style="font-size:12px;font-weight:500;margin-bottom:6px;">Pilot note</div>
+          <div style="font-size:12px;font-weight:300;line-height:1.55;opacity:0.8;">Ardmore is TownSpark's founding pilot client. You'll get this at a founder rate — and when it works, it becomes a case study for chambers nationwide. You're not paying for a prototype. You're getting a proven platform adapted for your context.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ RETENTION ══ -->
+  <div class="slide slide--sage">
+    <span class="slide-num">09</span>
+    <div class="eyebrow">Initiative 04 + 05</div>
+    <div class="display-sm">Renewals that feel like<br>a <em>thank you,</em> not an invoice.</div>
+    <div class="rule"></div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:12px;letter-spacing:0.05em;">Retention Strategy</div>
+        <ul class="problem-list" style="gap:10px;">
+          <li style="font-size:13px;">Renewal reminder sequence (60-day, 30-day, 7-day)</li>
+          <li style="font-size:13px;">Pre-renewal "here's what's coming" email</li>
+          <li style="font-size:13px;">Anniversary celebration posts (1, 5, 10, 20 years)</li>
+          <li style="font-size:13px;">Exit survey for non-renewers</li>
+          <li style="font-size:13px;">Win-back sequence for lapsed members</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:12px;letter-spacing:0.05em;">Annual Visibility Reports</div>
+        <ul class="problem-list" style="gap:10px;">
+          <li style="font-size:13px;">Sent to each member once per year, ahead of renewal</li>
+          <li style="font-size:13px;">Documents every Chamber mention, share, and spotlight</li>
+          <li style="font-size:13px;">Includes estimated audience reach per activity</li>
+          <li style="font-size:13px;">TownSpark page views and CTA clicks</li>
+          <li style="font-size:13px;">Generated from Jordan's simple activity log — minimal overhead</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote-block" style="margin-top:32px;">
+      <div class="quote-text">"The Chamber has been out here promoting your business all year. Here's the receipts."</div>
+      <div class="quote-attr">— The feeling every renewal should create</div>
+    </div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ TIMELINE ══ -->
+  <div class="slide">
+    <span class="slide-num">10</span>
+    <div class="eyebrow">Implementation</div>
+    <div class="display-sm">Three phases.<br>Results visible by <em>month two.</em></div>
+    <div class="phase-list">
+      <div class="phase-item">
+        <div class="phase-label">Phase 1<br>Weeks 1–4</div>
+        <div>
+          <div class="phase-title">Foundation</div>
+          <div class="phase-body">Messaging audit, new one-pager and collateral, onboarding email sequence build, TownSpark pilot setup for first 10 member businesses.</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Phase 2<br>Months 2–3</div>
+        <div>
+          <div class="phase-title">Activation</div>
+          <div class="phase-body">Impact Deck rollout to full membership, social spotlight cadence begins, renewal sequence deployed, Jordan activity log goes live.</div>
+        </div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-label">Phase 3<br>Ongoing</div>
+        <div>
+          <div class="phase-title">Growth & Reporting</div>
+          <div class="phase-body">Monthly member spotlights, quarterly strategy check-ins, first annual Visibility Reports sent at year-end, optional video spotlight add-ons.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ INVESTMENT ══ -->
+  <div class="slide">
+    <span class="slide-num">11</span>
+    <div class="eyebrow">Investment Options</div>
+    <div class="display-sm">Choose your starting point.<br>Scale from there.</div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-tier">Foundation</div>
+        <div class="price-amount">$8,500</div>
+        <div class="price-period">one-time project</div>
+        <div class="price-rule"></div>
+        <ul class="price-items">
+          <li>Membership collateral overhaul</li>
+          <li>New member onboarding sequence</li>
+          <li>Renewal & retention messaging</li>
+          <li>TownSpark setup + first 10 Impact Decks</li>
+          <li>Visibility Report framework</li>
+        </ul>
+        <div class="price-note">Best for: getting the core systems in place</div>
+      </div>
+      <div class="price-card price-card--featured">
+        <div class="price-tier">Growth Retainer</div>
+        <div class="price-amount">$2,500</div>
+        <div class="price-period">per month (after Foundation)</div>
+        <div class="price-rule"></div>
+        <ul class="price-items">
+          <li>2 member spotlight posts/month</li>
+          <li>Monthly social content calendar</li>
+          <li>Ongoing Impact Deck production</li>
+          <li>Event promotion support</li>
+          <li>Quarterly strategy check-in</li>
+          <li>New member prospect support</li>
+        </ul>
+        <div class="price-note" style="color:var(--sage-light);">Most popular starting point</div>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Full Program</div>
+        <div class="price-amount">$4,000</div>
+        <div class="price-period">per month (after Foundation)</div>
+        <div class="price-rule"></div>
+        <ul class="price-items">
+          <li>Everything in Growth, plus:</li>
+          <li>Annual Visibility Reports (all members)</li>
+          <li>Lunch & Learn capture + archive</li>
+          <li>Member engagement campaigns</li>
+          <li>Video spotlight (1 per month)</li>
+          <li>Monthly performance dashboard</li>
+        </ul>
+        <div class="price-note">Best for: full-service partnership</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;font-size:12px;opacity:0.45;font-style:italic;">Video spotlights also available as standalone add-ons at $600/business. Foundation project required before retainer engagement.</div>
+    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
+  </div>
+
+  <!-- ══ CLOSING ══ -->
+  <div class="slide slide--dark" style="min-height:500px;">
+    <span class="slide-num">12</span>
+    <div class="closing-inner">
+      <div class="eyebrow" style="color:var(--sage-light);">Next Step</div>
+      <div class="display" style="color:var(--cream);max-width:520px;">Let's find the scope that<br>feels right and <em>get started.</em></div>
+      <div class="rule"></div>
+      <div class="body" style="color:var(--cream);">The next step is a short planning session to confirm priorities, identify quick wins, and set a timeline. Most of what's in this proposal can have visible results within 30 days of kickoff.</div>
+      <div style="margin-top:36px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:12px;opacity:0.4;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);">Ryan McNeill</div>
+        <div style="font-size:13px;opacity:0.6;color:var(--cream);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c4e455d527c545d50504c5d4f4f58555b55485d50125f5351">[email&#160;protected]</a></div>
+        <div style="font-size:13px;opacity:0.6;color:var(--cream);">hallpassdigital.com</div>
+      </div>
+    </div>
+    <div class="big-number">→</div>
+    <div class="slide-footer" style="color:var(--cream
