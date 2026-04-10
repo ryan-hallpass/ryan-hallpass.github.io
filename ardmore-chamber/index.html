@@ -1411,21 +1411,46 @@
     <div class="eyebrow" data-reveal style="color:var(--sage-light);">The Hidden Problem</div>
     <div class="display" data-reveal data-delay="1" style="color:var(--cream);max-width:700px;">Your member activity lives in two systems<br>that don't <em>connect.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
-    <div class="body" data-reveal data-delay="3" style="color:var(--cream);max-width:640px;">The Chamber tracks member relationships in ChamberMaster and sends communications through Mailchimp. These systems don't share data — meaning engagement insights, email opens, event attendance, and renewal signals are scattered across two disconnected platforms. The Visibility Reports and renewal strategy we're proposing would bridge this gap by pulling activity from both systems into a single, member-facing view.</div>
+    <div class="body" data-reveal data-delay="3" style="color:var(--cream);max-width:640px;">The Chamber tracks member relationships in ChamberMaster and sends communications through Mailchimp. These systems don't share data — meaning engagement insights, email opens, event attendance, and renewal signals are scattered across two disconnected platforms.</div>
+    <div class="body" data-reveal data-delay="3" style="color:var(--cream);max-width:640px;margin-top:16px;">We don't need to replace or integrate these systems. Here's how it works:</div>
+
+    <!-- How it works steps -->
+    <div data-reveal data-delay="4" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:28px;max-width:700px;">
+      <div style="background:rgba(255,255,255,0.05);padding:20px 24px;">
+        <div style="font-family:var(--serif);font-size:24px;color:var(--sage);opacity:0.5;margin-bottom:8px;">01</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:6px;color:var(--cream);">Monthly data export</div>
+        <div style="font-size:12px;line-height:1.6;opacity:0.6;color:var(--cream);">A simple CSV from ChamberMaster — member names, businesses, join dates, renewal dates. Takes 5 minutes.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 24px;">
+        <div style="font-family:var(--serif);font-size:24px;color:var(--sage);opacity:0.5;margin-bottom:8px;">02</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:6px;color:var(--cream);">Automated workflows</div>
+        <div style="font-size:12px;line-height:1.6;opacity:0.6;color:var(--cream);">We import the data into our automation platform. Renewal reminders, visibility reports, exit surveys, and win-back sequences fire automatically based on each member's timeline.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 24px;">
+        <div style="font-family:var(--serif);font-size:24px;color:var(--sage);opacity:0.5;margin-bottom:8px;">03</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:6px;color:var(--cream);">Sent on the Chamber's behalf</div>
+        <div style="font-size:12px;line-height:1.6;opacity:0.6;color:var(--cream);">Emails come from the Chamber — members see their Chamber, not ours. This runs as a separate system alongside what Jordan is already doing in Mailchimp. No overlap, no interference.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:20px 24px;">
+        <div style="font-family:var(--serif);font-size:24px;color:var(--sage);opacity:0.5;margin-bottom:8px;">04</div>
+        <div style="font-size:13px;font-weight:500;margin-bottom:6px;color:var(--cream);">Jordan keeps the newsletter</div>
+        <div style="font-size:12px;line-height:1.6;opacity:0.6;color:var(--cream);">The regular Chamber newsletter stays exactly where it is — in Mailchimp, managed by Jordan. What we're adding is automated lifecycle emails that no one has time to send manually: onboarding, renewal, exit surveys, and visibility reports.</div>
+      </div>
+    </div>
 
     <!-- Data diagram -->
-    <div class="data-diagram" data-reveal data-delay="4">
+    <div class="data-diagram" data-reveal data-delay="5" style="margin-top:28px;">
       <div class="data-sources">
         <div class="data-box">
           <div class="data-box-label">CRM</div>
           <div class="data-box-name">ChamberMaster</div>
         </div>
         <div class="data-dashed-h"></div>
-        <div style="font-size:11px;opacity:0.35;letter-spacing:0.12em;text-transform:uppercase;">no sync</div>
+        <div style="font-size:11px;opacity:0.35;letter-spacing:0.12em;text-transform:uppercase;">csv export</div>
         <div class="data-dashed-h"></div>
         <div class="data-box">
-          <div class="data-box-label">Email</div>
-          <div class="data-box-name">Mailchimp</div>
+          <div class="data-box-label">Newsletter</div>
+          <div class="data-box-name">Mailchimp (Jordan)</div>
         </div>
       </div>
       <div class="data-connector">
@@ -1434,8 +1459,8 @@
         <div class="data-dashed-line"></div>
       </div>
       <div class="data-result">
-        <div class="data-result-label">What we build</div>
-        <div class="data-result-name">Unified Member View</div>
+        <div class="data-result-label">What we add</div>
+        <div class="data-result-name">Automated Lifecycle Emails</div>
       </div>
     </div>
 
