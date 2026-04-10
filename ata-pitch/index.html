@@ -281,6 +281,173 @@
     font-size: 16px;
   }
 
+  /* JOURNEY TIMELINE */
+  .journey-section {
+    position: relative;
+    width: 100%;
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+  }
+
+  .journey-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .journey-pinned {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 7vw, 96px) clamp(32px, 8vw, 120px);
+  }
+
+  .journey-header {
+    position: relative;
+    z-index: 1;
+  }
+
+  .journey-track {
+    position: relative;
+    height: 3px;
+    background: rgba(242,239,232,0.1);
+    border-radius: 2px;
+    margin-top: 36px;
+  }
+
+  .journey-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--terra-light);
+    border-radius: 2px;
+    will-change: width;
+  }
+
+  .journey-markers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .journey-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .journey-marker:first-child { align-items: flex-start; }
+  .journey-marker:last-child { align-items: flex-end; }
+
+  .journey-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(242,239,232,0.12);
+    margin-bottom: 8px;
+    transition: background 0.3s;
+  }
+
+  .journey-dot.is-active {
+    background: var(--terra-light);
+  }
+
+  .journey-marker-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    transition: opacity 0.3s, color 0.3s;
+    white-space: nowrap;
+    color: var(--cream);
+  }
+
+  .journey-marker-label.is-active {
+    opacity: 1;
+    color: var(--cream);
+  }
+
+  .journey-divider {
+    height: 1px;
+    background: rgba(242,239,232,0.08);
+    margin-top: 32px;
+  }
+
+  .journey-content {
+    position: relative;
+    min-height: 120px;
+    margin-top: 36px;
+    z-index: 1;
+  }
+
+  .journey-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .journey-stage.is-active {
+    opacity: 1;
+  }
+
+  .journey-stage-headline {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--terra-light);
+  }
+
+  .journey-stage-body {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    opacity: 0.7;
+    max-width: 500px;
+    margin-top: 12px;
+    color: var(--cream);
+  }
+
+  .journey-footer {
+    position: absolute;
+    bottom: 28px;
+    left: clamp(32px, 8vw, 120px);
+    right: clamp(32px, 8vw, 120px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    opacity: 0.35;
+  }
+
+  .journey-footer img { height: 18px; width: auto; filter: invert(1); }
+  .journey-footer span { text-transform: uppercase; }
+
+  @media (max-width: 700px) {
+    .journey-pinned { padding: 48px 28px; }
+    .journey-marker-label { font-size: 8px; letter-spacing: 0.06em; }
+    .journey-stage-headline { font-size: 18px; }
+  }
+
   @media (max-width: 700px) {
     .initiative-grid { grid-template-columns: 1fr; }
     .funnel-steps { flex-direction: column; }
@@ -361,6 +528,8 @@
     transform: translateY(0) scale(1);
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 <div class="deck">
@@ -460,44 +629,70 @@
     </div>
   </div>
 
-  <!-- 06 INITIATIVE 01 - VISITOR FUNNEL -->
-  <div class="slide slide--dark">
-    <span class="slide-num">06</span>
-    <div class="eyebrow" data-reveal>Initiative 01 — Flagship</div>
-    <div class="display-sm" data-reveal data-delay="1">The discount card is a great start.<br>Let's build the <em>system around it.</em></div>
-    <div class="rule" data-reveal data-delay="2"></div>
-    <p class="body" style="color:var(--cream);">The QR-gated discount card is genuinely smart. A page only accessible by card — updatable in real time, no reprinting required. We want to extend that idea into a full visitor communication loop. Instead of scan → discounts, it becomes scan → email capture → discounts → ongoing relationship.</p>
-    <p class="body" style="color:var(--cream);margin-top:16px;">By adding a "Claim this offer" button to each discount, the ATA can see which offers are actually being redeemed — giving you real data on what's driving foot traffic, and giving participating businesses proof that the program works.</p>
-    <div class="funnel-steps">
-      <div class="funnel-step" data-reveal data-delay="2">
-        <div class="funnel-step-num">01</div>
-        <div class="funnel-step-title">Receive the Card</div>
-        <div class="funnel-step-body">Visitor gets a discount card at their hotel or a participating location</div>
+  <!-- 06 INITIATIVE 01 - VISITOR FUNNEL (sticky scroll timeline) -->
+  <div class="journey-section">
+    <div class="journey-pinned">
+      <span class="slide-num" style="color:var(--cream);">06</span>
+      <div class="journey-header">
+        <div class="eyebrow" data-reveal style="color:var(--cream);">Initiative 01 — Flagship</div>
+        <div class="display-sm" data-reveal data-delay="1">The discount card is a great start.<br>Let's build the <em style="color:var(--terra-light);">system around it.</em></div>
+
+        <div class="journey-track">
+          <div class="journey-fill"></div>
+        </div>
+        <div class="journey-markers">
+          <div class="journey-marker" data-stage="0">
+            <div class="journey-dot is-active"></div>
+            <div class="journey-marker-label is-active">Receive the card</div>
+          </div>
+          <div class="journey-marker" data-stage="1">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Scan QR code</div>
+          </div>
+          <div class="journey-marker" data-stage="2">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Email capture</div>
+          </div>
+          <div class="journey-marker" data-stage="3">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Claim offers</div>
+          </div>
+          <div class="journey-marker" data-stage="4">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Ongoing nurture</div>
+          </div>
+        </div>
       </div>
-      <div class="funnel-step" data-reveal data-delay="3">
-        <div class="funnel-step-num">02</div>
-        <div class="funnel-step-title">Scan to Unlock Discounts</div>
-        <div class="funnel-step-body">Visitor scans the QR code to access deals at local restaurants and businesses</div>
+
+      <div class="journey-divider"></div>
+
+      <div class="journey-content">
+        <div class="journey-stage is-active" data-stage="0">
+          <div class="journey-stage-headline">It starts with a card at their hotel.</div>
+          <div class="journey-stage-body">Visitor gets a discount card at their hotel or a participating location. Simple, tangible, and gives them a reason to explore downtown.</div>
+        </div>
+        <div class="journey-stage" data-stage="1">
+          <div class="journey-stage-headline">One scan opens the door.</div>
+          <div class="journey-stage-body">Visitor scans the QR code to access deals at local restaurants and businesses. The page is live, updatable in real time — no reprinting required.</div>
+        </div>
+        <div class="journey-stage" data-stage="2">
+          <div class="journey-stage-headline">Now you know who they are.</div>
+          <div class="journey-stage-body">Name and email required to unlock the page. Low friction, high value exchange. This is where you start building a list the ATA owns.</div>
+        </div>
+        <div class="journey-stage" data-stage="3">
+          <div class="journey-stage-headline">See which offers actually drive foot traffic.</div>
+          <div class="journey-stage-body">Each discount has a "Claim this offer" button. The ATA sees what's being redeemed and where — real data on what's working, and proof for participating businesses.</div>
+        </div>
+        <div class="journey-stage" data-stage="4">
+          <div class="journey-stage-headline">The visit ends. The relationship doesn't.</div>
+          <div class="journey-stage-body">ATA owns the relationship from here — events, deals, return-visit incentives via automated email. Every subscriber is a future repeat guest.</div>
+        </div>
       </div>
-      <div class="funnel-step" data-reveal data-delay="4">
-        <div class="funnel-step-num">03</div>
-        <div class="funnel-step-title">Email Capture</div>
-        <div class="funnel-step-body">Name + email required to unlock the page — low friction, high value exchange</div>
+
+      <div class="journey-footer">
+        <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+        <span>Ardmore Tourism Authority</span>
       </div>
-      <div class="funnel-step" data-reveal data-delay="5">
-        <div class="funnel-step-num">04</div>
-        <div class="funnel-step-title">"Claim this Offer" Tracking</div>
-        <div class="funnel-step-body">Each discount has a claim button — the ATA sees what's being redeemed and where</div>
-      </div>
-      <div class="funnel-step" data-reveal data-delay="6">
-        <div class="funnel-step-num">05</div>
-        <div class="funnel-step-title">Ongoing Nurture</div>
-        <div class="funnel-step-body">ATA owns the relationship — events, deals, return-visit incentives via automated email</div>
-      </div>
-    </div>
-    <div class="logo-bar" style="filter:invert(1); border-top-color:rgba(255,255,255,0.12);">
-      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
-      <span>Ardmore Tourism Authority</span>
     </div>
   </div>
 
@@ -1010,6 +1205,83 @@
   els.forEach(function (el) {
     if (el.closest('.cover-hero')) return;
     observer.observe(el);
+  });
+})();
+</script>
+<script>
+(function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  var section = document.querySelector('.journey-section');
+  var pinned = document.querySelector('.journey-pinned');
+  var fill = document.querySelector('.journey-fill');
+  var dots = document.querySelectorAll('.journey-dot');
+  var labels = document.querySelectorAll('.journey-marker-label');
+  var stages = document.querySelectorAll('.journey-stage');
+  var numStages = stages.length;
+
+  // Set section height for scroll room
+  section.style.height = (numStages * 100) + 'vh';
+
+  // Stage thresholds
+  var thresholds = [];
+  for (var i = 0; i < numStages; i++) {
+    thresholds.push(i / numStages);
+  }
+
+  // Dot positions along the track
+  var dotPositions = [];
+  for (var i = 0; i < numStages; i++) {
+    dotPositions.push(i / (numStages - 1));
+  }
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: pinned,
+    onUpdate: function (self) {
+      var progress = self.progress;
+
+      // Update fill bar width
+      fill.style.width = (progress * 100) + '%';
+
+      // Determine active stage
+      var activeStage = 0;
+      for (var i = numStages - 1; i >= 0; i--) {
+        if (progress >= thresholds[i]) {
+          activeStage = i;
+          break;
+        }
+      }
+
+      // Update dots
+      for (var i = 0; i < numStages; i++) {
+        if (progress >= dotPositions[i]) {
+          dots[i].classList.add('is-active');
+        } else {
+          dots[i].classList.remove('is-active');
+        }
+      }
+
+      // Update labels
+      for (var i = 0; i < numStages; i++) {
+        if (i === activeStage) {
+          labels[i].classList.add('is-active');
+        } else {
+          labels[i].classList.remove('is-active');
+        }
+      }
+
+      // Crossfade stage content
+      for (var i = 0; i < numStages; i++) {
+        if (i === activeStage) {
+          stages[i].classList.add('is-active');
+        } else {
+          stages[i].classList.remove('is-active');
+        }
+      }
+    }
   });
 })();
 </script>
