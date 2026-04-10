@@ -335,11 +335,12 @@
   }
 
   .problem-list li::before {
-    content: '\2014';
+    content: '\2022';
     color: var(--sage);
     font-family: var(--serif);
+    font-size: 24px;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: -3px;
   }
 
   /* ── SOLUTION CARDS ── */
@@ -983,7 +984,169 @@
     .display { font-size: 32px; }
     .data-sources { flex-direction: column; gap: 16px; }
   }
+
+  /* ── JOURNEY TIMELINE ── */
+  .journey-section {
+    position: relative;
+    width: 100%;
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .journey-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(26,26,24,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .journey-pinned {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(40px, 7vw, 96px) clamp(32px, 8vw, 120px);
+  }
+
+  .journey-header {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Timeline track */
+  .journey-track {
+    position: relative;
+    height: 3px;
+    background: rgba(26,26,24,0.1);
+    border-radius: 2px;
+    margin-top: 36px;
+  }
+
+  .journey-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--sage);
+    border-radius: 2px;
+    will-change: width;
+  }
+
+  /* Stage markers */
+  .journey-markers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .journey-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .journey-marker:first-child { align-items: flex-start; }
+  .journey-marker:last-child { align-items: flex-end; }
+
+  .journey-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(26,26,24,0.12);
+    margin-bottom: 8px;
+    transition: background 0.3s;
+  }
+
+  .journey-dot.is-active {
+    background: var(--sage);
+  }
+
+  .journey-marker-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    transition: opacity 0.3s, color 0.3s;
+    white-space: nowrap;
+  }
+
+  .journey-marker-label.is-active {
+    opacity: 1;
+    color: var(--ink);
+  }
+
+  /* Divider */
+  .journey-divider {
+    height: 1px;
+    background: rgba(26,26,24,0.08);
+    margin-top: 32px;
+  }
+
+  /* Stage content area */
+  .journey-content {
+    position: relative;
+    min-height: 120px;
+    margin-top: 36px;
+    z-index: 1;
+  }
+
+  .journey-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .journey-stage.is-active {
+    opacity: 1;
+  }
+
+  .journey-stage-headline {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .journey-stage-body {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    opacity: 0.7;
+    max-width: 500px;
+    margin-top: 12px;
+  }
+
+  /* Journey footer */
+  .journey-footer {
+    position: absolute;
+    bottom: 28px;
+    left: clamp(32px, 8vw, 120px);
+    right: clamp(32px, 8vw, 120px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    opacity: 0.35;
+  }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 <div class="deck">
@@ -1037,44 +1200,60 @@
     <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
   </div>
 
-  <!-- ══ SOLUTIONS OVERVIEW ══ -->
-  <div class="slide">
-    <span class="slide-num">04</span>
-    <div class="eyebrow" data-reveal>What We're Proposing</div>
-    <div class="display-sm" data-reveal data-delay="1">Five interconnected<br>initiatives.</div>
-    <div class="card-grid">
-      <div class="card" data-reveal data-delay="2">
-        <div class="card-num">01</div>
-        <div class="card-title">Collateral & Messaging Overhaul</div>
-        <div class="card-body">Separate materials for prospects and new members, designed to communicate Chamber value quickly and clearly.</div>
+  <!-- ══ MEMBER JOURNEY TIMELINE ══ -->
+  <div class="journey-section">
+    <div class="journey-pinned">
+      <span class="slide-num">04</span>
+      <div class="journey-header">
+        <div class="eyebrow" data-reveal>What We're Proposing</div>
+        <div class="display-sm" data-reveal data-delay="1">A strategy for every stage<br>of the <em>member journey.</em></div>
+
+        <div class="journey-track">
+          <div class="journey-fill"></div>
+        </div>
+        <div class="journey-markers">
+          <div class="journey-marker" data-stage="0">
+            <div class="journey-dot is-active"></div>
+            <div class="journey-marker-label is-active">Before they join</div>
+          </div>
+          <div class="journey-marker" data-stage="1">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">The first 90 days</div>
+          </div>
+          <div class="journey-marker" data-stage="2">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Throughout the year</div>
+          </div>
+          <div class="journey-marker" data-stage="3">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">When renewal arrives</div>
+          </div>
+        </div>
       </div>
-      <div class="card" data-reveal data-delay="3">
-        <div class="card-num">02</div>
-        <div class="card-title">New Member Onboarding System</div>
-        <div class="card-body">A structured 90-day touchpoint sequence so joining actually feels like something.</div>
+
+      <div class="journey-divider"></div>
+
+      <div class="journey-content">
+        <div class="journey-stage is-active" data-stage="0">
+          <div class="journey-stage-headline">A clearer picture of what membership looks like.</div>
+          <div class="journey-stage-body">Redesigned collateral — printed and digital — that clearly explains the benefits of Chamber membership.</div>
+        </div>
+        <div class="journey-stage" data-stage="1">
+          <div class="journey-stage-headline">Onboarding that makes joining feel like something.</div>
+          <div class="journey-stage-body">A structured touchpoint sequence so new members stay engaged from day one — not just after the ribbon cutting.</div>
+        </div>
+        <div class="journey-stage" data-stage="2">
+          <div class="journey-stage-headline">Ongoing visibility they can actually see.</div>
+          <div class="journey-stage-body">Member spotlights, impact decks, social promotion, and event support that demonstrate ROI all year long.</div>
+        </div>
+        <div class="journey-stage" data-stage="3">
+          <div class="journey-stage-headline">A thank you, not an invoice.</div>
+          <div class="journey-stage-body">An annual visibility report showing exactly how the Chamber promoted their business — delivered before the renewal notice.</div>
+        </div>
       </div>
-      <div class="card" data-reveal data-delay="4">
-        <div class="card-num">03</div>
-        <div class="card-title">Member Impact Decks</div>
-        <div class="card-body">AI-generated, story-driven business profiles — shareable, promotable, and trackable.</div>
-      </div>
-      <div class="card" data-reveal data-delay="5">
-        <div class="card-num">04</div>
-        <div class="card-title">Renewal & Retention Strategy</div>
-        <div class="card-body">Renewal shouldn't arrive as a cold invoice. It should arrive after a year of feeling valued.</div>
-      </div>
-      <div class="card" data-reveal data-delay="6">
-        <div class="card-num">05</div>
-        <div class="card-title">Member Visibility Reports</div>
-        <div class="card-body">An annual summary of exactly how the Chamber promoted each member business over the past year.</div>
-      </div>
-      <div class="card" data-reveal data-delay="7" style="background: var(--sage-wash);">
-        <div class="card-num" style="opacity:0.15;">+</div>
-        <div class="card-title">Optional: Video Spotlights</div>
-        <div class="card-body">Short interview-style videos for member businesses — social-ready, professionally edited.</div>
-      </div>
+
+      <div class="journey-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
     </div>
-    <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
   </div>
 
   <!-- ══ COLLATERAL ══ -->
