@@ -1615,5 +1615,82 @@
   });
 })();
 </script>
+<script>
+(function () {
+  gsap.registerPlugin(ScrollTrigger);
+
+  var section = document.querySelector('.journey-section');
+  var pinned = document.querySelector('.journey-pinned');
+  var fill = document.querySelector('.journey-fill');
+  var dots = document.querySelectorAll('.journey-dot');
+  var labels = document.querySelectorAll('.journey-marker-label');
+  var stages = document.querySelectorAll('.journey-stage');
+  var numStages = stages.length;
+
+  // Set section height to 4x viewport for scroll room
+  section.style.height = (numStages * 100) + 'vh';
+
+  // Stage thresholds: [0, 0.25, 0.5, 0.75]
+  var thresholds = [];
+  for (var i = 0; i < numStages; i++) {
+    thresholds.push(i / numStages);
+  }
+
+  // Dot positions along the track: [0%, 33%, 66%, 100%]
+  var dotPositions = [];
+  for (var i = 0; i < numStages; i++) {
+    dotPositions.push(i / (numStages - 1));
+  }
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: pinned,
+    onUpdate: function (self) {
+      var progress = self.progress;
+
+      // Update fill bar width
+      fill.style.width = (progress * 100) + '%';
+
+      // Determine active stage
+      var activeStage = 0;
+      for (var i = numStages - 1; i >= 0; i--) {
+        if (progress >= thresholds[i]) {
+          activeStage = i;
+          break;
+        }
+      }
+
+      // Update dots
+      for (var i = 0; i < numStages; i++) {
+        if (progress >= dotPositions[i]) {
+          dots[i].classList.add('is-active');
+        } else {
+          dots[i].classList.remove('is-active');
+        }
+      }
+
+      // Update labels
+      for (var i = 0; i < numStages; i++) {
+        if (i === activeStage) {
+          labels[i].classList.add('is-active');
+        } else {
+          labels[i].classList.remove('is-active');
+        }
+      }
+
+      // Crossfade stage content
+      for (var i = 0; i < numStages; i++) {
+        if (i === activeStage) {
+          stages[i].classList.add('is-active');
+        } else {
+          stages[i].classList.remove('is-active');
+        }
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>
