@@ -287,6 +287,79 @@
     .funnel-step::after { display: none; }
     .timeline-item { grid-template-columns: 1fr; gap: 8px; }
   }
+
+  /* SCROLL REVEAL ANIMATIONS */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-reveal][data-delay="1"] { transition-delay: 0.15s; }
+  [data-reveal][data-delay="2"] { transition-delay: 0.35s; }
+  [data-reveal][data-delay="3"] { transition-delay: 0.55s; }
+  [data-reveal][data-delay="4"] { transition-delay: 0.75s; }
+  [data-reveal][data-delay="5"] { transition-delay: 0.95s; }
+  [data-reveal][data-delay="6"] { transition-delay: 1.15s; }
+  [data-reveal][data-delay="7"] { transition-delay: 1.35s; }
+
+  .cover-hero [data-reveal] {
+    transform: translateY(20px);
+    transition-duration: 1.2s;
+  }
+
+  .init-card[data-reveal] {
+    transform: translateY(20px) scale(0.97);
+  }
+
+  .init-card[data-reveal].is-visible {
+    transform: translateY(0) scale(1);
+  }
+
+  .rule[data-reveal] {
+    transform: none;
+    width: 0;
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rule[data-reveal].is-visible {
+    width: 48px;
+  }
+
+  .funnel-step[data-reveal] {
+    transform: translateX(-16px) translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .funnel-step[data-reveal].is-visible {
+    transform: translateX(0) translateY(0);
+  }
+
+  .timeline-item[data-reveal] {
+    transform: translateX(-16px) translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .timeline-item[data-reveal].is-visible {
+    transform: translateX(0) translateY(0);
+  }
+
+  .pricing-table[data-reveal] {
+    transform: translateY(20px) scale(0.97);
+  }
+
+  .pricing-table[data-reveal].is-visible {
+    transform: translateY(0) scale(1);
+  }
 </style>
 </head>
 <body>
@@ -294,15 +367,15 @@
 
   <!-- 01 COVER -->
   <div class="cover-hero">
-    <div class="wordmark">
+    <div class="wordmark" data-reveal>
       <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
     </div>
     <div>
       <p style="font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);opacity:0.45;margin-bottom:20px;">Prepared for the Ardmore Tourism Authority</p>
-      <h1 class="cover-headline">Let's build the system that brings visitors to Ardmore and keeps them <em>coming back.</em></h1>
-      <p class="cover-sub" style="text-shadow: 0 1px 4px rgba(0,0,0,0.6);">A proposal for turning visitors into subscribers, subscribers into repeat guests, and Ardmore into a destination people come back to.</p>
+      <h1 data-reveal data-delay="1" class="cover-headline">Let's build the system that brings visitors to Ardmore and keeps them <em>coming back.</em></h1>
+      <p class="cover-sub" data-reveal data-delay="2" style="text-shadow: 0 1px 4px rgba(0,0,0,0.6);">A proposal for turning visitors into subscribers, subscribers into repeat guests, and Ardmore into a destination people come back to.</p>
     </div>
-    <div class="cover-bottom">
+    <div class="cover-bottom" data-reveal data-delay="3">
       <p class="cover-bottom-label">Prepared by</p>
       <p class="cover-bottom-title">Hallpass Digital</p>
       <p class="cover-bottom-date">March 2026</p>
@@ -312,10 +385,10 @@
   <!-- 02 STARTING POINT -->
   <div class="slide">
     <span class="slide-num">02</span>
-    <div class="eyebrow">Where Things Stand</div>
-    <div class="display-sm">Ardmore has <em>real assets.</em><br>Most visitors never find them.</div>
-    <div class="rule"></div>
-    <p class="body">Hardy Murphy. Historic downtown. Lake Murray. Antique shopping. Great restaurants. An Amtrak stop. A growing events calendar. The ingredients for a compelling destination are already here — but there isn't a clear system for reaching the right people, telling the right story, and turning a first-time visitor into someone who comes back.</p>
+    <div class="eyebrow" data-reveal>Where Things Stand</div>
+    <div class="display-sm" data-reveal data-delay="1">Ardmore has <em>real assets.</em><br>Most visitors never find them.</div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <p class="body" data-reveal data-delay="3">Hardy Murphy. Historic downtown. Lake Murray. Antique shopping. Great restaurants. An Amtrak stop. A growing events calendar. The ingredients for a compelling destination are already here — but there isn't a clear system for reaching the right people, telling the right story, and turning a first-time visitor into someone who comes back.</p>
     <div class="logo-bar">
       <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
       <span>Ardmore Tourism Authority</span>
@@ -325,9 +398,9 @@
   <!-- 03 WHAT WE HEARD -->
   <div class="slide slide--dark">
     <span class="slide-num">03</span>
-    <div class="eyebrow">What We Talked Through</div>
-    <div class="display-sm">A few things that<br>came up in <em>conversation.</em></div>
-    <ul class="bullet-list">
+    <div class="eyebrow" data-reveal>What We Talked Through</div>
+    <div class="display-sm" data-reveal data-delay="1">A few things that<br>came up in <em>conversation.</em></div>
+    <ul class="bullet-list" data-reveal data-delay="2">
       <li>Visitors who come for Lake Murray or stay the night at a hotel on I-35 often don't make it downtown — there's no clear pull or incentive to explore further.</li>
       <li>The ExploreArdmore.com calendar is underused. Most people find out about events through Facebook — or they don't find out at all.</li>
       <li>A discount card program is in development — a smart idea with real potential, but the full value of that system depends on the infrastructure built around it.</li>
@@ -344,10 +417,10 @@
   <!-- 04 STRATEGIC SHIFT -->
   <div class="slide slide--terra">
     <span class="slide-num">04</span>
-    <div class="eyebrow">The Strategic Shift</div>
-    <div class="display-sm">From broadcasting events<br>to building an audience<br>Ardmore <em>owns.</em></div>
-    <div class="rule"></div>
-    <p class="body">Every visitor who comes to Ardmore is a potential subscriber, a repeat guest, and a word-of-mouth advocate. Right now, most of them drive out of town and we lose the connection entirely. The goal is to change that — give visitors a reason to stay connected, and give the ATA a channel to bring them back.</p>
+    <div class="eyebrow" data-reveal>The Strategic Shift</div>
+    <div class="display-sm" data-reveal data-delay="1">From broadcasting events<br>to building an audience<br>Ardmore <em>owns.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <p class="body" data-reveal data-delay="3">Every visitor who comes to Ardmore is a potential subscriber, a repeat guest, and a word-of-mouth advocate. Right now, most of them drive out of town and we lose the connection entirely. The goal is to change that — give visitors a reason to stay connected, and give the ATA a channel to bring them back.</p>
     <div class="logo-bar" style="border-top-color: rgba(196,121,74,0.2);">
       <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
       <span>Ardmore Tourism Authority</span>
@@ -357,25 +430,25 @@
   <!-- 05 INITIATIVES OVERVIEW (now 4 initiatives) -->
   <div class="slide">
     <span class="slide-num">05</span>
-    <div class="eyebrow">What We're Proposing</div>
-    <div class="display-sm">Four interconnected<br><em>initiatives.</em></div>
+    <div class="eyebrow" data-reveal>What We're Proposing</div>
+    <div class="display-sm" data-reveal data-delay="1">Four interconnected<br><em>initiatives.</em></div>
     <div class="initiative-grid">
-      <div class="init-card">
+      <div class="init-card" data-reveal data-delay="2">
         <div class="init-num">01</div>
         <div class="init-title">Visitor Engagement System</div>
         <div class="init-body">Transform the discount card into a live, trackable visitor engagement system — with email capture, "Claim this offer" tracking, and ongoing communication.</div>
       </div>
-      <div class="init-card">
+      <div class="init-card" data-reveal data-delay="3">
         <div class="init-num">02</div>
         <div class="init-title">Event Visibility System</div>
         <div class="init-body">A proactive push-based calendar that gets Ardmore's events in front of people before they decide where to spend their weekend.</div>
       </div>
-      <div class="init-card">
+      <div class="init-card" data-reveal data-delay="4">
         <div class="init-num">03</div>
         <div class="init-title">Business Spotlight Content</div>
         <div class="init-body">Dedicated social media video production featuring Ardmore businesses — expanding shooting capacity with a dedicated ATA budget.</div>
       </div>
-      <div class="init-card">
+      <div class="init-card" data-reveal data-delay="5">
         <div class="init-num">04</div>
         <div class="init-title">Measurement Dashboard</div>
         <div class="init-body">Connect marketing activity to real outcomes — offer redemptions, email growth, hotel occupancy trends, and motel tax benchmarks.</div>
@@ -390,33 +463,33 @@
   <!-- 06 INITIATIVE 01 - VISITOR FUNNEL -->
   <div class="slide slide--dark">
     <span class="slide-num">06</span>
-    <div class="eyebrow">Initiative 01 — Flagship</div>
-    <div class="display-sm">The discount card is a great start.<br>Let's build the <em>system around it.</em></div>
-    <div class="rule"></div>
+    <div class="eyebrow" data-reveal>Initiative 01 — Flagship</div>
+    <div class="display-sm" data-reveal data-delay="1">The discount card is a great start.<br>Let's build the <em>system around it.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
     <p class="body" style="color:var(--cream);">The QR-gated discount card is genuinely smart. A page only accessible by card — updatable in real time, no reprinting required. We want to extend that idea into a full visitor communication loop. Instead of scan → discounts, it becomes scan → email capture → discounts → ongoing relationship.</p>
     <p class="body" style="color:var(--cream);margin-top:16px;">By adding a "Claim this offer" button to each discount, the ATA can see which offers are actually being redeemed — giving you real data on what's driving foot traffic, and giving participating businesses proof that the program works.</p>
     <div class="funnel-steps">
-      <div class="funnel-step">
+      <div class="funnel-step" data-reveal data-delay="2">
         <div class="funnel-step-num">01</div>
         <div class="funnel-step-title">Receive the Card</div>
         <div class="funnel-step-body">Visitor gets a discount card at their hotel or a participating location</div>
       </div>
-      <div class="funnel-step">
+      <div class="funnel-step" data-reveal data-delay="3">
         <div class="funnel-step-num">02</div>
         <div class="funnel-step-title">Scan to Unlock Discounts</div>
         <div class="funnel-step-body">Visitor scans the QR code to access deals at local restaurants and businesses</div>
       </div>
-      <div class="funnel-step">
+      <div class="funnel-step" data-reveal data-delay="4">
         <div class="funnel-step-num">03</div>
         <div class="funnel-step-title">Email Capture</div>
         <div class="funnel-step-body">Name + email required to unlock the page — low friction, high value exchange</div>
       </div>
-      <div class="funnel-step">
+      <div class="funnel-step" data-reveal data-delay="5">
         <div class="funnel-step-num">04</div>
         <div class="funnel-step-title">"Claim this Offer" Tracking</div>
         <div class="funnel-step-body">Each discount has a claim button — the ATA sees what's being redeemed and where</div>
       </div>
-      <div class="funnel-step">
+      <div class="funnel-step" data-reveal data-delay="6">
         <div class="funnel-step-num">05</div>
         <div class="funnel-step-title">Ongoing Nurture</div>
         <div class="funnel-step-body">ATA owns the relationship — events, deals, return-visit incentives via automated email</div>
@@ -431,9 +504,9 @@
   <!-- 07 QR PAGE MOCKUP -->
   <div class="slide">
     <span class="slide-num">07</span>
-    <div class="eyebrow">What the QR Page Becomes</div>
-    <div class="display-sm">Not a coupon list.<br>A <em>discovery hub.</em></div>
-    <div class="rule"></div>
+    <div class="eyebrow" data-reveal>What the QR Page Becomes</div>
+    <div class="display-sm" data-reveal data-delay="1">Not a coupon list.<br>A <em>discovery hub.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
     <p class="body" style="margin-bottom: 32px;">The same page that delivers discounts also surfaces business videos and impact stories — giving visitors a reason to explore further before they even leave the parking lot.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;max-width:860px;">
@@ -589,9 +662,9 @@
   <!-- 08 EVENT VISIBILITY (Initiative 02) -->
   <div class="slide slide--dark">
     <span class="slide-num">08</span>
-    <div class="eyebrow">Initiative 02</div>
-    <div class="display-sm" style="position:relative;">Get events in front of<br>people <em>before</em> they<br>decide where to go.</div>
-    <div class="rule"></div>
+    <div class="eyebrow" data-reveal>Initiative 02</div>
+    <div class="display-sm" data-reveal data-delay="1" style="position:relative;">Get events in front of<br>people <em>before</em> they<br>decide where to go.</div>
+    <div class="rule" data-reveal data-delay="2"></div>
 
     <!-- Two-column: text left, newsletter mockup upper-right -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:8px;">
@@ -620,9 +693,9 @@
   <!-- 09 BUSINESS SPOTLIGHT (Initiative 03) -->
   <div class="slide">
     <span class="slide-num">09</span>
-    <div class="eyebrow">Initiative 03</div>
-    <div class="display-sm">Put Ardmore businesses<br>in the <em>spotlight.</em></div>
-    <div class="rule"></div>
+    <div class="eyebrow" data-reveal>Initiative 03</div>
+    <div class="display-sm" data-reveal data-delay="1">Put Ardmore businesses<br>in the <em>spotlight.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
 
     <!-- Two-column: text left, Hamburger Inn screenshot right -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
@@ -663,9 +736,9 @@
   <!-- 10 MEASUREMENT (Initiative 04) -->
   <div class="slide slide--terra">
     <span class="slide-num">10</span>
-    <div class="eyebrow">Initiative 04</div>
-    <div class="display-sm">Connect marketing<br>to <em>heads and beds.</em></div>
-    <div class="rule"></div>
+    <div class="eyebrow" data-reveal>Initiative 04</div>
+    <div class="display-sm" data-reveal data-delay="1">Connect marketing<br>to <em>heads and beds.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
     <p class="body" style="margin-bottom:32px;">The ATA already tracks the right outcome metrics — occupancy, motel tax revenue. What's missing is the link between marketing activity and those numbers. Here's what a monthly dashboard looks like.</p>
 
     <!-- Dashboard mockup -->
@@ -766,24 +839,24 @@
   <!-- 11 TIMELINE -->
   <div class="slide slide--dark">
     <span class="slide-num">11</span>
-    <div class="eyebrow">How We Get Started</div>
-    <div class="display-sm">Visible results<br>within <em>30 days</em><br>of kickoff.</div>
+    <div class="eyebrow" data-reveal>How We Get Started</div>
+    <div class="display-sm" data-reveal data-delay="1">Visible results<br>within <em>30 days</em><br>of kickoff.</div>
     <div class="timeline">
-      <div class="timeline-item">
+      <div class="timeline-item" data-reveal data-delay="2">
         <div class="timeline-day">Phase 1<br>Days 1–30</div>
         <div>
           <div class="timeline-title">Foundation</div>
           <div class="timeline-desc">Email capture integration (coordinating with your web designer), CRM &amp; automation platform setup, automated welcome sequence, email templates, measurement framework &amp; dashboard, ExploreArdmore content audit.</div>
         </div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" data-reveal data-delay="3">
         <div class="timeline-day">Phase 2<br>Days 31–90</div>
         <div>
           <div class="timeline-title">Activation</div>
           <div class="timeline-desc">First bi-weekly event emails, list growth tracking, "Claim this offer" tracking live on discount page, first monthly dashboard report, first business spotlight video.</div>
         </div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" data-reveal data-delay="4">
         <div class="timeline-day">Phase 3<br>Ongoing</div>
         <div>
           <div class="timeline-title">Growth &amp; Optimization</div>
@@ -800,8 +873,8 @@
   <!-- 12 PRICING -->
   <div class="slide">
     <span class="slide-num">12</span>
-    <div class="eyebrow">Investment</div>
-    <div class="display-sm">Two ways to <em>move forward.</em></div>
+    <div class="eyebrow" data-reveal>Investment</div>
+    <div class="display-sm" data-reveal data-delay="1">Two ways to <em>move forward.</em></div>
 
     <!-- Foundation callout -->
     <div style="background:var(--cream);padding:28px 32px;margin-top:40px;margin-bottom:8px;max-width:700px;">
@@ -816,7 +889,7 @@
     </div>
 
     <!-- Comparison table -->
-    <table class="pricing-table">
+    <table class="pricing-table" data-reveal data-delay="2">
       <thead>
         <tr>
           <th></th>
@@ -897,10 +970,10 @@
   <!-- 13 NEXT STEP -->
   <div class="slide slide--accent">
     <span class="slide-num">13</span>
-    <div class="eyebrow">Next Step</div>
-    <div class="display">Let's find the scope that<br>feels right and <em>get started.</em></div>
-    <div class="rule" style="background:rgba(255,255,255,0.4);"></div>
-    <p class="body-lg" style="color:rgba(255,255,255,0.85);">The next step is a short planning session to confirm priorities, identify quick wins, and set a timeline. Most of what's in this proposal can have visible results within 30 days of kickoff.</p>
+    <div class="eyebrow" data-reveal>Next Step</div>
+    <div class="display" data-reveal data-delay="1">Let's find the scope that<br>feels right and <em>get started.</em></div>
+    <div class="rule" data-reveal data-delay="2" style="background:rgba(255,255,255,0.4);"></div>
+    <p class="body-lg" data-reveal data-delay="3" style="color:rgba(255,255,255,0.85);">The next step is a short planning session to confirm priorities, identify quick wins, and set a timeline. Most of what's in this proposal can have visible results within 30 days of kickoff.</p>
     <p style="margin-top:40px;font-size:15px;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:0.02em;">Ryan McNeill &nbsp;&middot;&nbsp; <span style="text-decoration:underline;text-underline-offset:3px;">hallpassdigital.com</span></p>
     <div class="logo-bar" style="filter:invert(1) brightness(2); opacity:0.5; border-top-color:rgba(255,255,255,0.2);">
       <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
@@ -909,5 +982,36 @@
   </div>
 
 </div>
+
+<script>
+(function () {
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+
+  // Cover elements: reveal immediately on load
+  var coverEls = document.querySelectorAll('.cover-hero [data-reveal]');
+  setTimeout(function () {
+    coverEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }, 120);
+
+  // Everything else: Intersection Observer
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  els.forEach(function (el) {
+    if (el.closest('.cover-hero')) return;
+    observer.observe(el);
+  });
+})();
+</script>
 </body>
 </html>
