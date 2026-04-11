@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ardmore Chamber — Member Directory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --chamber-red: #E84E3C;
+    --chamber-red-light: #F0A69E;
+    --chamber-red-wash: #FDF2F1;
+    --chamber-navy: #2D3E50;
+    --ink: #1A1A18;
+    --ink-soft: #3D3D38;
+    --warm-white: #FAFAF7;
+    --light-gray: #F5F5F3;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Nunito Sans', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--light-gray);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav-top {
+    background: var(--chamber-navy);
+    padding: 8px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 28px;
+  }
+
+  .nav-top-link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-top-link:hover { color: white; }
+
+  .nav-red {
+    background: var(--chamber-red);
+    height: 4px;
+  }
+
+  .nav-main {
+    background: white;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-brand-logo {
+    height: 44px;
+    width: auto;
+  }
+
+  .nav-brand-sep {
+    width: 1px;
+    height: 28px;
+    background: rgba(26,26,24,0.12);
+  }
+
+  .nav-brand-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--chamber-navy);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--chamber-navy);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover { color: var(--chamber-red); }
+
+  .nav-link.active { color: var(--chamber-red); }
+
+  .nav-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--chamber-navy);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 64px 48px 48px;
+    background: white;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--chamber-red);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--chamber-red);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    font-weight: 300;
+    opacity: 0.6;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* ── SEARCH ── */
+  .search-bar {
+    max-width: 480px;
+    margin: 28px auto 0;
+    position: relative;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 14px 20px 14px 44px;
+    border: 1px solid rgba(26,26,24,0.12);
+    border-radius: 6px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    background: white;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-bar input:focus {
+    border-color: var(--chamber-red);
+  }
+
+  .search-bar input::placeholder {
+    color: var(--ink-soft);
+    opacity: 0.4;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    font-size: 16px;
+  }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 20px 48px 0;
+    background: white;
+  }
+
+  .filter-pill {
+    padding: 6px 16px;
+    border: 1px solid rgba(26,26,24,0.1);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--ink-soft);
+  }
+
+  .filter-pill:hover {
+    border-color: var(--chamber-red);
+    color: var(--chamber-red);
+  }
+
+  .filter-pill.active {
+    background: var(--chamber-red);
+    color: white;
+    border-color: var(--chamber-red);
+  }
+
+  /* ── CATEGORY SECTIONS ── */
+  .directory {
+    padding: 40px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .category {
+    margin-bottom: 48px;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .category-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .category-count {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--chamber-red);
+    background: var(--chamber-red-wash);
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+
+  /* ── OG CARD GRID ── */
+  .og-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .og-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 1px 4px rgba(26,26,24,0.06), 0 4px 16px rgba(26,26,24,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .og-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(26,26,24,0.1), 0 8px 32px rgba(26,26,24,0.06);
+  }
+
+  /* OG Image preview area */
+  .og-image {
+    aspect-ratio: 1.91 / 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .og-image-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px 28px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .og-image-bg.has-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05) 100%);
+    z-index: 1;
+  }
+
+  .og-image-bg.has-photo > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .og-image-bg .og-biz-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.15;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+
+  .og-image-bg .og-biz-tagline {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+
+  .og-image-bg .og-chamber-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.92);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--chamber-red);
+  }
+
+  /* Card footer */
+  .og-footer {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .og-category-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  .og-arrow {
+    font-size: 14px;
+    color: var(--chamber-red);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+
+  .og-card:hover .og-arrow {
+    opacity: 1;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--chamber-navy);
+    color: white;
+    padding: 40px 48px;
+    text-align: center;
+  }
+
+  .site-footer-text {
+    font-size: 12px;
+    opacity: 0.4;
+    font-weight: 300;
+  }
+
+  .site-footer-powered {
+    font-size: 10px;
+    opacity: 0.25;
+    margin-top: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 800px) {
+    .og-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-top { padding: 8px 24px; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .nav-main { padding: 14px 24px; }
+    .nav-links { gap: 16px; }
+    .nav-link { font-size: 11px; }
+    .hero { padding: 40px 24px 32px; }
+    .hero h1 { font-size: 30px; }
+    .directory { padding: 28px 24px 60px; }
+  }
+
+  @media (max-width: 500px) {
+    .og-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-top">
+  <a href="#" class="nav-top-link">Ardmore Home</a>
+  <a href="#" class="nav-top-link">Development Authority</a>
+  <a href="#" class="nav-top-link">Convention Center</a>
+  <a href="#" class="nav-top-link">Tourism</a>
+  <a href="#" class="nav-top-link">Contact</a>
+</div>
+<div class="nav-red"></div>
+<nav class="nav-main">
+  <div class="nav-brand">
+    <img class="nav-brand-logo" src="https://chamber.ardmore.org/wp-content/uploads/2023/03/logo-red.svg" alt="Ardmore Chamber of Commerce">
+    <div class="nav-brand-sep"></div>
+    <div class="nav-brand-sub">Member Directory</div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="nav-link">About</a>
+    <a href="#" class="nav-link">Membership</a>
+    <a href="#" class="nav-link">Events</a>
+    <a href="#" class="nav-link active">Directory</a>
+    <button class="nav-search-btn">&#x1F50D; Search</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Member Directory</div>
+  <h1>Discover Ardmore's<br><em>best businesses.</em></h1>
+  <div class="hero-sub">Every member of the Ardmore Chamber of Commerce, showcased.</div>
+  <div class="search-bar">
+    <span class="search-icon">&#x1F50D;</span>
+    <input type="text" placeholder="Search businesses, categories, or services...">
+  </div>
+</div>
+
+<div class="filters">
+  <div class="filter-pill active">All</div>
+  <div class="filter-pill">Dining & Food</div>
+  <div class="filter-pill">Health & Wellness</div>
+  <div class="filter-pill">Retail & Shopping</div>
+  <div class="filter-pill">Automotive</div>
+  <div class="filter-pill">Home & Construction</div>
+  <div class="filter-pill">Financial Services</div>
+  <div class="filter-pill">Education</div>
+</div>
+
+<div class="directory">
+
+  <!-- DINING & FOOD -->
+  <div class="category">
+    <div class="category-header">
+      <div class="category-name">Dining & Food</div>
+      <div class="category-count">6 members</div>
+    </div>
+    <div class="og-grid">
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/cafe-alley.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Cafe Alley</div>
+            <div class="og-biz-tagline">Farm-to-table dining in downtown Ardmore</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Dining & Food</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/two-frogs-grill.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Two Frogs Grill</div>
+            <div class="og-biz-tagline">Casual American grill &amp; local favorite since 2008</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Dining & Food</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/bella-s-italian-bistro.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Napoli's Italian Restaurant</div>
+            <div class="og-biz-tagline">Authentic Italian cuisine &amp; fresh-baked bread</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Dining & Food</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/prairie-kitchen.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Prairie Kitchen</div>
+            <div class="og-biz-tagline">Southern comfort food &amp; house-smoked BBQ</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Dining & Food</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/ardmore-coffee-co.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Ardmore Coffee Co.</div>
+            <div class="og-biz-tagline">Specialty roasts &amp; a space to connect</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Dining & Food</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/el-tapatio.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">El Tapatio</div>
+            <div class="og-biz-tagline">Family-owned Mexican restaurant &amp; bakery</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Dining & Food</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- HEALTH & WELLNESS -->
+  <div class="category">
+    <div class="category-header">
+      <div class="category-name">Health & Wellness</div>
+      <div class="category-count">4 members</div>
+    </div>
+    <div class="og-grid">
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/mercy-hospital-ardmore.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Mercy Hospital Ardmore</div>
+            <div class="og-biz-tagline">Full-service healthcare for Carter County</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Health & Wellness</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/restore-physical-therapy.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Restore Physical Therapy</div>
+            <div class="og-biz-tagline">Sports rehab, orthopedic &amp; post-surgical care</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Health & Wellness</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/ardmore-family-dental.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Ardmore Family Dental</div>
+            <div class="og-biz-tagline">Gentle care for the whole family</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Health & Wellness</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/balance-yoga-pilates.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Balance Yoga & Pilates</div>
+            <div class="og-biz-tagline">Classes, workshops &amp; private sessions</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Health & Wellness</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RETAIL -->
+  <div class="category">
+    <div class="category-header">
+      <div class="category-name">Retail & Shopping</div>
+      <div class="category-count">4 members</div>
+    </div>
+    <div class="og-grid">
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/main-street-mercantile.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Main Street Mercantile</div>
+            <div class="og-biz-tagline">Curated gifts, home decor &amp; Oklahoma-made goods</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Retail & Shopping</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/tractor-supply-co.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Tractor Supply Co.</div>
+            <div class="og-biz-tagline">Farm, ranch &amp; outdoor living supplies</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Retail & Shopping</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/blue-sky-boutique.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Blue Sky Boutique</div>
+            <div class="og-biz-tagline">Women's fashion, jewelry &amp; accessories</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Retail & Shopping</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+      <div class="og-card">
+        <div class="og-image">
+          <div class="og-image-bg has-photo" style="background-image:url('photos/ardmore-ace-hardware.jpg');">
+            <div class="og-chamber-badge">Chamber Member</div>
+            <div class="og-biz-name">Ardmore Ace Hardware</div>
+            <div class="og-biz-tagline">Your neighborhood hardware store since 1975</div>
+          </div>
+        </div>
+        <div class="og-footer">
+          <div class="og-category-label">Retail & Shopping</div>
+          <div class="og-arrow">&rarr;</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-text">Ardmore Chamber of Commerce &middot; Member Directory</div>
+  <div class="site-footer-powered">Powered by TownSpark</div>
+</footer>
+
+</body>
+</html>
