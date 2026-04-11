@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Ardmore Chamber of Commerce</title>
+    <meta name="description" content="Your business doesn't have to do it alone. See what Ardmore Chamber membership gets you.">
+    <meta property="og:title" content="Join the Ardmore Chamber of Commerce">
+    <meta property="og:description" content="Advocacy. Connections. Visibility. One membership that works as hard as you do.">
+    <meta property="og:image" content="https://ryan-hallpass.github.io/ardmore-chamber/ardmore-chamber-sales/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://ryan-hallpass.github.io/ardmore-chamber/ardmore-chamber-sales/og-image.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --primary: #C41E2A;
+          --bg-primary: #ffffff;
+          --secondary: #C41E2A;
+          --accent: #C41E2A;
+          --text: #1a1a1a;
+          --subtle-text: rgba(0,0,0,0.55);
+          --border-color: rgba(0,0,0,0.08);
+          --header-bg: #ffffff;
+          --header-text: #1a1a1a;
+        }
+        body { font-family: 'Inter', sans-serif !important; background-color: #f5f5f5; color: var(--text); }
+        h1, h2, h3, .font-display { font-family: 'Montserrat', sans-serif !important; }
+        @keyframes animationIn { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0px); } }
+        .animate-on-scroll { animation: animationIn 0.8s ease-out both; animation-play-state: paused; }
+        .animate-on-scroll.animate { animation-play-state: running; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .slide-container { width: 90vw; height: calc(100dvh - 130px); min-height: 500px; max-height: 800px; min-width: 0; }
+        @supports not (height: 100dvh) { .slide-container { height: calc(100vh - 130px); } }
+        @media (min-width: 768px) { .slide-container { width: 500px; height: auto; min-height: unset; max-height: unset; aspect-ratio: 3/4; } }
+        .bg-grid-pattern { background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.04) 1px, transparent 0); background-size: 32px 32px; }
+
+        /* Pricing table */
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .price-row:last-child { border-bottom: none; }
+        .price-label { font-size: 13px; color: rgba(0,0,0,0.6); }
+        .price-value { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #1a1a1a; }
+
+        /* Stat card */
+        .stat-card { text-align: center; padding: 16px 8px; }
+        .stat-value { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px; line-height: 1; color: var(--accent); }
+        .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(0,0,0,0.45); margin-top: 6px; font-weight: 500; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center selection:bg-[var(--accent)]/30">
+    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-3 backdrop-blur-md border-b h-16" style="background-color: rgba(255,255,255,0.95); border-color: rgba(0,0,0,0.08);">
+        <div class="flex items-center gap-3 w-auto md:w-1/3">
+            <img src="https://www.okfilmmusic.org/wp-content/uploads/2026/01/Ardmore-Chamber-logo-wide.png" alt="Ardmore Chamber of Commerce" class="h-10 md:h-11 max-w-[160px] w-auto object-contain">
+        </div>
+        <div id="pagination-dots" class="hidden sm:flex items-center justify-center gap-2 w-1/3">
+            <div class="w-2 h-2 rounded-full bg-neutral-300 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+            <div class="w-2 h-2 rounded-full bg-neutral-300 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+            <div class="w-2 h-2 rounded-full bg-neutral-300 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+            <div class="w-2 h-2 rounded-full bg-neutral-300 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+            <div class="w-2 h-2 rounded-full bg-neutral-300 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+            <div class="w-2 h-2 rounded-full bg-neutral-300 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+        </div>
+        <div class="hidden md:flex items-center justify-end gap-2 w-1/3">
+            <button id="prevBtn" class="p-2 rounded-full hover:bg-black/5 transition-colors" style="color: #1a1a1a; opacity: 0.4;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button id="nextBtn" class="p-2 rounded-full hover:bg-black/5 transition-colors" style="color: #1a1a1a; opacity: 0.4;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+        <div class="md:hidden flex items-center justify-end w-auto text-xs gap-1 opacity-60" style="color: #1a1a1a;"><span class="font-display font-bold tracking-widest uppercase">SWIPE</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+    </nav>
+
+    <main id="slider" class="flex flex-row overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full pt-24 md:pt-28 pb-6 md:pb-10 px-4 md:px-10 gap-x-4 md:gap-x-12 scroll-smooth" style="mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);">
+
+        <!-- Slide 1: Hero — Building photo with dark overlay -->
+        <section id="slide-hero" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)), url('https://media.licdn.com/dms/image/v2/C4E1BAQFQdrpuz1XwsA/company-background_10000/company-background_10000/0/1637526075256/ardmore_chamber_of_commerce_cover?e=2147483647&v=beta&t=UYT7yUEj6nG9DdDqg0a3DSMuof9HcjcVmiVrWuhvS4c'); background-size: cover; background-position: center; border-color: rgba(255,255,255,0.1);">
+            <div class="flex flex-col z-10 p-6 md:p-10 h-full justify-center items-center text-center">
+                <p class="animate-on-scroll text-xs tracking-widest uppercase font-bold mb-4" style="color: rgba(255,255,255,0.5);">Ardmore Chamber of Commerce</p>
+                <h1 class="animate-on-scroll text-2xl md:text-3xl font-display font-black max-w-[90%] leading-tight" style="color: #ffffff; animation-delay: 0.05s;">Your business doesn't have to do it alone.</h1>
+                <div class="animate-on-scroll w-16 h-1 rounded mx-auto my-5" style="background: var(--accent); animation-delay: 0.1s;"></div>
+                <p class="animate-on-scroll text-sm md:text-base max-w-[85%]" style="color: rgba(255,255,255,0.7); animation-delay: 0.15s;">Advocacy. Connections. Visibility. One membership that works as hard as you do.</p>
+                <div class="animate-on-scroll mt-10 flex items-center gap-2 text-xs uppercase tracking-widest font-bold" style="color: #ffffff; animation-delay: 0.4s;">Scroll <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+            </div>
+        </section>
+
+        <!-- Slide 2: What We Do — White card -->
+        <section id="slide-whatwedo" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-color: #ffffff; border-color: var(--border-color);">
+            <div class="absolute inset-0 bg-grid-pattern"></div>
+            <div class="flex flex-col h-full p-5 md:p-10 z-10 overflow-y-auto hide-scrollbar">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: var(--accent);">[01]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: var(--subtle-text);">What We Do</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-black uppercase tracking-tight mb-6" style="color: var(--text); animation-delay: 0.05s;">We Fight For<br>Local Business</h2>
+                    <div class="w-12 h-1 rounded mb-6 animate-on-scroll" style="background: var(--accent); animation-delay: 0.1s;"></div>
+
+                    <div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: var(--accent); background: rgba(0,0,0,0.02); animation-delay: 0.15s;">
+                        <h3 class="font-display font-bold text-sm mb-1" style="color: var(--text);">Advocacy</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--subtle-text);">We represent your interests at the local, state, and federal level.</p>
+                    </div>
+                    <div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: var(--accent); background: rgba(0,0,0,0.02); animation-delay: 0.25s;">
+                        <h3 class="font-display font-bold text-sm mb-1" style="color: var(--text);">Networking</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--subtle-text);">30+ events per year to build relationships and grow your reach.</p>
+                    </div>
+                    <div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: var(--accent); background: rgba(0,0,0,0.02); animation-delay: 0.35s;">
+                        <h3 class="font-display font-bold text-sm mb-1" style="color: var(--text);">Visibility</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--subtle-text);">Directory listing, referrals, grand openings, and social media promotion.</p>
+                    </div>
+                    <div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: var(--accent); background: rgba(0,0,0,0.02); animation-delay: 0.45s;">
+                        <h3 class="font-display font-bold text-sm mb-1" style="color: var(--text);">Community</h3>
+                        <p class="text-xs leading-relaxed" style="color: var(--subtle-text);">Be part of the voice shaping Ardmore's future.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Why Join — Ribbon cutting photo with red overlay -->
+        <section id="slide-whyjoin" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-image: linear-gradient(rgba(160,15,25,0.88), rgba(140,10,20,0.92)), url('https://chamber.ardmore.org/wp-content/uploads/2024/03/ribbon-cutting-scaled.jpg'); background-size: cover; background-position: center; border-color: rgba(255,255,255,0.1);">
+            <div class="flex flex-col h-full p-5 md:p-10 z-10 overflow-y-auto hide-scrollbar">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: rgba(255,255,255,0.7);">[02]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: rgba(255,255,255,0.6);">What You Get</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-black uppercase tracking-tight mb-6" style="color: #ffffff; animation-delay: 0.05s;">Membership<br>Pays For Itself</h2>
+                    <div class="w-12 h-1 rounded mb-6 animate-on-scroll" style="background: rgba(255,255,255,0.5); animation-delay: 0.1s;"></div>
+
+                    <div class="animate-on-scroll flex items-start gap-3 mb-5" style="animation-delay: 0.15s;">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.2); color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold" style="color: #ffffff;">Instant credibility</p>
+                            <p class="text-xs" style="color: rgba(255,255,255,0.75);">Consumers are 63% more likely to buy from a Chamber member.</p>
+                        </div>
+                    </div>
+                    <div class="animate-on-scroll flex items-start gap-3 mb-5" style="animation-delay: 0.25s;">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.2); color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold" style="color: #ffffff;">Higher favorability</p>
+                            <p class="text-xs" style="color: rgba(255,255,255,0.75);">Members see a 44% boost in how favorably the public views them.</p>
+                        </div>
+                    </div>
+                    <div class="animate-on-scroll flex items-start gap-3 mb-5" style="animation-delay: 0.35s;">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.2); color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold" style="color: #ffffff;">A louder voice</p>
+                            <p class="text-xs" style="color: rgba(255,255,255,0.75);">Legislative advocacy so your business concerns are heard.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: The Numbers — White card -->
+        <section id="slide-proof" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-color: #ffffff; border-color: var(--border-color);">
+            <div class="absolute inset-0 bg-grid-pattern"></div>
+            <div class="flex flex-col h-full p-5 md:p-10 z-10">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: var(--accent);">[03]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: var(--subtle-text);">By The Numbers</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-black uppercase tracking-tight mb-8" style="color: var(--text); animation-delay: 0.05s;">100+ Years.<br>Still Growing.</h2>
+                    <div class="w-12 h-1 rounded mb-8 animate-on-scroll" style="background: var(--accent); animation-delay: 0.1s;"></div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="animate-on-scroll stat-card rounded-lg" style="background: rgba(196,30,42,0.04); border: 1px solid rgba(196,30,42,0.1); animation-delay: 0.15s;">
+                            <div class="stat-value">114</div>
+                            <div class="stat-label">Years strong</div>
+                        </div>
+                        <div class="animate-on-scroll stat-card rounded-lg" style="background: rgba(196,30,42,0.04); border: 1px solid rgba(196,30,42,0.1); animation-delay: 0.2s;">
+                            <div class="stat-value">30+</div>
+                            <div class="stat-label">Events / year</div>
+                        </div>
+                        <div class="animate-on-scroll stat-card rounded-lg" style="background: rgba(196,30,42,0.04); border: 1px solid rgba(196,30,42,0.1); animation-delay: 0.25s;">
+                            <div class="stat-value">63%</div>
+                            <div class="stat-label">More likely to buy</div>
+                        </div>
+                        <div class="animate-on-scroll stat-card rounded-lg" style="background: rgba(196,30,42,0.04); border: 1px solid rgba(196,30,42,0.1); animation-delay: 0.3s;">
+                            <div class="stat-value">44%</div>
+                            <div class="stat-label">Favorability boost</div>
+                        </div>
+                    </div>
+
+                    <div class="animate-on-scroll mt-6 border-l-4 pl-4 py-2" style="border-left-color: var(--accent); animation-delay: 0.4s;">
+                        <p class="text-sm italic leading-relaxed" style="color: var(--subtle-text);">Advancing the economic vitality and quality of life for South Central Oklahoma.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Pricing — White card -->
+        <section id="slide-pricing" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-color: #ffffff; border-color: var(--border-color);">
+            <div class="absolute inset-0 bg-grid-pattern"></div>
+            <div class="flex flex-col h-full p-5 md:p-10 z-10 overflow-y-auto hide-scrollbar">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: var(--accent);">[04]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: var(--subtle-text);">Investment</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-black uppercase tracking-tight mb-2" style="color: var(--text); animation-delay: 0.05s;">What Does<br>It Cost?</h2>
+                    <p class="animate-on-scroll text-xs mb-5" style="color: var(--subtle-text); animation-delay: 0.08s;">Annual investment based on business size</p>
+                    <div class="w-12 h-1 rounded mb-5 animate-on-scroll" style="background: var(--accent); animation-delay: 0.1s;"></div>
+
+                    <div class="animate-on-scroll rounded-lg p-4 mb-4" style="background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); animation-delay: 0.15s;">
+                        <h3 class="font-display font-bold text-xs uppercase tracking-wider mb-3" style="color: var(--accent);">General Business</h3>
+                        <div class="price-row"><span class="price-label">1 – 5 employees</span><span class="price-value">$348</span></div>
+                        <div class="price-row"><span class="price-label">6 – 10 employees</span><span class="price-value">$406</span></div>
+                        <div class="price-row"><span class="price-label">11 – 25 employees</span><span class="price-value">$463 – $515</span></div>
+                        <div class="price-row"><span class="price-label">26 – 50 employees</span><span class="price-value">$571 – $625</span></div>
+                        <div class="price-row"><span class="price-label">51 – 100 employees</span><span class="price-value">$681</span></div>
+                        <div class="price-row"><span class="price-label">100+ employees</span><span class="price-value">Custom</span></div>
+                    </div>
+
+                    <div class="animate-on-scroll grid grid-cols-2 gap-3" style="animation-delay: 0.25s;">
+                        <div class="rounded-lg p-3 text-center" style="background: rgba(196,30,42,0.04); border: 1px solid rgba(196,30,42,0.1);">
+                            <p class="font-display font-bold text-sm" style="color: var(--text);">$174</p>
+                            <p class="text-[10px] uppercase tracking-wider mt-1" style="color: var(--subtle-text);">Individual</p>
+                        </div>
+                        <div class="rounded-lg p-3 text-center" style="background: rgba(196,30,42,0.04); border: 1px solid rgba(196,30,42,0.1);">
+                            <p class="font-display font-bold text-sm" style="color: var(--text);">$230+</p>
+                            <p class="text-[10px] uppercase tracking-wider mt-1" style="color: var(--subtle-text);">Nonprofit</p>
+                        </div>
+                    </div>
+
+                    <p class="animate-on-scroll text-[10px] mt-4 text-center font-medium" style="color: var(--subtle-text); animation-delay: 0.35s;">Less than $1/day for most businesses</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: CTA — Building photo with dark overlay -->
+        <section id="slide-cta" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.65)), url('https://media.licdn.com/dms/image/v2/C4E1BAQFQdrpuz1XwsA/company-background_10000/company-background_10000/0/1637526075256/ardmore_chamber_of_commerce_cover?e=2147483647&v=beta&t=UYT7yUEj6nG9DdDqg0a3DSMuof9HcjcVmiVrWuhvS4c'); background-size: cover; background-position: center; border-color: var(--accent);">
+            <div class="flex flex-col h-full z-10 p-6 md:p-10 justify-center">
+                <div class="animate-on-scroll text-center flex flex-col items-center">
+                    <img src="https://www.okfilmmusic.org/wp-content/uploads/2026/01/Ardmore-Chamber-logo-wide.png" alt="Ardmore Chamber of Commerce" class="h-12 md:h-14 max-w-[200px] w-auto object-contain mx-auto mb-6" style="filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(0,0,0,0.3));">
+                    <h2 class="uppercase leading-tight text-3xl md:text-4xl font-black font-display mb-3" style="color: #ffffff;">Ready To<br>Join Us?</h2>
+                    <p class="text-sm mb-6 max-w-[80%]" style="color: rgba(255,255,255,0.75);">Your community is stronger with you in it.</p>
+                    <a href="https://chamber.ardmore.org/membership" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-8 py-4 font-black rounded hover:scale-105 transition-all shadow-lg mb-4" style="background-color: var(--accent); color: #ffffff;">
+                        <span class="font-display uppercase tracking-widest text-sm">Become A Member</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+
+                    <div class="animate-on-scroll space-y-2 mt-4" style="animation-delay: 0.15s;">
+                        <a href="tel:5802238708" class="flex items-center justify-center gap-2 text-sm hover:opacity-80 transition-opacity" style="color: #ffffff;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            (580) 223-8708
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=410+W+Main+St+Ardmore+OK+73401" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 text-xs hover:opacity-80 transition-opacity" style="color: rgba(255,255,255,0.6);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            410 W Main St, Ardmore, OK
+                        </a>
+                    </div>
+
+                    <div class="mt-8 pt-4" style="border-top: 1px solid rgba(255,255,255,0.15);">
+                        <a href="https://chamber.ardmore.org" target="_blank" rel="noopener" class="text-xs transition-opacity hover:opacity-80" style="color: rgba(255,255,255,0.5);">chamber.ardmore.org</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+    (function () {
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('animate'); io.unobserve(e.target); } });
+        }, { threshold: 0.2, rootMargin: '0px -10% 0px -10%' });
+        document.querySelectorAll('.animate-on-scroll').forEach(function(el) { io.observe(el); });
+
+        var slider = document.getElementById('slider');
+        var slides = document.querySelectorAll('.slide-container');
+        var dots = document.getElementById('pagination-dots').children;
+        var currentSlide = 0;
+
+        var updateDots = function(idx) {
+            currentSlide = idx;
+            Array.from(dots).forEach(function(d, i) {
+                d.className = i === idx
+                    ? 'w-2.5 h-2.5 rounded-full cursor-pointer transition-all'
+                    : 'w-2 h-2 rounded-full bg-neutral-300 hover:opacity-70 cursor-pointer transition-all';
+                if (i === idx) d.style.backgroundColor = '#C41E2A';
+                else d.style.backgroundColor = '';
+            });
+        };
+
+        setTimeout(function() { slides[0].scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' }); }, 50);
+
+        var slideIO = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) updateDots(Array.from(slides).indexOf(e.target)); });
+        }, { threshold: 0.5, root: slider });
+        slides.forEach(function(s) { slideIO.observe(s); });
+
+        Array.from(dots).forEach(function(d, i) {
+            d.addEventListener('click', function() { slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); });
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            if (currentSlide > 0) slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentSlide < slides.length - 1) slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            if (e.key === 'ArrowLeft' && currentSlide > 0) slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+    })();
+    </script>
+</body>
+</html>
