@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Alley | TownSpark</title>
+    <meta name="description" content="Your perfect meal awaits here">
+    <meta property="og:title" content="Cafe Alley | TownSpark">
+    <meta property="og:description" content="Your perfect meal awaits here">
+    <meta property="og:image" content="https://townspark.app/api/og/ardmore-cafe-alley">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://townspark.app/api/og/ardmore-cafe-alley">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%238B4513'/><text x='16' y='22' font-size='18' font-weight='bold' fill='white' text-anchor='middle' font-family='system-ui'>C</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --primary: #8B4513;
+          --bg-primary: #8B4513;
+          --secondary: #F5E6D3;
+          --accent: #FFFFFF;
+          --text: #ffffff;
+          --subtle-text: rgba(255,255,255,0.7);
+          --border-color: rgba(255,255,255,0.12);
+          --header-bg: #8B4513;
+          --header-text: #ffffff;
+        }
+        body { font-family: 'Inter', sans-serif !important; background-color: var(--bg-primary); color: var(--text); }
+        h1, h2, h3, .font-display { font-family: 'Outfit', sans-serif !important; }
+        @keyframes animationIn { 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0px); } }
+        .animate-on-scroll { animation: animationIn 0.8s ease-out both; animation-play-state: paused; }
+        .animate-on-scroll.animate { animation-play-state: running; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .slide-container { width: 90vw; height: calc(100dvh - 130px); min-height: 500px; max-height: 800px; min-width: 0; }
+        @supports not (height: 100dvh) { .slide-container { height: calc(100vh - 130px); } }
+        @media (min-width: 768px) { .slide-container { width: 500px; height: auto; min-height: unset; max-height: unset; aspect-ratio: 3/4; } }
+        .bg-grid-pattern { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 32px 32px; }
+        .review-card { transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease, filter 0.5s ease; }
+        .card-pos-0 { transform: translateY(0) scale(1); z-index: 30; opacity: 1; }
+        .card-pos-1 { transform: translateY(-16px) scale(0.95); z-index: 20; opacity: 0.6; filter: blur(0.5px); }
+        .card-pos-2 { transform: translateY(-32px) scale(0.90); z-index: 10; opacity: 0.3; filter: blur(1px); }
+        .card-fly-out { transform: translateX(120%) rotate(12deg) scale(1); opacity: 0; z-index: 40; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center selection:bg-[var(--accent)]/30">
+    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-4 backdrop-blur-md border-b border-black/10 h-16" style="background-color: var(--header-bg); color: var(--header-text);">
+        <div class="flex items-center gap-3 w-auto md:w-1/3">
+            <span class="font-display text-sm md:text-base font-bold truncate" style="color: var(--header-text);">Cafe Alley</span>
+        </div>
+        <div id="pagination-dots" class="hidden sm:flex items-center justify-center gap-2 w-1/3"><div class="w-2 h-2 rounded-full bg-neutral-400 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-neutral-400 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-neutral-400 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-neutral-400 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-neutral-400 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+<div class="w-2 h-2 rounded-full bg-neutral-400 cursor-pointer hover:bg-[var(--accent)] transition-all"></div>
+</div>
+        <div class="hidden md:flex items-center justify-end gap-2 w-1/3">
+            <button id="prevBtn" class="p-2 rounded-full hover:bg-white/10 hover:text-[var(--accent)] transition-colors" style="color: var(--header-text); opacity: 0.6;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button id="nextBtn" class="p-2 rounded-full hover:bg-black/10 hover:text-[var(--accent)] transition-colors" style="color: var(--header-text); opacity: 0.6;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+        <div class="md:hidden flex items-center justify-end w-auto text-xs gap-1 opacity-80" style="color: var(--header-text);"><span class="font-display font-bold tracking-widest uppercase">SWIPE</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+    </nav>
+
+    <main id="slider" class="flex flex-row overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full pt-24 md:pt-28 pb-6 md:pb-10 px-4 md:px-10 gap-x-4 md:gap-x-12 scroll-smooth" style="mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);">
+
+        <!-- Slide 1: Hero -->
+        <section id="slide-hero" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-image: linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.58)), url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-0-XGSvOVjwa5QFVCfzZKVzYfIWN0DeM7.jpg'); background-size: cover; background-position: center; border-color: var(--border-color);">
+            
+            <div class="flex flex-col z-10 p-6 md:p-10 h-full justify-center items-center text-center">
+                <h1 class="animate-on-scroll leading-[0.95] text-3xl md:text-4xl tracking-wide font-display uppercase mb-2" style="color: #ffffff; animation-delay: 0.05s;">Cafe Alley</h1>
+                <p class="animate-on-scroll text-base md:text-lg font-medium mb-3" style="color: rgba(255,255,255,0.9); animation-delay: 0.1s;">Your perfect meal awaits here</p>
+                <p class="animate-on-scroll text-sm leading-relaxed max-w-[85%]" style="color: rgba(255,255,255,0.75); animation-delay: 0.2s;">Experience unforgettable flavors that bring pure dining joy</p>
+                <div class="animate-on-scroll flex items-center gap-3 mt-6 text-xs" style="color: rgba(255,255,255,0.7); animation-delay: 0.3s;">
+                    <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Ardmore, OK</span>
+                    
+                    
+                </div>
+                <div class="animate-on-scroll mt-8 flex items-center gap-2 text-xs uppercase tracking-widest font-bold" style="color: #ffffff; animation-delay: 0.4s;">Scroll <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+            </div>
+        </section>
+
+        <!-- Slide 2: What We Do -->
+        <section id="slide-offerings" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-image: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)), url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-2-fe0Hb0wfOtKSgy5rGYLDqvuQ8s5hhq.jpg'); background-size: cover; background-position: center; border-color: var(--border-color);">
+            
+            <div class="flex flex-col h-full p-5 md:p-10 z-10 overflow-y-auto hide-scrollbar">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: #ffffff;">[02]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: rgba(255,255,255,0.7);">What We're Known For</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-extrabold uppercase tracking-tight mb-6" style="color: #ffffff; animation-delay: 0.05s;">What We're Known For</h2>
+                    <div class="w-12 h-1 rounded mb-6 animate-on-scroll" style="background: #ffffff; animation-delay: 0.1s;"></div>
+                    <div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: #ffffff; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); animation-delay: 0s;">
+      <h3 class="font-display font-bold text-sm mb-1" style="color: #ffffff;">Fresh Halibut Specials</h3>
+      <p class="text-xs leading-relaxed" style="color: rgba(255,255,255,0.8);">Perfectly cooked fish with amazing mild flavors</p>
+    </div>
+<div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: #ffffff; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); animation-delay: 0.1s;">
+      <h3 class="font-display font-bold text-sm mb-1" style="color: #ffffff;">Homemade Pasta Dishes</h3>
+      <p class="text-xs leading-relaxed" style="color: rgba(255,255,255,0.8);">House-made linguine with alfredo and pesto sauces</p>
+    </div>
+<div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: #ffffff; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); animation-delay: 0.2s;">
+      <h3 class="font-display font-bold text-sm mb-1" style="color: #ffffff;">Famous Carrot Cake</h3>
+      <p class="text-xs leading-relaxed" style="color: rgba(255,255,255,0.8);">The most amazing carrot cake anywhere</p>
+    </div>
+<div class="animate-on-scroll border-l-4 rounded-r-lg p-4 mb-3" style="border-left-color: #ffffff; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); animation-delay: 0.30000000000000004s;">
+      <h3 class="font-display font-bold text-sm mb-1" style="color: #ffffff;">Premium Steaks</h3>
+      <p class="text-xs leading-relaxed" style="color: rgba(255,255,255,0.8);">Perfectly cooked to your exact temperature preference</p>
+    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Why Us -->
+        <section id="slide-differentiators" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-color: var(--bg-primary); border-color: var(--border-color);">
+            <div class="absolute inset-0 bg-grid-pattern"></div>
+            <div class="flex flex-col h-full p-5 md:p-10 z-10 overflow-y-auto hide-scrollbar">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: var(--accent);">[03]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: var(--subtle-text);">Our Story</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-extrabold uppercase tracking-tight mb-6" style="color: var(--text); animation-delay: 0.05s;">Our Story</h2>
+                    <div class="w-12 h-1 rounded mb-6 animate-on-scroll" style="background: var(--accent); animation-delay: 0.1s;"></div>
+                    <div class="animate-on-scroll flex items-start gap-3 mb-4" style="animation-delay: 0s;">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--accent); color: #1a1a1a;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed font-medium" style="color: var(--text);">Enclosed patio dining available</p>
+    </div>
+<div class="animate-on-scroll flex items-start gap-3 mb-4" style="animation-delay: 0.12s;">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--accent); color: #1a1a1a;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed font-medium" style="color: var(--text);">Homemade pasta made fresh daily</p>
+    </div>
+<div class="animate-on-scroll flex items-start gap-3 mb-4" style="animation-delay: 0.24s;">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--accent); color: #1a1a1a;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed font-medium" style="color: var(--text);">Famous carrot cake dessert specialty</p>
+    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Reviews -->
+        <section id="slide-proof" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-image: linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)), url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-1-iUwdx6GDmziiRq0jpck7HkFbrtX8NR.jpg'); background-size: cover; background-position: center; border-color: var(--border-color);">
+            
+            <div class="flex flex-col h-full p-5 md:p-10 z-10">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: #ffffff;">[04]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: rgba(255,255,255,0.7);">What People Are Saying</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-extrabold uppercase tracking-tight mb-4" style="color: #ffffff; animation-delay: 0.05s;">What People Are Saying</h2>
+                    <div class="w-12 h-1 rounded mb-4 animate-on-scroll" style="background: #ffffff; animation-delay: 0.1s;"></div>
+                    <div class="animate-on-scroll flex items-center justify-center gap-3 mb-6" style="animation-delay: 0.1s;">
+        <div class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="text-xl font-extrabold font-display" style="color: var(--text);">4.7</span>
+        <span class="text-xs" style="color: var(--subtle-text);">(1288 reviews)</span>
+      </div>
+                    <div id="review-stack" class="relative w-full max-w-[340px] mx-auto cursor-pointer" style="height: 220px;">
+        <div class="review-card card-pos-0 absolute inset-0 p-5 rounded-xl flex flex-col justify-center" style="background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);">
+      <div class="flex items-center gap-1 mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed mb-4" style="color: #ffffff;">First of all, ask for Hannah to be your server. She was wonderful. The food was excellent and I couldn't decide from several things on the menu. Then Hannah told me about the halibut special will the side of linguine with alfredo / pesto sauce. The f...</p>
+      <div class="flex items-center justify-between mt-auto">
+        <span class="text-xs font-bold" style="color: #ffffff;">Sam</span>
+        <span class="text-[10px]" style="color: rgba(255,255,255,0.6);">6 months ago</span>
+      </div>
+    </div>
+<div class="review-card card-pos-1 absolute inset-0 p-5 rounded-xl flex flex-col justify-center" style="background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);">
+      <div class="flex items-center gap-1 mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed mb-4" style="color: #ffffff;">What a excellent place that is well-deserving of a five-star review.
+If one looks at the amount of reviews , and how well they have kept a high rating one can understand where they are going before you ever get there. We had the special homemade past...</p>
+      <div class="flex items-center justify-between mt-auto">
+        <span class="text-xs font-bold" style="color: #ffffff;">Paul Mart</span>
+        <span class="text-[10px]" style="color: rgba(255,255,255,0.6);">7 months ago</span>
+      </div>
+    </div>
+<div class="review-card card-pos-2 absolute inset-0 p-5 rounded-xl flex flex-col justify-center" style="background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);">
+      <div class="flex items-center gap-1 mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed mb-4" style="color: #ffffff;">Great job! Fresh food great menu! sweet potato fries are amazing and the carrot cake is a must. Cheese sticks are on point.</p>
+      <div class="flex items-center justify-between mt-auto">
+        <span class="text-xs font-bold" style="color: #ffffff;">Gina Biegalski</span>
+        <span class="text-[10px]" style="color: rgba(255,255,255,0.6);">2 months ago</span>
+      </div>
+    </div>
+<div class="review-card card-pos-2 absolute inset-0 p-5 rounded-xl flex flex-col justify-center" style="background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);">
+      <div class="flex items-center gap-1 mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="text-sm leading-relaxed mb-4" style="color: #ffffff;">I was in town on business and after visiting the client they recommended Cafe Alley. We all had delicious cocktails highlighted by Clausmopolitan. The salad was fresh the blue cheese dressing made in house. The halibut and the pork chop ranked highly...</p>
+      <div class="flex items-center justify-between mt-auto">
+        <span class="text-xs font-bold" style="color: #ffffff;">C. John Torontow</span>
+        <span class="text-[10px]" style="color: rgba(255,255,255,0.6);">4 months ago</span>
+      </div>
+    </div>
+      </div>
+      <div class="text-center mt-3">
+        <span class="text-[10px] uppercase tracking-widest font-bold" style="color: rgba(255,255,255,0.5);">Tap to see more</span>
+      </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Hours -->
+        <section id="slide-hours" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-color: var(--bg-primary); border-color: var(--border-color);">
+            <div class="absolute inset-0 bg-grid-pattern"></div>
+            <div class="flex flex-col h-full p-5 md:p-10 z-10">
+                <header class="flex animate-on-scroll items-center justify-between mb-4 md:mb-6 flex-shrink-0">
+                    <span class="font-mono text-xs font-bold" style="color: var(--accent);">[05]</span>
+                    <span class="font-display text-[10px] font-bold uppercase tracking-widest" style="color: var(--subtle-text);">Visit Us</span>
+                </header>
+                <div class="flex-grow flex flex-col justify-center">
+                    <h2 class="animate-on-scroll text-2xl md:text-3xl font-display font-extrabold uppercase tracking-tight mb-6" style="color: var(--text); animation-delay: 0.05s;">Come See Us</h2>
+                    <div class="w-12 h-1 rounded mb-6 animate-on-scroll" style="background: var(--accent); animation-delay: 0.1s;"></div>
+                    <div class="animate-on-scroll space-y-2 mt-4 mb-4" style="animation-delay: 0.3s;"><a href="tel:5802236413" class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity" style="color: var(--text);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (580) 223-6413
+    </a>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=126%20A%20St%20NE%2C%20Ardmore%2C%20OK%2073401%2C%20USA" target="_blank" rel="noopener" class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity" style="color: var(--subtle-text);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      126 A St NE, Ardmore, OK 73401, USA
+    </a></div>
+                    <div class="animate-on-scroll mt-4 p-4 rounded-lg" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); animation-delay: 0.4s;">
+      <div class="flex items-center gap-2 mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="text-xs font-bold uppercase tracking-wider" style="color: var(--text);">Hours</span>
+      </div>
+      <div class="text-sm font-bold mb-1" style="color: var(--accent);">Saturday: 5:00 – 9:00 PM</div>
+      <div class="text-xs space-y-0.5" style="color: var(--subtle-text);">
+        <div>Monday: Closed</div>
+<div>Tuesday: 11:00 AM – 2:00 PM, 5:00 – 9:00 PM</div>
+<div>Wednesday: 11:00 AM – 2:00 PM, 5:00 – 9:00 PM</div>
+<div>Thursday: 11:00 AM – 2:00 PM, 5:00 – 9:00 PM</div>
+<div>Friday: 11:00 AM – 2:00 PM, 5:00 – 9:00 PM</div>
+<div>Sunday: Closed</div>
+      </div>
+    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: CTA -->
+        <section id="slide-cta" class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center border relative shadow-2xl rounded-xl" style="background-color: var(--bg-primary); border-color: var(--accent);">
+            <div class="absolute inset-0 bg-grid-pattern"></div>
+            <div class="flex flex-col h-full z-10 p-6 md:p-10 justify-center">
+                <div class="animate-on-scroll text-center flex flex-col items-center">
+                    <h2 class="uppercase leading-tight text-3xl md:text-4xl font-extrabold font-display mb-4" style="color: var(--text);">Taste the magic for yourself</h2>
+                    <a href="tel:(580) 223-6413" target="_blank" rel="noopener" id="ts-cta-btn" class="inline-flex items-center justify-center px-8 py-4 font-extrabold rounded hover:scale-105 transition-all shadow-lg mb-6" style="background-color: #F5E6D3; color: #1a1a1a;">
+                        <span class="font-display uppercase tracking-widest text-sm">Call Now</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <!-- Made with TownSpark -->
+                    <div class="mt-6 pt-4" style="border-top: 1px solid var(--border-color);">
+                        <a href="https://townspark.app?ref=ardmore-cafe-alley" target="_blank" rel="noopener" class="ts-link text-xs transition-opacity hover:opacity-80" style="color: var(--subtle-text);">Made with <strong style="color: var(--accent);">TownSpark</strong></a>
+                        <div class="mt-2">
+                            <a href="https://townspark.app/claim/ardmore-cafe-alley" class="text-xs transition-opacity hover:opacity-80" style="color: var(--subtle-text); text-decoration: underline;">Is this your business? Claim it.</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+    (function () {
+        // IntersectionObserver for fade-in animations
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('animate'); io.unobserve(e.target); } });
+        }, { threshold: 0.2, rootMargin: '0px -10% 0px -10%' });
+        document.querySelectorAll('.animate-on-scroll').forEach(function(el) { io.observe(el); });
+
+        // Slide navigation
+        var slider = document.getElementById('slider');
+        var slides = document.querySelectorAll('.slide-container');
+        var dots = document.getElementById('pagination-dots').children;
+        var currentSlide = 0;
+
+        var updateDots = function(idx) {
+            currentSlide = idx;
+            try { sessionStorage.setItem('ts_slide', idx); } catch(e) {}
+            Array.from(dots).forEach(function(d, i) {
+                d.className = i === idx
+                    ? 'w-2.5 h-2.5 rounded-full bg-[var(--accent)] cursor-pointer'
+                    : 'w-2 h-2 rounded-full bg-neutral-400 hover:bg-[var(--accent)]/70 cursor-pointer';
+            });
+        };
+
+        // Restore saved slide
+        try {
+            var saved = sessionStorage.getItem('ts_slide');
+            if (saved && slides[+saved]) {
+                setTimeout(function() { slides[+saved].scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' }); }, 50);
+            } else {
+                setTimeout(function() { slides[0].scrollIntoView({ behavior: 'instant', inline: 'center', block: 'nearest' }); }, 50);
+            }
+        } catch(e) {}
+
+        // Observe slide visibility for dot updates
+        var slideIO = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) updateDots(Array.from(slides).indexOf(e.target)); });
+        }, { root: slider, threshold: 0.6 });
+        slides.forEach(function(s) { slideIO.observe(s); });
+
+        // Dot click navigation
+        Array.from(dots).forEach(function(d, i) {
+            d.addEventListener('click', function() { slides[i] && slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); });
+        });
+
+        // Arrow navigation
+        var scrollAmt = function() { return window.innerWidth < 768 ? window.innerWidth * 0.85 : 548; };
+        var nextBtn = document.getElementById('nextBtn');
+        var prevBtn = document.getElementById('prevBtn');
+        if (nextBtn) nextBtn.addEventListener('click', function() { slider.scrollBy({ left: scrollAmt(), behavior: 'smooth' }); });
+        if (prevBtn) prevBtn.addEventListener('click', function() { slider.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }); });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { slider.scrollBy({ left: scrollAmt(), behavior: 'smooth' }); }
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { slider.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }); }
+        });
+
+        // Review stack carousel
+        var stack = document.getElementById('review-stack');
+        if (stack) {
+            var animating = false;
+            stack.addEventListener('click', function() {
+                if (animating) return;
+                var cards = Array.from(stack.children);
+                if (cards.length <= 1) return;
+                animating = true;
+                cards[0].classList.add('card-fly-out');
+                cards[0].classList.remove('card-pos-0');
+                setTimeout(function() {
+                    cards[0].classList.remove('card-fly-out');
+                    stack.appendChild(cards[0]);
+                    Array.from(stack.children).forEach(function(c, i) {
+                        c.classList.remove('card-pos-0', 'card-pos-1', 'card-pos-2', 'card-fly-out');
+                        c.classList.add('card-pos-' + Math.min(i, 2));
+                    });
+                    animating = false;
+                }, 500);
+            });
+        }
+    })();
+    </script>
+
+    <!-- Analytics -->
+    <script>
+    (function(){
+      var T='https://townspark.app/api/track', S='ardmore-cafe-alley';
+      var sid;
+      try { sid = sessionStorage.getItem('ts_sid'); if (!sid) { sid = 'ts_' + Math.random().toString(36).substr(2,9) + Date.now().toString(36); sessionStorage.setItem('ts_sid', sid); } } catch(e) { sid = 'ts_' + Math.random().toString(36).substr(2,9) + Date.now().toString(36); }
+      function t(type) {
+        var d = JSON.stringify({ slug: S, type: type, sessionId: sid });
+        if (navigator.sendBeacon) { navigator.sendBeacon(T, new Blob([d], { type: 'application/json' })); }
+        else { fetch(T, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: d, keepalive: true }); }
+      }
+      t('view');
+      var btn = document.getElementById('ts-cta-btn');
+      if (btn) btn.addEventListener('click', function() { t('click'); });
+      document.querySelectorAll('.share-btn').forEach(function(el) { el.addEventListener('click', function() { t('share'); }); });
+      document.querySelectorAll('.ts-link').forEach(function(el) { el.addEventListener('click', function() { t('townspark_click'); }); });
+    })();
+    </script>
+</body>
+</html>
