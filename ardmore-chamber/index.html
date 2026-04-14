@@ -526,6 +526,74 @@
     font-style: italic;
   }
 
+  /* ── PRICING TABLE ── */
+  .pricing-table {
+    width: 100%;
+    max-width: 700px;
+    border-collapse: collapse;
+    margin-top: 32px;
+  }
+  .pricing-table thead th {
+    padding: 20px 16px 16px;
+    text-align: center;
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--rule);
+  }
+  .pricing-table thead th:first-child {
+    text-align: left;
+    border-bottom-color: transparent;
+  }
+  .pricing-table thead .tier-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .pricing-table thead .tier-price {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--sage);
+    margin-top: 6px;
+  }
+  .pricing-table thead .tier-period {
+    font-size: 11px;
+    opacity: 0.45;
+    margin-top: 2px;
+  }
+  .pricing-table thead .tier-recommended {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid var(--sage);
+    border-radius: 2px;
+    padding: 3px 8px;
+    margin-bottom: 8px;
+  }
+  .pricing-table tbody td {
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 300;
+    border-bottom: 1px solid rgba(26,26,24,0.06);
+    text-align: center;
+  }
+  .pricing-table tbody td:first-child {
+    text-align: left;
+    opacity: 0.8;
+  }
+  .pricing-table .check {
+    color: var(--sage);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .pricing-table .no-check {
+    color: rgba(26,26,24,0.15);
+    font-size: 14px;
+  }
+
   /* ── CLOSING ── */
   .closing-inner {
     position: relative;
@@ -1564,103 +1632,95 @@
       </div>
       <div style="background:var(--sage-wash);padding:20px 24px;text-align:center;">
         <div style="font-family:var(--serif);font-size:28px;color:var(--sage);">120</div>
-        <div style="font-size:11px;font-weight:500;letter-spacing:0.06em;opacity:0.6;margin-top:4px;">days to full handoff</div>
+        <div style="font-size:11px;font-weight:500;letter-spacing:0.06em;opacity:0.6;margin-top:4px;">days to full implementation</div>
       </div>
     </div>
 
     <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
   </div>
 
-  <!-- ══ VALUE STACK ══ -->
-  <div class="slide slide--dark">
-    <span class="slide-num">11</span>
-    <div class="eyebrow" data-reveal style="color:var(--sage-light);">What You're Getting</div>
-    <div class="display-sm" data-reveal data-delay="1" style="color:var(--cream);">Here's what this would cost<br>if you bought it <em>piece by piece.</em></div>
-    <div class="rule" data-reveal data-delay="2"></div>
-
-    <div style="max-width:600px;margin-top:24px;">
-      <div data-reveal data-delay="2" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.1);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">Membership collateral overhaul</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$3,000</div>
-      </div>
-      <div data-reveal data-delay="2" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.1);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">Digital profiles for every member</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$6,000</div>
-      </div>
-      <div data-reveal data-delay="3" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.1);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">Searchable member directory</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$2,500</div>
-      </div>
-      <div data-reveal data-delay="3" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.1);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">Onboarding email sequences</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$2,500</div>
-      </div>
-      <div data-reveal data-delay="4" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.1);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">Win-back &amp; exit survey automation</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$2,000</div>
-      </div>
-      <div data-reveal data-delay="4" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.1);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">Annual Visibility Report system</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$1,500</div>
-      </div>
-      <div data-reveal data-delay="5" style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(242,239,232,0.15);">
-        <div style="font-size:14px;color:var(--cream);font-weight:300;">6 on-location testimonial videos</div>
-        <div style="font-size:14px;color:var(--cream);opacity:0.5;font-weight:300;">$5,000</div>
-      </div>
-      <div data-reveal data-delay="6" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:2px solid var(--sage);">
-        <div style="font-size:15px;color:var(--cream);font-weight:500;">Purchased separately</div>
-        <div style="font-size:15px;color:var(--cream);font-weight:500;">$22,500</div>
-      </div>
-      <div data-reveal data-delay="7" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;">
-        <div style="font-family:var(--serif);font-size:24px;color:var(--sage-light);">Your price</div>
-        <div style="font-family:var(--serif);font-size:24px;color:var(--sage-light);">$9,500 – $14,500</div>
-      </div>
-    </div>
-
-    <div class="slide-footer" style="color:var(--cream);"><span>Ardmore Chamber of Commerce</span><img class="logo-light" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
-  </div>
-
   <!-- ══ INVESTMENT ══ -->
   <div class="slide">
-    <span class="slide-num">12</span>
+    <span class="slide-num">11</span>
     <div class="eyebrow" data-reveal>Investment</div>
     <div class="display-sm" data-reveal data-delay="1">Two options.<br>One <em>outcome.</em></div>
-    <div class="price-grid" style="grid-template-columns: 1fr 1fr; max-width: 700px;">
-      <div class="price-card" data-reveal data-delay="2">
-        <div class="price-tier">The System</div>
-        <div class="price-amount">$9,500</div>
-        <div class="price-period">one-time project</div>
-        <div class="price-rule"></div>
-        <ul class="price-items">
-          <li>Membership collateral overhaul</li>
-          <li>Digital business profiles (all members)</li>
-          <li>Searchable member directory page</li>
-          <li>Onboarding email sequences</li>
-          <li>Win-back &amp; exit survey automation</li>
-          <li>Annual Visibility Report template</li>
-        </ul>
-        <div class="price-note">Build once. Runs itself.</div>
-      </div>
-      <div class="price-card price-card--featured" data-reveal data-delay="3">
-        <div class="price-tier">The System + Content</div>
-        <div class="price-amount">$14,500</div>
-        <div class="price-period">one-time project</div>
-        <div class="price-rule"></div>
-        <ul class="price-items">
-          <li>Everything in The System, plus:</li>
-          <li>6 short-form testimonial videos</li>
-          <li>Member spotlight content</li>
-          <li>Produced on-location in Ardmore</li>
-          <li>Ready for social, website, and events</li>
-        </ul>
-        <div class="price-note" style="color:var(--sage-light);">The system plus stories that sell membership</div>
-      </div>
-    </div>
-    <div data-reveal data-delay="4" style="margin-top:32px;max-width:700px;background:var(--sage-wash);padding:24px 28px;border-left:3px solid var(--sage);">
+
+    <table class="pricing-table" data-reveal data-delay="2">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <div class="tier-name">The System</div>
+            <div class="tier-price">$9,500</div>
+            <div class="tier-period">one-time project</div>
+          </th>
+          <th style="background:var(--sage-wash);border-radius:6px 6px 0 0;padding-bottom:24px;">
+            <div class="tier-recommended">RECOMMENDED</div>
+            <div class="tier-name">The System + Content</div>
+            <div class="tier-price">$14,500</div>
+            <div class="tier-period">one-time project</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Membership collateral overhaul</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Digital brochure</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Digital business profiles (all members)</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Searchable member directory page</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Onboarding email sequences</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Win-back &amp; exit survey automation</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Annual Visibility Report template</td>
+          <td><span class="check">&#10003;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>6 short-form testimonial videos</td>
+          <td><span class="no-check">&mdash;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>On-location video production in Ardmore</td>
+          <td><span class="no-check">&mdash;</span></td>
+          <td style="background:var(--sage-wash);"><span class="check">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td>Video content for social, website, and events</td>
+          <td><span class="no-check">&mdash;</span></td>
+          <td style="background:var(--sage-wash);border-radius:0 0 6px 6px;"><span class="check">&#10003;</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div data-reveal data-delay="3" style="margin-top:32px;max-width:700px;background:var(--sage-wash);padding:24px 28px;border-left:3px solid var(--sage);">
       <div style="font-size:13px;font-weight:500;margin-bottom:8px;">The math</div>
-      <div style="font-size:13px;font-weight:300;line-height:1.6;opacity:0.8;">Your smallest membership is $360/year. <strong>The System</strong> pays for itself if it retains or attracts just 27 members — fewer than one a week across the entire year. At a typical membership value of $450, the number drops to 22. This is a one-time investment in infrastructure that keeps working year after year.</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.6;opacity:0.8;">Your smallest membership is $360/year. <strong>The System</strong> pays for itself if it retains or attracts just 27 members — fewer than one a week across the entire year. At an average membership value of $550, the number drops to 18. This is a one-time investment in infrastructure that keeps working year after year.</div>
     </div>
-    <div data-reveal data-delay="5" style="margin-top:16px;max-width:700px;font-size:13px;font-weight:300;line-height:1.6;opacity:0.6;font-style:italic;">
+    <div data-reveal data-delay="4" style="margin-top:16px;max-width:700px;font-size:13px;font-weight:300;line-height:1.6;opacity:0.6;font-style:italic;">
       If we don't deliver all promised deliverables within 120 days of kickoff, we continue working at no additional cost until we do.
     </div>
     <div class="slide-footer"><span>Ardmore Chamber of Commerce</span><img class="logo-dark" src="hallpass_temp_logo.png" alt="Hallpass Digital"></div>
@@ -1669,12 +1729,11 @@
   <!-- ══ CLOSING ══ -->
   <div class="slide slide--dark" style="min-height:500px;background-image:url('img-handshake.jpg');background-size:cover;background-position:center;">
     <div style="position:absolute;inset:0;background:rgba(26,26,24,0.82);z-index:0;"></div>
-    <span class="slide-num" style="z-index:1;">13</span>
+    <span class="slide-num" style="z-index:1;">12</span>
     <div class="closing-inner" style="z-index:1;">
       <div class="eyebrow" data-reveal style="color:var(--sage-light);">Next Step</div>
-      <div class="display" data-reveal data-delay="1" style="color:var(--cream);max-width:520px;">Let's build the system<br>and <em>get started.</em></div>
+      <div class="display" data-reveal data-delay="1" style="color:var(--cream);max-width:600px;">Let's build the system<br>and grow a stronger <em>Chamber.</em></div>
       <div class="rule" data-reveal data-delay="2"></div>
-      <div class="body" data-reveal data-delay="3" style="color:var(--cream);">The next step is a short planning session to confirm priorities and set a timeline. The full system can be built and handed off within 90 days — with visible results by month two.</div>
       <div style="margin-top:36px;display:flex;flex-direction:column;gap:8px;">
         <div style="font-size:12px;opacity:0.4;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);">Ryan McNeill</div>
         <div style="font-size:13px;opacity:0.6;color:var(--cream);">hallpassdigital.com</div>
