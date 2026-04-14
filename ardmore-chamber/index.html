@@ -1378,33 +1378,98 @@
         </ul>
       </div>
       <div data-reveal data-delay="4">
-        <!-- Visibility Report Mockup -->
-        <div style="background:#ffffff;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;max-width:360px;">
-          <div style="background:linear-gradient(135deg,#2D3E50,#3a5068);padding:24px 28px 20px;">
-            <img src="https://chamber.ardmore.org/wp-content/uploads/2023/03/logo-red.svg" alt="" style="height:24px;opacity:0.9;margin-bottom:16px;">
-            <div style="font-family:var(--serif);font-size:18px;color:#ffffff;line-height:1.2;">Your Annual Chamber<br>Visibility Report</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:8px;">Cafe Alley &middot; 2026</div>
+        <!-- Visibility Report Mockup (PDF-style) -->
+        <div style="background:#ffffff;border-radius:4px;box-shadow:0 2px 20px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);overflow:hidden;max-width:380px;font-family:var(--sans);">
+          <!-- Report Header -->
+          <div style="background:linear-gradient(135deg,#2D3E50,#3a5068);padding:20px 24px 16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <img src="https://chamber.ardmore.org/wp-content/uploads/2023/03/logo-red.svg" alt="" style="height:20px;opacity:0.9;">
+              <div style="font-size:8px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Annual Report</div>
+            </div>
+            <div style="font-family:var(--serif);font-size:16px;color:#ffffff;line-height:1.25;">Member Visibility Report</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:6px;">Cafe Alley &middot; January – December 2026</div>
           </div>
-          <div style="padding:20px 28px;">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-              <div style="text-align:center;padding:12px 8px;background:#f8f8f6;border-radius:6px;">
-                <div style="font-family:var(--serif);font-size:22px;font-weight:700;color:#E84E3C;">12</div>
-                <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(0,0,0,0.4);margin-top:2px;">Social Features</div>
+
+          <!-- Estimated Value Banner -->
+          <div style="background:#f0f7f1;padding:14px 24px;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(0,0,0,0.4);">Estimated Promotional Value</div>
+            <div style="font-family:var(--serif);font-size:20px;color:#2D6A3E;font-weight:700;">$4,280</div>
+          </div>
+
+          <div style="padding:16px 24px 20px;">
+            <!-- Newsletter Section -->
+            <div style="margin-bottom:14px;">
+              <div style="font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:8px;">Newsletter</div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Featured in member spotlight</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">1 feature</div>
               </div>
-              <div style="text-align:center;padding:12px 8px;background:#f8f8f6;border-radius:6px;">
-                <div style="font-family:var(--serif);font-size:22px;font-weight:700;color:#E84E3C;">8</div>
-                <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(0,0,0,0.4);margin-top:2px;">Newsletter Mentions</div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Distribution</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">623 members</div>
               </div>
-              <div style="text-align:center;padding:12px 8px;background:#f8f8f6;border-radius:6px;">
-                <div style="font-family:var(--serif);font-size:22px;font-weight:700;color:#E84E3C;">4,200</div>
-                <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(0,0,0,0.4);margin-top:2px;">Total Reach</div>
-              </div>
-              <div style="text-align:center;padding:12px 8px;background:#f8f8f6;border-radius:6px;">
-                <div style="font-family:var(--serif);font-size:22px;font-weight:700;color:#E84E3C;">340</div>
-                <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(0,0,0,0.4);margin-top:2px;">Profile Views</div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Estimated opens</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">267 (42.9%)</div>
               </div>
             </div>
-            <div style="font-size:10px;color:rgba(0,0,0,0.35);text-align:center;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);">Ardmore Chamber of Commerce &middot; Member Since 2019</div>
+
+            <!-- Social Media Section -->
+            <div style="margin-bottom:14px;">
+              <div style="font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:8px;">Social Media</div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Featured on Chamber Facebook</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">3 posts</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Total engagement (likes, comments, shares)</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">184</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Estimated reach</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">2,340</div>
+              </div>
+            </div>
+
+            <!-- Events & PR Section -->
+            <div style="margin-bottom:14px;">
+              <div style="font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:8px;">Events &amp; PR</div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Ribbon cutting (March 12)</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">32 attendees</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Featured in The Ardmoreite</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">Est. value: $850</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Business After Hours (hosted Sept 18)</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">47 attendees</div>
+              </div>
+            </div>
+
+            <!-- Digital Presence Section -->
+            <div style="margin-bottom:14px;">
+              <div style="font-size:9px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,0.35);margin-bottom:8px;">Digital Presence</div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Digital profile views</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">340</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">ATA discount page clicks</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">89</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:5px 0;">
+                <div style="font-size:10px;color:rgba(0,0,0,0.6);">Directory page appearances</div>
+                <div style="font-size:10px;font-weight:500;color:#1A1A18;">1,204</div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="border-top:1px solid rgba(0,0,0,0.08);padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-size:9px;color:rgba(0,0,0,0.3);">Ardmore Chamber of Commerce</div>
+              <div style="font-size:9px;color:rgba(0,0,0,0.3);">Member since 2019</div>
+            </div>
           </div>
         </div>
       </div>
