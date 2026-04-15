@@ -1,6 +1,7 @@
 import {Composition} from 'remotion';
 import {DonorSparkPromo} from './DonorSparkPromo';
 import {LogoSting} from './LogoSting';
+import {ProductDemo} from './ProductDemo';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -17,6 +18,14 @@ export const RemotionRoot: React.FC = () => {
         id="DonorSparkLogoSting"
         component={LogoSting}
         durationInFrames={75}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="DonorSparkProductDemo"
+        component={ProductDemo}
+        durationInFrames={360}
         fps={30}
         width={1920}
         height={1080}
