@@ -36,7 +36,7 @@ export const LogoText: React.FC<{
           height: 'auto',
           // Clip out the sparkle region in the top-right of the logo PNG
           // so it enters clean with no sparkle visible
-          clipPath: 'polygon(0% 0%, 89% 0%, 89% 26%, 100% 26%, 100% 100%, 0% 100%)',
+          clipPath: 'polygon(0% 0%, 89% 0%, 89% 32%, 100% 32%, 100% 100%, 0% 100%)',
         }}
       />
     </div>
