@@ -3,13 +3,10 @@ import {AbsoluteFill} from 'remotion';
 import {LogoText} from './components/LogoText';
 import {SparkleIcon} from './components/SparkleIcon';
 import {CursorPointer} from './components/CursorPointer';
-import {GlowEffect} from './components/GlowEffect';
-
 // Frame constants
 const CURSOR_ENTER = 12;
 const CLICK_FRAME = 30;
 const SPARKLE_POP = 31;
-const GLOW_START = 31;
 const CURSOR_EXIT = 36;
 
 // Layout constants — sparkle position relative to logo container
@@ -57,18 +54,7 @@ export const LogoSting: React.FC = () => {
         }}
       />
 
-      {/* Glow — positioned behind sparkle */}
-      <div
-        style={{
-          position: 'absolute',
-          left: sparkleX,
-          top: sparkleY,
-        }}
-      >
-        <GlowEffect startFrame={GLOW_START} size={120} />
-      </div>
-
-      {/* Sparkle — positioned over the black sparkle in the logo */}
+      {/* Black sparkle — fades in, zooms, and spins on cursor click */}
       <div
         style={{
           position: 'absolute',
