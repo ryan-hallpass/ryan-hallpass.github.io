@@ -40,6 +40,23 @@ export const LogoSting: React.FC = () => {
       {/* Logo text — centered */}
       <LogoText width={LOGO_WIDTH} />
 
+      {/* Mask: hides the black sparkle in the logo PNG until the animated one appears.
+          A small circle matching the background gradient, positioned over the sparkle.
+          Sits above the logo but below the animated sparkle + glow layers. */}
+      <div
+        style={{
+          position: 'absolute',
+          left: sparkleX - 32,
+          top: sparkleY - 32,
+          width: 64,
+          height: 64,
+          borderRadius: '50%',
+          background: 'radial-gradient(ellipse at 35% 30%, #F5E6DC 0%, #F2EFE8 70%)',
+          backgroundSize: '1920px 1080px',
+          backgroundPosition: `${-(sparkleX - 32)}px ${-(sparkleY - 32)}px`,
+        }}
+      />
+
       {/* Glow — positioned behind sparkle */}
       <div
         style={{
