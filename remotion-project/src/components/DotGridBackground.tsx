@@ -6,8 +6,10 @@ export const DotGridBackground: React.FC = () => {
     <AbsoluteFill
       style={{
         backgroundColor: '#F2EFE8',
-        backgroundImage:
-          'radial-gradient(circle, rgba(196, 121, 74, 0.08) 1.5px, transparent 1.5px)',
+        backgroundImage: `
+          linear-gradient(rgba(196, 121, 74, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(196, 121, 74, 0.06) 1px, transparent 1px)
+        `,
         backgroundSize: '40px 40px',
       }}
     />
