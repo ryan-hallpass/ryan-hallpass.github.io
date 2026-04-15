@@ -31,7 +31,13 @@ export const LogoText: React.FC<{
     >
       <Img
         src={staticFile('donorsparklogo.png')}
-        style={{width, height: 'auto'}}
+        style={{
+          width,
+          height: 'auto',
+          // Clip out the sparkle region in the top-right of the logo PNG
+          // so it enters clean with no sparkle visible
+          clipPath: 'polygon(0% 0%, 89% 0%, 89% 26%, 100% 26%, 100% 100%, 0% 100%)',
+        }}
       />
     </div>
   );
