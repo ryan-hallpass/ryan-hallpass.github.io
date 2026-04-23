@@ -374,6 +374,42 @@
   .promo-card[data-reveal] { transform: translateY(24px) rotate(-1deg); }
   .promo-card[data-reveal]:nth-child(2) { transform: translateY(24px) rotate(1deg); }
   .promo-card[data-reveal].is-visible { transform: translateY(0) rotate(0); }
+
+  /* CUSTOMER JOURNEY (sticky scroll timeline) */
+  .journey-section { position: relative; width: 100%; background: var(--ink); color: var(--cream); overflow: hidden; }
+  .journey-section::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; }
+  .journey-pinned { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 7vw, 96px) clamp(32px, 8vw, 120px); }
+  .journey-header { position: relative; z-index: 1; }
+  .journey-track { position: relative; height: 3px; background: rgba(242,239,232,0.1); border-radius: 2px; margin-top: 36px; }
+  .journey-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: var(--terra-light); border-radius: 2px; will-change: width; }
+  .journey-markers { display: flex; justify-content: space-between; margin-top: 14px; position: relative; z-index: 1; }
+  .journey-marker { display: flex; flex-direction: column; align-items: center; }
+  .journey-marker:first-child { align-items: flex-start; }
+  .journey-marker:last-child { align-items: flex-end; }
+  .journey-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(242,239,232,0.12); margin-bottom: 8px; transition: background 0.3s; }
+  .journey-dot.is-active { background: var(--terra-light); }
+  .journey-marker-label { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.35; transition: opacity 0.3s, color 0.3s; white-space: nowrap; color: var(--cream); }
+  .journey-marker-label.is-active { opacity: 1; }
+  .journey-divider { height: 1px; background: rgba(242,239,232,0.08); margin-top: 32px; }
+  .journey-content { position: relative; min-height: 340px; margin-top: 36px; z-index: 1; }
+  .journey-stage { position: absolute; top: 0; left: 0; right: 0; opacity: 0; transition: opacity 0.15s; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .journey-stage.is-active { opacity: 1; }
+  .journey-stage-headline { font-family: var(--serif); font-size: clamp(22px, 2.8vw, 28px); font-weight: 400; font-style: italic; line-height: 1.25; letter-spacing: -0.01em; color: var(--terra-light); }
+  .journey-stage-body { font-family: var(--sans); font-size: 14px; font-weight: 300; line-height: 1.65; opacity: 0.7; max-width: 500px; margin-top: 14px; color: var(--cream); }
+  .journey-stage-image { display: flex; justify-content: center; align-items: flex-start; }
+  .journey-mockup { background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.35); font-family: var(--sans); max-width: 340px; width: 100%; color: var(--ink); }
+  .journey-mockup-card { border-radius: 10px; padding: 24px; max-width: 340px; width: 100%; box-shadow: 0 14px 36px rgba(0,0,0,0.35); }
+  .journey-footer { position: absolute; bottom: 28px; left: clamp(32px, 8vw, 120px); right: clamp(32px, 8vw, 120px); display: flex; align-items: center; gap: 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.1em; opacity: 0.35; }
+  .journey-footer img { height: 18px; width: auto; filter: invert(1); }
+  .journey-footer span { text-transform: uppercase; }
+  @media (max-width: 900px) {
+    .journey-stage { grid-template-columns: 1fr; gap: 24px; }
+    .journey-stage-image { max-height: 220px; overflow: hidden; }
+  }
+  @media (max-width: 700px) {
+    .journey-pinned { padding: 48px 28px; }
+    .journey-marker-label { font-size: 8px; letter-spacing: 0.06em; }
+  }
 </style>
 </head>
 <body>
@@ -486,9 +522,195 @@
     </div>
   </div>
 
-  <!-- 05 APPROACH -->
+  <!-- 05 CUSTOMER JOURNEY -->
+  <div class="journey-section">
+    <div class="journey-pinned">
+      <span class="slide-num" style="color:var(--cream);">05</span>
+      <div class="journey-header">
+        <div class="eyebrow" data-reveal style="color:var(--cream);">One guest, three businesses</div>
+        <div class="display-sm" data-reveal data-delay="1">Here's how <em style="color:var(--terra-light);">one check-in</em><br>becomes a list you own forever.</div>
+        <div class="journey-track">
+          <div class="journey-fill"></div>
+        </div>
+        <div class="journey-markers">
+          <div class="journey-marker" data-stage="0">
+            <div class="journey-dot is-active"></div>
+            <div class="journey-marker-label is-active">Check-in</div>
+          </div>
+          <div class="journey-marker" data-stage="1">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">The card</div>
+          </div>
+          <div class="journey-marker" data-stage="2">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Scan &amp; capture</div>
+          </div>
+          <div class="journey-marker" data-stage="3">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Drink</div>
+          </div>
+          <div class="journey-marker" data-stage="4">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Next-day offer</div>
+          </div>
+          <div class="journey-marker" data-stage="5">
+            <div class="journey-dot"></div>
+            <div class="journey-marker-label">Yours forever</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-divider"></div>
+
+      <div class="journey-content">
+        <div class="journey-stage is-active" data-stage="0">
+          <div>
+            <div class="journey-stage-headline">A guest checks into the Whistlestop.</div>
+            <div class="journey-stage-body">They unlock the door, drop their bag, and see a branded card waiting on the nightstand.</div>
+          </div>
+          <div class="journey-stage-image">
+            <div class="journey-mockup-card" style="background:linear-gradient(135deg,#2a1810 0%,#4a2818 100%);color:var(--cream);">
+              <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.55;margin-bottom:22px;">Welcome to</div>
+              <div style="font-family:var(--serif);font-size:32px;font-weight:400;line-height:1.1;">The Whistlestop</div>
+              <div style="font-family:var(--serif);font-style:italic;font-size:14px;opacity:0.7;margin-top:6px;">Unit 3 · Downtown Ardmore</div>
+              <div style="margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.12);font-size:11px;opacity:0.55;letter-spacing:0.1em;text-transform:uppercase;">Check the nightstand →</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage" data-stage="1">
+          <div>
+            <div class="journey-stage-headline">A QR card in every room.</div>
+            <div class="journey-stage-body">"Scan this for the password to your free welcome drink downstairs at Tipsy Gypsy." Low-friction, high-intrigue.</div>
+          </div>
+          <div class="journey-stage-image">
+            <div class="journey-mockup-card" style="background:linear-gradient(135deg,#C4794A 0%,#8a5432 100%);color:var(--warm-white);position:relative;">
+              <div style="font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.1;">Tipsy Gypsy</div>
+              <div style="font-family:var(--serif);font-style:italic;font-size:14px;opacity:0.85;margin-top:6px;">Your welcome-night drink<br>is on the house.</div>
+              <div style="width:100px;height:100px;background:white;border-radius:6px;margin:22px 0 14px;display:flex;align-items:center;justify-content:center;">
+                <div style="width:80px;height:80px;background:repeating-conic-gradient(#1A1A18 0% 25%, white 0% 50%) 50% / 8px 8px;border-radius:2px;"></div>
+              </div>
+              <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.75;">Scan to unlock</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage" data-stage="2">
+          <div>
+            <div class="journey-stage-headline">Scan. Share name &amp; email. Get the password.</div>
+            <div class="journey-stage-body">Low-friction form. They hand over what's worth a free drink — and now they're on your list forever.</div>
+          </div>
+          <div class="journey-stage-image">
+            <div class="journey-mockup" style="max-width:300px;">
+              <div style="background:#1A1A18;padding:16px 20px;text-align:center;color:var(--cream);">
+                <div style="font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:-0.01em;">Tipsy Gypsy</div>
+                <div style="font-size:11px;opacity:0.6;margin-top:4px;">Your drink is one step away</div>
+              </div>
+              <div style="padding:22px 20px;">
+                <div style="margin-bottom:14px;">
+                  <div style="font-size:9px;font-weight:500;color:#666;letter-spacing:0.08em;margin-bottom:4px;">FIRST NAME</div>
+                  <div style="border:1px solid #ddd;border-radius:4px;padding:10px 12px;font-size:13px;color:#999;">Sarah</div>
+                </div>
+                <div style="margin-bottom:18px;">
+                  <div style="font-size:9px;font-weight:500;color:#666;letter-spacing:0.08em;margin-bottom:4px;">EMAIL</div>
+                  <div style="border:1px solid #ddd;border-radius:4px;padding:10px 12px;font-size:13px;color:#999;">sarah@email.com</div>
+                </div>
+                <div style="background:#C4794A;color:white;text-align:center;padding:12px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:0.12em;">GET MY PASSWORD →</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage" data-stage="3">
+          <div>
+            <div class="journey-stage-headline">Downstairs. Drink on the house.</div>
+            <div class="journey-stage-body">The bartender checks the password. First taste of the bar, first touch of the brand. Every first drink is a loyalty moment.</div>
+          </div>
+          <div class="journey-stage-image">
+            <div class="journey-mockup" style="max-width:300px;">
+              <div style="background:#1A1A18;padding:14px 20px;color:var(--cream);display:flex;align-items:center;gap:10px;">
+                <div style="font-family:var(--serif);font-size:16px;font-weight:400;">Tipsy Gypsy</div>
+                <div style="margin-left:auto;font-size:9px;opacity:0.5;letter-spacing:0.08em;">INBOX</div>
+              </div>
+              <div style="padding:22px 20px;">
+                <div style="font-size:10px;color:#999;letter-spacing:0.06em;margin-bottom:8px;">WELCOME, SARAH</div>
+                <div style="font-family:var(--serif);font-size:17px;color:#1A1A18;line-height:1.3;margin-bottom:12px;">Your free drink is waiting.</div>
+                <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:16px;">Show this password to the bartender downstairs. Good for one welcome cocktail on us.</div>
+                <div style="background:#F7EEE7;border:1px dashed #C4794A;border-radius:4px;padding:14px;text-align:center;">
+                  <div style="font-size:9px;color:#8a5432;letter-spacing:0.18em;">YOUR PASSWORD</div>
+                  <div style="font-family:var(--serif);font-size:22px;color:#C4794A;letter-spacing:0.1em;margin-top:4px;font-style:italic;">whistlestop</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage" data-stage="4">
+          <div>
+            <div class="journey-stage-headline">Next morning: 10% off Nikko Blu Designs.</div>
+            <div class="journey-stage-body">Automated. They shop on the way out. One guest, three businesses — no extra lift from Lance.</div>
+          </div>
+          <div class="journey-stage-image">
+            <div class="journey-mockup" style="max-width:300px;">
+              <div style="background:#1A1A18;padding:14px 20px;color:var(--cream);display:flex;align-items:center;gap:10px;">
+                <div style="font-family:var(--serif);font-size:16px;font-weight:400;">The Whistlestop</div>
+                <div style="margin-left:auto;font-size:9px;opacity:0.5;letter-spacing:0.08em;">9:02 AM</div>
+              </div>
+              <div style="padding:22px 20px;">
+                <div style="font-size:10px;color:#999;letter-spacing:0.06em;margin-bottom:8px;">GOOD MORNING, SARAH</div>
+                <div style="font-family:var(--serif);font-size:17px;color:#1A1A18;line-height:1.3;margin-bottom:10px;">Before you check out — a little gift.</div>
+                <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:14px;">Nikko Blu Designs is right downstairs. Take 10% off anything today — our thanks for staying.</div>
+                <div style="background:#C4794A;color:white;text-align:center;padding:12px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:0.12em;">CLAIM 10% OFF AT NIKKO BLU</div>
+                <div style="font-size:9px;color:#999;text-align:center;margin-top:8px;">Code: STAYSHOP · Show at checkout</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-stage" data-stage="5">
+          <div>
+            <div class="journey-stage-headline">Yours forever to retarget.</div>
+            <div class="journey-stage-body">Rebooking campaigns. Private-event offers. Future drops at the boutique. Every future email compounds the list Lance built the night she checked in.</div>
+          </div>
+          <div class="journey-stage-image">
+            <div class="journey-mockup" style="max-width:320px;">
+              <div style="background:#1A1A18;padding:14px 20px;color:var(--cream);">
+                <div style="font-size:10px;opacity:0.55;letter-spacing:0.14em;text-transform:uppercase;">Lance's Guest List</div>
+                <div style="font-family:var(--serif);font-size:22px;font-weight:400;margin-top:4px;">1,847 guests</div>
+              </div>
+              <div style="padding:18px 20px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;">
+                  <div style="font-size:12px;color:#333;">Weekend rebook campaign</div>
+                  <div style="font-size:10px;color:#C4794A;font-weight:600;">+23 bookings</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;">
+                  <div style="font-size:12px;color:#333;">Private events pitch</div>
+                  <div style="font-size:10px;color:#C4794A;font-weight:600;">+7 inquiries</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;">
+                  <div style="font-size:12px;color:#333;">Nikko Blu capsule drop</div>
+                  <div style="font-size:10px;color:#C4794A;font-weight:600;">+41 visits</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;">
+                  <div style="font-size:12px;color:#333;">Tipsy Gypsy trivia night</div>
+                  <div style="font-size:10px;color:#C4794A;font-weight:600;">+89 RSVPs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-footer">
+        <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+        <span>Tipsy Gypsy + The Whistlestop</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 APPROACH -->
   <div class="slide">
-    <span class="slide-num">05</span>
+    <span class="slide-num">06</span>
     <div class="eyebrow" data-reveal>How We'll Work</div>
     <div class="display-sm" data-reveal data-delay="1">Four phases — built to <em>launch,</em><br>then built to <em>convert.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
@@ -520,9 +742,9 @@
     </div>
   </div>
 
-  <!-- 06 LAUNCH PROJECT INTRO -->
+  <!-- 07 LAUNCH PROJECT INTRO -->
   <div class="slide slide--terra">
-    <span class="slide-num">06</span>
+    <span class="slide-num">07</span>
     <div class="eyebrow" data-reveal>The Launch Project</div>
     <div class="display" data-reveal data-delay="1">Two tiers. <em>Pick your lane.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
@@ -534,9 +756,9 @@
     </div>
   </div>
 
-  <!-- 07 COMPARISON -->
+  <!-- 08 COMPARISON -->
   <div class="slide">
-    <span class="slide-num">07</span>
+    <span class="slide-num">08</span>
     <div class="eyebrow" data-reveal>Side By Side</div>
     <div class="display-sm" data-reveal data-delay="1">Two ways to <em>open the doors.</em></div>
     <table class="pricing-table" data-reveal data-delay="2">
@@ -580,9 +802,9 @@
     </div>
   </div>
 
-  <!-- 08 OPTIONAL ADD-ONS -->
+  <!-- 09 OPTIONAL ADD-ONS -->
   <div class="slide">
-    <span class="slide-num">08</span>
+    <span class="slide-num">09</span>
     <div class="eyebrow" data-reveal>Optional Add-Ons</div>
     <div class="display-sm" data-reveal data-delay="1">Bolt-on engines<br>that <em>compound.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
@@ -630,9 +852,9 @@
     </div>
   </div>
 
-  <!-- 09 TERMS & SCOPE -->
+  <!-- 10 TERMS & SCOPE -->
   <div class="slide">
-    <span class="slide-num">09</span>
+    <span class="slide-num">10</span>
     <div class="eyebrow" data-reveal>Terms &amp; Scope</div>
     <div class="display-sm" data-reveal data-delay="1">Clean agreements<br>make <em>better relationships.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
@@ -665,9 +887,9 @@
     </div>
   </div>
 
-  <!-- 10 WHY HALLPASS -->
+  <!-- 11 WHY HALLPASS -->
   <div class="slide slide--dark">
-    <span class="slide-num">10</span>
+    <span class="slide-num">11</span>
     <div class="eyebrow" data-reveal>Why Hallpass</div>
     <div class="display-sm" data-reveal data-delay="1">Already building the<br>Ardmore <em>ecosystem.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
@@ -694,9 +916,9 @@
     </div>
   </div>
 
-  <!-- 11 NEXT STEP -->
+  <!-- 12 NEXT STEP -->
   <div class="slide slide--accent">
-    <span class="slide-num">11</span>
+    <span class="slide-num">12</span>
     <div class="eyebrow" data-reveal>Next Step</div>
     <div class="display" data-reveal data-delay="1">Let's open the doors like<br>you <em>mean it.</em></div>
     <div class="rule" data-reveal data-delay="2" style="background:rgba(255,255,255,0.4);"></div>
@@ -714,6 +936,54 @@
   </div>
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  var section = document.querySelector('.journey-section');
+  if (!section) return;
+  var pinned = document.querySelector('.journey-pinned');
+  var fill = document.querySelector('.journey-fill');
+  var dots = document.querySelectorAll('.journey-dot');
+  var labels = document.querySelectorAll('.journey-marker-label');
+  var stages = document.querySelectorAll('.journey-stage');
+  var numStages = stages.length;
+
+  section.style.height = (numStages * 100) + 'vh';
+
+  var thresholds = [];
+  for (var i = 0; i < numStages; i++) thresholds.push(i / numStages);
+
+  var dotPositions = [];
+  for (var i = 0; i < numStages; i++) dotPositions.push(i / (numStages - 1));
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: pinned,
+    onUpdate: function (self) {
+      var progress = self.progress;
+      fill.style.width = (progress * 100) + '%';
+
+      var activeStage = 0;
+      for (var i = numStages - 1; i >= 0; i--) {
+        if (progress >= thresholds[i]) { activeStage = i; break; }
+      }
+
+      for (var i = 0; i < numStages; i++) {
+        dots[i].classList.toggle('is-active', progress >= dotPositions[i]);
+        labels[i].classList.toggle('is-active', i === activeStage);
+        stages[i].classList.toggle('is-active', i === activeStage);
+      }
+    }
+  });
+})();
+</script>
 
 <script>
 (function () {
