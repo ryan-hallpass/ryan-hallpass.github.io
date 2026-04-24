@@ -2,650 +2,402 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="theme-color" content="#1f2d38" />
-<title>The Whistlestop — Welcome</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#1c2631" />
+<title>The Whistlestop · Welcome</title>
+<meta name="description" content="Your downtown Ardmore guide — where to eat, drink, and shop, all a walk from your door." />
 <meta property="og:title" content="Welcome to The Whistlestop" />
-<meta property="og:description" content="A downtown Ardmore guide for guests — where to eat, drink, and shop." />
+<meta property="og:description" content="Your downtown Ardmore guide — where to eat, drink, and shop, all a walk from your door." />
 <meta property="og:image" content="https://ryan-hallpass.github.io/whistlestop-welcome/logo.jpg" />
 <link rel="icon" href="logo.jpg" />
 
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-:root{
-  --kraft:#ead7b4;
-  --kraft-deep:#d9c28c;
-  --ink:#1c2631;
-  --ink-soft:#2d3a47;
-  --red:#c2382e;
-  --red-deep:#9c2822;
-  --gold:#b88838;
-  --cream:#f6ead2;
-  --off:#f1e3c0;
-}
-
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden}
-body{
-  font-family:'Inter',system-ui,sans-serif;
-  color:var(--ink);
-  background:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  overscroll-behavior:none;
-  touch-action:pan-y;
-}
-
-.frame{
-  width:100vw;
-  height:100vh;
-  height:100dvh;
-  overflow:hidden;
-  position:relative;
-}
-.deck{
-  display:flex;
-  width:500vw;
-  height:100vh;
-  height:100dvh;
-  transition:transform 420ms cubic-bezier(0.4,0.14,0.18,1);
-  will-change:transform;
-}
-
-.slide{
-  width:100vw;
-  height:100vh;
-  height:100dvh;
-  position:relative;
-  overflow-y:auto;
-  overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-  display:flex;
-  flex-direction:column;
-}
-.slide::-webkit-scrollbar{display:none}
-
-/* Shared subtle grain overlay */
-.slide::before{
-  content:"";
-  position:absolute;inset:0;
-  background-image:radial-gradient(rgba(0,0,0,0.035) 1px,transparent 1px);
-  background-size:3px 3px;
-  pointer-events:none;
-  z-index:1;
-}
-
-.slide > *{position:relative;z-index:2}
-
-/* ─── Cover ─── */
-.cover{
-  background:
-    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(194,56,46,0.25) 0%, transparent 60%),
-    linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
-  color:var(--cream);
-  padding:48px 32px 120px;
-  justify-content:space-between;
-  align-items:center;
-  text-align:center;
-}
-.cover-mark{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:11px;
-  letter-spacing:0.28em;
-  color:var(--red);
-  text-transform:uppercase;
-  margin-top:18px;
-  opacity:0.9;
-}
-.cover-logo{
-  width:min(72vw,320px);
-  max-height:42vh;
-  object-fit:contain;
-  filter:drop-shadow(0 14px 40px rgba(0,0,0,0.35));
-  margin-top:14px;
-}
-.cover-welcome{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:clamp(36px,9vw,56px);
-  letter-spacing:0.01em;
-  line-height:0.95;
-  text-transform:uppercase;
-  margin-top:6px;
-}
-.cover-welcome em{
-  font-style:normal;
-  color:var(--red);
-}
-.cover-sub{
-  font-size:14px;
-  font-weight:300;
-  line-height:1.65;
-  max-width:320px;
-  margin:16px auto 0;
-  opacity:0.78;
-}
-.cover-rule{
-  width:44px;height:2px;background:var(--gold);
-  margin:22px auto 0;opacity:0.7;
-}
-.cover-swipe{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:11px;
-  letter-spacing:0.3em;
-  text-transform:uppercase;
-  color:var(--kraft-deep);
-  margin-top:auto;
-  padding-top:28px;
-  opacity:0.8;
-  animation:nudge 2.2s ease-in-out infinite;
-}
-@keyframes nudge{
-  0%,100%{transform:translateX(0)}
-  50%{transform:translateX(6px)}
-}
-
-/* ─── Category slides ─── */
-.cat{
-  background:var(--kraft);
-  color:var(--ink);
-  padding:44px 28px 120px;
-}
-.cat-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:24px;
-}
-.cat-eyebrow{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:11px;
-  letter-spacing:0.28em;
-  text-transform:uppercase;
-  color:var(--red);
-  margin-bottom:10px;
-}
-.cat-title{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:clamp(44px,12vw,72px);
-  text-transform:uppercase;
-  line-height:0.9;
-  letter-spacing:0.005em;
-  color:var(--ink);
-}
-.cat-title em{
-  font-style:normal;
-  color:var(--red);
-}
-.cat-num{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:64px;
-  line-height:1;
-  color:var(--ink);
-  opacity:0.12;
-  padding-top:4px;
-}
-.cat-intro{
-  font-size:14px;
-  font-weight:300;
-  line-height:1.6;
-  color:var(--ink-soft);
-  max-width:540px;
-  margin-bottom:26px;
-}
-.cat-intro b{font-weight:500;color:var(--ink)}
-
-.hero{
-  height:180px;
-  border-radius:4px;
-  background-size:cover;
-  background-position:center;
-  margin-bottom:24px;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 10px 28px rgba(28,38,49,0.22);
-}
-.hero::after{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(180deg, transparent 55%, rgba(28,38,49,0.55) 100%);
-}
-.hero-cap{
-  position:absolute;bottom:10px;left:14px;right:14px;
-  font-family:'Anton',Impact,sans-serif;
-  font-size:11px;
-  letter-spacing:0.24em;
-  text-transform:uppercase;
-  color:var(--cream);
-  z-index:1;
-}
-
-.venues{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.venue{
-  background:var(--cream);
-  border:1px solid rgba(28,38,49,0.08);
-  border-left:3px solid var(--red);
-  padding:16px 18px;
-  border-radius:2px;
-  transition:transform 200ms ease, box-shadow 200ms ease;
-}
-.venue:active{
-  transform:translateX(1px);
-  box-shadow:0 6px 18px rgba(28,38,49,0.12);
-}
-.venue-head{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:5px;
-}
-.venue-name{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:22px;
-  letter-spacing:0.01em;
-  text-transform:uppercase;
-  color:var(--ink);
-  line-height:1;
-}
-.venue-walk{
-  font-size:10px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--red);
-  font-weight:600;
-  white-space:nowrap;
-}
-.venue-desc{
-  font-size:13.5px;
-  line-height:1.5;
-  font-weight:300;
-  color:var(--ink-soft);
-}
-.venue-insider{
-  display:inline-block;
-  margin-top:6px;
-  font-size:11px;
-  font-weight:500;
-  color:var(--gold);
-  letter-spacing:0.02em;
-}
-
-/* ─── Closing ─── */
-.close{
-  background:
-    radial-gradient(ellipse at 50% -10%, rgba(194,56,46,0.35) 0%, transparent 55%),
-    linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
-  color:var(--cream);
-  padding:52px 32px 120px;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-.close-eyebrow{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:11px;
-  letter-spacing:0.28em;
-  text-transform:uppercase;
-  color:var(--red);
-  margin-bottom:18px;
-}
-.close-headline{
-  font-family:'Anton',Impact,sans-serif;
-  font-size:clamp(40px,11vw,64px);
-  text-transform:uppercase;
-  line-height:0.95;
-  letter-spacing:0.01em;
-  max-width:480px;
-}
-.close-headline em{font-style:normal;color:var(--red)}
-.close-rule{
-  width:44px;height:2px;background:var(--gold);
-  margin:22px auto 18px;opacity:0.7;
-}
-.close-body{
-  font-size:14px;
-  font-weight:300;
-  line-height:1.7;
-  max-width:340px;
-  opacity:0.84;
-}
-.close-cta{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-top:28px;
-  padding:14px 22px;
-  background:var(--red);
-  color:var(--cream);
-  font-family:'Anton',Impact,sans-serif;
-  font-size:13px;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  text-decoration:none;
-  border-radius:2px;
-  transition:background 200ms ease;
-}
-.close-cta:hover{background:var(--red-deep)}
-.close-foot{
-  margin-top:32px;
-  font-size:11px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  opacity:0.45;
-}
-
-/* ─── Progress dots + nav ─── */
-.ui{
-  position:fixed;
-  bottom:28px;
-  left:0;right:0;
-  display:flex;
-  justify-content:center;
-  gap:9px;
-  z-index:40;
-  pointer-events:none;
-}
-.dot{
-  width:7px;height:7px;
-  border-radius:50%;
-  background:rgba(28,38,49,0.28);
-  transition:all 280ms ease;
-  pointer-events:auto;
-  cursor:pointer;
-  border:none;
-  padding:0;
-}
-.slide-dark-dots .dot{background:rgba(246,234,210,0.32)}
-.dot.is-active{
-  background:var(--red);
-  width:22px;
-  border-radius:4px;
-}
-
-.arrow{
-  position:fixed;
-  top:50%;transform:translateY(-50%);
-  width:42px;height:42px;
-  border-radius:50%;
-  background:rgba(28,38,49,0.55);
-  color:var(--cream);
-  border:1px solid rgba(246,234,210,0.18);
-  font-size:20px;
-  font-weight:300;
-  display:none;
-  align-items:center;justify-content:center;
-  cursor:pointer;
-  z-index:40;
-  transition:background 180ms ease;
-}
-.arrow:hover{background:rgba(28,38,49,0.75)}
-.arrow.prev{left:20px}
-.arrow.next{right:20px}
-.arrow:disabled{opacity:0.25;cursor:default}
-@media (min-width:780px){.arrow{display:flex}}
-
-/* Desktop: soft "phone frame" preview so the deck doesn't look stretched */
-@media (min-width:780px){
-  html,body{background:#0e141a}
-  body{display:flex;align-items:center;justify-content:center;padding:32px}
-  .frame{
-    width:420px;height:min(880px,94vh);
-    overflow:hidden;
-    border-radius:30px;
-    box-shadow:0 30px 90px rgba(0,0,0,0.55), 0 0 0 8px #222a33, 0 0 0 9px #000;
-    position:relative;
+  :root {
+    --kraft:       #ead7b4;
+    --kraft-deep:  #d9c28c;
+    --ink:         #1c2631;
+    --ink-soft:    #2d3a47;
+    --red:         #c2382e;
+    --red-deep:    #9c2822;
+    --gold:        #b88838;
+    --cream:       #f6ead2;
+    --border:      rgba(246,234,210,0.14);
   }
-  .deck{width:2100px;height:100%;}
-  .slide{width:420px;height:100%}
-  .ui{position:absolute;bottom:22px}
-  .arrow{position:absolute}
-  .arrow.prev{left:-76px}
-  .arrow.next{right:-76px}
-}
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--ink);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .font-display { font-family: 'Anton', 'Bebas Neue', Impact, sans-serif !important; letter-spacing: 0.01em; }
+  .font-stamp   { font-family: 'Bebas Neue', 'Anton', Impact, sans-serif !important; letter-spacing: 0.08em; }
+
+  /* Hide scrollbar on the slider */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Slide size: fullscreen-ish on mobile, 500px card @ 3:4 on desktop */
+  .slide-container {
+    width: 90vw;
+    height: calc(100dvh - 120px);
+    min-height: 500px;
+    max-height: 820px;
+    min-width: 0;
+  }
+  @supports not (height: 100dvh) {
+    .slide-container { height: calc(100vh - 120px); }
+  }
+  @media (min-width: 768px) {
+    .slide-container { width: 500px; height: auto; min-height: unset; max-height: unset; aspect-ratio: 3/4; }
+  }
+
+  /* Dot texture on solid slides */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(246,234,210,0.08) 1px, transparent 0);
+    background-size: 26px 26px;
+  }
+  .bg-dot-kraft {
+    background-image: radial-gradient(circle at 1px 1px, rgba(28,38,49,0.07) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  /* Fade-in */
+  @keyframes animationIn { 0% { opacity: 0; transform: translateY(20px); filter: blur(6px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
+  .animate-on-scroll { animation: animationIn 0.7s ease-out both; animation-play-state: paused; }
+  .animate-on-scroll.animate { animation-play-state: running; }
+
+  /* Pagination dot */
+  .pag-dot { width: 8px; height: 8px; border-radius: 9999px; background: rgba(246,234,210,0.25); cursor: pointer; transition: all 260ms ease; border: none; padding: 0; }
+  .pag-dot:hover { background: rgba(246,234,210,0.5); }
+  .pag-dot.is-active { background: var(--red); width: 24px; border-radius: 4px; }
+
+  /* Venue card */
+  .venue {
+    background: rgba(246,234,210,0.06);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    backdrop-filter: blur(4px);
+  }
+  .venue-kraft {
+    background: var(--cream);
+    border: 1px solid rgba(28,38,49,0.08);
+    border-left: 3px solid var(--red);
+    backdrop-filter: none;
+  }
 </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center">
 
-<div class="frame">
-  <div class="deck" id="deck">
+  <!-- FIXED NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-4 h-16 border-b border-[var(--border)] backdrop-blur-md" style="background-color: rgba(28,38,49,0.85);">
+    <div class="flex items-center gap-3 w-auto md:w-1/3">
+      <img src="logo.jpg" alt="" class="w-8 h-8 rounded object-cover" />
+      <span class="font-display text-sm md:text-base font-bold truncate tracking-wide uppercase" style="color: var(--cream);">The Whistlestop</span>
+    </div>
 
-    <!-- 01 COVER -->
-    <section class="slide cover" data-dark>
-      <div class="cover-mark">On Main · Ardmore, OK</div>
-      <img src="logo.jpg" alt="The Whistlestop" class="cover-logo" />
-      <div>
-        <div class="cover-welcome">Welcome<br>to the <em>stop.</em></div>
-        <div class="cover-rule"></div>
-        <p class="cover-sub">A short, opinionated guide to the downtown Ardmore we love — the food, the drinks, the places worth a look. Everything inside is a walk from your door.</p>
-      </div>
-      <div class="cover-swipe">Swipe →</div>
-    </section>
+    <div id="pagination-dots" class="hidden sm:flex items-center justify-center gap-2 w-1/3">
+      <button class="pag-dot" aria-label="Go to slide 1"></button>
+      <button class="pag-dot" aria-label="Go to slide 2"></button>
+      <button class="pag-dot" aria-label="Go to slide 3"></button>
+      <button class="pag-dot" aria-label="Go to slide 4"></button>
+      <button class="pag-dot" aria-label="Go to slide 5"></button>
+    </div>
 
-    <!-- 02 EAT -->
-    <section class="slide cat">
-      <div class="cat-head">
-        <div>
-          <div class="cat-eyebrow">Chapter 01</div>
-          <div class="cat-title">Where to <em>eat.</em></div>
-        </div>
-        <div class="cat-num">01</div>
-      </div>
-      <p class="cat-intro">Downtown Ardmore punches way above its weight. <b>Four favorites — all a short walk</b> from where you're staying.</p>
+    <div class="hidden md:flex items-center justify-end gap-2 w-1/3">
+      <button id="prevBtn" class="p-2 rounded-full hover:bg-white/10 transition-colors" style="color: var(--cream); opacity: 0.65;" aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button id="nextBtn" class="p-2 rounded-full hover:bg-white/10 transition-colors" style="color: var(--cream); opacity: 0.65;" aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
 
-      <div class="hero" style="background-image:linear-gradient(rgba(28,38,49,0.15),rgba(28,38,49,0.45)),url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-0-XGSvOVjwa5QFVCfzZKVzYfIWN0DeM7.jpg');">
-        <div class="hero-cap">Downtown · Dinner hour</div>
-      </div>
+    <div class="md:hidden flex items-center justify-end w-auto text-xs gap-1.5 opacity-80" style="color: var(--cream);">
+      <span class="font-stamp font-bold uppercase text-[11px]">Swipe</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+    </div>
+  </nav>
 
-      <div class="venues">
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">Cafe Alley</div>
-            <div class="venue-walk">2 min walk</div>
-          </div>
-          <p class="venue-desc">Chef-driven American plates in a restored downtown storefront. The date-night move.</p>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">Casa Romo</div>
-            <div class="venue-walk">3 min walk</div>
-          </div>
-          <p class="venue-desc">Tex-Mex with a patio, heavy pours, and the kind of queso that ruins all other queso.</p>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">Hamburger Inn</div>
-            <div class="venue-walk">4 min walk</div>
-          </div>
-          <p class="venue-desc">Open since the 1930s. Order a cheeseburger, fries, and a chocolate malt. Trust.</p>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">Ten Star Pizza</div>
-            <div class="venue-walk">5 min walk</div>
-          </div>
-          <p class="venue-desc">Wood-fired pies and local beer. Noisy, crowded, and exactly right on a Friday night.</p>
-        </div>
+  <!-- SLIDER -->
+  <main id="slider"
+        class="flex flex-row overflow-x-auto snap-x snap-mandatory hide-scrollbar w-full pt-20 md:pt-24 pb-6 md:pb-10 px-4 md:px-10 gap-x-4 md:gap-x-8 scroll-smooth"
+        style="mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);">
+
+    <!-- SLIDE 1 · COVER -->
+    <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
+             style="background: radial-gradient(ellipse at 20% -10%, rgba(255,255,255,0.10) 0%, transparent 55%), radial-gradient(ellipse at 80% 110%, rgba(194,56,46,0.35) 0%, transparent 55%), linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%); border-color: var(--border);">
+      <div class="absolute inset-0 bg-dot-pattern"></div>
+      <div class="flex flex-col z-10 p-7 md:p-9 h-full items-center text-center">
+        <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em] mt-1" style="color: var(--red); animation-delay: 0s;">On Main · Ardmore, OK</div>
+        <img src="logo.jpg" alt="The Whistlestop" class="animate-on-scroll w-36 md:w-44 mt-6 rounded-xl shadow-xl" style="animation-delay: 0.05s;" />
+        <h1 class="animate-on-scroll font-display uppercase leading-[0.92] text-5xl md:text-6xl mt-6" style="color: var(--cream); animation-delay: 0.12s;">
+          Welcome<br><span style="color: var(--red);">to the stop.</span>
+        </h1>
+        <div class="animate-on-scroll w-10 h-[2px] mt-5" style="background: var(--gold); opacity: 0.75; animation-delay: 0.2s;"></div>
+        <p class="animate-on-scroll text-[14px] md:text-[15px] font-light leading-[1.65] mt-5 max-w-[90%]" style="color: rgba(246,234,210,0.78); animation-delay: 0.28s;">
+          A short, opinionated guide to the downtown we love — food, drinks, and places worth a look. Everything inside is a walk from your door.
+        </p>
+        <div class="mt-auto animate-on-scroll font-stamp font-bold uppercase text-[11px] tracking-[0.3em] pt-7" style="color: var(--kraft-deep); opacity: 0.85; animation-delay: 0.38s;">Scroll →</div>
       </div>
     </section>
 
-    <!-- 03 DRINK -->
-    <section class="slide cat">
-      <div class="cat-head">
-        <div>
-          <div class="cat-eyebrow">Chapter 02</div>
-          <div class="cat-title">Where to <em>drink.</em></div>
-        </div>
-        <div class="cat-num">02</div>
-      </div>
-      <p class="cat-intro">Your first cocktail is already covered — <b>check the nightstand</b> for a welcome drink on the house at Tipsy Gypsy.</p>
+    <!-- SLIDE 2 · EAT -->
+    <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
+             style="background-color: var(--kraft); border-color: rgba(28,38,49,0.12);">
+      <div class="absolute inset-0 bg-dot-kraft"></div>
+      <div class="flex flex-col h-full z-10 p-6 md:p-8 overflow-y-auto hide-scrollbar">
+        <header class="flex items-start justify-between mb-5 animate-on-scroll flex-shrink-0">
+          <div>
+            <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.26em]" style="color: var(--red);">Chapter 01</div>
+            <h2 class="font-display uppercase leading-[0.9] text-[44px] md:text-[52px] mt-2" style="color: var(--ink);">
+              Where to <span style="color: var(--red);">eat.</span>
+            </h2>
+          </div>
+          <span class="font-display text-[56px] leading-none" style="color: var(--ink); opacity: 0.12;">01</span>
+        </header>
 
-      <div class="venues">
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">The Tipsy Gypsy</div>
-            <div class="venue-walk">Downstairs</div>
-          </div>
-          <p class="venue-desc">A new-school cocktail bar right beneath you. Craft drinks, good music, unpretentious room.</p>
-          <span class="venue-insider">★ Your welcome drink lives here</span>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">Dew Drop Inn</div>
-            <div class="venue-walk">6 min walk</div>
-          </div>
-          <p class="venue-desc">Old-school Oklahoma beer joint. Cold pours, dive-bar character, zero attitude.</p>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">The Station</div>
-            <div class="venue-walk">4 min walk</div>
-          </div>
-          <p class="venue-desc">Rotating local taps and a patio that fills up fast when the weather's right.</p>
-        </div>
-      </div>
-    </section>
+        <p class="animate-on-scroll text-[13.5px] font-light leading-[1.6] mb-5" style="color: var(--ink-soft); animation-delay: 0.06s;">
+          Downtown Ardmore punches above its weight. <b style="font-weight:500; color: var(--ink);">Four favorites — all a short walk</b> from where you're staying.
+        </p>
 
-    <!-- 04 SHOP -->
-    <section class="slide cat">
-      <div class="cat-head">
-        <div>
-          <div class="cat-eyebrow">Chapter 03</div>
-          <div class="cat-title">Where to <em>shop.</em></div>
+        <div class="animate-on-scroll relative h-40 rounded-lg overflow-hidden mb-5 shadow-md" style="animation-delay: 0.14s;">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(28,38,49,0.12), rgba(28,38,49,0.5)), url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-0-XGSvOVjwa5QFVCfzZKVzYfIWN0DeM7.jpg');"></div>
+          <div class="absolute bottom-3 left-4 right-4 font-stamp font-bold uppercase text-[11px] tracking-[0.22em]" style="color: var(--cream);">Downtown · Dinner hour</div>
         </div>
-        <div class="cat-num">03</div>
-      </div>
-      <p class="cat-intro">Three small businesses worth a look — <b>the kind of places that make Main Street worth the drive.</b></p>
 
-      <div class="venues">
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">Nikko Blu Designs</div>
-            <div class="venue-walk">Ground floor</div>
+        <div class="flex flex-col gap-2.5">
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.22s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Cafe Alley</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">2 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Chef-driven American plates in a restored downtown storefront. The date-night move.</p>
           </div>
-          <p class="venue-desc">Handmade jewelry and statement pieces by Nikko Blu. The boutique beneath your feet.</p>
-          <span class="venue-insider">★ Your in-room discount card works here</span>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">The Stag</div>
-            <div class="venue-walk">3 min walk</div>
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.3s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Casa Romo</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">3 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Tex-Mex with a patio, heavy pours, and the kind of queso that ruins all other queso.</p>
           </div>
-          <p class="venue-desc">Men's style and a proper barbershop. Classic cuts, modern selection, no bad music.</p>
-        </div>
-        <div class="venue">
-          <div class="venue-head">
-            <div class="venue-name">The Bookseller</div>
-            <div class="venue-walk">5 min walk</div>
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.38s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Hamburger Inn</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">4 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Open since the 1930s. Order a cheeseburger, fries, and a chocolate malt. Trust.</p>
           </div>
-          <p class="venue-desc">Indie bookshop with sharp local picks. Grab something to read on the porch tonight.</p>
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.46s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Ten Star Pizza</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">5 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Wood-fired pies and local beer. Noisy, crowded, and exactly right on a Friday night.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 05 CLOSING -->
-    <section class="slide close" data-dark>
-      <div class="close-eyebrow">One more thing</div>
-      <div class="close-headline">Coming <em>back?</em> Book <em>direct.</em></div>
-      <div class="close-rule"></div>
-      <p class="close-body">Save 15% on your next stay when you book through us directly — skip the platform fees and lock in the same unit. We'll remember the little things.</p>
-      <a href="#" class="close-cta">Get my 15% code →</a>
-      <div class="close-foot">The Whistlestop · Main St · Ardmore, OK</div>
+    <!-- SLIDE 3 · DRINK -->
+    <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
+             style="background-image: linear-gradient(rgba(28,38,49,0.82), rgba(28,38,49,0.88)), url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-2-fe0Hb0wfOtKSgy5rGYLDqvuQ8s5hhq.jpg'); background-size: cover; background-position: center; border-color: var(--border);">
+      <div class="flex flex-col h-full z-10 p-6 md:p-8 overflow-y-auto hide-scrollbar">
+        <header class="flex items-start justify-between mb-5 animate-on-scroll flex-shrink-0">
+          <div>
+            <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.26em]" style="color: var(--red);">Chapter 02</div>
+            <h2 class="font-display uppercase leading-[0.9] text-[44px] md:text-[52px] mt-2" style="color: var(--cream);">
+              Where to <span style="color: var(--red);">drink.</span>
+            </h2>
+          </div>
+          <span class="font-display text-[56px] leading-none" style="color: var(--cream); opacity: 0.15;">02</span>
+        </header>
+
+        <p class="animate-on-scroll text-[13.5px] font-light leading-[1.6] mb-6" style="color: rgba(246,234,210,0.8); animation-delay: 0.06s;">
+          Your first cocktail is already covered — <b style="font-weight:500; color: var(--cream);">check the nightstand</b> for a welcome drink on the house at Tipsy Gypsy.
+        </p>
+
+        <div class="flex flex-col gap-2.5">
+          <div class="venue rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.14s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--cream);">The Tipsy Gypsy</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--gold);">Downstairs</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: rgba(246,234,210,0.78);">A new-school cocktail bar right beneath you. Craft drinks, good music, unpretentious room.</p>
+            <span class="inline-block mt-2 font-stamp font-bold text-[11px] tracking-[0.06em]" style="color: var(--gold);">★ Your welcome drink lives here</span>
+          </div>
+          <div class="venue rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.22s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--cream);">Dew Drop Inn</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">6 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: rgba(246,234,210,0.78);">Old-school Oklahoma beer joint. Cold pours, dive-bar character, zero attitude.</p>
+          </div>
+          <div class="venue rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.3s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--cream);">The Station</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">4 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: rgba(246,234,210,0.78);">Rotating local taps and a patio that fills up fast when the weather's right.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-  </div>
+    <!-- SLIDE 4 · SHOP -->
+    <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
+             style="background-color: var(--kraft); border-color: rgba(28,38,49,0.12);">
+      <div class="absolute inset-0 bg-dot-kraft"></div>
+      <div class="flex flex-col h-full z-10 p-6 md:p-8 overflow-y-auto hide-scrollbar">
+        <header class="flex items-start justify-between mb-5 animate-on-scroll flex-shrink-0">
+          <div>
+            <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.26em]" style="color: var(--red);">Chapter 03</div>
+            <h2 class="font-display uppercase leading-[0.9] text-[44px] md:text-[52px] mt-2" style="color: var(--ink);">
+              Where to <span style="color: var(--red);">shop.</span>
+            </h2>
+          </div>
+          <span class="font-display text-[56px] leading-none" style="color: var(--ink); opacity: 0.12;">03</span>
+        </header>
 
-  <button class="arrow prev" id="prev" aria-label="Previous slide">‹</button>
-  <button class="arrow next" id="next" aria-label="Next slide">›</button>
+        <p class="animate-on-scroll text-[13.5px] font-light leading-[1.6] mb-5" style="color: var(--ink-soft); animation-delay: 0.06s;">
+          Three small businesses worth a look — <b style="font-weight:500; color: var(--ink);">the kind of places that make Main Street worth the drive.</b>
+        </p>
 
-  <div class="ui" id="dots"></div>
-</div>
+        <div class="animate-on-scroll relative h-40 rounded-lg overflow-hidden mb-5 shadow-md" style="animation-delay: 0.14s;">
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(28,38,49,0.15), rgba(28,38,49,0.5)), url('https://edglwtyouc4uors1.public.blob.vercel-storage.com/townspark/ardmore-cafe-alley/google-photo-1-iUwdx6GDmziiRq0jpck7HkFbrtX8NR.jpg');"></div>
+          <div class="absolute bottom-3 left-4 right-4 font-stamp font-bold uppercase text-[11px] tracking-[0.22em]" style="color: var(--cream);">Main Street · Afternoon</div>
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.22s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Nikko Blu Designs</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">Ground floor</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Handmade jewelry and statement pieces by Nikko Blu. The boutique beneath your feet.</p>
+            <span class="inline-block mt-2 font-stamp font-bold text-[11px] tracking-[0.06em]" style="color: var(--gold);">★ Your in-room discount card works here</span>
+          </div>
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.3s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">The Stag</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">3 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Men's style and a proper barbershop. Classic cuts, modern selection, no bad music.</p>
+          </div>
+          <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.38s;">
+            <div class="flex items-baseline justify-between gap-3 mb-1">
+              <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">The Bookseller</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">5 min walk</div>
+            </div>
+            <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Indie bookshop with sharp local picks. Grab something to read on the porch tonight.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 · CLOSING / REBOOK -->
+    <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
+             style="background: radial-gradient(ellipse at 50% -10%, rgba(194,56,46,0.38) 0%, transparent 55%), linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%); border-color: var(--red);">
+      <div class="absolute inset-0 bg-dot-pattern"></div>
+      <div class="flex flex-col h-full z-10 p-7 md:p-10 justify-center items-center text-center">
+        <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em]" style="color: var(--red);">One more thing</div>
+        <h2 class="animate-on-scroll font-display uppercase leading-[0.95] text-[42px] md:text-[56px] mt-5 max-w-[420px]" style="color: var(--cream); animation-delay: 0.06s;">
+          Coming <span style="color: var(--red);">back?</span> Book <span style="color: var(--red);">direct.</span>
+        </h2>
+        <div class="animate-on-scroll w-10 h-[2px] mt-5" style="background: var(--gold); opacity: 0.75; animation-delay: 0.12s;"></div>
+        <p class="animate-on-scroll text-[14px] font-light leading-[1.65] mt-5 max-w-[320px]" style="color: rgba(246,234,210,0.84); animation-delay: 0.18s;">
+          Save 15% on your next stay when you book through us directly — skip the platform fees and lock in the same unit. We'll remember the little things.
+        </p>
+        <a href="#" class="animate-on-scroll inline-flex items-center gap-2 mt-7 px-6 py-3.5 rounded-[3px] font-stamp font-bold uppercase text-[13px] tracking-[0.18em] transition-colors"
+           style="background: var(--red); color: var(--cream); animation-delay: 0.26s;">
+          Get my 15% code
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <div class="mt-8 pt-4 font-stamp font-bold uppercase text-[10px] tracking-[0.22em] border-t" style="color: rgba(246,234,210,0.5); border-color: var(--border); width: 180px;">
+          The Whistlestop · Ardmore, OK
+        </div>
+      </div>
+    </section>
+
+  </main>
 
 <script>
-(function(){
-  var deck=document.getElementById('deck');
-  var slides=deck.querySelectorAll('.slide');
-  var total=slides.length;
-  var idx=0;
-  var startX=null, startY=null, dragging=false, moved=false;
+(function () {
+  // Fade-in observer
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('animate');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.animate-on-scroll').forEach(function (el) { io.observe(el); });
 
-  // dots
-  var dotsWrap=document.getElementById('dots');
-  for(var i=0;i<total;i++){
-    var b=document.createElement('button');
-    b.className='dot';
-    b.setAttribute('aria-label','Go to slide '+(i+1));
-    b.dataset.i=i;
-    dotsWrap.appendChild(b);
-  }
-  var dots=dotsWrap.querySelectorAll('.dot');
-  dots.forEach(function(d){d.addEventListener('click',function(){go(parseInt(d.dataset.i,10))})});
+  // Slider + pagination
+  var slider = document.getElementById('slider');
+  var slides = document.querySelectorAll('.slide-container');
+  var dotsWrap = document.getElementById('pagination-dots');
+  var dots = dotsWrap ? dotsWrap.querySelectorAll('.pag-dot') : [];
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
 
-  function go(n){
-    idx=Math.max(0,Math.min(total-1,n));
-    deck.style.transform='translateX(-'+(idx*100)+'vw)';
-    // desktop frame override
-    if(window.matchMedia('(min-width:780px)').matches){
-      deck.style.transform='translateX(-'+(idx*420)+'px)';
-    }
-    dots.forEach(function(d,i){d.classList.toggle('is-active',i===idx)});
-    // dark dots on dark slides
-    if(slides[idx].hasAttribute('data-dark')){
-      dotsWrap.classList.add('slide-dark-dots');
-    }else{
-      dotsWrap.classList.remove('slide-dark-dots');
-    }
-    document.getElementById('prev').disabled=idx===0;
-    document.getElementById('next').disabled=idx===total-1;
+  function scrollAmt() {
+    // One slide width + gap
+    var s = slides[0];
+    if (!s) return slider.clientWidth;
+    var gap = parseFloat(getComputedStyle(slider).columnGap || '16') || 16;
+    return s.getBoundingClientRect().width + gap;
   }
 
-  // buttons
-  document.getElementById('prev').addEventListener('click',function(){go(idx-1)});
-  document.getElementById('next').addEventListener('click',function(){go(idx+1)});
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    if (slides[i]) {
+      slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }
 
-  // keyboard
-  window.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight') go(idx+1);
-    else if(e.key==='ArrowLeft') go(idx-1);
+  function updateDots() {
+    // Find the slide whose center is closest to the slider's visible center
+    var srect = slider.getBoundingClientRect();
+    var center = srect.left + srect.width / 2;
+    var bestIdx = 0, bestDist = Infinity;
+    slides.forEach(function (s, i) {
+      var r = s.getBoundingClientRect();
+      var c = r.left + r.width / 2;
+      var d = Math.abs(c - center);
+      if (d < bestDist) { bestDist = d; bestIdx = i; }
+    });
+    dots.forEach(function (d, i) { d.classList.toggle('is-active', i === bestIdx); });
+  }
+
+  dots.forEach(function (d, i) {
+    d.addEventListener('click', function () { goTo(i); });
   });
 
-  // touch swipe
-  deck.addEventListener('touchstart',function(e){
-    if(e.touches.length!==1) return;
-    startX=e.touches[0].clientX;
-    startY=e.touches[0].clientY;
-    dragging=true;moved=false;
-  },{passive:true});
-  deck.addEventListener('touchmove',function(e){
-    if(!dragging) return;
-    var dx=e.touches[0].clientX-startX;
-    var dy=e.touches[0].clientY-startY;
-    if(Math.abs(dx)>Math.abs(dy)+4) moved=true;
-  },{passive:true});
-  deck.addEventListener('touchend',function(e){
-    if(!dragging) return;
-    var endX=(e.changedTouches[0]||{}).clientX;
-    var dx=endX-startX;
-    dragging=false;
-    if(!moved) return;
-    if(dx<-40) go(idx+1);
-    else if(dx>40) go(idx-1);
-  },{passive:true});
+  if (prevBtn) prevBtn.addEventListener('click', function () { slider.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { slider.scrollBy({ left: scrollAmt(), behavior: 'smooth' }); });
 
-  // handle resize (desktop/mobile transform unit swap)
-  window.addEventListener('resize',function(){go(idx)});
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') slider.scrollBy({ left: scrollAmt(), behavior: 'smooth' });
+    else if (e.key === 'ArrowLeft') slider.scrollBy({ left: -scrollAmt(), behavior: 'smooth' });
+  });
 
-  // init
-  go(0);
+  var raf = null;
+  slider.addEventListener('scroll', function () {
+    if (raf) return;
+    raf = requestAnimationFrame(function () { raf = null; updateDots(); });
+  }, { passive: true });
+
+  window.addEventListener('resize', updateDots);
+  updateDots();
 })();
 </script>
 </body>
