@@ -176,6 +176,7 @@
 
   /* OPPORTUNITY GRID */
   .opp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 40px; max-width: 900px; }
+  .opp-grid.is-3up { grid-template-columns: repeat(3, 1fr); max-width: 1100px; }
   .opp-card { background: var(--cream); padding: 32px 32px; }
   .slide--dark .opp-card { background: rgba(255,255,255,0.04); }
   .slide--terra .opp-card { background: rgba(255,255,255,0.55); }
@@ -323,7 +324,7 @@
 
   /* MOBILE */
   @media (max-width: 900px) {
-    .opp-grid { grid-template-columns: 1fr; }
+    .opp-grid, .opp-grid.is-3up { grid-template-columns: 1fr; }
     .pillar-row { grid-template-columns: 1fr 1fr; }
     .pillar:nth-child(2) { border-right: none; }
     .pillar:nth-child(1), .pillar:nth-child(2) { border-bottom: 1px solid var(--rule); }
@@ -455,28 +456,23 @@
   <div class="slide slide--terra">
     <span class="slide-num">03</span>
     <div class="eyebrow" data-reveal>The Opportunity</div>
-    <div class="display-sm" data-reveal data-delay="1">Four levers that turn this<br>into a <em>hospitality brand.</em></div>
+    <div class="display-sm" data-reveal data-delay="1">Three levers that turn this<br>into a <em>hospitality brand.</em></div>
     <div class="rule" data-reveal data-delay="2"></div>
-    <div class="opp-grid">
+    <div class="opp-grid is-3up">
       <div class="opp-card" data-reveal data-delay="3">
         <div class="opp-num">01</div>
-        <div class="opp-title">Upstairs ↔ downstairs flywheel</div>
-        <div class="opp-body">Every guest becomes a customer of all three. Stay, sip, shop — each feeds the next.</div>
+        <div class="opp-title">Premium brand, premium pricing</div>
+        <div class="opp-body">Pro photos + thoughtful branding + polished websites. The properties immediately stand out among the local competition.</div>
       </div>
       <div class="opp-card" data-reveal data-delay="4">
         <div class="opp-num">02</div>
-        <div class="opp-title">A digital welcome pack, one scan away</div>
-        <div class="opp-body">QR code in every unit → branded slideshow deck of shops, eats, events, and deals downtown. An on-property concierge, zero printing.</div>
-      </div>
-      <div class="opp-card" data-reveal data-delay="5">
-        <div class="opp-num">03</div>
         <div class="opp-title">Owned guest list</div>
         <div class="opp-body">Every guest captured. Nurture emails drive reviews, rebookings, and cross-promotion.</div>
       </div>
-      <div class="opp-card" data-reveal data-delay="6">
-        <div class="opp-num">04</div>
-        <div class="opp-title">Premium brand, premium pricing</div>
-        <div class="opp-body">Pro photos + real websites. The Whistlestop stops looking like every other Ardmore Airbnb.</div>
+      <div class="opp-card" data-reveal data-delay="5">
+        <div class="opp-num">03</div>
+        <div class="opp-title">Upstairs ↔ downstairs flywheel</div>
+        <div class="opp-body">Every guest becomes a customer of all three. Stay, sip, shop — each feeds the next.</div>
       </div>
     </div>
     <div class="logo-bar" style="border-top-color: rgba(196,121,74,0.2);">
