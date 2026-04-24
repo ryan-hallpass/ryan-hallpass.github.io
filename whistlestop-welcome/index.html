@@ -79,6 +79,17 @@
   .pag-dot:hover { background: rgba(246,234,210,0.5); }
   .pag-dot.is-active { background: var(--red); width: 24px; border-radius: 4px; }
 
+  /* Walking-directions link inside walk-time badges */
+  a[href*="maps/dir"] {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: opacity 180ms ease;
+  }
+  a[href*="maps/dir"]:hover { opacity: 0.7; }
+
   /* Venue card */
   .venue {
     background: rgba(246,234,210,0.06);
@@ -143,7 +154,7 @@
         </h1>
         <div class="animate-on-scroll w-10 h-[2px] mt-5" style="background: var(--gold); opacity: 0.75; animation-delay: 0.2s;"></div>
         <p class="animate-on-scroll text-[14px] md:text-[15px] font-light leading-[1.65] mt-5 max-w-[90%]" style="color: rgba(246,234,210,0.78); animation-delay: 0.28s;">
-          A short, opinionated guide to the downtown we love — food, drinks, and places worth a look. Everything inside is a walk from your door.
+          A short guide to the places in downtown Ardmore that we love — food, drinks, shopping, and everything worth checking out. All within a short walk of here.
         </p>
         <div class="mt-auto animate-on-scroll font-stamp font-bold uppercase text-[11px] tracking-[0.3em] pt-7" style="color: var(--kraft-deep); opacity: 0.85; animation-delay: 0.38s;">Scroll →</div>
       </div>
@@ -177,28 +188,28 @@
           <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.22s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <a href="https://ryan-hallpass.github.io/ardmore-chamber/profiles/cafe-alley/" target="_blank" rel="noopener" class="font-display uppercase text-[21px] leading-none transition-opacity hover:opacity-70" style="color: var(--ink); text-decoration: underline; text-decoration-color: rgba(194,56,46,0.4); text-underline-offset: 4px;">Cafe Alley</a>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">2 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=Cafe+Alley+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">2 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Chef-driven American plates in a restored downtown storefront. The date-night move.</p>
           </div>
           <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.3s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Casa Romo</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">3 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=Casa+Romo+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">3 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Tex-Mex with a patio, heavy pours, and the kind of queso that ruins all other queso.</p>
           </div>
           <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.38s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Hamburger Inn</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">4 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=Hamburger+Inn+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">4 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Open since the 1930s. Order a cheeseburger, fries, and a chocolate malt. Trust.</p>
           </div>
           <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.46s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">Ten Star Pizza</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">5 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=Ten+Star+Pizza+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">5 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Wood-fired pies and local beer. Noisy, crowded, and exactly right on a Friday night.</p>
           </div>
@@ -236,14 +247,14 @@
           <div class="venue rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.22s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--cream);">Dew Drop Inn</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">6 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=Dew+Drop+Inn+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">6 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: rgba(246,234,210,0.78);">Old-school Oklahoma beer joint. Cold pours, dive-bar character, zero attitude.</p>
           </div>
           <div class="venue rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.3s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--cream);">The Station</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">4 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=The+Station+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">4 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: rgba(246,234,210,0.78);">Rotating local taps and a patio that fills up fast when the weather's right.</p>
           </div>
@@ -287,14 +298,14 @@
           <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.3s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">The Stag</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">3 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=The+Stag+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">3 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Men's style and a proper barbershop. Classic cuts, modern selection, no bad music.</p>
           </div>
           <div class="venue-kraft rounded-[3px] p-4 animate-on-scroll" style="animation-delay: 0.38s;">
             <div class="flex items-baseline justify-between gap-3 mb-1">
               <div class="font-display uppercase text-[21px] leading-none" style="color: var(--ink);">The Bookseller</div>
-              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);">5 min walk</div>
+              <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.14em] whitespace-nowrap" style="color: var(--red);"><a href="https://www.google.com/maps/dir/?api=1&amp;origin=13+E+Main+St,+Ardmore,+OK&amp;destination=The+Bookseller+Ardmore+OK&amp;travelmode=walking" target="_blank" rel="noopener" title="Walking directions from 13 E Main St">5 min walk →</a></div>
             </div>
             <p class="text-[13px] font-light leading-[1.5]" style="color: var(--ink-soft);">Indie bookshop with sharp local picks. Grab something to read on the porch tonight.</p>
           </div>
