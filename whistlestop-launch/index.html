@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Whistlestop — Launch Proposal</title>
+<link rel="icon" type="image/png" href="hallpass-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F2EFE8;
+    --ink: #1A1A18;
+    --ink-soft: #3D3D38;
+    --terra: #C4794A;
+    --terra-light: #E8B99A;
+    --terra-wash: #F7EEE7;
+    --warm-white: #FAFAF7;
+    --rule: rgba(26,26,24,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .deck { width: 100%; padding: 0; }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: clamp(40px, 7vw, 96px) clamp(32px, 8vw, 120px);
+    margin-bottom: 2px;
+    background: var(--warm-white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(26,26,24,0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .slide--dark { background: var(--ink); color: var(--cream); }
+  .slide--terra { background: var(--terra-wash); }
+  .slide--accent { background: var(--terra); color: var(--warm-white); }
+
+  .slide-num { position: absolute; top: 28px; right: 36px; font-size: 11px; font-weight: 400; letter-spacing: 0.12em; opacity: 0.35; }
+  .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: 20px; }
+
+  .display { font-family: var(--serif); font-size: clamp(38px, 5.5vw, 64px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; }
+  .display em { font-style: italic; color: var(--terra); }
+  .slide--dark .display em { color: var(--terra-light); }
+  .slide--accent .display { color: var(--warm-white); }
+  .slide--accent .display em { color: rgba(255,255,255,0.7); }
+
+  .display-sm { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 40px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; }
+  .display-sm em { font-style: italic; color: var(--terra); }
+  .slide--dark .display-sm em { color: var(--terra-light); }
+
+  .body { font-size: 15px; line-height: 1.7; font-weight: 300; max-width: 620px; opacity: 0.8; margin-top: 20px; }
+  .body-lg { font-size: 18px; line-height: 1.6; font-weight: 300; max-width: 640px; margin-top: 24px; }
+
+  .rule { width: 48px; height: 2px; background: var(--terra); margin: 28px 0; }
+  .slide--dark .rule { background: var(--terra-light); }
+  .slide--accent .rule { background: rgba(255,255,255,0.4); }
+
+  .cover-hero { position: relative; min-height: 100vh; background: url('cover.jpg') center / cover no-repeat; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(48px, 7vw, 96px) clamp(40px, 6vw, 80px); overflow: hidden; }
+  .cover-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,24,0.95) 0%, rgba(26,26,24,0.78) 40%, rgba(196,121,74,0.35) 100%); z-index: 0; }
+  .cover-hero::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px); background-size: 24px 24px; z-index: 0; }
+  .cover-hero > * { position: relative; z-index: 1; }
+  .wordmark img { height: 22px; width: auto; filter: invert(1); opacity: 0.55; display: block; }
+  .cover-headline { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 58px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: var(--cream); max-width: 900px; }
+  .cover-headline em { font-style: italic; color: var(--terra-light); }
+  .cover-sub { font-size: 15px; font-weight: 300; opacity: 0.7; margin-top: 20px; line-height: 1.6; color: var(--cream); max-width: 640px; }
+  .cover-bottom { display: flex; flex-direction: column; gap: 6px; color: var(--cream); }
+  .cover-bottom-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5; }
+  .cover-bottom-title { font-family: var(--serif); font-size: clamp(18px, 2.2vw, 24px); font-weight: 400; line-height: 1.3; opacity: 0.85; }
+  .cover-bottom-date { font-size: 12px; opacity: 0.45; letter-spacing: 0.08em; margin-top: 4px; }
+
+  .logo-bar { display: flex; align-items: center; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .logo-bar img { height: 18px; width: auto; opacity: 0.4; }
+  .logo-bar span { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; opacity: 0.4; text-transform: uppercase; }
+
+  .pricing-table { width: 100%; max-width: 820px; margin-top: 44px; border-collapse: collapse; }
+  .pricing-table thead th { padding: 20px 22px; text-align: center; vertical-align: bottom; border-bottom: 2px solid var(--rule); }
+  .pricing-table thead th:first-child { text-align: left; width: 46%; }
+  .pricing-table thead .tier-name { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
+  .pricing-table thead .tier-price { font-family: var(--serif); font-size: 30px; font-weight: 400; color: var(--terra); line-height: 1; }
+  .pricing-table thead .tier-period { font-size: 11px; opacity: 0.5; margin-top: 4px; }
+  .pricing-table thead .tier-recommended { background: var(--terra); border-radius: 3px; padding: 3px 10px; font-size: 9px; font-weight: 500; letter-spacing: 0.12em; color: white; display: inline-block; margin-bottom: 10px; }
+  .pricing-table tbody td { padding: 13px 22px; border-bottom: 1px solid var(--rule); font-size: 13px; font-weight: 300; text-align: center; }
+  .pricing-table tbody td:first-child { text-align: left; opacity: 0.85; }
+  .pricing-table .check { color: var(--terra); font-size: 17px; font-weight: 600; }
+  .pricing-table .no-check { color: rgba(26,26,24,0.18); font-size: 16px; }
+
+  .pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; max-width: 1100px; }
+  .pkg-col h5 { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+  .pkg-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .pkg-col li { font-size: 13px; line-height: 1.5; font-weight: 300; padding-left: 14px; position: relative; opacity: 0.82; }
+  .pkg-col li::before { content: '·'; position: absolute; left: 0; color: var(--terra); font-size: 16px; top: -2px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 36px; max-width: 1000px; }
+  .two-col h5 { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+  .two-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .two-col li { font-size: 14px; line-height: 1.5; font-weight: 300; padding-left: 16px; position: relative; opacity: 0.82; }
+  .two-col li::before { content: '—'; position: absolute; left: 0; color: var(--terra); font-family: var(--serif); }
+  .two-col .out-list li::before { content: '×'; color: rgba(26,26,24,0.25); font-family: var(--sans); font-size: 13px; top: 1px; }
+
+  @media (max-width: 900px) {
+    .pkg-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  @media (max-width: 700px) {
+    .slide { padding: 56px 28px; }
+    .cover-hero { min-height: 100vh; padding: 48px 28px; }
+    .pricing-table thead .tier-price { font-size: 22px; }
+    .pricing-table tbody td, .pricing-table thead th { padding: 10px 10px; font-size: 12px; }
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  [data-reveal][data-delay="1"] { transition-delay: 0.15s; }
+  [data-reveal][data-delay="2"] { transition-delay: 0.30s; }
+  [data-reveal][data-delay="3"] { transition-delay: 0.45s; }
+  [data-reveal][data-delay="4"] { transition-delay: 0.60s; }
+  [data-reveal][data-delay="5"] { transition-delay: 0.75s; }
+  [data-reveal][data-delay="6"] { transition-delay: 0.90s; }
+  .cover-hero [data-reveal] { transform: translateY(20px); transition-duration: 1.2s; }
+  .pricing-table[data-reveal] { transform: translateY(20px) scale(0.98); }
+  .pricing-table[data-reveal].is-visible { transform: translateY(0) scale(1); }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 01 COVER -->
+  <div class="cover-hero">
+    <div class="wordmark" data-reveal>
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+    </div>
+    <div>
+      <p style="font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);opacity:0.5;margin-bottom:20px;" data-reveal>Prepared for Lance Ladd · The Whistlestop</p>
+      <h1 data-reveal data-delay="1" class="cover-headline">Open the Whistlestop with a brand that <em>books rooms.</em></h1>
+      <p class="cover-sub" data-reveal data-delay="2" style="text-shadow: 0 1px 4px rgba(0,0,0,0.6);">A focused launch proposal — brand, booking website, photography, and the systems that turn a stay into a return guest.</p>
+    </div>
+    <div class="cover-bottom" data-reveal data-delay="3">
+      <p class="cover-bottom-label">Prepared by</p>
+      <p class="cover-bottom-title">Hallpass Digital</p>
+      <p class="cover-bottom-date">April 2026</p>
+    </div>
+  </div>
+
+  <!-- 02 LAUNCH PROJECT INTRO -->
+  <div class="slide slide--terra">
+    <span class="slide-num">02</span>
+    <div class="eyebrow" data-reveal>The Launch Project</div>
+    <div class="display" data-reveal data-delay="1">Two tiers. <em>Pick your lane.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <p class="body" data-reveal data-delay="3" style="margin-top:4px;opacity:0.85;font-size:17px;line-height:1.7;"><b style="font-weight:500;">Foundation</b> — open with a professional presence and a working booking site.<br><b style="font-weight:500;">Signature</b> — open like a hospitality brand, with the welcome experience and post-stay automations to drive rebookings.</p>
+    <p class="body" data-reveal data-delay="4" style="margin-top:24px;opacity:0.7;font-size:13px;">Each tier carries a monthly fee — <b style="font-weight:500;">$145 Foundation · $245 Signature</b>. Both run on a 12-month minimum so the systems have enough runway to actually move the metrics.</p>
+    <div class="logo-bar" style="border-top-color: rgba(196,121,74,0.2);">
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+      <span>The Whistlestop</span>
+    </div>
+  </div>
+
+  <!-- 03 COMPARISON -->
+  <div class="slide">
+    <span class="slide-num">03</span>
+    <div class="eyebrow" data-reveal>Side By Side</div>
+    <div class="display-sm" data-reveal data-delay="1">Two ways to <em>open the doors.</em></div>
+    <table class="pricing-table" data-reveal data-delay="2">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            <div class="tier-name">Foundation</div>
+            <div class="tier-price">$4,500</div>
+            <div class="tier-period">one-time</div>
+            <div class="tier-period" style="color:var(--terra);margin-top:8px;font-weight:500;">+ $145/mo · 12-mo min</div>
+          </th>
+          <th style="background:var(--terra-wash);border-radius:6px 6px 0 0;padding-bottom:24px;">
+            <div class="tier-recommended">RECOMMENDED</div>
+            <div class="tier-name">Signature</div>
+            <div class="tier-price">$7,500</div>
+            <div class="tier-period">one-time</div>
+            <div class="tier-period" style="color:var(--terra);margin-top:8px;font-weight:500;">+ $245/mo · 12-mo min</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Brand discovery — logo, palette, typography, mini brand guide</td><td><span class="check">&#10003;</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Whistlestop booking website — <b style="font-weight:500;">SEO-optimized, integrated with your chosen booking platform</b> <em style="font-style:italic;opacity:0.7;">(direct-booking widget embedded; platform itself is your subscription, see slide 5)</em></td><td><span class="check">&#10003;</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Google Business Profile setup &amp; optimization</td><td><span class="check">&#10003;</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Professional photography — edited library for Airbnb, Vrbo, Booking.com, GBP, social, web, and print</td><td><span class="check">&#10003;</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Print collateral design — branded Whistlestop postcard <em style="font-style:italic;opacity:0.7;">(print-ready files; printing &amp; production paid by you)</em></td><td><span class="check">&#10003;</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Social account setup (IG, FB)</td><td><span class="check">&#10003;</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td colspan="3" style="padding:22px 22px 10px;border-bottom:none;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;text-align:left;">Signature adds</td></tr>
+        <tr><td>Digital Welcome Pack — branded slideshow with QR in every unit (downtown guide, house rules, recommendations)</td><td><span class="no-check">—</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Whistlestop walkthrough video — formatted for social &amp; web</td><td><span class="no-check">—</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>Raw photo files + video b-roll library — fuel for ongoing reels, ads, seasonal posts</td><td><span class="no-check">—</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr><td>CRM build-out + post-stay email automations (review request, rebooking nudge)</td><td><span class="no-check">—</span></td><td style="background:var(--terra-wash);"><span class="check">&#10003;</span></td></tr>
+        <tr>
+          <td style="padding-top:22px;padding-bottom:14px;font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.55;border-bottom:none;">Your investment</td>
+          <td style="padding-top:22px;padding-bottom:14px;border-bottom:none;text-align:center;">
+            <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1;font-weight:400;">$4,500</div>
+            <div style="font-size:10px;opacity:0.55;margin-top:3px;letter-spacing:0.08em;text-transform:uppercase;">one-time</div>
+            <div style="font-size:13px;color:var(--terra);margin-top:10px;font-weight:500;">+ $145/mo</div>
+            <div style="font-size:9px;opacity:0.5;margin-top:12px;padding-top:10px;border-top:1px solid rgba(26,26,24,0.12);letter-spacing:0.12em;text-transform:uppercase;">Year 1 total</div>
+            <div style="font-family:var(--serif);font-size:18px;color:var(--ink);line-height:1;font-weight:400;margin-top:4px;">$6,240</div>
+          </td>
+          <td style="background:var(--terra-wash);padding-top:22px;padding-bottom:14px;border-bottom:none;text-align:center;">
+            <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1;font-weight:400;">$7,500</div>
+            <div style="font-size:10px;opacity:0.55;margin-top:3px;letter-spacing:0.08em;text-transform:uppercase;">one-time</div>
+            <div style="font-size:13px;color:var(--terra);margin-top:10px;font-weight:500;">+ $245/mo</div>
+            <div style="font-size:9px;opacity:0.5;margin-top:12px;padding-top:10px;border-top:1px solid rgba(26,26,24,0.14);letter-spacing:0.12em;text-transform:uppercase;">Year 1 total</div>
+            <div style="font-family:var(--serif);font-size:18px;color:var(--ink);line-height:1;font-weight:400;margin-top:4px;">$10,440</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-top:0;padding-bottom:20px;font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;opacity:0.45;vertical-align:top;border-bottom:none;">What the monthly covers</td>
+          <td style="padding-top:0;padding-bottom:20px;font-size:11.5px;line-height:1.55;opacity:0.78;text-align:left;font-weight:300;border-bottom:none;">Hosting for the Whistlestop website and your photo / video library.</td>
+          <td style="background:var(--terra-wash);border-radius:0 0 6px 6px;padding-top:0;padding-bottom:20px;font-size:11.5px;line-height:1.55;opacity:0.78;text-align:left;font-weight:300;border-bottom:none;">Everything in Foundation — plus hosting for the Welcome Pack, CRM, and the post-stay email automations running 24/7.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;opacity:0.6;margin-top:24px;font-weight:400;max-width:760px;">All design work — brand, website, postcard, Welcome Pack — includes <b style="font-weight:500;">2 rounds of revisions.</b></p>
+    <p style="font-size:12px;opacity:0.5;margin-top:8px;font-weight:300;max-width:760px;">Both tiers delivered in 5–7 weeks from signed contract. Booking-platform integration is included in the website build.</p>
+    <div class="logo-bar">
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+      <span>The Whistlestop</span>
+    </div>
+  </div>
+
+  <!-- 04 OPTIONAL ADD-ONS -->
+  <div class="slide">
+    <span class="slide-num">04</span>
+    <div class="eyebrow" data-reveal>Optional Add-Ons</div>
+    <div class="display-sm" data-reveal data-delay="1">Bolt-on engines<br>that <em>compound.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <p class="body" data-reveal data-delay="3">Add at signing or bolt on later. Modular, not bundled. Each add-on stands on its own.</p>
+    <div class="pkg-grid">
+      <div class="pkg-col" data-reveal data-delay="3" style="background:var(--terra-wash);padding:32px 28px;border-radius:6px;border-left:3px solid var(--terra);">
+        <div style="display:inline-block;background:var(--terra);color:#fff;font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:14px;">Recommended</div>
+        <h5>Social Media Coaching</h5>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1.2;margin:6px 0 4px;">$500/mo</div>
+        <div style="font-size:12px;opacity:0.7;margin-bottom:18px;">Whistlestop only · 6-month minimum</div>
+        <ul>
+          <li><b style="font-weight:500;">2 × 1-hour coaching sessions per month</b> (Zoom or in-person) — strategic guidance on what&rsquo;s working and what to test</li>
+          <li><b style="font-weight:500;">Monthly content audit</b> — review of recent posts; what&rsquo;s working, what&rsquo;s not, and what to refine</li>
+          <li><b style="font-weight:500;">Recommendations document + strategy</b> tailored to short-term rentals — written playbook covering content pillars, channel priorities, and seasonal calendar</li>
+          <li>Direct text/email access between sessions for quick questions</li>
+        </ul>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(26,26,24,0.12);font-size:12px;opacity:0.7;line-height:1.55;font-style:italic;">Content creation and day-to-day posting stay with your team — Hallpass is the outside advisor, not the agency. 6-month minimum so we have enough cycles to actually move the metrics.</div>
+      </div>
+      <div class="pkg-col" data-reveal data-delay="4" style="padding:32px 28px;">
+        <h5>Local SEO &amp; Monitoring</h5>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1.2;margin:6px 0 4px;">$125/mo</div>
+        <div style="font-size:12px;opacity:0.6;margin-bottom:18px;">Whistlestop only · 12-month minimum</div>
+        <ul>
+          <li><b style="font-weight:500;">SEO Citation Launch</b> — 50 corrected/built citations to set the foundation for local rankings</li>
+          <li><b style="font-weight:500;">Local rank tracking</b> across Google Search, Maps, and the local pack — keyword visibility monitored monthly</li>
+          <li><b style="font-weight:500;">Directory listings sync</b> — name, address, phone, hours kept consistent across the major local directories</li>
+          <li><b style="font-weight:500;">Google Business Profile audits &amp; scheduling</b> — flags missing photos, unanswered questions, suboptimal categories</li>
+          <li><b style="font-weight:500;">Multi-site review monitoring</b> — Google, Airbnb, Vrbo, TripAdvisor, and 80+ sites in one dashboard</li>
+          <li><b style="font-weight:500;">Monthly local-search snapshot</b></li>
+        </ul>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(26,26,24,0.12);font-size:12px;opacity:0.7;line-height:1.55;font-style:italic;">All software subscriptions and tooling fees required to deliver this service are included — no separate pass-through.</div>
+      </div>
+      <div class="pkg-col" data-reveal data-delay="5" style="padding:32px 28px;">
+        <h5>Meta Ads</h5>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1.2;margin:6px 0 4px;">Your budget <span style="font-size:16px;opacity:0.75;">+ 30%</span></div>
+        <div style="font-size:12px;opacity:0.6;margin-bottom:18px;">Creative &amp; management · $2,000 minimum ad spend · 12-month minimum</div>
+        <ul>
+          <li>Name your own monthly ad budget — scale up or down month to month</li>
+          <li>Meta Business Manager + pixel setup across Facebook &amp; Instagram</li>
+          <li>Geo-targeted to Ardmore and the surrounding drive-market</li>
+          <li>Branded ad creative: static images + short-form video variants</li>
+          <li>Cold, retargeting, and lookalike audiences</li>
+          <li>Monthly performance report + iteration on what&rsquo;s converting</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:12px;opacity:0.5;margin-top:32px;font-weight:300;max-width:760px;"><em style="font-style:italic;">Social Media Coaching carries a 6-month minimum; Local SEO &amp; Monitoring and Meta Ads carry 12-month minimums so the underlying programs have enough runway to actually move the metrics.</em></p>
+    <div class="logo-bar">
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+      <span>The Whistlestop</span>
+    </div>
+  </div>
+
+  <!-- 05 BOOKING ENGINE GUIDANCE -->
+  <div class="slide">
+    <span class="slide-num">05</span>
+    <div class="eyebrow" data-reveal>Whistlestop&rsquo;s Booking Engine</div>
+    <div class="display-sm" data-reveal data-delay="1">A guide to platforms<br><em>actually built</em> for short-term rentals.</div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <p class="body" data-reveal data-delay="3" style="margin-top:20px;">Here&rsquo;s the platform landscape for the Whistlestop&rsquo;s booking system, plus why we&rsquo;re steering away from Wix. <b style="font-weight:500;">Booking platform setup and day-to-day operations stay with you</b> (or a dedicated STR co-host) &mdash; Hallpass focuses on the marketing site and integrates whichever platform you choose into the Whistlestop website build.</p>
+
+    <div data-reveal data-delay="3" style="margin-top:44px;background:var(--cream);padding:32px 36px;border-radius:6px;border:1px solid rgba(26,26,24,0.08);max-width:880px;">
+      <div style="font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.55;margin-bottom:10px;">A note on Wix</div>
+      <p style="font-size:15px;line-height:1.65;margin:0 0 14px;opacity:0.9;"><b style="font-weight:500;">Wix Bookings is built for service appointments</b> &mdash; haircuts, classes, massages &mdash; not multi-night stays. The original Wix Hotels product was deprecated; current STR functionality on Wix is third-party integrations bolted onto a builder that wasn&rsquo;t designed for this category.</p>
+      <p style="font-size:14px;line-height:1.65;margin:0;opacity:0.78;">Wix doesn&rsquo;t handle nightly pricing logic, minimum-stay rules, channel sync to Airbnb / Vrbo / Booking.com, or security-deposit holds &mdash; all table-stakes for an STR. If Whistlestop ever lists on Airbnb, a Wix-only setup creates real double-booking risk.</p>
+    </div>
+
+    <p class="body" data-reveal data-delay="4" style="margin-top:44px;font-size:15.5px;">Three platforms built for this category &mdash; with realistic 6-unit pricing, assuming you want direct bookings (not just OTA distribution).</p>
+
+    <div class="pkg-grid" style="margin-top:24px;">
+      <div class="pkg-col" data-reveal data-delay="4" style="padding:32px 28px;">
+        <h5>Hospitable Professional</h5>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1.2;margin:6px 0 4px;">~$119/mo</div>
+        <div style="font-size:12px;opacity:0.6;margin-bottom:18px;">6 units &middot; $59 base + $15/unit over 2 &middot; + transaction fees</div>
+        <ul>
+          <li>Direct bookings included &mdash; <b style="font-weight:500;">4% guest + 3% host fee</b> (or 7% host-only option)</li>
+          <li>Channel sync: Airbnb, Vrbo, Booking.com, Google Vacation Rentals</li>
+          <li>$5M damage protection on direct bookings</li>
+          <li>Highest user rating in the category (4.9/5)</li>
+          <li>Embeddable direct-booking widget for the Whistlestop site</li>
+        </ul>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(26,26,24,0.12);font-size:12px;opacity:0.75;line-height:1.55;">Best UX in the category. Transaction fees mean higher cost as direct revenue grows — but the polish is unmatched.</div>
+      </div>
+      <div class="pkg-col" data-reveal data-delay="5" style="background:var(--terra-wash);padding:32px 28px;border-radius:6px;border-left:3px solid var(--terra);">
+        <div style="display:inline-block;background:var(--terra);color:#fff;font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:14px;">Best value</div>
+        <h5>OwnerRez</h5>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1.2;margin:6px 0 4px;">~$90/mo</div>
+        <div style="font-size:12px;opacity:0.7;margin-bottom:18px;">6 units &middot; $40 base + $10/unit &middot; <b style="font-weight:500;">no booking fees, ever</b></div>
+        <ul>
+          <li><b style="font-weight:500;">Zero transaction fees on direct bookings</b> — your money is your money</li>
+          <li>Channel sync via API to Airbnb, Vrbo, Booking.com</li>
+          <li>Solid website builder + booking engine</li>
+          <li>Highest G2 satisfaction (5.0/5)</li>
+          <li>Strong reporting + accounting features for tax season</li>
+        </ul>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(26,26,24,0.12);font-size:12px;opacity:0.75;line-height:1.55;">Best long-term economics if direct bookings become a meaningful share of revenue.</div>
+      </div>
+      <div class="pkg-col" data-reveal data-delay="6" style="padding:32px 28px;">
+        <h5>Lodgify Professional</h5>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--terra);line-height:1.2;margin:6px 0 4px;">~$46&ndash;95/mo</div>
+        <div style="font-size:12px;opacity:0.6;margin-bottom:18px;">6 units &middot; varies by current promo &middot; no booking fees</div>
+        <ul>
+          <li>No booking fees on direct (Professional tier and up)</li>
+          <li>Best-in-class direct-booking website builder</li>
+          <li>Custom domain + embeddable booking widget</li>
+          <li>Channel manager for major OTAs</li>
+          <li>Strongest design polish in the category</li>
+        </ul>
+        <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(26,26,24,0.12);font-size:12px;opacity:0.75;line-height:1.55;">Best fit if Lodgify&rsquo;s built-in website would replace a custom Whistlestop site.</div>
+      </div>
+    </div>
+
+    <div data-reveal data-delay="7" style="margin-top:44px;background:var(--cream);padding:28px 32px;border-radius:6px;border:1px solid rgba(26,26,24,0.08);max-width:880px;">
+      <div style="font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;opacity:0.55;margin-bottom:10px;">A note on Furnished Finder</div>
+      <p style="font-size:14.5px;line-height:1.65;margin:0 0 12px;opacity:0.9;"><b style="font-weight:500;">None of the major channel managers natively integrate with Furnished Finder.</b> Furnished Finder doesn&rsquo;t offer the API access that Airbnb / Vrbo / Booking.com do — it&rsquo;s a smaller listing platform built for medium-term rentals (traveling nurses, professionals on 30+ day stays).</p>
+      <p style="font-size:14px;line-height:1.65;margin:0;opacity:0.78;">The standard workflow that all three platforms support: create the Whistlestop listing manually on Furnished Finder, then <b style="font-weight:500;">import your unified calendar via iCal</b> so Furnished Finder shows accurate availability and you don&rsquo;t double-book.</p>
+    </div>
+
+    <p style="font-size:12px;opacity:0.55;margin-top:32px;font-weight:300;max-width:820px;">Platform pricing reflects published 2026 rates and may shift. Whichever platform you choose, the subscription is paid directly to the vendor. <b style="font-weight:500;">Hallpass integrates the chosen platform&rsquo;s direct-booking widget into the Whistlestop site as part of the website build</b> — no separate booking-management fee. Setup, listing creation, dynamic pricing decisions, and day-to-day guest operations stay with you or a dedicated STR co-host.</p>
+
+    <div class="logo-bar">
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+      <span>The Whistlestop</span>
+    </div>
+  </div>
+
+  <!-- 06 TERMS & SCOPE -->
+  <div class="slide">
+    <span class="slide-num">06</span>
+    <div class="eyebrow" data-reveal>Terms &amp; Scope</div>
+    <div class="display-sm" data-reveal data-delay="1">Clean agreements<br>make <em>better relationships.</em></div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <div class="two-col">
+      <div data-reveal data-delay="3">
+        <h5>Payment &amp; Timing</h5>
+        <ul>
+          <li>Launch Project (one-time): 50% deposit at signing, 50% at launch</li>
+          <li>Monthly fee — <b style="font-weight:500;">$145 Foundation · $245 Signature</b> — auto-billed monthly, starts at signing</li>
+          <li><b style="font-weight:500;">Both tiers carry a 12-month minimum</b>; after that, plans continue month-to-month with 30 days&rsquo; notice</li>
+          <li>Add-ons:
+            <ul style="margin-top:8px;list-style:none;padding:0;">
+              <li style="padding-left:14px;position:relative;font-size:14px;font-weight:300;line-height:1.5;"><span style="position:absolute;left:0;color:var(--terra);">·</span>Social Media Coaching ($500/mo) — 6-month minimum</li>
+              <li style="padding-left:14px;position:relative;font-size:14px;font-weight:300;line-height:1.5;"><span style="position:absolute;left:0;color:var(--terra);">·</span>Local SEO &amp; Monitoring ($125/mo) — 12-month minimum</li>
+              <li style="padding-left:14px;position:relative;font-size:14px;font-weight:300;line-height:1.5;"><span style="position:absolute;left:0;color:var(--terra);">·</span>Meta Ads (budget + 30%) — 12-month management minimum; ad spend paid directly to Meta</li>
+            </ul>
+          </li>
+          <li>Pricing valid for 14 days from proposal date</li>
+          <li>Delivery timeline: 5–7 weeks from signed contract</li>
+        </ul>
+        <h5 style="margin-top:32px;">Pass-Through Costs</h5>
+        <ul>
+          <li><b style="font-weight:500;">Meta ad spend</b> — paid directly to Meta, not through Hallpass</li>
+          <li>HighLevel automation platform &amp; CRM hosting — included in the Signature monthly, no separate charge</li>
+          <li><b style="font-weight:500;">Short-term rental booking management software</b> (Hospitable, OwnerRez, Lodgify, or whichever platform you settle on per slide 5) — Lance pays subscription fees and per-booking transaction costs directly to the chosen platform; Hallpass does not mark these up</li>
+          <li>Software fees for Local SEO &amp; Monitoring are absorbed into the $125/mo retainer — no separate pass-through</li>
+        </ul>
+      </div>
+      <div data-reveal data-delay="4">
+        <h5>Out Of Scope</h5>
+        <ul class="out-list">
+          <li><b style="font-weight:500;">Short-term rental operations</b> — listing creation, dynamic pricing decisions, channel manager configuration, guest support, cleaning, and platform management stay with Lance or a dedicated STR co-host</li>
+          <li>Ongoing social media content creation, posting, or community management — content stays with your team in all scenarios; the Social Media Coaching add-on provides advisory only, not production</li>
+          <li>Paid advertising management <em style="font-style:italic;opacity:0.7;">(unless Meta Ads add-on is selected)</em></li>
+          <li>Ongoing photography or videography after launch</li>
+          <li><b style="font-weight:500;">Print production costs</b> — Hallpass delivers print-ready digital files; printing, paper stock, and production costs are paid by you</li>
+        </ul>
+      </div>
+    </div>
+    <div class="logo-bar">
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+      <span>The Whistlestop</span>
+    </div>
+  </div>
+
+  <!-- 07 NEXT STEP -->
+  <div class="slide slide--accent">
+    <span class="slide-num">07</span>
+    <div class="eyebrow" data-reveal>Next Step</div>
+    <div class="display" data-reveal data-delay="1">Open the Whistlestop with<br><em>a real launch.</em></div>
+    <div class="rule" data-reveal data-delay="2" style="background:rgba(255,255,255,0.4);"></div>
+    <p class="body-lg" data-reveal data-delay="3" style="color:rgba(255,255,255,0.9);">Pick the tier that fits, decide which add-ons go on at launch, and we&rsquo;ll get the Whistlestop running with a brand and booking experience that matches the property.</p>
+    <p style="margin-top:40px;font-size:15px;font-weight:400;color:rgba(255,255,255,0.95);letter-spacing:0.02em;" data-reveal data-delay="4">
+      Ryan McNeill &nbsp;&middot;&nbsp;
+      <a href="mailto:ryan@hallpassdigital.com" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">ryan@hallpassdigital.com</a>
+      &nbsp;&middot;&nbsp;
+      <span style="text-decoration:underline;text-underline-offset:3px;">hallpassdigital.com</span>
+    </p>
+    <div class="logo-bar" style="filter:invert(1) brightness(2); opacity:0.5; border-top-color:rgba(255,255,255,0.2);">
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital">
+      <span>The Whistlestop</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  try {
+    var els = document.querySelectorAll('[data-reveal]');
+    if (!els.length) return;
+    var coverEls = document.querySelectorAll('.cover-hero [data-reveal]');
+    setTimeout(function(){ coverEls.forEach(function(el){ el.classList.add('is-visible'); }); }, 100);
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    },{ threshold:0.15 });
+    els.forEach(function(el){ if(!el.closest('.cover-hero')) io.observe(el); });
+  } catch(e){}
+})();
+</script>
+</body>
+</html>
