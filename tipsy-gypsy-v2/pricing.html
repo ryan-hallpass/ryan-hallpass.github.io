@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pricing — Hallpass Digital × Lance Ladd</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F2EFE8;
+    --ink: #1A1A18;
+    --ink-soft: #3D3D38;
+    --terra: #C4794A;
+    --terra-light: #E8B99A;
+    --terra-wash: #F7EEE7;
+    --warm-white: #FAFAF7;
+    --rule: rgba(26,26,24,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  @page { size: letter; margin: 0.5in 0.5in; }
+
+  html, body { background: #fff; color: var(--ink); font-family: var(--sans); font-weight: 300; -webkit-font-smoothing: antialiased; }
+  body { padding: 0; max-width: 8in; margin: 0 auto; }
+
+  .page { padding: 24px 0 32px; }
+  .page + .page { page-break-before: always; }
+
+  /* HEADER */
+  .doc-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 16px; border-bottom: 1px solid var(--rule); margin-bottom: 28px; }
+  .doc-header .left { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.55; }
+  .doc-header .right { font-size: 9px; opacity: 0.5; letter-spacing: 0.06em; }
+  .doc-title { font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; margin-top: 6px; }
+  .doc-title em { color: var(--terra); font-style: italic; }
+  .doc-sub { font-size: 12px; opacity: 0.6; margin-top: 8px; line-height: 1.5; max-width: 560px; }
+
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.55; margin: 28px 0 14px; }
+
+  /* SCOPE BOXES */
+  .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .scope-box { padding: 18px 20px; border-radius: 6px; border: 1px solid rgba(26,26,24,0.10); background: #fff; }
+  .scope-box.is-rec { background: var(--terra-wash); border-left: 3px solid var(--terra); border-color: rgba(196,121,74,0.25); }
+  .scope-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .scope-name { font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.65; }
+  .scope-rec { background: var(--terra); color: #fff; font-size: 7px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; }
+  .tier-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tier-name { font-size: 10px; opacity: 0.6; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .tier-price { font-family: var(--serif); font-size: 19px; color: var(--terra); font-weight: 400; line-height: 1; }
+  .tier-monthly { font-size: 10px; color: var(--terra); margin-top: 5px; font-weight: 500; }
+  .tier-y1 { font-size: 9px; opacity: 0.5; margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .scope-foot { font-size: 10px; opacity: 0.7; line-height: 1.55; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(26,26,24,0.10); }
+  .scope-box.is-rec .scope-foot { border-top-color: rgba(26,26,24,0.12); opacity: 0.78; }
+
+  .bulk-note { background: rgba(196,121,74,0.06); border-left: 2px solid var(--terra); padding: 10px 14px; border-radius: 0 4px 4px 0; font-size: 10.5px; line-height: 1.6; opacity: 0.85; margin-bottom: 22px; }
+  .bulk-note b { font-weight: 500; }
+
+  /* TABLE */
+  table.pricing-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+  table.pricing-table thead th { padding: 10px 12px; text-align: center; vertical-align: bottom; border-bottom: 1.5px solid var(--rule); }
+  table.pricing-table thead th:first-child { text-align: left; width: 50%; }
+  table.pricing-table thead .th-tier { font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.6; margin-bottom: 4px; }
+  table.pricing-table thead .th-price { font-family: var(--serif); font-size: 17px; font-weight: 400; color: var(--terra); line-height: 1; }
+  table.pricing-table thead .th-monthly { font-size: 10px; color: var(--terra); margin-top: 4px; font-weight: 500; }
+  table.pricing-table thead .th-rec { background: var(--terra); color: #fff; font-size: 7px; font-weight: 500; letter-spacing: 0.12em; padding: 2px 6px; border-radius: 2px; display: inline-block; margin-bottom: 6px; }
+  table.pricing-table tbody td { padding: 8px 12px; border-bottom: 1px solid var(--rule); font-size: 10.5px; font-weight: 300; text-align: center; line-height: 1.4; }
+  table.pricing-table tbody td:first-child { text-align: left; opacity: 0.85; }
+  table.pricing-table .check { color: var(--terra); font-size: 13px; font-weight: 600; }
+  table.pricing-table .no-check { color: rgba(26,26,24,0.22); font-size: 12px; }
+  table.pricing-table .section-row td { padding: 14px 12px 6px; font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.55; text-align: left; border-bottom: none; }
+  table.pricing-table .rec-col { background: var(--terra-wash); }
+  .new-badge { display: inline-block; background: var(--terra); color: #fff; font-size: 7px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 1px 5px; border-radius: 2px; margin-left: 5px; vertical-align: middle; }
+
+  table.pricing-table tfoot td { font-size: 10px; font-weight: 300; padding: 12px; line-height: 1.5; text-align: left; }
+  .invest-num { font-family: var(--serif); font-size: 16px; color: var(--terra); font-weight: 400; line-height: 1; }
+  .invest-mo { font-size: 10px; color: var(--terra); margin-top: 4px; font-weight: 500; }
+  .invest-y1-label { font-size: 8px; opacity: 0.5; margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(26,26,24,0.12); letter-spacing: 0.12em; text-transform: uppercase; }
+  .invest-y1 { font-family: var(--serif); font-size: 13px; color: var(--ink); font-weight: 400; line-height: 1; margin-top: 3px; }
+
+  /* ADD-ONS */
+  .addons-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .addon { padding: 16px 18px; border: 1px solid rgba(26,26,24,0.10); border-radius: 6px; background: #fff; }
+  .addon.is-rec { background: var(--terra-wash); border-left: 3px solid var(--terra); border-color: rgba(196,121,74,0.25); }
+  .addon-rec { display: inline-block; background: var(--terra); color: #fff; font-size: 7px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin-bottom: 8px; }
+  .addon h4 { font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .addon-price { font-family: var(--serif); font-size: 19px; color: var(--terra); font-weight: 400; line-height: 1.1; }
+  .addon-meta { font-size: 9.5px; opacity: 0.6; margin-top: 4px; margin-bottom: 10px; }
+  .addon ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .addon li { font-size: 9.5px; line-height: 1.45; font-weight: 300; padding-left: 10px; position: relative; opacity: 0.85; }
+  .addon li::before { content: '·'; position: absolute; left: 0; color: var(--terra); font-size: 13px; top: -3px; }
+  .addon li b { font-weight: 500; }
+  .addon-foot { font-size: 9px; opacity: 0.65; line-height: 1.5; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(26,26,24,0.10); font-style: italic; }
+
+  /* TERMS SUMMARY */
+  .terms { margin-top: 22px; padding: 16px 20px; border: 1px solid rgba(26,26,24,0.10); border-radius: 6px; background: #fafaf7; font-size: 10px; line-height: 1.55; }
+  .terms h4 { font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.55; margin-bottom: 8px; }
+  .terms ul { list-style: none; padding: 0; }
+  .terms li { padding-left: 12px; position: relative; opacity: 0.82; margin-bottom: 4px; }
+  .terms li::before { content: '·'; position: absolute; left: 0; color: var(--terra); }
+
+  .doc-footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-size: 9px; opacity: 0.5; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div>
+      <div class="left">Hallpass Digital · Pricing Summary</div>
+      <div class="doc-title">Two scopes. Two tiers. <em>Pick your path.</em></div>
+      <div class="doc-sub">Prepared for Lance Ladd · Tipsy Gypsy, the Whistlestop, and Nikko Blu Boutique. April 2026.</div>
+    </div>
+    <div class="right">v2.7 · April 2026</div>
+  </div>
+
+  <!-- SCOPE COMPARISON -->
+  <div class="section-label">Pricing at a Glance</div>
+  <div class="scope-grid">
+
+    <div class="scope-box">
+      <div class="scope-head">
+        <div class="scope-name">Whistlestop Only</div>
+      </div>
+      <div class="tier-pair">
+        <div>
+          <div class="tier-name">Foundation</div>
+          <div class="tier-price">$4,500</div>
+          <div class="tier-monthly">+ $145/mo</div>
+          <div class="tier-y1">Y1: $6,240</div>
+        </div>
+        <div>
+          <div class="tier-name">Signature</div>
+          <div class="tier-price">$7,500</div>
+          <div class="tier-monthly">+ $245/mo</div>
+          <div class="tier-y1">Y1: $10,440</div>
+        </div>
+      </div>
+      <div class="scope-foot">Launch the Whistlestop alone — brand, booking website, photography. Add the bar &amp; boutique later.</div>
+    </div>
+
+    <div class="scope-box is-rec">
+      <div class="scope-head">
+        <div class="scope-name">All Three Properties</div>
+        <div class="scope-rec">Recommended</div>
+      </div>
+      <div class="tier-pair">
+        <div>
+          <div class="tier-name">Foundation</div>
+          <div class="tier-price">$5,500</div>
+          <div class="tier-monthly">+ $195/mo</div>
+          <div class="tier-y1">Y1: $7,840</div>
+        </div>
+        <div>
+          <div class="tier-name">Signature</div>
+          <div class="tier-price">$9,500</div>
+          <div class="tier-monthly">+ $295/mo</div>
+          <div class="tier-y1">Y1: $13,040</div>
+        </div>
+      </div>
+      <div class="scope-foot">Launch all three together — bulk pricing, integrated automation, cross-promo built in from day one.</div>
+    </div>
+
+  </div>
+
+  <div class="bulk-note">
+    <b>Start now with the Whistlestop, add the others later</b> — if you upgrade to the all-three scope within 12 months of launching, we honor the bulk pricing for Tipsy Gypsy and Nikko Blu. Phasing doesn&rsquo;t cost you the discount.
+  </div>
+
+  <!-- DETAILED FEATURE BREAKDOWN -->
+  <div class="section-label">All Three Properties — Detailed Feature Breakdown</div>
+  <table class="pricing-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>
+          <div class="th-tier">Foundation</div>
+          <div class="th-price">$5,500</div>
+          <div class="th-monthly">+ $195/mo · 12-mo</div>
+        </th>
+        <th class="rec-col" style="border-radius:6px 6px 0 0;">
+          <div class="th-rec">Recommended</div>
+          <div class="th-tier">Signature</div>
+          <div class="th-price">$9,500</div>
+          <div class="th-monthly">+ $295/mo · 12-mo</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Brand discovery — logo, palette, typography, mini brand guide <em style="opacity:0.65;">(per property)</em></td><td><span class="check">✓</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Two branded websites — Tipsy Gypsy + Whistlestop, SEO-optimized for local &amp; AI search</td><td><span class="check">✓</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Google Business Profiles — bar, rentals, and Nikko Blu storefront</td><td><span class="check">✓</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Professional photography — for Airbnb, GBP, social, web &amp; print</td><td><span class="check">✓</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Print collateral design — business cards + branded postcard <em style="opacity:0.65;">(printing &amp; production paid by you)</em></td><td><span class="check">✓</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Social account setup (IG, FB, TikTok)</td><td><span class="check">✓</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr class="section-row"><td colspan="3">Signature adds</td></tr>
+      <tr><td><b style="font-weight:500;">Nikko Blu Integration</b> — Google Business Profile optimization, branded postcard design <span class="new-badge">NEW</span></td><td><span class="no-check">—</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Digital Welcome Pack — branded slideshow, QR in every unit</td><td><span class="no-check">—</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>2 walkthrough videos (Tipsy Gypsy + Whistlestop)</td><td><span class="no-check">—</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>Raw photo files + video b-roll library</td><td><span class="no-check">—</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+      <tr><td>CRM build-out + email nurture automations</td><td><span class="no-check">—</span></td><td class="rec-col"><span class="check">✓</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;opacity:0.55;border-bottom:none;vertical-align:top;">Year 1 Total</td>
+        <td style="text-align:center;border-bottom:none;">
+          <div class="invest-num">$5,500</div>
+          <div style="font-size:8px;opacity:0.55;margin-top:2px;letter-spacing:0.06em;text-transform:uppercase;">one-time</div>
+          <div class="invest-mo">+ $195/mo</div>
+          <div class="invest-y1-label">Year 1</div>
+          <div class="invest-y1">$7,840</div>
+        </td>
+        <td class="rec-col" style="text-align:center;border-bottom:none;border-radius:0 0 6px 6px;">
+          <div class="invest-num">$9,500</div>
+          <div style="font-size:8px;opacity:0.55;margin-top:2px;letter-spacing:0.06em;text-transform:uppercase;">one-time</div>
+          <div class="invest-mo">+ $295/mo</div>
+          <div class="invest-y1-label">Year 1</div>
+          <div class="invest-y1">$13,040</div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div>
+      <div class="left">Hallpass Digital · Pricing Summary</div>
+      <div class="doc-title">Optional <em>Add-Ons</em></div>
+      <div class="doc-sub">Modular and not bundled — start with one, add the others as revenue supports them.</div>
+    </div>
+    <div class="right">page 2 of 2</div>
+  </div>
+
+  <!-- ADD-ONS (3-business pricing) -->
+  <div class="section-label">All Three Properties — Add-On Pricing</div>
+  <div class="addons-grid">
+
+    <div class="addon is-rec">
+      <div class="addon-rec">Recommended</div>
+      <h4>Social Media Coaching</h4>
+      <div class="addon-price">$1,000/mo</div>
+      <div class="addon-meta">All three businesses · 6-month minimum</div>
+      <ul>
+        <li><b>2 × 1-hour coaching sessions per month</b> — strategic guidance on what&rsquo;s working &amp; what to test</li>
+        <li><b>Monthly content audit</b> across all three accounts</li>
+        <li><b>Recommendations document + tailored strategy</b> per business (Whistlestop, Tipsy Gypsy, Nikko Blu)</li>
+        <li>Direct text/email access between sessions</li>
+      </ul>
+      <div class="addon-foot">Content creation and day-to-day posting stay with your team — Hallpass is the outside advisor, not the agency.</div>
+    </div>
+
+    <div class="addon">
+      <h4>Local SEO &amp; Monitoring</h4>
+      <div class="addon-price">$200/mo</div>
+      <div class="addon-meta">All three businesses · 12-month minimum</div>
+      <ul>
+        <li><b>SEO Citation Launch</b> — 50 corrected/built per business</li>
+        <li><b>Local rank tracking</b> — Google Search, Maps, local pack</li>
+        <li><b>Directory listings sync</b> — NAP consistency across major directories</li>
+        <li><b>Google Business Profile audits &amp; scheduling</b></li>
+        <li><b>Multi-site review monitoring</b> across 80+ sites</li>
+        <li>Monthly local-search snapshot</li>
+      </ul>
+      <div class="addon-foot">All software fees are absorbed — no separate pass-through.</div>
+    </div>
+
+    <div class="addon">
+      <h4>Meta Ads</h4>
+      <div class="addon-price">Budget + 30%</div>
+      <div class="addon-meta">$2,000 min ad spend · 12-month minimum</div>
+      <ul>
+        <li>Name your own monthly ad budget</li>
+        <li>Meta Business Manager + pixel setup (FB &amp; IG)</li>
+        <li>Geo-targeted to Ardmore drive-market</li>
+        <li>Branded creative — static + short-form video</li>
+        <li>Cold, retargeting, and lookalike audiences</li>
+        <li>Monthly performance report + iteration</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ADD-ONS for Whistlestop-only -->
+  <div class="section-label">Whistlestop Only — Add-On Pricing</div>
+  <div class="addons-grid">
+
+    <div class="addon">
+      <h4>Social Media Coaching</h4>
+      <div class="addon-price">$500/mo</div>
+      <div class="addon-meta">Whistlestop only · 6-month minimum</div>
+      <ul>
+        <li>2 × 1-hour coaching sessions per month</li>
+        <li>Monthly content audit (Whistlestop accounts)</li>
+        <li>Recommendations doc + STR-tailored strategy</li>
+        <li>Direct text/email access between sessions</li>
+      </ul>
+    </div>
+
+    <div class="addon">
+      <h4>Local SEO &amp; Monitoring</h4>
+      <div class="addon-price">$125/mo</div>
+      <div class="addon-meta">Whistlestop only · 12-month minimum</div>
+      <ul>
+        <li>SEO Citation Launch (50 corrected/built)</li>
+        <li>Local rank tracking + GBP audits</li>
+        <li>Directory listings sync</li>
+        <li>Multi-site review monitoring (80+ sites)</li>
+        <li>Monthly local-search snapshot</li>
+      </ul>
+    </div>
+
+    <div class="addon">
+      <h4>Meta Ads</h4>
+      <div class="addon-price">Budget + 30%</div>
+      <div class="addon-meta">$2,000 min ad spend · 12-month minimum</div>
+      <ul>
+        <li>Same scope as all-three Meta Ads add-on</li>
+        <li>Geo-targeted to drive-market for the Whistlestop</li>
+        <li>Audience and creative scoped to STR booking conversion</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- TERMS SUMMARY -->
+  <div class="terms">
+    <h4>Payment &amp; Pass-Through Costs</h4>
+    <ul>
+      <li>Launch Project (one-time): 50% deposit at signing, 50% at launch</li>
+      <li>Monthly fee auto-billed monthly, starts at signing — both tiers carry a 12-month minimum, then month-to-month with 30 days&rsquo; notice</li>
+      <li>Meta ad spend paid directly to Meta — Hallpass does not mark up</li>
+      <li>HighLevel automation platform &amp; CRM hosting included in the Signature monthly</li>
+      <li>STR booking management software (Hospitable / OwnerRez / Lodgify) — paid directly to the chosen vendor; Hallpass does not mark up</li>
+      <li>Local SEO &amp; Monitoring software fees are absorbed into the monthly retainer — no additional pass-through</li>
+      <li>Print production costs (business cards, postcards) — Hallpass delivers print-ready files; printing paid by you</li>
+      <li>Pricing valid for 14 days from proposal date · delivery 5–8 weeks from signed contract</li>
+    </ul>
+  </div>
+
+  <div class="doc-footer">
+    <span>Ryan McNeill · ryan@hallpassdigital.com · hallpassdigital.com</span>
+    <span>Pricing subject to revision after 14 days</span>
+  </div>
+
+</div>
+
+</body>
+</html>
