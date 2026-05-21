@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Directions · The Whistlestop</title>
+  <meta property="og:title" content="Brand Directions · The Whistlestop">
+  <meta property="og:description" content="Three directions, three logo concepts each, for Lance & Kim to react to.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=Anton&family=Bebas+Neue&family=Cinzel:wght@500;700;900&family=Alfa+Slab+One&family=Oswald:wght@600;700&family=Yellowtail&family=Pacifico&family=Great+Vibes&family=Allura&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --kraft: #E8DDC3;
+      --kraft-light: #F2EADA;
+      --cream: #F2EFE8;
+      --warm-white: #FAFAF7;
+      --ink: #1A1A18;
+      --ink-soft: #3D3D38;
+      --ink-muted: #6B6B66;
+      --brass: #B8893D;
+      --signal: #B33A2A;
+      --signal-deep: #8B2818;
+      --sage-deep: #2D3F2C;
+      --blush: #F2D8D2;
+      --rule: rgba(26,26,24,0.12);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --display: 'Anton', Impact, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      font-family: var(--sans);
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.55;
+    }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; }
+    em { font-style: italic; color: var(--signal); }
+    p { font-size: 16px; line-height: 1.65; color: var(--ink-soft); }
+    a { color: var(--ink); }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+    /* HEADER */
+    header.cover {
+      padding: 96px 0 72px;
+      border-bottom: 1px solid var(--rule);
+      background:
+        linear-gradient(180deg, rgba(232,221,195,0.35) 0%, transparent 100%),
+        var(--cream);
+    }
+    .eyebrow {
+      font-family: var(--display);
+      letter-spacing: 0.18em;
+      font-size: 13px;
+      color: var(--signal);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .cover h1 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 24px; max-width: 880px; }
+    .cover h1 em { font-style: italic; color: var(--brass); }
+    .cover-sub { font-size: 19px; max-width: 700px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 14px; }
+    .cover-meta {
+      margin-top: 48px;
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+    .cover-meta b { display: block; color: var(--ink); font-weight: 500; margin-bottom: 4px; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* BRIEF */
+    section.brief { padding: 96px 0 72px; border-bottom: 1px solid var(--rule); }
+    .brief-intro { max-width: 880px; margin-bottom: 56px; }
+    .brief-intro h2 { font-size: clamp(32px, 4vw, 44px); margin-bottom: 20px; }
+    .brief-intro p { font-size: 17px; }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .brief-col h3 {
+      font-family: var(--display);
+      letter-spacing: 0.16em;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .brief-col.heard h3 { color: var(--brass); }
+    .brief-col.thinking h3 { color: var(--signal); }
+    .brief-list { list-style: none; padding: 0; }
+    .brief-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .brief-list li:last-child { border-bottom: none; }
+    .brief-list li b { font-weight: 500; color: var(--ink); display: block; margin-bottom: 4px; }
+    .brief-note {
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: var(--kraft-light);
+      border-left: 3px solid var(--brass);
+      font-style: italic;
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .brief-note b { color: var(--ink); font-style: normal; font-family: var(--sans); font-weight: 500; }
+
+    /* DIRECTION SECTION */
+    section.dir { padding: 120px 0; border-bottom: 1px solid var(--rule); }
+    section.dir:nth-of-type(odd) { background: linear-gradient(180deg, var(--cream) 0%, rgba(232,221,195,0.2) 100%); }
+    .dir-head {
+      max-width: 920px;
+      margin-bottom: 72px;
+    }
+    .dir-num {
+      font-family: var(--display);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--brass);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .dir-title { font-size: clamp(36px, 5vw, 56px); margin-bottom: 24px; }
+    .dir-blurb { font-size: 17px; max-width: 760px; line-height: 1.65; }
+    .dir-blurb + .dir-blurb { margin-top: 14px; }
+
+    /* MOCKUPS */
+    .mockups {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .mock {
+      aspect-ratio: 5/4;
+      background: var(--warm-white);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .mock:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(26,26,24,0.1); }
+    .mock-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .mock-content { text-align: center; width: 100%; }
+
+    /* IMAGE-BASED MOCKUPS (used by Direction 01) */
+    .mock.mock-img {
+      background: var(--cream);
+      padding: 0;
+      overflow: hidden;
+    }
+    .mock.mock-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* HAND-PAINTED SIGNAGE MOCKUPS */
+    .mock.signage { background: var(--cream); }
+    .signage-1 {
+      background: var(--signal);
+      color: var(--kraft-light);
+      padding: 36px 24px;
+    }
+    .signage-1 .m-arch {
+      display: block;
+      margin: 0 auto 4px;
+      width: 100%;
+      max-width: 280px;
+    }
+    .signage-1 .m-arch text {
+      fill: var(--kraft-light);
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+    }
+    .signage-1 .m-script {
+      font-family: 'Yellowtail', cursive;
+      font-size: 52px;
+      color: var(--kraft-light);
+      line-height: 0.95;
+      margin: -6px 0 14px;
+      transform: rotate(-2deg);
+    }
+    .signage-1 .m-tagline {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+      color: var(--kraft-light);
+    }
+    .signage-2 {
+      background: var(--blush);
+      color: var(--ink);
+      padding: 32px 24px;
+    }
+    .signage-2 .m-arch {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 280px;
+    }
+    .signage-2 .m-arch text {
+      fill: var(--ink);
+      font-family: 'Anton', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+    }
+    .signage-2 .m-illo {
+      width: 64px;
+      height: 64px;
+      margin: 4px auto 8px;
+      display: block;
+    }
+    .signage-2 .m-tagline {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: var(--ink);
+    }
+    .signage-3 {
+      background: var(--signal);
+      color: var(--kraft-light);
+      padding: 28px 22px;
+    }
+    .signage-3 .m-overline {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.24em;
+      font-size: 10px;
+      color: var(--kraft-light);
+      margin-bottom: 4px;
+    }
+    .signage-3 .m-divider {
+      width: 36px;
+      height: 1px;
+      background: var(--kraft-light);
+      margin: 6px auto;
+      opacity: 0.6;
+    }
+    .signage-3 .m-poster-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 38px;
+      letter-spacing: 0.01em;
+      color: var(--kraft-light);
+      line-height: 0.95;
+      transform: scaleY(1.12);
+      transform-origin: center;
+    }
+    .signage-3 .m-poster-script {
+      font-family: 'Yellowtail', cursive;
+      font-size: 32px;
+      color: var(--kraft-light);
+      transform: rotate(-2deg);
+      line-height: 1;
+      margin: 8px 0 4px;
+    }
+    .signage-3 .m-poster-foot {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.22em;
+      font-size: 10px;
+      color: var(--kraft-light);
+      margin-top: 6px;
+    }
+
+    /* ELEGANT SCRIPT MOCKUPS */
+    .mock.script { background: var(--warm-white); }
+    .script-1 { background: var(--cream); }
+    .script-1 .m-wordmark {
+      font-family: 'Great Vibes', cursive;
+      font-size: 82px;
+      color: var(--ink);
+      line-height: 0.9;
+      margin-bottom: 10px;
+    }
+    .script-1 .m-thin-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--brass);
+      margin: 8px auto 12px;
+    }
+    .script-1 .m-tagline {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      letter-spacing: 0.36em;
+      font-size: 10px;
+      color: var(--ink-soft);
+    }
+    .script-2 {
+      background: var(--sage-deep);
+      color: var(--kraft-light);
+    }
+    .script-2 .m-wordmark {
+      font-family: 'Pacifico', cursive;
+      font-size: 50px;
+      color: var(--kraft-light);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .script-2 .m-tagline {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      font-size: 10px;
+      color: rgba(232,221,195,0.75);
+    }
+    .script-3 { background: var(--cream); }
+    .script-3 .m-monogram {
+      font-family: 'Great Vibes', cursive;
+      font-size: 124px;
+      color: var(--ink);
+      line-height: 0.9;
+      margin-bottom: 8px;
+    }
+    .script-3 .m-thin-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--ink-muted);
+      margin: 4px auto 10px;
+    }
+    .script-3 .m-tagline {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      font-size: 10px;
+      color: var(--ink);
+    }
+    .script-3 .m-tagline-sub {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      font-size: 9px;
+      color: var(--ink-muted);
+      margin-top: 4px;
+    }
+
+    /* LANE BAR */
+    .lane {
+      padding: 32px 0 0;
+      border-top: 1px solid var(--rule);
+    }
+    .lane-label {
+      font-family: var(--display);
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .lane-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .lane-tile {
+      flex: 1 1 calc(25% - 12px);
+      min-width: 180px;
+      max-width: 280px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background: var(--warm-white);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .lane-tile.dark { background: var(--ink); border-color: var(--ink); }
+    .lane-tile.kraft { background: var(--kraft); border-color: rgba(0,0,0,0.06); }
+    .lane-tile img { width: 100%; height: 100%; object-fit: contain; }
+    .lane-tile.wide img { object-fit: contain; }
+
+    /* FEEDBACK */
+    section.feedback {
+      padding: 120px 0 144px;
+      background: var(--ink);
+      color: var(--cream);
+    }
+    section.feedback h2 { font-size: clamp(32px, 4vw, 48px); color: var(--cream); margin-bottom: 28px; max-width: 720px; }
+    section.feedback h2 em { color: var(--brass); }
+    section.feedback p { color: rgba(242,239,232,0.75); font-size: 17px; max-width: 640px; margin-bottom: 16px; }
+    .feedback-eyebrow { color: var(--brass); }
+    .feedback-list { margin-top: 40px; max-width: 720px; }
+    .feedback-list li {
+      list-style: none;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(242,239,232,0.15);
+      color: rgba(242,239,232,0.85);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .feedback-list li b { color: var(--cream); font-weight: 500; }
+    .feedback-cta {
+      margin-top: 56px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--display);
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      color: var(--brass);
+      text-transform: uppercase;
+      padding: 18px 28px;
+      border: 1px solid var(--brass);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .feedback-cta:hover { background: var(--brass); color: var(--ink); }
+
+    footer.foot {
+      padding: 32px 0;
+      background: var(--ink);
+      color: rgba(242,239,232,0.4);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    footer.foot .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+
+    /* REVEAL */
+    [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    [data-reveal][data-delay="2"] { transition-delay: 0.1s; }
+    [data-reveal][data-delay="3"] { transition-delay: 0.2s; }
+    [data-reveal][data-delay="4"] { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 880px) {
+      .wrap { padding: 0 24px; }
+      header.cover { padding: 64px 0 48px; }
+      section.brief, section.dir { padding: 64px 0; }
+      .brief-grid { grid-template-columns: 1fr; gap: 40px; }
+      .dir-head { margin-bottom: 40px; }
+      .mockups { grid-template-columns: 1fr; gap: 16px; }
+      .lane-tile { flex: 1 1 calc(50% - 8px); min-width: 0; }
+      .lane-grid { gap: 10px; }
+      .cover-meta { gap: 24px; }
+      section.feedback { padding: 72px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="cover">
+    <div class="wrap">
+      <div data-reveal class="eyebrow">Whistlestop Brand Directions</div>
+      <h1 data-reveal data-delay="2">Three brand directions for <em>The Whistlestop.</em></h1>
+      <p data-reveal data-delay="3" class="cover-sub">Three distinct directions, three logo concepts each. The point is to give you and Kim something concrete to react to — pull elements you like from across the directions, tell me what feels off, and we'll start mixing toward a final logo from there.</p>
+      <p data-reveal data-delay="3" class="cover-sub">This deck is Whistlestop only. Tipsy Gypsy gets its own moodboard — the work below is shaped to be a sibling to that brand, not a clone of it.</p>
+      <div data-reveal data-delay="4" class="cover-meta">
+        <div><b>For</b>Lance &amp; Kim</div>
+        <div><b>From</b>Hallpass Digital</div>
+        <div><b>Stage</b>Pre-logo, post-discovery</div>
+        <div><b>What we need</b>Your gut reactions</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BRIEF -->
+  <section class="brief">
+    <div class="wrap">
+      <div data-reveal class="brief-intro">
+        <div class="eyebrow">The brief</div>
+        <h2>What's shaping <em>these directions.</em></h2>
+        <p>Two columns. First, the things you and Kim told me — the constraints, preferences, and ideas you brought to the conversation. Second, the ideas I want you to consider — observations and trends I think apply to your specific property. Each of the three directions below is a different mix of these inputs.</p>
+      </div>
+
+      <div data-reveal data-delay="2" class="brief-grid">
+        <div class="brief-col heard">
+          <h3>What I heard from you and Kim</h3>
+          <ul class="brief-list">
+            <li><b>A little bit of boho appeals</b> — not as the primary direction for Whistlestop (that lives more on the Tipsy Gypsy side), but in restrained doses it sits comfortably with Whistlestop too.</li>
+            <li><b>Wary of too much train imagery</b> — you don't want this to feel like a model-train store or a museum gift shop. The depot is heritage we can cite, not a costume to put on.</li>
+            <li><b>Kim on simplicity</b> — <em style="color: var(--ink);">"I've always believed that simple is better."</em> That's the north star for everything below.</li>
+            <li><b>Historical meets modern</b> — the depot has real history worth honoring, but the brand needs to feel like it lives in 2026, not 1926. Old bones, new posture.</li>
+          </ul>
+        </div>
+        <div class="brief-col thinking">
+          <h3>Ideas to consider</h3>
+          <ul class="brief-list">
+            <li><b>Weight as authority</b> — bold, heavy type reads as "well-established" even on a brand-new property. Heritage isn't earned by age; it's signaled by weight. Direction 01 leans into that.</li>
+            <li><b>Imperfect is the new premium</b> — every brand is being optimized into AI-perfected sameness right now. Hand-painted, slightly off-register, drawn-by-a-person work signals "made by humans" in a way that's becoming a real differentiator in 2026. Direction 02 lives here.</li>
+            <li><b>The calligraphy on your doors is already a brand cue</b> — you and Kim are already putting elegant script on the doors. Direction 3 explores amplifying this brand direction.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="3" class="brief-note">
+        <b>How to react to what's below.</b> As you look at these concepts, note which ones feel right for The Whistlestop and which feel off. We can use these signals to refine a final logo.
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTION 01 — HERITAGE WORKSHOP -->
+  <section class="dir">
+    <div class="wrap">
+      <div data-reveal class="dir-head">
+        <div class="dir-num">Direction 01</div>
+        <h2 class="dir-title">Heritage <em>workshop.</em></h2>
+        <p class="dir-blurb">Bold, masculine, heavy. The brand reads as <em>well-established</em> — like the property has been here longer than it has. Place-rooted, structured, confident. Heavy display type doing most of the work; the weight is the message.</p>
+        <p class="dir-blurb">The bold, condensed sans-serifs of this direction are inspired by vintage screen-printed concert posters. So even with a restrained, heritage-leaning treatment, the music nod doesn't disappear — it just lives inside the typography rather than on the surface.</p>
+        <p class="dir-blurb">This is also a typographic look that has been trending over the past few years with hip boutique hotels, such as the Ace Hotel chain and the Belmont in Dallas.</p>
+      </div>
+
+      <div data-reveal data-delay="2" class="lane">
+        <div class="lane-label">The inspiration</div>
+        <div class="lane-grid">
+          <div class="lane-tile"><img src="logos/bison.png" alt="The Bison — Lance's pick"></div>
+          <div class="lane-tile"><img src="logos/ace_hotel_ny.png" alt="Ace Hotel New York"></div>
+          <div class="lane-tile dark"><img src="logos/belmont_hotel.png" alt="Belmont Hotel, Dallas"></div>
+          <div class="lane-tile"><img src="logos/champ_hotel.png" alt="Champ Hotel"></div>
+          <div class="lane-tile"><img src="logos/shinola.svg" alt="Shinola"></div>
+          <div class="lane-tile"><img src="logos/filson.png" alt="Filson"></div>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="3" class="mockups">
+        <div class="mock mock-img">
+          <span class="mock-tag">01-A</span>
+          <img src="logos/whistlestop_ardmore.png" alt="The Whistlestop — Ardmore, Oklahoma">
+        </div>
+
+        <div class="mock mock-img">
+          <span class="mock-tag">01-B</span>
+          <img src="logos/whistlestop_letterpress.png" alt="The Whistlestop — letterpress">
+        </div>
+
+        <div class="mock mock-img">
+          <span class="mock-tag">01-C</span>
+          <img src="logos/whistlestop_on_main.png" alt="Whistlestop on Main">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTION 02 — HAND-PAINTED SIGNAGE -->
+  <section class="dir">
+    <div class="wrap">
+      <div data-reveal class="dir-head">
+        <div class="dir-num">Direction 02</div>
+        <h2 class="dir-title">Hand-painted <em>signage.</em></h2>
+        <p class="dir-blurb">Imperfect where AI is sterile. The folk-art heritage of small-town sign painters — the kind of work that hung outside hardware stores, ball parks, and farmer's markets. Arched type, brushy script paired with condensed sans, slightly off-register. Drawn by a person, on purpose.</p>
+        <p class="dir-blurb">Inspired by the hand-painted signage tradition of European side streets and New England main streets — the kind of lettering that lives on brick, glass, and weathered wood. It signals craft, permanence, and a place that earned its name.</p>
+        <p class="dir-blurb">This lane has the most warmth and the most folk-art character of the three — the boho thread you mentioned shows up here, restrained. Works hardest for the playful, sociable side of Whistlestop.</p>
+      </div>
+
+      <div data-reveal data-delay="2" class="lane">
+        <div class="lane-label">The inspiration</div>
+        <div class="lane-grid">
+          <div class="lane-tile"><img src="logos/pillbox_bat.png" alt="Pillbox Bat Company"></div>
+          <div class="lane-tile"><img src="logos/western_legends.png" alt="Western Legends Garment"></div>
+          <div class="lane-tile"><img src="logos/waverly_tomato.png" alt="Waverly Tomato Showdown"></div>
+          <div class="lane-tile"><img src="logos/wilden_typeface.png" alt="Wilden hand-drawn typeface"></div>
+          <div class="lane-tile"><img src="logos/first_rodeo.png" alt="First Rodeo typeface"></div>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="3" class="mockups">
+        <div class="mock mock-img">
+          <span class="mock-tag">02-A</span>
+          <img src="logos/whistlestop_on_main_arch.png" alt="Whistlestop on Main — Ardmore, Okla">
+        </div>
+
+        <div class="mock mock-img">
+          <span class="mock-tag">02-B</span>
+          <img src="logos/whistlestop_train_arch.png" alt="The Whistlestop on Main — arched type with train illustration">
+        </div>
+
+        <div class="mock mock-img">
+          <span class="mock-tag">02-C</span>
+          <img src="logos/whistlestop_signboard.png" alt="Whistlestop hand-painted signboard">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTION 03 — ELEGANT SCRIPT -->
+  <section class="dir">
+    <div class="wrap">
+      <div data-reveal class="dir-head">
+        <div class="dir-num">Direction 03</div>
+        <h2 class="dir-title">Elegant <em>script.</em></h2>
+        <p class="dir-blurb">Refined, feminine, upscale. The calligraphy already on your doors becomes the brand signature itself — turns a decorative interior choice into the visual identity. Reads as premium and considered rather than rugged or rustic.</p>
+      </div>
+
+      <div data-reveal data-delay="2" class="lane">
+        <div class="lane-label">The inspiration</div>
+        <div class="lane-grid">
+          <div class="lane-tile"><img src="logos/bantley_script.png" alt="Bantley Script"></div>
+          <div class="lane-tile"><img src="logos/cocktail_club.png" alt="The Cocktail Club"></div>
+          <div class="lane-tile"><img src="logos/freehouse.png" alt="Freehouse"></div>
+          <div class="lane-tile"><img src="logos/friday_script.png" alt="Friday Script"></div>
+          <div class="lane-tile"><img src="logos/palmello.png" alt="Palmello"></div>
+          <div class="lane-tile"><img src="logos/aw_monogram.png" alt="AW Monogram"></div>
+          <div class="lane-tile"><img src="logos/luminaire.png" alt="Luminaire"></div>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="3" class="mockups">
+        <div class="mock mock-img">
+          <span class="mock-tag">03-A</span>
+          <img src="logos/whistlestop_calligraphy.png" alt="Whistlestop — calligraphy, Ardmore, OK">
+        </div>
+
+        <div class="mock mock-img">
+          <span class="mock-tag">03-B</span>
+          <img src="logos/whistlestop_handscript.png" alt="The Whistlestop — hand-drawn cursive">
+        </div>
+
+        <div class="mock mock-img">
+          <span class="mock-tag">03-C</span>
+          <img src="logos/whistlestop_sage_script.png" alt="The Whistlestop — script on sage">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="feedback">
+    <div class="wrap">
+      <div data-reveal class="eyebrow feedback-eyebrow">Your reaction is the next step</div>
+      <h2 data-reveal data-delay="2">Pick the elements you like. <em>I can mix them.</em></h2>
+      <p data-reveal data-delay="3">You don't have to pick one direction or one logo. The final logo can be a mix — pull what feels right from across the nine, name what feels wrong, and we'll refine from there.</p>
+
+      <ul data-reveal data-delay="3" class="feedback-list">
+        <li><b>Which 2–3 mockups</b> would you happily put on the side of your building? (Use the codes — 01-A, 02-C, etc.)</li>
+        <li><b>Which directional themes</b> are pulling you most strongly — Heritage Workshop, Hand-painted Signage, or Elegant Script? Or some hybrid?</li>
+        <li><b>What feels wrong?</b> Anything in the nine that misses the mark for Whistlestop, even if you can't name why.</li>
+        <li><b>What did I miss?</b> Anything in your conversation with Kim — or anywhere — that should be informing this and isn't.</li>
+      </ul>
+
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>The Whistlestop · Brand Directions · May 2026</div>
+      <div>Hallpass Digital · ryan@hallpassdigital.com</div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
