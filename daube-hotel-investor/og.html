@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Daube Hotel — OG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,100&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background: #0E0C0A;
+    font-family: 'Fraunces', serif;
+    color: #F5F1E8;
+  }
+  .photo {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/daube-cover.jpg');
+    background-size: cover;
+    background-position: center 38%;
+    transform: scale(1.04);
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14,12,10,0.45) 0%, rgba(14,12,10,0) 25%, rgba(14,12,10,0) 50%, rgba(14,12,10,0.88) 100%),
+      linear-gradient(95deg, rgba(14,12,10,0.55) 0%, rgba(14,12,10,0.0) 50%);
+  }
+  .content {
+    position: absolute;
+    inset: 0;
+    padding: 64px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.8);
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mark::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #A8843D;
+    transform: rotate(45deg);
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    font-weight: 350;
+    font-size: 152px;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    color: #F5F1E8;
+  }
+  .rule {
+    width: 64px;
+    height: 1px;
+    background: #A8843D;
+    margin: 22px 0;
+  }
+  .sub {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: rgba(245, 241, 232, 0.9);
+    letter-spacing: 0.02em;
+  }
+  .meta {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.6);
+  }
+</style>
+</head>
+<body>
+  <div class="photo"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="top">
+      <div class="mark">Nightmoves Ventures, LLC</div>
+      <div>Confidential · Accredited Investors Only</div>
+    </div>
+    <div>
+      <div class="wordmark">Daube Hotel</div>
+      <div class="rule"></div>
+      <div class="sub">A boutique hotel investment in downtown Ardmore, Oklahoma.</div>
+      <div class="meta">Investor Underwriting &amp; Capital Structure · April 2026</div>
+    </div>
+  </div>
+</body>
+</html>
