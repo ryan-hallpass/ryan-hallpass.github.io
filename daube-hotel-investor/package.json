@@ -1,0 +1,13 @@
+{
+  "name": "daube-hotel-investor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build-pdf.mjs",
+    "preview": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}

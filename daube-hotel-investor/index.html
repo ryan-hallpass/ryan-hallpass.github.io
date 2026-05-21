@@ -1,0 +1,3063 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daube Hotel — Investor Underwriting & Capital Structure</title>
+<meta name="description" content="A 25-key boutique hotel in downtown Ardmore, Oklahoma. $4.75M total project. Three capital structure options for accredited investors. April 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,100&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bone: #F5F1E8;
+    --bone-2: #EDE7D8;
+    --ink: #1A1714;
+    --ink-2: #2E2924;
+    --ink-soft: #5A524A;
+    --oxblood: #7B2D26;
+    --oxblood-deep: #5C1F1B;
+    --brass: #A8843D;
+    --brass-soft: #C9A668;
+    --rule: #D8D2C4;
+    --rule-soft: #E5DFD0;
+
+    --serif: 'Fraunces', 'Georgia', serif;
+    --sans: 'Satoshi', 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0E0C0A;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    height: 100vh;
+  }
+
+  /* ============ 16:9 SLIDE FRAME ============ */
+  main {
+    width: 100%;
+  }
+
+  .slide {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0E0C0A;
+    overflow: hidden;
+  }
+
+  .frame {
+    position: relative;
+    width: min(96vw, calc((100vh - 32px) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    background: var(--bone);
+    color: var(--ink);
+    overflow: hidden;
+    box-shadow: 0 24px 64px -32px rgba(0,0,0,0.5);
+  }
+
+  .frame--dark {
+    background: var(--ink);
+    color: var(--bone);
+  }
+
+  .frame__inner {
+    position: absolute;
+    inset: 0;
+    padding: clamp(28px, 4.2cqi, 64px);
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* container queries for typography scaling */
+  .frame { container-type: inline-size; }
+
+  /* ============ TYPOGRAPHY ============ */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 14px);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1;
+  }
+
+  .eyebrow--brass { color: var(--brass); }
+  .eyebrow--bone { color: var(--bone); }
+  .eyebrow--bone-soft { color: rgba(245, 241, 232, 0.55); }
+
+  .display {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .h1 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 50;
+    font-size: clamp(28px, 5.2cqi, 80px);
+    font-weight: 450;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .h2 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 72, "SOFT" 50;
+    font-size: clamp(22px, 3.6cqi, 56px);
+    font-weight: 450;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .h3 {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36";
+    font-size: clamp(18px, 2.2cqi, 32px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .lead {
+    font-family: var(--sans);
+    font-size: clamp(13px, 1.4cqi, 20px);
+    line-height: 1.45;
+    color: var(--ink-2);
+    max-width: 56ch;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .body {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.1cqi, 15px);
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .body--soft { color: var(--ink-soft); }
+  .body--bone { color: var(--bone); }
+  .body--bone-soft { color: rgba(245, 241, 232, 0.72); }
+
+  .micro {
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.85cqi, 11px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1;
+  }
+
+  .figure {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    font-feature-settings: "lnum", "tnum";
+    margin: 0;
+  }
+
+  .figure--brass { color: var(--brass); }
+  .figure--oxblood { color: var(--oxblood); }
+  .figure--bone { color: var(--bone); }
+
+  .num {
+    font-family: var(--mono);
+    font-feature-settings: "tnum";
+  }
+
+  .rule {
+    height: 1px;
+    background: var(--rule);
+    border: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .rule--bone { background: rgba(245, 241, 232, 0.18); }
+  .rule--brass { background: var(--brass); height: 1px; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 12px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .pill--oxblood {
+    border-color: var(--oxblood);
+    color: var(--oxblood);
+  }
+
+  .pill--bone {
+    border-color: rgba(245, 241, 232, 0.3);
+    color: var(--bone);
+  }
+
+  /* ============ REVEAL ANIMATIONS ============ */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-delay="1"] { transition-delay: 80ms; }
+  [data-delay="2"] { transition-delay: 160ms; }
+  [data-delay="3"] { transition-delay: 240ms; }
+  [data-delay="4"] { transition-delay: 320ms; }
+  [data-delay="5"] { transition-delay: 400ms; }
+  [data-delay="6"] { transition-delay: 480ms; }
+  [data-delay="7"] { transition-delay: 560ms; }
+
+  /* ============ SIDE DOTS NAV ============ */
+  .sidedots {
+    position: fixed;
+    right: clamp(12px, 1.4vw, 24px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 6px;
+  }
+
+  .sidedots__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(245, 241, 232, 0.25);
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all 300ms var(--ease);
+  }
+
+  .sidedots__dot:hover { background: rgba(245, 241, 232, 0.55); }
+  .sidedots__dot.is-active {
+    background: var(--brass);
+    transform: scale(1.4);
+  }
+
+  /* ============ FRAME CHROME ============ */
+  .frame__corner {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.8cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1;
+    z-index: 5;
+  }
+
+  .frame--dark .frame__corner { color: rgba(245, 241, 232, 0.45); }
+
+  .frame__corner--tl { top: clamp(20px, 2.5cqi, 36px); left: clamp(28px, 4.2cqi, 64px); }
+  .frame__corner--tr { top: clamp(20px, 2.5cqi, 36px); right: clamp(28px, 4.2cqi, 64px); text-align: right; }
+  .frame__corner--bl { bottom: clamp(20px, 2.5cqi, 36px); left: clamp(28px, 4.2cqi, 64px); }
+  .frame__corner--br { bottom: clamp(20px, 2.5cqi, 36px); right: clamp(28px, 4.2cqi, 64px); text-align: right; }
+
+  /* ============ SLIDE 01: COVER ============ */
+  .cover {
+    position: absolute;
+    inset: 0;
+    background-image: url('img/daube-cover.jpg');
+    background-size: cover;
+    background-position: center 38%;
+    animation: kenburns 24s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenburns {
+    from { transform: scale(1.0); }
+    to { transform: scale(1.06); }
+  }
+
+  .cover-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14,12,10,0.45) 0%, rgba(14,12,10,0) 30%, rgba(14,12,10,0) 55%, rgba(14,12,10,0.85) 100%),
+      linear-gradient(95deg, rgba(14,12,10,0.55) 0%, rgba(14,12,10,0.0) 50%);
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    padding: clamp(36px, 5cqi, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cover-wordmark {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    font-weight: 350;
+    font-size: clamp(40px, 8cqi, 130px);
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    color: var(--bone);
+    margin: 0;
+  }
+
+  .cover-rule {
+    width: 56px;
+    height: 1px;
+    background: var(--brass);
+    margin: clamp(12px, 1.6cqi, 24px) 0;
+  }
+
+  .cover-sub {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: clamp(12px, 1.3cqi, 18px);
+    color: rgba(245, 241, 232, 0.88);
+    letter-spacing: 0.04em;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.78);
+  }
+
+  .cover-top__mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cover-top__mark::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--brass);
+    transform: rotate(45deg);
+  }
+
+  /* ============ SLIDE 02: THESIS ============ */
+  .thesis {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: clamp(20px, 3cqi, 48px);
+    padding-block: clamp(40px, 5cqi, 80px);
+  }
+
+  .thesis__statement {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    font-weight: 350;
+    font-size: clamp(28px, 6.2cqi, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+
+  .thesis__statement em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    color: var(--oxblood);
+  }
+
+  .thesis__signature {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: clamp(20px, 3cqi, 40px);
+  }
+
+  .thesis__signature::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+
+  /* ============ SLIDE 03: DEAL SNAPSHOT ============ */
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    flex: 1;
+    margin-top: clamp(24px, 3cqi, 40px);
+  }
+
+  .snapshot-cell {
+    background: var(--bone);
+    padding: clamp(18px, 2.6cqi, 36px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+  }
+
+  .snapshot-cell .figure {
+    font-size: clamp(32px, 5.4cqi, 84px);
+  }
+
+  .snapshot-cell .label {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.3;
+  }
+
+  .snapshot-cell .note {
+    font-size: clamp(10px, 1.05cqi, 13px);
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ============ SLIDE 04: PROPERTY ============ */
+  .property {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(20px, 2.8cqi, 48px);
+    flex: 1;
+    margin-top: clamp(20px, 2.8cqi, 36px);
+    align-items: stretch;
+  }
+
+  .property__photo {
+    background-image: url('img/daube-logo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #7F2823;
+    position: relative;
+  }
+
+  .property__photo-tag {
+    position: absolute;
+    bottom: clamp(12px, 1.6cqi, 20px);
+    left: clamp(12px, 1.6cqi, 20px);
+    z-index: 2;
+    color: rgba(245, 241, 232, 0.78);
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.85cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .property__facts {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.6cqi, 20px);
+  }
+
+  .fact-row {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    gap: 16px;
+    padding-block: clamp(8px, 1.2cqi, 14px);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .fact-row:last-child { border-bottom: 0; }
+
+  .fact-row__label {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .fact-row__value {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.4cqi, 18px);
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .fact-row__value em {
+    color: var(--oxblood);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ============ SLIDE 05: HEADLINE NUMBERS ============ */
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    flex: 1;
+    margin-top: clamp(20px, 3cqi, 40px);
+  }
+
+  .number-tile {
+    background: var(--bone);
+    padding: clamp(20px, 3cqi, 42px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .number-tile__big {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-weight: 300;
+    font-size: clamp(40px, 8cqi, 130px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+
+  .number-tile__big sup {
+    font-size: 0.4em;
+    color: var(--brass);
+    vertical-align: super;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .number-tile__label {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .number-tile__label strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  /* ============ SLIDE 06: TRIPLE ACCESS ============ */
+  .access {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(24px, 4cqi, 64px);
+    flex: 1;
+    margin-top: clamp(20px, 2.8cqi, 36px);
+    align-items: center;
+  }
+
+  .access__diagram {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 100%;
+    align-self: center;
+  }
+
+  .access__diagram svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .access__items {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 2cqi, 24px);
+  }
+
+  .access-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(16px, 2cqi, 28px);
+    padding-bottom: clamp(14px, 1.8cqi, 22px);
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .access-item:last-child { border-bottom: 0; }
+
+  .access-item__mark {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.1cqi, 14px);
+    color: var(--brass);
+    letter-spacing: 0.14em;
+    font-weight: 500;
+  }
+
+  .access-item__title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    font-size: clamp(16px, 2.2cqi, 28px);
+    font-weight: 450;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .access-item__body {
+    font-size: clamp(11px, 1.2cqi, 15px);
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  .access-item__body strong {
+    color: var(--ink-2);
+    font-weight: 500;
+  }
+
+  /* ============ SLIDE 07: DEMAND DRIVERS ============ */
+  .drivers {
+    flex: 1;
+    margin-top: clamp(18px, 2.4cqi, 30px);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(14px, 1.8cqi, 24px);
+    align-items: stretch;
+  }
+
+  .driver-col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.1cqi, 14px);
+    padding-top: clamp(10px, 1.2cqi, 16px);
+    border-top: 1px solid var(--oxblood);
+  }
+
+  .driver-col__head {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 11px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .driver-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-bottom: clamp(8px, 1cqi, 12px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .driver-item:last-child { border-bottom: 0; }
+
+  .driver-item__name {
+    font-size: clamp(11px, 1.2cqi, 14px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .driver-item__meta {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 11px);
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ SLIDE 08: WHY ARDMORE NOW ============ */
+  .transition {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3cqi, 44px);
+    flex: 1;
+    margin-top: clamp(20px, 3cqi, 40px);
+    align-items: stretch;
+  }
+
+  .transition-col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.4cqi, 18px);
+    padding-top: clamp(12px, 1.6cqi, 22px);
+    border-top: 2px solid;
+  }
+
+  .transition-col--what { border-color: var(--ink-soft); }
+  .transition-col--resp { border-color: var(--brass); }
+  .transition-col--opp { border-color: var(--oxblood); }
+
+  .transition-col__step {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .transition-col--what .transition-col__step { color: var(--ink-soft); }
+  .transition-col--resp .transition-col__step { color: var(--brass); }
+  .transition-col--opp .transition-col__step { color: var(--oxblood); }
+
+  .transition-col__title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    font-size: clamp(14px, 1.9cqi, 24px);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .transition-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .transition-col li {
+    font-size: clamp(10px, 1.1cqi, 13px);
+    line-height: 1.4;
+    color: var(--ink-2);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .transition-col li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-soft);
+  }
+
+  .transition-pullquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-variation-settings: "opsz" 36, "SOFT" 80;
+    font-size: clamp(12px, 1.3cqi, 16px);
+    line-height: 1.35;
+    color: var(--oxblood);
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ============ SLIDE 09: COMPETITIVE LANDSCAPE ============ */
+  .competitive {
+    flex: 1;
+    margin-top: clamp(18px, 2.4cqi, 30px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 3.5cqi, 56px);
+    align-items: center;
+  }
+
+  .compete-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.4cqi, 16px);
+  }
+
+  .compete-cluster__head {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 12px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .compete-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding-block: clamp(6px, 0.9cqi, 10px);
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+
+  .compete-row__name {
+    font-size: clamp(11px, 1.2cqi, 15px);
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .compete-row__adr {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.1cqi, 13px);
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  .compete-row--daube .compete-row__name { color: var(--oxblood); font-weight: 700; }
+  .compete-row--daube .compete-row__adr { color: var(--oxblood); font-weight: 500; }
+
+  .compete-zero {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-size: clamp(30px, 5cqi, 72px);
+    color: var(--ink);
+    line-height: 0.95;
+    margin-top: clamp(6px, 0.8cqi, 12px);
+  }
+
+  .compete-zero em {
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  /* ============ SLIDE 10: BOUTIQUE PREMIUM ============ */
+  .premium {
+    flex: 1;
+    margin-top: clamp(20px, 2.8cqi, 36px);
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: clamp(24px, 3.4cqi, 52px);
+    align-items: stretch;
+  }
+
+  .premium-divider {
+    background: var(--rule);
+    width: 1px;
+  }
+
+  .premium-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(14px, 2cqi, 24px);
+  }
+
+  .premium-side__kicker {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .premium-side__big {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: clamp(34px, 5.6cqi, 84px);
+    font-weight: 350;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+
+  .premium-side--daube .premium-side__big { color: var(--oxblood); }
+  .premium-side--daube .premium-side__kicker { color: var(--oxblood); }
+
+  .premium-side__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1cqi, 12px);
+  }
+
+  .premium-side__list li {
+    font-size: clamp(11px, 1.2cqi, 14px);
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+
+  .premium-side__list li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ============ SLIDE 11: ARV THREE METHODS ============ */
+  .arv {
+    flex: 1;
+    margin-top: clamp(18px, 2.4cqi, 30px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .arv-method {
+    background: var(--bone);
+    padding: clamp(18px, 2.4cqi, 32px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.4cqi, 18px);
+  }
+
+  .arv-method__weight {
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.8cqi, 10px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  .arv-method__name {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    font-size: clamp(16px, 2.2cqi, 26px);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .arv-method__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 4px;
+  }
+
+  .arv-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    padding-block: clamp(6px, 0.9cqi, 10px);
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+
+  .arv-row:last-child { border-bottom: 0; }
+
+  .arv-row__case {
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.85cqi, 10px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .arv-row__value {
+    font-family: var(--mono);
+    font-size: clamp(12px, 1.4cqi, 18px);
+    color: var(--ink);
+    text-align: right;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .arv-row--base .arv-row__value { color: var(--oxblood); font-weight: 700; }
+  .arv-row--base .arv-row__case { color: var(--oxblood); }
+
+  .arv-footer {
+    grid-column: 1 / -1;
+    background: var(--ink);
+    color: var(--bone);
+    padding: clamp(14px, 1.8cqi, 24px) clamp(18px, 2.4cqi, 32px);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: clamp(14px, 2cqi, 28px);
+    align-items: center;
+  }
+
+  .arv-footer__label {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  .arv-footer__big {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+    font-size: clamp(22px, 3.5cqi, 48px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--bone);
+  }
+
+  .arv-footer__note {
+    font-size: clamp(10px, 1.1cqi, 13px);
+    color: rgba(245, 241, 232, 0.72);
+    line-height: 1.4;
+  }
+
+  .arv-footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .arv-footer__col-num {
+    font-family: var(--mono);
+    font-size: clamp(14px, 1.8cqi, 22px);
+    color: var(--bone);
+    font-weight: 500;
+  }
+
+  .arv-footer__col-label {
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.8cqi, 10px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.55);
+  }
+
+  /* ============ SLIDE 12: CAPITAL STACK ============ */
+  .stack {
+    flex: 1;
+    margin-top: clamp(18px, 2.4cqi, 30px);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: clamp(14px, 2cqi, 24px);
+  }
+
+  .stack-bar {
+    display: grid;
+    grid-template-columns: 525 3563 400 263;
+    height: clamp(40px, 5cqi, 72px);
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    gap: 1px;
+    grid-auto-flow: column;
+  }
+
+  .stack-seg {
+    background: var(--bone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stack-seg--acq { background: var(--oxblood); color: var(--bone); }
+  .stack-seg--reno { background: var(--ink); color: var(--bone); }
+  .stack-seg--ffe { background: var(--brass); color: var(--ink); }
+  .stack-seg--soft { background: var(--bone-2); color: var(--ink); }
+
+  .stack-seg__pct {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.1cqi, 14px);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .stack-rows {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2.2cqi, 32px);
+    align-items: start;
+  }
+
+  .stack-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: clamp(10px, 1.4cqi, 16px);
+    border-top: 2px solid;
+  }
+
+  .stack-row--acq { border-color: var(--oxblood); }
+  .stack-row--reno { border-color: var(--ink); }
+  .stack-row--ffe { border-color: var(--brass); }
+  .stack-row--soft { border-color: var(--ink-soft); }
+
+  .stack-row__name {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .stack-row__value {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+    font-size: clamp(20px, 3.2cqi, 44px);
+    font-weight: 350;
+    color: var(--ink);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .stack-row__note {
+    font-size: clamp(10px, 1.05cqi, 12px);
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .stack-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: clamp(14px, 1.8cqi, 22px);
+    border-top: 1px solid var(--ink);
+  }
+
+  .stack-total__label {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.05cqi, 13px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .stack-total__value {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-size: clamp(28px, 4.4cqi, 64px);
+    font-weight: 350;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+  }
+
+  /* ============ SLIDE 13: THREE OPTIONS COMPARE ============ */
+  .compare {
+    flex: 1;
+    margin-top: clamp(18px, 2.4cqi, 30px);
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 1.1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .compare-row-label {
+    background: var(--bone-2);
+    padding: clamp(8px, 1.1cqi, 14px) clamp(12px, 1.6cqi, 20px);
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.9cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+  }
+
+  .compare-cell {
+    background: var(--bone);
+    padding: clamp(8px, 1.1cqi, 14px) clamp(12px, 1.6cqi, 20px);
+    font-size: clamp(10px, 1.1cqi, 13px);
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    line-height: 1.3;
+  }
+
+  .compare-cell--head {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-block: clamp(14px, 2cqi, 24px);
+    background: var(--bone);
+    gap: 4px;
+  }
+
+  .compare-cell--head .opt-num {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .compare-cell--head .opt-title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    font-size: clamp(14px, 1.9cqi, 22px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .compare-cell--head.is-star {
+    background: var(--ink);
+    color: var(--bone);
+  }
+
+  .compare-cell--head.is-star .opt-num { color: var(--brass); }
+  .compare-cell--head.is-star .opt-title { color: var(--bone); }
+
+  .compare-cell--head.is-star::before {
+    content: '★';
+    position: absolute;
+    top: clamp(8px, 1.2cqi, 14px);
+    right: clamp(8px, 1.2cqi, 14px);
+    color: var(--brass);
+    font-size: clamp(12px, 1.4cqi, 16px);
+  }
+
+  .compare-cell--star { background: rgba(168, 132, 61, 0.06); }
+
+  .compare-cell .num { color: var(--ink); font-weight: 500; }
+  .compare-cell--star .num { color: var(--oxblood); font-weight: 700; }
+
+  .compare-cell--badge {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ============ SLIDE 14/15/16: OPTION DETAILS ============ */
+  .option-detail {
+    flex: 1;
+    margin-top: clamp(16px, 2.2cqi, 26px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: clamp(18px, 2.6cqi, 36px);
+    column-gap: clamp(20px, 3cqi, 48px);
+  }
+
+  .opt-hero {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .opt-hero-cell {
+    background: var(--bone);
+    padding: clamp(12px, 1.8cqi, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .opt-hero-cell--star { background: rgba(168, 132, 61, 0.08); }
+
+  .opt-hero-cell__label {
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.85cqi, 10px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .opt-hero-cell__value {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+    font-size: clamp(18px, 2.6cqi, 36px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .opt-hero-cell--accent .opt-hero-cell__value { color: var(--oxblood); }
+
+  .opt-block {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.4cqi, 16px);
+  }
+
+  .opt-block__head {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    padding-bottom: clamp(8px, 1cqi, 12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .opt-block ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 0.9cqi, 10px);
+  }
+
+  .opt-block li {
+    font-size: clamp(10px, 1.15cqi, 14px);
+    line-height: 1.4;
+    color: var(--ink-2);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .opt-block li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 1px;
+    background: var(--ink-soft);
+  }
+
+  .opt-block--cons li::before { background: var(--oxblood); }
+
+  /* ============ SLIDE 17: INVESTOR WATERFALL ============ */
+  .waterfall {
+    flex: 1;
+    margin-top: clamp(18px, 2.6cqi, 32px);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(24px, 3.5cqi, 56px);
+    align-items: stretch;
+  }
+
+  .waterfall-table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wf-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: clamp(12px, 1.6cqi, 24px);
+    padding-block: clamp(10px, 1.4cqi, 18px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .wf-row:last-of-type { border-bottom: 0; }
+
+  .wf-row__mark {
+    font-family: var(--mono);
+    font-size: clamp(11px, 1.3cqi, 16px);
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .wf-row__label {
+    font-family: var(--sans);
+    font-size: clamp(11px, 1.2cqi, 15px);
+    color: var(--ink-2);
+    line-height: 1.3;
+  }
+
+  .wf-row__value {
+    font-family: var(--mono);
+    font-size: clamp(14px, 1.7cqi, 22px);
+    color: var(--ink);
+    font-weight: 500;
+    text-align: right;
+    font-feature-settings: "tnum";
+  }
+
+  .wf-row--total {
+    border-top: 2px solid var(--ink);
+    border-bottom: 0;
+    margin-top: 8px;
+    padding-top: clamp(12px, 1.6cqi, 20px);
+  }
+
+  .wf-row--total .wf-row__label {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.05cqi, 13px);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .wf-row--total .wf-row__value {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+    font-size: clamp(28px, 4cqi, 56px);
+    color: var(--oxblood);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+  }
+
+  .waterfall-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(20px, 3cqi, 40px);
+  }
+
+  .wf-summary-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2.2cqi, 32px);
+  }
+
+  .wf-summary-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: clamp(12px, 1.6cqi, 20px);
+    border-top: 2px solid var(--oxblood);
+  }
+
+  .wf-summary-cell__label {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+  }
+
+  .wf-summary-cell__value {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    font-size: clamp(36px, 5.4cqi, 80px);
+    font-weight: 350;
+    color: var(--ink);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .wf-conservative {
+    padding-top: clamp(14px, 2cqi, 24px);
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .wf-conservative__label {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .wf-conservative__value {
+    font-family: var(--mono);
+    font-size: clamp(11px, 1.2cqi, 14px);
+    color: var(--ink-2);
+    font-weight: 500;
+  }
+
+  /* ============ SLIDE 18: WHY OPTION 2 ============ */
+  .why2 {
+    flex: 1;
+    margin-top: clamp(20px, 3cqi, 40px);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(24px, 3.5cqi, 56px);
+    align-items: stretch;
+  }
+
+  .why2-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(14px, 2cqi, 24px);
+  }
+
+  .why2-text p {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 60;
+    font-size: clamp(13px, 1.6cqi, 20px);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+    max-width: 42ch;
+    font-weight: 400;
+  }
+
+  .why2-text p + p {
+    color: var(--ink-2);
+    font-size: clamp(12px, 1.4cqi, 18px);
+  }
+
+  .why2-text p em {
+    font-style: italic;
+    color: var(--oxblood);
+  }
+
+  .why2-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: clamp(12px, 1.6cqi, 20px);
+  }
+
+  .why2-stat {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(14px, 2cqi, 24px);
+    padding-block: clamp(8px, 1.2cqi, 14px);
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .why2-stat:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .why2-stat__num {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 72, "SOFT" 30;
+    font-size: clamp(20px, 3cqi, 42px);
+    color: var(--oxblood);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    min-width: 4ch;
+  }
+
+  .why2-stat__label {
+    font-size: clamp(11px, 1.2cqi, 14px);
+    color: var(--ink-2);
+    line-height: 1.35;
+  }
+
+  .why2-stat__label strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ============ SLIDE 19: CRITICAL PATH ============ */
+  .path {
+    flex: 1;
+    margin-top: clamp(18px, 2.6cqi, 32px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .path-step {
+    background: var(--bone);
+    padding: clamp(16px, 2.4cqi, 28px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(12px, 1.6cqi, 20px);
+  }
+
+  .path-step__num {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 40;
+    font-size: clamp(44px, 8cqi, 130px);
+    font-weight: 300;
+    color: var(--brass);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+  }
+
+  .path-step__title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    font-size: clamp(13px, 1.7cqi, 22px);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .path-step__body {
+    font-size: clamp(10px, 1.1cqi, 13px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+
+  .deadline {
+    background: var(--ink);
+    color: var(--bone);
+    padding: clamp(16px, 2.4cqi, 28px) clamp(20px, 3cqi, 44px);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: clamp(20px, 3cqi, 48px);
+    align-items: center;
+    margin-top: clamp(14px, 2cqi, 22px);
+  }
+
+  .deadline__date {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    font-size: clamp(28px, 4.4cqi, 64px);
+    font-weight: 400;
+    color: var(--bone);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+
+  .deadline__date em {
+    color: var(--brass);
+    font-style: normal;
+  }
+
+  .deadline__label {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.1cqi, 13px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.65);
+    line-height: 1.4;
+  }
+
+  .deadline__label strong {
+    display: block;
+    color: var(--bone);
+    margin-bottom: 4px;
+  }
+
+  .deadline__time {
+    font-family: var(--mono);
+    font-size: clamp(11px, 1.2cqi, 15px);
+    color: var(--brass);
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ SLIDE 20: DISCLAIMER ============ */
+  .disclaimer {
+    flex: 1;
+    margin-top: clamp(20px, 3cqi, 40px);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(28px, 4cqi, 64px);
+    align-items: stretch;
+  }
+
+  .disclaimer-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(14px, 2cqi, 24px);
+  }
+
+  .disclaimer-text p {
+    font-size: clamp(10px, 1.15cqi, 14px);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  .disclaimer-text p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .contact-card {
+    border-left: 1px solid var(--rule);
+    padding-left: clamp(24px, 3.5cqi, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(12px, 1.8cqi, 22px);
+  }
+
+  .contact-card__kicker {
+    font-family: var(--mono);
+    font-size: clamp(9px, 0.95cqi, 12px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  .contact-card__name {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 72, "SOFT" 50;
+    font-size: clamp(20px, 3cqi, 40px);
+    font-weight: 450;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .contact-card__role {
+    font-size: clamp(11px, 1.2cqi, 14px);
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .contact-card__entity {
+    font-family: var(--mono);
+    font-size: clamp(10px, 1.1cqi, 12px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    padding-top: clamp(8px, 1.2cqi, 14px);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ============ PRINT MODE ============ */
+  @media print {
+    body, html {
+      overflow: visible !important;
+      scroll-snap-type: none !important;
+      height: auto !important;
+      background: white !important;
+    }
+    .sidedots { display: none !important; }
+    .slide {
+      width: 13.333in !important;
+      height: 7.5in !important;
+      min-height: 7.5in !important;
+      page-break-after: always !important;
+      break-after: page !important;
+      background: white !important;
+    }
+    .slide:last-child {
+      page-break-after: auto !important;
+      break-after: auto !important;
+    }
+    .frame {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      box-shadow: none !important;
+    }
+    .cover { animation: none !important; transform: scale(1.03) !important; }
+    [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    @page {
+      size: 13.333in 7.5in;
+      margin: 0;
+    }
+  }
+
+  .print-mode body, .print-mode html {
+    overflow: visible;
+    scroll-snap-type: none;
+    height: auto;
+  }
+  .print-mode .sidedots { display: none; }
+  .print-mode .cover { animation: none; transform: scale(1.03); }
+
+  /* ============ RESPONSIVE FALLBACK ============ */
+  @media (max-width: 768px) {
+    .slide { height: auto; min-height: 0; padding: 8px; }
+    .frame { width: 100%; }
+  }
+
+  /* ============ PASSWORD GATE ============ */
+  body.is-locked { overflow: hidden; height: 100vh; }
+  body.is-locked main,
+  body.is-locked .sidedots { display: none; }
+
+  .gate {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--bone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    opacity: 1;
+    transition: opacity 600ms var(--ease);
+  }
+
+  .gate.is-hidden { opacity: 0; pointer-events: none; }
+
+  .gate__inner {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-align: left;
+  }
+
+  .gate__mark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .gate__mark::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--brass);
+    transform: rotate(45deg);
+  }
+
+  .gate__title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+    font-weight: 350;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .gate__sub {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 44ch;
+  }
+
+  .gate__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .gate__label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .gate__row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+
+  .gate__input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--ink);
+    padding: 12px 0;
+    outline: none;
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+    letter-spacing: 0.02em;
+    width: 100%;
+  }
+
+  .gate__input::placeholder {
+    color: var(--ink-soft);
+    opacity: 0.55;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  .gate__submit {
+    background: transparent;
+    border: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    cursor: pointer;
+    padding: 12px 0 12px 16px;
+    transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+    white-space: nowrap;
+  }
+
+  .gate__submit:hover { opacity: 0.7; }
+  .gate__submit:active { transform: translateY(1px); }
+
+  .gate__error {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    min-height: 14px;
+    opacity: 0;
+    transition: opacity 200ms var(--ease);
+  }
+
+  .gate__error.is-visible { opacity: 1; }
+
+  .gate__form.is-error .gate__row { animation: gateShake 0.4s var(--ease); }
+
+  @keyframes gateShake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+  }
+
+  .gate__contact {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    margin-top: 4px;
+  }
+
+  .print-mode .gate { display: none !important; }
+  @media print { .gate { display: none !important; } }
+</style>
+</head>
+<body class="is-locked">
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="gate" id="gate" role="dialog" aria-label="Confidential preview — password required">
+  <div class="gate__inner">
+    <div class="gate__mark">Nightmoves Ventures, LLC</div>
+    <h1 class="gate__title">Daube Hotel<br/>Investor Preview.</h1>
+    <p class="gate__sub">This document is confidential and intended for accredited investors only. Please enter the password to continue.</p>
+    <form class="gate__form" id="gateForm" autocomplete="off" novalidate>
+      <label class="gate__label" for="gatePass">Password</label>
+      <div class="gate__row">
+        <input class="gate__input" type="password" id="gatePass" name="password" autocomplete="off" autofocus placeholder="Enter password" />
+        <button class="gate__submit" type="submit">View Deck →</button>
+      </div>
+      <div class="gate__error" id="gateError">Incorrect password — please try again.</div>
+    </form>
+    <div class="gate__contact">Access inquiries · Lance Ladd · Nightmoves Ventures, LLC</div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const gate = document.getElementById('gate');
+    const body = document.body;
+    function unlock(persist) {
+      if (persist) { try { localStorage.setItem('daube_unlocked', 'true'); } catch(e) {} }
+      body.classList.remove('is-locked');
+      gate.classList.add('is-hidden');
+      setTimeout(() => { gate.style.display = 'none'; }, 700);
+    }
+    if (location.search.includes('print=1')) { unlock(false); return; }
+    try { if (localStorage.getItem('daube_unlocked') === 'true') { unlock(false); return; } } catch(e) {}
+    const form = document.getElementById('gateForm');
+    const input = document.getElementById('gatePass');
+    const error = document.getElementById('gateError');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const val = (input.value || '').trim().toLowerCase();
+      if (val === 'daube') {
+        unlock(true);
+      } else {
+        form.classList.add('is-error');
+        error.classList.add('is-visible');
+        input.value = '';
+        setTimeout(() => form.classList.remove('is-error'), 450);
+      }
+    });
+  })();
+</script>
+
+<!-- ============ SIDE DOTS NAV ============ -->
+<nav class="sidedots" id="sidedots" aria-label="Slide navigation"></nav>
+
+<main>
+
+<!-- ============ 01 — COVER ============ -->
+<section class="slide" data-slide="01" data-title="Cover">
+  <div class="frame frame--dark">
+    <div class="cover"></div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <div class="cover-top">
+        <div class="cover-top__mark">Nightmoves Ventures, LLC</div>
+        <div>Confidential — Accredited Investors Only</div>
+      </div>
+      <div>
+        <div class="cover-wordmark" data-reveal>Daube Hotel</div>
+        <div class="cover-rule" data-reveal data-delay="1"></div>
+        <div class="cover-sub" data-reveal data-delay="2">105 East Main Street · Ardmore, Oklahoma</div>
+        <div class="cover-sub" data-reveal data-delay="3" style="margin-top: 8px; opacity: 0.65; font-family: var(--mono); font-size: clamp(10px,1cqi,13px); letter-spacing: 0.14em; text-transform: uppercase;">Investor Underwriting &amp; Capital Structure · April 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 — THE THESIS ============ -->
+<section class="slide" data-slide="02" data-title="Thesis">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">01 — Thesis</div>
+    <div class="frame__corner frame__corner--br">Daube Hotel · Ardmore, OK</div>
+    <div class="frame__inner">
+      <div class="thesis">
+        <h1 class="thesis__statement" data-reveal>
+          There is no boutique hotel<br/>
+          in downtown Ardmore.<br/>
+          <span style="color: var(--ink-soft); font-size: 0.78em;">That gap has existed for decades.</span><br/>
+          <em>We are closing it.</em>
+        </h1>
+        <div class="thesis__signature" data-reveal data-delay="3">
+          <span class="micro">A 25-key boutique hotel · $4.75M total project · Three capital structure options</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 — DEAL SNAPSHOT ============ -->
+<section class="slide" data-slide="03" data-title="Deal Snapshot">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">02 — Deal Snapshot</div>
+    <div class="frame__corner frame__corner--br">Daube Hotel · Ardmore, OK</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">At a glance</div>
+        <h2 class="h2">The deal in six figures.</h2>
+      </div>
+      <div class="snapshot-grid" data-reveal data-delay="1">
+        <div class="snapshot-cell">
+          <div class="label">Total project capital</div>
+          <div class="figure">$4.75<span style="font-size: 0.55em; color: var(--brass);">M</span></div>
+          <div class="note">Acquisition, renovation, FF&amp;E, soft costs</div>
+        </div>
+        <div class="snapshot-cell">
+          <div class="label">Acquisition price</div>
+          <div class="figure">$525<span style="font-size: 0.55em; color: var(--brass);">K</span></div>
+          <div class="note">Historic building, 1.19 acres</div>
+        </div>
+        <div class="snapshot-cell">
+          <div class="label">Keys</div>
+          <div class="figure">25</div>
+          <div class="note">Boutique room count · plus restaurant + speakeasy</div>
+        </div>
+        <div class="snapshot-cell">
+          <div class="label">Target investor IRR</div>
+          <div class="figure figure--oxblood">18–28<span style="font-size: 0.55em;">%</span></div>
+          <div class="note">Range across all three capital options</div>
+        </div>
+        <div class="snapshot-cell">
+          <div class="label">Working ARV → Optimistic</div>
+          <div class="figure">$6.5<span style="font-size: 0.6em; color: var(--brass);">M</span><span style="font-size: 0.4em; color: var(--ink-soft); margin: 0 0.15em;">→</span><span style="font-size: 0.75em;">$9.8M</span></div>
+          <div class="note">Conservative working number for lender scrutiny</div>
+        </div>
+        <div class="snapshot-cell">
+          <div class="label">Earnest goes hard</div>
+          <div class="figure" style="font-style: italic;">May 24</div>
+          <div class="note">2026 · 5:00 PM · capital structure must be confirmed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 — THE PROPERTY ============ -->
+<section class="slide" data-slide="04" data-title="Property">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">03 — The Property</div>
+    <div class="frame__corner frame__corner--br">105 E. Main · Ardmore, OK</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">A historic building on Ardmore's Main Street</div>
+        <h2 class="h2">Built for hospitality, again.</h2>
+      </div>
+      <div class="property">
+        <div class="property__photo" data-reveal data-delay="1">
+          <div class="property__photo-tag">Daube Hotel · Brand Mark</div>
+        </div>
+        <div class="property__facts" data-reveal data-delay="2">
+          <div class="fact-row">
+            <div class="fact-row__label">Address</div>
+            <div class="fact-row__value">105 E. Main Street<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">Downtown Ardmore, Oklahoma</span></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Land</div>
+            <div class="fact-row__value">1.19 acres</div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Building</div>
+            <div class="fact-row__value">18,904 SF · historic</div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Program</div>
+            <div class="fact-row__value">25 boutique rooms<br/>Restaurant · alley-entry speakeasy</div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Position</div>
+            <div class="fact-row__value"><em>Only</em> boutique in downtown<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">Triple-access: I-35, Amtrak, pedestrian core</span></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Modeled ADR</div>
+            <div class="fact-row__value"><span class="num">$149 – $285</span><br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">vs market chain ADR $100 – $155</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 — HEADLINE NUMBERS ============ -->
+<section class="slide" data-slide="05" data-title="Market Numbers">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">04 — Market in Four Numbers</div>
+    <div class="frame__corner frame__corner--br">Combined annual demand within 25 mi: 8M+</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">The demand engine</div>
+        <h2 class="h2">Ardmore is built for boutique.</h2>
+      </div>
+      <div class="numbers-grid">
+        <div class="number-tile" data-reveal data-delay="1">
+          <div class="number-tile__big">6M<sup>+</sup></div>
+          <div class="number-tile__label"><strong>WinStar World Casino</strong>Annual visitors · 18 mi south · DFW-driven · 1,399 hotel rooms sell out on weekends</div>
+        </div>
+        <div class="number-tile" data-reveal data-delay="2">
+          <div class="number-tile__big">1.7M<sup>+</sup></div>
+          <div class="number-tile__label"><strong>Lake Murray State Park</strong>Annual visitors · 5 mi east · Oklahoma's largest state park · summer weekends sell out</div>
+        </div>
+        <div class="number-tile" data-reveal data-delay="3">
+          <div class="number-tile__big">10.9M<sup>+</sup></div>
+          <div class="number-tile__label"><strong>I-35 Corridor</strong>Annual vehicles through Ardmore · 30,000 VPD average · 70,000 peak weekends</div>
+        </div>
+        <div class="number-tile" data-reveal data-delay="4">
+          <div class="number-tile__big">80,371</div>
+          <div class="number-tile__label"><strong>Amtrak Heartland Flyer</strong>2024 passengers · +11% YoY · station <em>one block</em> from the property</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 — TRIPLE ACCESS ============ -->
+<section class="slide" data-slide="06" data-title="Triple Access">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">05 — Location</div>
+    <div class="frame__corner frame__corner--br">Three transport corridors converge</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Three corridors, one property</div>
+        <h2 class="h2">A location no other Ardmore hotel can match.</h2>
+      </div>
+      <div class="access">
+        <div class="access__diagram" data-reveal data-delay="1">
+          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <!-- I-35 corridor (vertical) -->
+            <line x1="200" y1="20" x2="200" y2="380" stroke="#D8D2C4" stroke-width="0.5"/>
+            <text x="208" y="40" font-family="JetBrains Mono, monospace" font-size="11" fill="#5A524A" letter-spacing="1.2">I-35</text>
+            <text x="208" y="55" font-family="JetBrains Mono, monospace" font-size="9" fill="#A8843D" letter-spacing="1">10.9M VPY</text>
+            <text x="208" y="372" font-family="JetBrains Mono, monospace" font-size="9" fill="#5A524A" letter-spacing="0.8">→ WinStar 18 mi</text>
+
+            <!-- Amtrak (horizontal) -->
+            <line x1="20" y1="200" x2="380" y2="200" stroke="#D8D2C4" stroke-width="0.5" stroke-dasharray="3 3"/>
+            <text x="25" y="194" font-family="JetBrains Mono, monospace" font-size="11" fill="#5A524A" letter-spacing="1.2">AMTRAK HEARTLAND FLYER</text>
+            <text x="25" y="216" font-family="JetBrains Mono, monospace" font-size="9" fill="#A8843D" letter-spacing="1">80K PAX · 1 BLOCK</text>
+
+            <!-- Pedestrian zone (diagonal) -->
+            <circle cx="200" cy="200" r="80" fill="none" stroke="#D8D2C4" stroke-width="0.5" stroke-dasharray="2 4"/>
+            <text x="240" y="285" font-family="JetBrains Mono, monospace" font-size="9" fill="#5A524A" letter-spacing="0.8">DOWNTOWN PEDESTRIAN</text>
+
+            <!-- Property marker -->
+            <circle cx="200" cy="200" r="14" fill="#7B2D26"/>
+            <circle cx="200" cy="200" r="22" fill="none" stroke="#7B2D26" stroke-width="1" opacity="0.4"/>
+            <circle cx="200" cy="200" r="32" fill="none" stroke="#7B2D26" stroke-width="0.5" opacity="0.2"/>
+            <text x="200" y="174" font-family="Fraunces, serif" font-size="13" fill="#1A1714" text-anchor="middle" font-weight="500">DAUBE HOTEL</text>
+            <text x="200" y="164" font-family="JetBrains Mono, monospace" font-size="8" fill="#5A524A" text-anchor="middle" letter-spacing="1.2">105 E. MAIN</text>
+
+            <!-- Lake Murray arrow -->
+            <line x1="280" y1="200" x2="365" y2="200" stroke="#7B2D26" stroke-width="0.5"/>
+            <polygon points="365,200 358,196 358,204" fill="#7B2D26"/>
+            <text x="305" y="186" font-family="JetBrains Mono, monospace" font-size="8" fill="#5A524A" letter-spacing="0.8">LAKE MURRAY 5 MI</text>
+          </svg>
+        </div>
+        <div class="access__items" data-reveal data-delay="2">
+          <div class="access-item">
+            <div class="access-item__mark">I-35</div>
+            <div>
+              <div class="access-item__title">The interstate engine.</div>
+              <div class="access-item__body">30,000 vehicles per day average, 70,000+ on holiday and OU-Texas weekends. <strong>10.9M annual pass-throughs.</strong> The corridor that carries DFW's gaming and outdoor traffic into Oklahoma.</div>
+            </div>
+          </div>
+          <div class="access-item">
+            <div class="access-item__mark">RAIL</div>
+            <div>
+              <div class="access-item__title">Amtrak's Heartland Flyer.</div>
+              <div class="access-item__body">Daily Fort Worth ↔ Oklahoma City service. <strong>80,371 passengers in 2024</strong> (+15% over pre-pandemic). The station is at 251 E. Main — <em>one block</em> from the property. Walk-to-hotel rail access exists in no other Ardmore lodging.</div>
+            </div>
+          </div>
+          <div class="access-item">
+            <div class="access-item__mark">FOOT</div>
+            <div>
+              <div class="access-item__title">Downtown pedestrian core.</div>
+              <div class="access-item__body">Main Street carries <strong>4,300 VPD</strong> directly past the property — up 2.4% since 2021 — with boutique shops, restaurants, and the Convention Center within a half-mile walk.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 — DEMAND DRIVERS ============ -->
+<section class="slide" data-slide="07" data-title="Demand Drivers">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">06 — Demand Drivers</div>
+    <div class="frame__corner frame__corner--br">Year-round, multi-segment, multi-distance</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Where the demand comes from</div>
+        <h2 class="h2">Thirteen demand engines. Five categories.</h2>
+      </div>
+      <div class="drivers">
+        <div class="driver-col" data-reveal data-delay="1">
+          <div class="driver-col__head">Gaming</div>
+          <div class="driver-item"><div class="driver-item__name">WinStar World Casino</div><div class="driver-item__meta">6M+ / 18 mi south</div></div>
+          <div class="driver-item"><div class="driver-item__name">Gold Mountain Casino</div><div class="driver-item__meta">300 machines / 1.5 mi</div></div>
+          <div class="driver-item"><div class="driver-item__name">Lakecrest Casino</div><div class="driver-item__meta">Near Lake Murray</div></div>
+        </div>
+        <div class="driver-col" data-reveal data-delay="2">
+          <div class="driver-col__head">Outdoor</div>
+          <div class="driver-item"><div class="driver-item__name">Lake Murray State Park</div><div class="driver-item__meta">1.7M+ / 5 mi east</div></div>
+          <div class="driver-item"><div class="driver-item__name">Turner Falls &amp; Arbuckles</div><div class="driver-item__meta">25 mi north</div></div>
+          <div class="driver-item"><div class="driver-item__name">Chickasaw Nat'l Rec</div><div class="driver-item__meta">Regional</div></div>
+        </div>
+        <div class="driver-col" data-reveal data-delay="3">
+          <div class="driver-col__head">Events</div>
+          <div class="driver-item"><div class="driver-item__name">Hardy Murphy Coliseum</div><div class="driver-item__meta">100K+ visitors / yr</div></div>
+          <div class="driver-item"><div class="driver-item__name">Ardmore Convention Ctr</div><div class="driver-item__meta">50–80 events / yr</div></div>
+          <div class="driver-item"><div class="driver-item__name">Chickasaw Festival</div><div class="driver-item__meta">Annual / week-long</div></div>
+        </div>
+        <div class="driver-col" data-reveal data-delay="4">
+          <div class="driver-col__head">Transport</div>
+          <div class="driver-item"><div class="driver-item__name">I-35 Corridor</div><div class="driver-item__meta">10.9M+ vehicles / yr</div></div>
+          <div class="driver-item"><div class="driver-item__name">Amtrak Heartland Flyer</div><div class="driver-item__meta">80,371 / +11% YoY</div></div>
+          <div class="driver-item"><div class="driver-item__name">E. Main St. (Hwy 70)</div><div class="driver-item__meta">4,300 VPD frontage</div></div>
+        </div>
+        <div class="driver-col" data-reveal data-delay="5">
+          <div class="driver-col__head">Local Base</div>
+          <div class="driver-item"><div class="driver-item__name">Chickasaw Nation</div><div class="driver-item__meta">1,500+ employees</div></div>
+          <div class="driver-item"><div class="driver-item__name">Mercy Hospital Ardmore</div><div class="driver-item__meta">900+ regional med hub</div></div>
+          <div class="driver-item"><div class="driver-item__name">Oil &amp; Gas / Healdton</div><div class="driver-item__meta">Highest-paying sector</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 — WHY ARDMORE NOW ============ -->
+<section class="slide" data-slide="08" data-title="Why Ardmore Now">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">07 — Why Now</div>
+    <div class="frame__corner frame__corner--br">The honest economic picture</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Ardmore in 2026</div>
+        <h2 class="h2">A market in active transition — and tourism is the strategy.</h2>
+      </div>
+      <div class="transition">
+        <div class="transition-col transition-col--what" data-reveal data-delay="1">
+          <div class="transition-col__step">What happened</div>
+          <div class="transition-col__title">Manufacturing took a hit in 2025.</div>
+          <ul>
+            <li><strong>Michelin</strong> closed end of 2025 — 1,400 jobs</li>
+            <li><strong>AAF / Flanders</strong> closed December 2025</li>
+            <li><strong>Woodside H2OK</strong> hydrogen plant cancelled August 2025</li>
+          </ul>
+          <p class="body" style="font-size: clamp(10px,1.05cqi,12px); color: var(--ink-soft); margin-top: 4px;">We name these openly. Investors should price them in — and the next two columns explain why we still pencil.</p>
+        </div>
+        <div class="transition-col transition-col--resp" data-reveal data-delay="2">
+          <div class="transition-col__step">The city's response</div>
+          <div class="transition-col__title">A funded, deliberate pivot.</div>
+          <ul>
+            <li><strong>2025 Economic Vision Plan</strong> with VisionFirst Advisors</li>
+            <li><strong>$1M+ Rapid Community Response</strong> grant deployed</li>
+            <li><strong>Tourism &amp; entrepreneurship</strong> named primary replacement pillars</li>
+            <li><strong>Dot Foods +$13.9M expansion</strong>; Circulus (Dow) opening 2nd facility</li>
+            <li>Industrial Airpark actively marketed — rail, air, foreign trade zone</li>
+          </ul>
+        </div>
+        <div class="transition-col transition-col--opp" data-reveal data-delay="3">
+          <div class="transition-col__step">The opportunity</div>
+          <div class="transition-col__title">We are the flagship.</div>
+          <ul>
+            <li>Tourism is now an <strong>official economic pillar</strong> — not a side bet</li>
+            <li>Ardmore Tourism Authority is actively promoting downtown</li>
+            <li>Main Street recognized <strong>"America's Favorite"</strong> by Today Show</li>
+            <li>10.3% business application growth — outpacing state</li>
+          </ul>
+          <div class="transition-pullquote">"The city is actively trying to build its tourism economy — and the Daube is the private investment that makes that strategy credible."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 — COMPETITIVE LANDSCAPE ============ -->
+<section class="slide" data-slide="09" data-title="Competitive Landscape">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">08 — Competitive Landscape</div>
+    <div class="frame__corner frame__corner--br">The gap that has existed for decades</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Where Ardmore sleeps tonight</div>
+        <h2 class="h2">Six chain hotels on I-35. Zero downtown.</h2>
+      </div>
+      <div class="competitive">
+        <div class="compete-cluster" data-reveal data-delay="1">
+          <div class="compete-cluster__head">I-35 Corridor · 1–2 miles west</div>
+          <div class="compete-row">
+            <div class="compete-row__name">Hampton Inn &amp; Suites</div>
+            <div class="compete-row__adr">88 rooms · $130 – $155</div>
+          </div>
+          <div class="compete-row">
+            <div class="compete-row__name">Hilton Garden Inn</div>
+            <div class="compete-row__adr">120 rooms · $125 – $150</div>
+          </div>
+          <div class="compete-row">
+            <div class="compete-row__name">Comfort Inn &amp; Suites</div>
+            <div class="compete-row__adr">78 rooms · $100 – $130</div>
+          </div>
+          <div class="compete-row">
+            <div class="compete-row__name">Holiday Inn Express</div>
+            <div class="compete-row__adr">84 rooms · $100 – $125</div>
+          </div>
+          <div class="compete-row">
+            <div class="compete-row__name">Budget chains (3–4)</div>
+            <div class="compete-row__adr">~250 rooms · $65 – $95</div>
+          </div>
+          <div class="compete-row">
+            <div class="compete-row__name">Lake Murray Lodge</div>
+            <div class="compete-row__adr">32 rooms · $140 – $175</div>
+          </div>
+        </div>
+        <div class="compete-cluster" data-reveal data-delay="2">
+          <div class="compete-cluster__head">Downtown Ardmore</div>
+          <div class="compete-row compete-row--daube">
+            <div class="compete-row__name">Daube Hotel (proposed)</div>
+            <div class="compete-row__adr">25 rooms · $149 – $285</div>
+          </div>
+          <div class="compete-zero">
+            Downtown boutique<br/>options: <em>zero</em>.
+          </div>
+          <p class="body" style="font-size: clamp(11px,1.2cqi,13px); margin-top: 12px; color: var(--ink-soft);">Boutique hotels nationally outperform chain counterparts by <strong style="color: var(--ink);">+20–35% in ADR</strong>. Ardmore market chain occupancy already runs 70–80% — top quartile of small Oklahoma markets. The supply gap is structural, not cyclical.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 — BOUTIQUE PREMIUM ============ -->
+<section class="slide" data-slide="10" data-title="Boutique Premium">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">09 — The Boutique Premium</div>
+    <div class="frame__corner frame__corner--br">National + market data</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">What boutique unlocks</div>
+        <h2 class="h2">The math behind a 25-room hotel that prices like a 100-room chain.</h2>
+      </div>
+      <div class="premium">
+        <div class="premium-side" data-reveal data-delay="1">
+          <div>
+            <div class="premium-side__kicker">Chain — I-35 cluster</div>
+            <div class="premium-side__big" style="margin-top: 12px;">$100 – $155</div>
+            <div style="font-family: var(--mono); font-size: clamp(10px,1.05cqi,12px); color: var(--ink-soft); letter-spacing: 0.1em; margin-top: 6px;">AVG DAILY RATE</div>
+          </div>
+          <ul class="premium-side__list">
+            <li><strong>Generic experience</strong> — near-highway, branded boxes, transient stays</li>
+            <li><strong>Volume play</strong> — 80–120 rooms each, lower per-key returns</li>
+            <li><strong>Lower stabilized occupancy</strong> when boutique enters the market</li>
+            <li><strong>No food/beverage upside</strong> beyond breakfast</li>
+          </ul>
+        </div>
+        <div class="premium-divider"></div>
+        <div class="premium-side premium-side--daube" data-reveal data-delay="2">
+          <div>
+            <div class="premium-side__kicker">Daube — downtown boutique</div>
+            <div class="premium-side__big" style="margin-top: 12px;">$149 – $285</div>
+            <div style="font-family: var(--mono); font-size: clamp(10px,1.05cqi,12px); color: var(--oxblood); letter-spacing: 0.1em; margin-top: 6px;">AVG DAILY RATE · +20–35% NATIONAL BOUTIQUE PREMIUM</div>
+          </div>
+          <ul class="premium-side__list">
+            <li><strong>Experience-driven</strong> — historic building, downtown, walkable</li>
+            <li><strong>Restaurant + speakeasy</strong> — F&amp;B captures 25–35% of revenue</li>
+            <li><strong>First-mover advantage</strong> — no other boutique within 90 miles</li>
+            <li><strong>Stabilized occupancy modeled 65–78%</strong> · market baseline 70–80%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 — ARV THREE METHODS ============ -->
+<section class="slide" data-slide="11" data-title="ARV — Three Methods">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">10 — After-Repair Value</div>
+    <div class="frame__corner frame__corner--br">Source: JLL Q1 2025 boutique benchmarks</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Triangulating the stabilized value</div>
+        <h2 class="h2">Three valuation methods. One conservative working number.</h2>
+      </div>
+      <div class="arv">
+        <div class="arv-method" data-reveal data-delay="1">
+          <div class="arv-method__weight">Income Approach · 60% weight</div>
+          <div class="arv-method__name">Stabilized NOI ÷ cap rate.</div>
+          <div class="arv-method__rows">
+            <div class="arv-row"><div class="arv-row__case">Conservative · 9.5% cap</div><div class="arv-row__value">$6,842,105</div></div>
+            <div class="arv-row arv-row--base"><div class="arv-row__case">Base · 8.5% cap</div><div class="arv-row__value">$8,751,012</div></div>
+            <div class="arv-row"><div class="arv-row__case">Optimistic · 7.5% cap</div><div class="arv-row__value">$11,333,333</div></div>
+          </div>
+          <p class="body" style="font-size: clamp(10px,1.05cqi,12px); margin-top: 4px;">Year 3 stabilized NOI of $743,836 divided by secondary-market boutique cap.</p>
+        </div>
+        <div class="arv-method" data-reveal data-delay="2">
+          <div class="arv-method__weight">Cost Approach · 25% weight</div>
+          <div class="arv-method__name">What it would cost to rebuild.</div>
+          <div class="arv-method__rows">
+            <div class="arv-row"><div class="arv-row__case">Land + Build + FF&amp;E</div><div class="arv-row__value">$5,839,000</div></div>
+            <div class="arv-row arv-row--base"><div class="arv-row__case">Less 10% historic dep.</div><div class="arv-row__value">$5,256,000</div></div>
+            <div class="arv-row"><div class="arv-row__case">Range</div><div class="arv-row__value">$5.18M – $5.33M</div></div>
+          </div>
+          <p class="body" style="font-size: clamp(10px,1.05cqi,12px); margin-top: 4px;">Replacement cost at $250/SF · 18,904 SF · land 1.19 ac · FF&amp;E $400K.</p>
+        </div>
+        <div class="arv-method" data-reveal data-delay="3">
+          <div class="arv-method__weight">Price per Key · 15% weight</div>
+          <div class="arv-method__name">Boutique sales comp.</div>
+          <div class="arv-method__rows">
+            <div class="arv-row"><div class="arv-row__case">Conservative · $125K/key</div><div class="arv-row__value">$3,125,000</div></div>
+            <div class="arv-row arv-row--base"><div class="arv-row__case">Base · $175K/key</div><div class="arv-row__value">$4,375,000</div></div>
+            <div class="arv-row"><div class="arv-row__case">Optimistic · $225K/key</div><div class="arv-row__value">$5,625,000</div></div>
+          </div>
+          <p class="body" style="font-size: clamp(10px,1.05cqi,12px); margin-top: 4px;">Boutique secondary market range: $125K–$250K/key (2026 benchmarks).</p>
+        </div>
+        <div class="arv-footer">
+          <div>
+            <div class="arv-footer__label">Working Number</div>
+            <div class="arv-footer__big">$6,500,000</div>
+            <div class="arv-footer__note">Deliberately below the weighted conservative ARV — sets up a comfortable lender margin.</div>
+          </div>
+          <div class="arv-footer__col">
+            <div class="arv-footer__col-num">$5.9M</div>
+            <div class="arv-footer__col-label">Weighted · conservative</div>
+          </div>
+          <div class="arv-footer__col">
+            <div class="arv-footer__col-num">$7.6M</div>
+            <div class="arv-footer__col-label">Weighted · base</div>
+          </div>
+          <div class="arv-footer__col">
+            <div class="arv-footer__col-num">$9.8M</div>
+            <div class="arv-footer__col-label">Weighted · optimistic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 — CAPITAL STACK ============ -->
+<section class="slide" data-slide="12" data-title="Capital Stack">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">11 — Capital Stack</div>
+    <div class="frame__corner frame__corner--br">Use of funds — $4.75M total</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Use of funds</div>
+        <h2 class="h2">$4,751,500 — where every dollar goes.</h2>
+      </div>
+      <div class="stack">
+        <div class="stack-bar" style="grid-template-columns: 525fr 3563fr 400fr 263fr;" data-reveal data-delay="1">
+          <div class="stack-seg stack-seg--acq"><div class="stack-seg__pct">11.0%</div></div>
+          <div class="stack-seg stack-seg--reno"><div class="stack-seg__pct">75.0%</div></div>
+          <div class="stack-seg stack-seg--ffe"><div class="stack-seg__pct">8.4%</div></div>
+          <div class="stack-seg stack-seg--soft"><div class="stack-seg__pct">5.5%</div></div>
+        </div>
+        <div class="stack-rows" data-reveal data-delay="2">
+          <div class="stack-row stack-row--acq">
+            <div class="stack-row__name">Acquisition</div>
+            <div class="stack-row__value">$525K</div>
+            <div class="stack-row__note">Historic building &amp; 1.19 acres at 105 E. Main</div>
+          </div>
+          <div class="stack-row stack-row--reno">
+            <div class="stack-row__name">Renovation &amp; construction</div>
+            <div class="stack-row__value">$3.56M</div>
+            <div class="stack-row__note">18,904 SF gut + restore · approx $188/SF all-in</div>
+          </div>
+          <div class="stack-row stack-row--ffe">
+            <div class="stack-row__name">FF&amp;E</div>
+            <div class="stack-row__value">$400K</div>
+            <div class="stack-row__note">25 rooms · lobby · restaurant · speakeasy</div>
+          </div>
+          <div class="stack-row stack-row--soft">
+            <div class="stack-row__name">Soft costs</div>
+            <div class="stack-row__value">$263K</div>
+            <div class="stack-row__note">Permits, architecture, pre-opening, working capital</div>
+          </div>
+        </div>
+        <div class="stack-total" data-reveal data-delay="3">
+          <div class="stack-total__label">Total Project Capital</div>
+          <div class="stack-total__value">$4,751,500</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 — THREE OPTIONS COMPARE ============ -->
+<section class="slide" data-slide="13" data-title="Three Options">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">12 — Three Capital Structures</div>
+    <div class="frame__corner frame__corner--br">All solve the $4,751,500 — differently</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Side by side</div>
+        <h2 class="h2">Three ways to fund this. One we recommend.</h2>
+      </div>
+      <div class="compare" data-reveal data-delay="1">
+        <div class="compare-row-label" style="background: transparent; border-bottom: 1px solid var(--rule);"></div>
+        <div class="compare-cell compare-cell--head" style="position: relative;">
+          <div class="opt-num">Option 1</div>
+          <div class="opt-title">Equity + Loan</div>
+        </div>
+        <div class="compare-cell compare-cell--head is-star" style="position: relative;">
+          <div class="opt-num">Option 2 · Recommended</div>
+          <div class="opt-title">Balanced Stack</div>
+        </div>
+        <div class="compare-cell compare-cell--head" style="position: relative;">
+          <div class="opt-num">Option 3</div>
+          <div class="opt-title">Full Equity</div>
+        </div>
+
+        <div class="compare-row-label">Total equity</div>
+        <div class="compare-cell"><span class="num">$1.55M</span></div>
+        <div class="compare-cell compare-cell--star"><span class="num">$2.5M</span></div>
+        <div class="compare-cell"><span class="num">$4.75M</span></div>
+
+        <div class="compare-row-label">Construction loan</div>
+        <div class="compare-cell"><span class="num">$3.2M</span></div>
+        <div class="compare-cell compare-cell--star"><span class="num">$2.25M</span></div>
+        <div class="compare-cell">None</div>
+
+        <div class="compare-row-label">Investors</div>
+        <div class="compare-cell">5–8</div>
+        <div class="compare-cell compare-cell--star">5–7</div>
+        <div class="compare-cell">8–12</div>
+
+        <div class="compare-row-label">Min. check</div>
+        <div class="compare-cell"><span class="num">$200K – $310K</span></div>
+        <div class="compare-cell compare-cell--star"><span class="num">$357K – $500K</span></div>
+        <div class="compare-cell"><span class="num">$400K – $600K</span></div>
+
+        <div class="compare-row-label">Annual debt service</div>
+        <div class="compare-cell"><span class="num">~$261K</span></div>
+        <div class="compare-cell compare-cell--star"><span class="num">~$183K</span></div>
+        <div class="compare-cell"><span class="num">$0</span></div>
+
+        <div class="compare-row-label">Balance-sheet req.</div>
+        <div class="compare-cell">High · guarantors needed</div>
+        <div class="compare-cell compare-cell--star">Medium · lighter guarantee</div>
+        <div class="compare-cell">Low · no loan</div>
+
+        <div class="compare-row-label">Estimated IRR</div>
+        <div class="compare-cell"><span class="num">18–23%</span></div>
+        <div class="compare-cell compare-cell--star"><span class="num">20–26%</span></div>
+        <div class="compare-cell"><span class="num">22–28%</span></div>
+
+        <div class="compare-row-label">Best for</div>
+        <div class="compare-cell compare-cell--badge" style="font-family: var(--sans); font-size: clamp(10px,1.1cqi,13px); text-transform: none; letter-spacing: 0;">Strong-balance-sheet investors wanting leverage</div>
+        <div class="compare-cell compare-cell--star compare-cell--badge" style="font-family: var(--sans); font-size: clamp(10px,1.1cqi,13px); text-transform: none; letter-spacing: 0; color: var(--oxblood); font-weight: 600;">Best overall balance — start here</div>
+        <div class="compare-cell compare-cell--badge" style="font-family: var(--sans); font-size: clamp(10px,1.1cqi,13px); text-transform: none; letter-spacing: 0;">Cash-rich investors who want zero bank risk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 — OPTION 1 DETAIL ============ -->
+<section class="slide" data-slide="14" data-title="Option 1">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">13 — Option 1</div>
+    <div class="frame__corner frame__corner--br">Equity + construction loan</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Option 1 · Equity + Construction Loan</div>
+        <h2 class="h2">Smaller checks. More leverage. Heavier guarantees.</h2>
+      </div>
+      <div class="option-detail">
+        <div class="opt-hero" data-reveal data-delay="1">
+          <div class="opt-hero-cell">
+            <div class="opt-hero-cell__label">Equity raise</div>
+            <div class="opt-hero-cell__value">$1.55M</div>
+          </div>
+          <div class="opt-hero-cell">
+            <div class="opt-hero-cell__label">Construction loan</div>
+            <div class="opt-hero-cell__value">$3.2M</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--accent">
+            <div class="opt-hero-cell__label">Base IRR (5 yr)</div>
+            <div class="opt-hero-cell__value">~21%</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--accent">
+            <div class="opt-hero-cell__label">Equity multiple</div>
+            <div class="opt-hero-cell__value">5.1×</div>
+          </div>
+        </div>
+        <div class="opt-block" data-reveal data-delay="2">
+          <div class="opt-block__head">How it works</div>
+          <ul>
+            <li>5 equal investors at <strong>$310,300 each</strong> (13.3% LP slot each)</li>
+            <li>$3.2M construction loan from 1NB or similar regional lender at ~75% ARV</li>
+            <li>Lender requires investors with combined net worth ≥ 2× loan (~$6.4M+)</li>
+            <li>12-month interest reserve funded at closing (~$224K at 7.0%)</li>
+            <li>Bank commissions own appraisal — our $6.5M ARV supports $3.2M loan at 49% LTC</li>
+          </ul>
+        </div>
+        <div class="opt-block opt-block--cons" data-reveal data-delay="3">
+          <div class="opt-block__head" style="color: var(--oxblood);">Trade-offs</div>
+          <ul>
+            <li><strong>Personal guarantees required from all investors</strong> — the gating issue</li>
+            <li>$261K annual debt service starts after construction completes</li>
+            <li>Year-1 cash flow is the tightest of the three options</li>
+            <li>Bank approval not guaranteed; conservative 49% LTC helps but isn't a yes</li>
+            <li>Leverage amplifies returns in the upside <em>and</em> the downside</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 15 — OPTION 2 DETAIL (RECOMMENDED) ============ -->
+<section class="slide" data-slide="15" data-title="Option 2 — Recommended">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">14 — Option 2 · ★ Recommended</div>
+    <div class="frame__corner frame__corner--br">Balanced equity + smaller loan</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <div class="eyebrow eyebrow--brass" style="color: var(--brass);">★ Sponsor's recommendation</div>
+        </div>
+        <h2 class="h2">Larger equity. Smaller loan. The cleanest bank story.</h2>
+      </div>
+      <div class="option-detail">
+        <div class="opt-hero" data-reveal data-delay="1">
+          <div class="opt-hero-cell opt-hero-cell--star">
+            <div class="opt-hero-cell__label">Equity raise</div>
+            <div class="opt-hero-cell__value">$2.5M</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--star">
+            <div class="opt-hero-cell__label">Construction loan</div>
+            <div class="opt-hero-cell__value">$2.25M</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--accent opt-hero-cell--star">
+            <div class="opt-hero-cell__label">Base IRR (5 yr)</div>
+            <div class="opt-hero-cell__value">~23%</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--accent opt-hero-cell--star">
+            <div class="opt-hero-cell__label">Equity multiple</div>
+            <div class="opt-hero-cell__value">4.1×</div>
+          </div>
+        </div>
+        <div class="opt-block" data-reveal data-delay="2">
+          <div class="opt-block__head">Why this is the recommendation</div>
+          <ul>
+            <li>5 equal investors at <strong>$500,000 each</strong> (14% LP slot each)</li>
+            <li>Loan-to-cost drops to <strong>47%</strong> — very comfortable for a community lender</li>
+            <li>Loan-to-ARV at $6.5M is <strong>34.6%</strong> — well inside conventional underwriting</li>
+            <li>Combined investor net worth of <strong>~$4.5M+</strong> should clear the bank</li>
+            <li>Interest reserve needed drops to <strong>~$157K</strong> (vs. $224K in Option 1)</li>
+          </ul>
+        </div>
+        <div class="opt-block opt-block--cons" data-reveal data-delay="3">
+          <div class="opt-block__head" style="color: var(--oxblood);">Trade-offs</div>
+          <ul>
+            <li>Larger check size — investor pool is narrower than Option 1</li>
+            <li>Still requires a bank approval and ongoing lender relationship</li>
+            <li>Construction loan interest accrues during build</li>
+            <li>Five investors each hold significant single-deal concentration</li>
+            <li>If bank deal falls through, fallback is shifting toward Option 3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16 — OPTION 3 DETAIL ============ -->
+<section class="slide" data-slide="16" data-title="Option 3">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">15 — Option 3</div>
+    <div class="frame__corner frame__corner--br">Full equity · no bank loan</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Option 3 · Full Equity</div>
+        <h2 class="h2">No bank. No debt service. Highest IRR — hardest raise.</h2>
+      </div>
+      <div class="option-detail">
+        <div class="opt-hero" data-reveal data-delay="1">
+          <div class="opt-hero-cell">
+            <div class="opt-hero-cell__label">Equity raise</div>
+            <div class="opt-hero-cell__value">$4.75M</div>
+          </div>
+          <div class="opt-hero-cell">
+            <div class="opt-hero-cell__label">Construction loan</div>
+            <div class="opt-hero-cell__value" style="color: var(--ink-soft);">None</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--accent">
+            <div class="opt-hero-cell__label">Base IRR (5 yr)</div>
+            <div class="opt-hero-cell__value">~25%</div>
+          </div>
+          <div class="opt-hero-cell opt-hero-cell--accent">
+            <div class="opt-hero-cell__label">Equity multiple</div>
+            <div class="opt-hero-cell__value">3.21×</div>
+          </div>
+        </div>
+        <div class="opt-block" data-reveal data-delay="2">
+          <div class="opt-block__head">How it works</div>
+          <ul>
+            <li>10 equal investors at <strong>$475,150 each</strong> (7.0% LP slot each), or 8 at $594K</li>
+            <li><strong>Zero debt service</strong> — 100% of Year 3+ NOI flows to investors</li>
+            <li><strong>No bank approval</strong> required; deal closes on investor capital alone</li>
+            <li><strong>No personal guarantees</strong> — investors are passive LPs, full stop</li>
+            <li>Full exit proceeds available to investors at sale (no debt payoff)</li>
+          </ul>
+        </div>
+        <div class="opt-block opt-block--cons" data-reveal data-delay="3">
+          <div class="opt-block__head" style="color: var(--oxblood);">Trade-offs</div>
+          <ul>
+            <li>Hardest raise — need $4.75M from private investors alone</li>
+            <li>Each investor's percentage stake is smaller (3.21× multiple vs. 4.1× in Option 2)</li>
+            <li>More investor relationships to manage on an ongoing basis</li>
+            <li>No leverage means lower absolute return per dollar invested in the upside</li>
+            <li>Requires a deep accredited investor network — 8–12 commitments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17 — INVESTOR WATERFALL (OPTION 2) ============ -->
+<section class="slide" data-slide="17" data-title="Investor Waterfall">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">16 — Investor Waterfall · Option 2</div>
+    <div class="frame__corner frame__corner--br">5-year base case · per investor</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">What $500,000 returns</div>
+        <h2 class="h2">A single investor's view of Option 2, base case.</h2>
+      </div>
+      <div class="waterfall">
+        <div class="waterfall-table" data-reveal data-delay="1">
+          <div class="wf-row">
+            <div class="wf-row__mark">·</div>
+            <div class="wf-row__label">Initial investment</div>
+            <div class="wf-row__value">$500,000</div>
+          </div>
+          <div class="wf-row">
+            <div class="wf-row__mark">+</div>
+            <div class="wf-row__label">Return of capital at exit</div>
+            <div class="wf-row__value">$500,000</div>
+          </div>
+          <div class="wf-row">
+            <div class="wf-row__mark">+</div>
+            <div class="wf-row__label">Cumulative 8% preferred (5 yrs)</div>
+            <div class="wf-row__value">$200,000</div>
+          </div>
+          <div class="wf-row">
+            <div class="wf-row__mark">+</div>
+            <div class="wf-row__label">Operating cash distributions · Yrs 2–5 · 14% LP</div>
+            <div class="wf-row__value">$192,400</div>
+          </div>
+          <div class="wf-row">
+            <div class="wf-row__mark">+</div>
+            <div class="wf-row__label">Sale proceeds · 14% of net · $8.2M exit</div>
+            <div class="wf-row__value">$1,148,000</div>
+          </div>
+          <div class="wf-row wf-row--total">
+            <div class="wf-row__mark" style="color: var(--oxblood);">=</div>
+            <div class="wf-row__label">Total Return</div>
+            <div class="wf-row__value">$2,040,400</div>
+          </div>
+        </div>
+        <div class="waterfall-summary" data-reveal data-delay="2">
+          <div class="wf-summary-row">
+            <div class="wf-summary-cell">
+              <div class="wf-summary-cell__label">Equity Multiple</div>
+              <div class="wf-summary-cell__value">4.1×</div>
+            </div>
+            <div class="wf-summary-cell">
+              <div class="wf-summary-cell__label">Estimated IRR</div>
+              <div class="wf-summary-cell__value">23%</div>
+            </div>
+          </div>
+          <div class="wf-conservative">
+            <div>
+              <div class="wf-conservative__label">Conservative scenario</div>
+              <div style="font-size: clamp(10px,1.05cqi,12px); color: var(--ink-soft); margin-top: 6px;">$500K → $1,536,000 · 3.1× · ~16% IRR · $7.5M exit</div>
+            </div>
+            <div class="wf-conservative__value">3.1× / 16%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 18 — WHY OPTION 2 ============ -->
+<section class="slide" data-slide="18" data-title="Why Option 2">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">17 — Why Option 2</div>
+    <div class="frame__corner frame__corner--br">Sponsor's reasoning</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">The sponsor's reasoning</div>
+        <h2 class="h2">Why we lead with Option 2.</h2>
+      </div>
+      <div class="why2">
+        <div class="why2-text" data-reveal data-delay="1">
+          <p>Option 2 gives you the best absolute investor returns, the cleanest bank story, and maximum flexibility.</p>
+          <p>Target <em>five investors at $500,000 each</em>. Use the $2.5M equity to close the property and begin construction. Simultaneously pursue the $2.25M construction loan — at <em>34% loan-to-ARV</em>, most community lenders will approve without requiring heavy personal guarantees.</p>
+          <p>If the bank loan cannot be secured, you can approach existing investors about a bridge or bring in 2–3 additional investors to cover the gap — a structured shift toward Option 3. <em>The fallback is built in.</em></p>
+        </div>
+        <div class="why2-stats" data-reveal data-delay="2">
+          <div class="why2-stat">
+            <div class="why2-stat__num">47%</div>
+            <div class="why2-stat__label"><strong>Loan-to-cost ratio</strong> · very comfortable for a community lender</div>
+          </div>
+          <div class="why2-stat">
+            <div class="why2-stat__num">34.6%</div>
+            <div class="why2-stat__label"><strong>Loan-to-ARV</strong> at $6.5M working value · inside conventional underwriting</div>
+          </div>
+          <div class="why2-stat">
+            <div class="why2-stat__num">$157K</div>
+            <div class="why2-stat__label"><strong>Interest reserve</strong> needed at closing · vs $224K in Option 1</div>
+          </div>
+          <div class="why2-stat">
+            <div class="why2-stat__num">4.1×</div>
+            <div class="why2-stat__label"><strong>Equity multiple</strong> base case · highest absolute dollar return of the three options</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 19 — CRITICAL PATH ============ -->
+<section class="slide" data-slide="19" data-title="Critical Path">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">18 — Critical Path</div>
+    <div class="frame__corner frame__corner--br">Earnest goes hard at 5:00 PM CT</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">What happens between now and close</div>
+        <h2 class="h2">Four steps. One deadline.</h2>
+      </div>
+      <div class="path">
+        <div class="path-step" data-reveal data-delay="1">
+          <div class="path-step__num">01</div>
+          <div>
+            <div class="path-step__title">Engage counsel.</div>
+            <div class="path-step__body">Operating Agreement and PPM in hand before any investor conversations. Reg D filing required.</div>
+          </div>
+        </div>
+        <div class="path-step" data-reveal data-delay="2">
+          <div class="path-step__num">02</div>
+          <div>
+            <div class="path-step__title">Open the bank.</div>
+            <div class="path-step__body">Preliminary call with 1NB (and two backup community banks). Present the $6.5M ARV case. Get an informal yes/no on $2.25M at 34% LTV before committing investors.</div>
+          </div>
+        </div>
+        <div class="path-step" data-reveal data-delay="3">
+          <div class="path-step__num">03</div>
+          <div>
+            <div class="path-step__title">Identify five.</div>
+            <div class="path-step__body">Lead with Option 2. Be transparent about the bank component and the financial info needed to support the loan. Investors who push back on guarantees participate under Option 3 at their proportional share.</div>
+          </div>
+        </div>
+        <div class="path-step" data-reveal data-delay="4">
+          <div class="path-step__num">04</div>
+          <div>
+            <div class="path-step__title">Soft commit by May 24.</div>
+            <div class="path-step__body">Capital structure confirmed. At minimum a soft commitment from the lead investor in writing. Earnest goes non-refundable at 5:00 PM.</div>
+          </div>
+        </div>
+      </div>
+      <div class="deadline" data-reveal data-delay="5">
+        <div class="deadline__label">
+          <strong>Hard deadline</strong>
+          Earnest money goes non-refundable
+        </div>
+        <div class="deadline__date"><em>May 24,</em> 2026</div>
+        <div class="deadline__time">5:00 PM CT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 20 — DISCLAIMER & CONTACT ============ -->
+<section class="slide" data-slide="20" data-title="Disclaimer">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">19 — Disclosures &amp; Contact</div>
+    <div class="frame__corner frame__corner--br">Confidential · Accredited Investors Only</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Important disclosures</div>
+        <h2 class="h2">For accredited investors only.</h2>
+      </div>
+      <div class="disclaimer">
+        <div class="disclaimer-text" data-reveal data-delay="1">
+          <p>This document is for <strong>informational purposes only</strong> and does not constitute an offer to sell or a solicitation of an offer to purchase securities. Any such offer or solicitation will be made only by means of a confidential Private Placement Memorandum and related subscription documents furnished to qualified investors.</p>
+          <p>All projections are <strong>forward-looking estimates</strong>. Past performance is not indicative of future results. Actual results may differ materially from those expressed or implied. Prospective investors should consult their own legal, tax, and financial advisors before investing.</p>
+          <p>This offering is available <strong>only to accredited investors</strong> as defined under SEC Regulation D, Rule 506(b). Distribution of this document is restricted and confidential.</p>
+        </div>
+        <div class="contact-card" data-reveal data-delay="2">
+          <div class="contact-card__kicker">For accredited investor inquiries</div>
+          <div>
+            <div class="contact-card__name">Lance Ladd</div>
+            <div class="contact-card__role">Managing Member<br/>Nightmoves Ventures, LLC</div>
+          </div>
+          <div class="contact-card__entity">Daube Hotel · Ardmore, OK · April 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+  // ============ Side dots ============
+  const slides = document.querySelectorAll('.slide');
+  const sidedots = document.getElementById('sidedots');
+  slides.forEach((s, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'sidedots__dot';
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}: ${s.dataset.title || ''}`);
+    dot.dataset.target = i;
+    dot.addEventListener('click', () => {
+      s.scrollIntoView({ behavior: 'smooth' });
+    });
+    sidedots.appendChild(dot);
+  });
+
+  // ============ Active slide tracking ============
+  const dots = sidedots.querySelectorAll('.sidedots__dot');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+      }
+    });
+  }, { threshold: [0.5, 0.75] });
+  slides.forEach(s => obs.observe(s));
+
+  // ============ Reveal animations ============
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+
+  // ============ Keyboard nav ============
+  let current = 0;
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(slides.length - 1, idx));
+    current = idx;
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Track current by IO
+  const trackObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        current = Array.from(slides).indexOf(entry.target);
+      }
+    });
+  }, { threshold: [0.5] });
+  slides.forEach(s => trackObs.observe(s));
+
+  window.addEventListener('keydown', (e) => {
+    const key = e.key;
+    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(key)) {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(key)) {
+      e.preventDefault();
+      goTo(current - 1);
+    } else if (key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    } else if (key === 'End') {
+      e.preventDefault();
+      goTo(slides.length - 1);
+    } else if (/^[1-9]$/.test(key)) {
+      e.preventDefault();
+      goTo(parseInt(key, 10) - 1);
+    }
+  });
+
+  // ============ Print mode hook (build script will force this) ============
+  if (location.search.includes('print=1')) {
+    document.documentElement.classList.add('print-mode');
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
