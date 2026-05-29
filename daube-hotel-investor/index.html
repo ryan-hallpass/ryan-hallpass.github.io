@@ -2257,55 +2257,7 @@
   @media print { .gate { display: none !important; } }
 </style>
 </head>
-<body class="is-locked">
-
-<!-- ============ PASSWORD GATE ============ -->
-<div class="gate" id="gate" role="dialog" aria-label="Confidential preview — password required">
-  <div class="gate__inner">
-    <div class="gate__mark">Nightmoves Ventures, LLC</div>
-    <h1 class="gate__title">Downtown Ardmore<br/>Boutique Hotel<br/>Investor Preview.</h1>
-    <p class="gate__sub">This document is confidential and intended for accredited investors only. Please enter the password to continue.</p>
-    <form class="gate__form" id="gateForm" autocomplete="off" novalidate>
-      <label class="gate__label" for="gatePass">Password</label>
-      <div class="gate__row">
-        <input class="gate__input" type="password" id="gatePass" name="password" autocomplete="off" autofocus placeholder="Enter password" />
-        <button class="gate__submit" type="submit">View Deck →</button>
-      </div>
-      <div class="gate__error" id="gateError">Incorrect password — please try again.</div>
-    </form>
-    <div class="gate__contact">Access inquiries · Lance Ladd · Nightmoves Ventures, LLC</div>
-  </div>
-</div>
-
-<script>
-  (function() {
-    const gate = document.getElementById('gate');
-    const body = document.body;
-    function unlock(persist) {
-      if (persist) { try { localStorage.setItem('daube_unlocked', 'true'); } catch(e) {} }
-      body.classList.remove('is-locked');
-      gate.classList.add('is-hidden');
-      setTimeout(() => { gate.style.display = 'none'; }, 700);
-    }
-    if (location.search.includes('print=1')) { unlock(false); return; }
-    try { if (localStorage.getItem('daube_unlocked') === 'true') { unlock(false); return; } } catch(e) {}
-    const form = document.getElementById('gateForm');
-    const input = document.getElementById('gatePass');
-    const error = document.getElementById('gateError');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const val = (input.value || '').trim().toLowerCase();
-      if (val === 'daube') {
-        unlock(true);
-      } else {
-        form.classList.add('is-error');
-        error.classList.add('is-visible');
-        input.value = '';
-        setTimeout(() => form.classList.remove('is-error'), 450);
-      }
-    });
-  })();
-</script>
+<body>
 
 <!-- ============ SIDE DOTS NAV ============ -->
 <nav class="sidedots" id="sidedots" aria-label="Slide navigation"></nav>
