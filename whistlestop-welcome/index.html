@@ -57,7 +57,7 @@
     .slide-container { height: calc(100vh - 120px); }
   }
   @media (min-width: 768px) {
-    .slide-container { width: 520px; height: calc(100dvh - 140px); min-height: 540px; max-height: 900px; }
+    .slide-container { width: 520px; height: calc(100dvh - 140px); min-height: 460px; max-height: 900px; }
   }
 
   /* Dot texture on solid slides */
@@ -146,17 +146,16 @@
     <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
              style="background: radial-gradient(ellipse at 50% -5%, rgba(200,166,74,0.22) 0%, transparent 60%), linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%); border-color: var(--border);">
       <div class="absolute inset-0 bg-dot-pattern"></div>
-      <div class="flex flex-col z-10 p-7 md:p-9 h-full items-center text-center overflow-y-auto hide-scrollbar">
-        <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em] mt-1" style="color: var(--gold); animation-delay: 0s;">On Main · Ardmore, OK</div>
-        <img src="logo-primary-gold.png" alt="The Whistlestop" class="animate-on-scroll w-56 md:w-64 mt-5" style="animation-delay: 0.05s;" />
-        <h1 class="animate-on-scroll font-display leading-[1.0] text-4xl md:text-5xl mt-4" style="color: var(--cream); animation-delay: 0.12s;">
+      <div class="flex flex-col z-10 p-6 md:p-7 h-full items-center text-center justify-center overflow-y-auto hide-scrollbar">
+        <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em]" style="color: var(--gold); animation-delay: 0s;">On Main · Ardmore, OK</div>
+        <img src="logo-primary-gold.png" alt="The Whistlestop" class="animate-on-scroll w-52 md:w-60 mt-4" style="animation-delay: 0.05s;" />
+        <h1 class="animate-on-scroll font-display leading-[1.05] text-3xl md:text-4xl mt-3" style="color: var(--cream); animation-delay: 0.12s;">
           Welcome<br><span style="color: var(--gold); font-style: italic;">to the stop.</span>
         </h1>
-        <div class="animate-on-scroll w-10 h-[2px] mt-5" style="background: var(--gold); opacity: 0.75; animation-delay: 0.2s;"></div>
-        <p class="animate-on-scroll text-[14px] md:text-[15px] font-light leading-[1.65] mt-5 max-w-[90%]" style="color: rgba(246,234,210,0.78); animation-delay: 0.28s;">
+        <div class="animate-on-scroll w-10 h-[2px] mt-4" style="background: var(--gold); opacity: 0.75; animation-delay: 0.2s;"></div>
+        <p class="animate-on-scroll text-[13px] font-light leading-[1.55] mt-4 max-w-[92%]" style="color: rgba(246,234,210,0.78); animation-delay: 0.28s;">
           A short guide to the places in downtown Ardmore that we love — food, drinks, shopping, and everything worth checking out. All within a short walk of here.
         </p>
-        <div class="mt-auto animate-on-scroll font-stamp font-bold uppercase text-[11px] tracking-[0.3em] pt-7" style="color: var(--gold); opacity: 0.85; animation-delay: 0.38s;">Scroll →</div>
       </div>
     </section>
 
