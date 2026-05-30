@@ -309,22 +309,51 @@
 
     <!-- SLIDE 5 · CLOSING / REBOOK -->
     <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
-             style="background: radial-gradient(ellipse at 50% -10%, rgba(194,56,46,0.38) 0%, transparent 55%), linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%); border-color: var(--red);">
+             style="background: radial-gradient(ellipse at 50% -5%, rgba(200,166,74,0.25) 0%, transparent 60%), linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%); border-color: var(--gold);">
       <div class="absolute inset-0 bg-dot-pattern"></div>
       <div class="flex flex-col h-full z-10 p-7 md:p-10 justify-center items-center text-center">
-        <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em]" style="color: var(--red);">One more thing</div>
-        <h2 class="animate-on-scroll font-display uppercase leading-[0.95] text-[42px] md:text-[56px] mt-5 max-w-[420px]" style="color: var(--cream); animation-delay: 0.06s;">
-          Coming <span style="color: var(--red);">back?</span> Book <span style="color: var(--red);">direct.</span>
+        <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em]" style="color: var(--gold);">One more thing</div>
+        <h2 class="animate-on-scroll font-display leading-[1.0] text-[40px] md:text-[52px] mt-5 max-w-[420px]" style="color: var(--cream); animation-delay: 0.06s;">
+          Coming <span style="color: var(--gold); font-style: italic;">back?</span> Book <span style="color: var(--gold); font-style: italic;">direct.</span>
         </h2>
         <div class="animate-on-scroll w-10 h-[2px] mt-5" style="background: var(--gold); opacity: 0.75; animation-delay: 0.12s;"></div>
-        <p class="animate-on-scroll text-[14px] font-light leading-[1.65] mt-5 max-w-[320px]" style="color: rgba(246,234,210,0.84); animation-delay: 0.18s;">
-          Save 15% on your next stay when you book through us directly — skip the platform fees and lock in the same unit. We'll remember the little things.
-        </p>
-        <a href="#" class="animate-on-scroll inline-flex items-center gap-2 mt-7 px-6 py-3.5 rounded-[3px] font-stamp font-bold uppercase text-[13px] tracking-[0.18em] transition-colors"
-           style="background: var(--red); color: var(--cream); animation-delay: 0.26s;">
-          Get my 15% code
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+
+        <!-- STATE 1: email gate -->
+        <div id="rebook-gate" class="animate-on-scroll w-full max-w-[320px] mt-5" style="animation-delay: 0.18s;">
+          <p class="text-[14px] font-light leading-[1.65]" style="color: rgba(246,234,210,0.84);">
+            Save <b style="font-weight:500; color: var(--cream);">10%</b> on your next stay — good for up to 7 days. Drop your email and we'll send your code.
+          </p>
+          <form id="rebook-form" class="flex flex-col gap-2.5 mt-5" novalidate>
+            <input id="rebook-email" type="email" required autocomplete="email" placeholder="you@email.com"
+              class="w-full px-4 py-3 rounded-[5px] text-[14px]"
+              style="background: rgba(246,234,210,0.07); border: 1px solid rgba(246,234,210,0.3); color: var(--cream);" />
+            <button type="submit"
+              class="font-stamp font-bold uppercase text-[12px] tracking-[0.14em] px-6 py-3.5 rounded-[5px] transition-opacity hover:opacity-90"
+              style="background: var(--gold); color: var(--green-deep); border: none;">Send me the code →</button>
+            <p id="rebook-error" class="text-[12px] hidden" style="color: #ffd9b0;">Please enter a valid email.</p>
+          </form>
+          <p class="text-[11px] font-light mt-3" style="color: rgba(246,234,210,0.5);">No spam — just your code and the occasional reason to come back.</p>
+        </div>
+
+        <!-- STATE 2: revealed (hidden until submit) -->
+        <div id="rebook-reveal" class="animate-on-scroll w-full max-w-[320px] mt-5 hidden">
+          <div class="font-stamp font-bold uppercase text-[10px] tracking-[0.28em]" style="color: var(--gold);">You're all set ✓</div>
+          <div class="rounded-[8px] p-4 mt-4" style="border: 1.5px dashed var(--gold); background: rgba(200,166,74,0.10);">
+            <div class="font-stamp font-bold uppercase text-[9px] tracking-[0.25em]" style="color: rgba(246,234,210,0.6);">Your code</div>
+            <div id="rebook-code" class="font-display text-[28px] tracking-[0.12em] mt-1" style="color: var(--gold);">SEEYOUSOON</div>
+            <button id="rebook-copy" type="button"
+              class="font-stamp font-bold uppercase text-[10px] tracking-[0.1em] mt-2.5 px-4 py-2 rounded-[4px] transition-colors"
+              style="background: transparent; color: var(--cream); border: 1px solid rgba(246,234,210,0.4);">Copy code</button>
+          </div>
+          <p class="text-[13px] font-light leading-[1.6] mt-4" style="color: rgba(246,234,210,0.84);">
+            Good for <b style="font-weight:500; color: var(--cream);">10% off up to 7 days</b> on your next stay. Book direct with us and apply it at checkout. We just emailed you a copy too.
+          </p>
+          <!-- TODO: replace href with the confirmed direct-booking URL -->
+          <a id="rebook-book" href="#" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 mt-5 px-6 py-3.5 rounded-[5px] font-stamp font-bold uppercase text-[12px] tracking-[0.14em] transition-opacity hover:opacity-90"
+            style="background: var(--gold); color: var(--green-deep);">Book your next stay →</a>
+        </div>
+
         <div class="mt-8 pt-4 font-stamp font-bold uppercase text-[10px] tracking-[0.22em] border-t" style="color: rgba(246,234,210,0.5); border-color: var(--border); width: 180px;">
           The Whistlestop · Ardmore, OK
         </div>
@@ -403,6 +432,61 @@
 
   window.addEventListener('resize', updateDots);
   updateDots();
+})();
+</script>
+
+<script>
+(function () {
+  // TODO: replace with the GoHighLevel inbound-webhook URL once GHL is live.
+  var CAPTURE_ENDPOINT = "";  // empty = capture skipped, code still reveals
+
+  var form    = document.getElementById('rebook-form');
+  var emailEl = document.getElementById('rebook-email');
+  var errEl   = document.getElementById('rebook-error');
+  var gate    = document.getElementById('rebook-gate');
+  var reveal  = document.getElementById('rebook-reveal');
+  var copyBtn = document.getElementById('rebook-copy');
+  var codeEl  = document.getElementById('rebook-code');
+  if (!form) return;
+
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function showReveal() {
+    gate.classList.add('hidden');
+    reveal.classList.remove('hidden');
+    reveal.classList.add('animate');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = (emailEl.value || '').trim();
+    if (!validEmail(email)) { errEl.classList.remove('hidden'); return; }
+    errEl.classList.add('hidden');
+
+    // Reveal-first: never withhold the code on a network hiccup.
+    showReveal();
+
+    if (CAPTURE_ENDPOINT) {
+      fetch(CAPTURE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'whistlestop-welcome-guide', code: 'SEEYOUSOON' })
+      }).catch(function () { /* contact capture is best-effort; guest already has the code */ });
+    }
+  });
+
+  copyBtn.addEventListener('click', function () {
+    var code = codeEl.textContent.trim();
+    var done = function () { copyBtn.textContent = 'Copied!'; setTimeout(function () { copyBtn.textContent = 'Copy code'; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done).catch(done);
+    } else {
+      var r = document.createRange(); r.selectNode(codeEl);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      try { document.execCommand('copy'); } catch (e) {}
+      sel.removeAllRanges(); done();
+    }
+  });
 })();
 </script>
 </body>
