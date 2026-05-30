@@ -57,7 +57,7 @@
     .slide-container { height: calc(100vh - 120px); }
   }
   @media (min-width: 768px) {
-    .slide-container { width: auto; height: calc(100dvh - 150px); min-height: 500px; max-height: 740px; aspect-ratio: 3/4; }
+    .slide-container { width: 520px; height: calc(100dvh - 140px); min-height: 540px; max-height: 900px; }
   }
 
   /* Dot texture on solid slides */
@@ -146,9 +146,9 @@
     <section class="slide-container flex-shrink-0 flex flex-col overflow-hidden snap-center relative shadow-2xl rounded-2xl border"
              style="background: radial-gradient(ellipse at 50% -5%, rgba(200,166,74,0.22) 0%, transparent 60%), linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%); border-color: var(--border);">
       <div class="absolute inset-0 bg-dot-pattern"></div>
-      <div class="flex flex-col z-10 p-7 md:p-9 h-full items-center text-center">
+      <div class="flex flex-col z-10 p-7 md:p-9 h-full items-center text-center overflow-y-auto hide-scrollbar">
         <div class="animate-on-scroll font-stamp font-bold uppercase text-[10px] tracking-[0.28em] mt-1" style="color: var(--gold); animation-delay: 0s;">On Main · Ardmore, OK</div>
-        <img src="logo-primary-gold.png" alt="The Whistlestop" class="animate-on-scroll w-60 md:w-72 mt-5" style="animation-delay: 0.05s;" />
+        <img src="logo-primary-gold.png" alt="The Whistlestop" class="animate-on-scroll w-56 md:w-64 mt-5" style="animation-delay: 0.05s;" />
         <h1 class="animate-on-scroll font-display leading-[1.0] text-4xl md:text-5xl mt-4" style="color: var(--cream); animation-delay: 0.12s;">
           Welcome<br><span style="color: var(--gold); font-style: italic;">to the stop.</span>
         </h1>
