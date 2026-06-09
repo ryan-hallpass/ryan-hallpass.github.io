@@ -1,8 +1,8 @@
 import puppeteer from 'puppeteer';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
-import { renameSync, unlinkSync, existsSync } from 'fs';
-import { execSync } from 'child_process';
+import { unlinkSync, existsSync } from 'fs';
+import { execFileSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const indexPath = resolve(__dirname, 'index.html');
@@ -10,7 +10,7 @@ const outPath = resolve(__dirname, 'proposal.pdf');
 const tmpPath = resolve(__dirname, '.proposal-unprotected.pdf');
 const PDF_PASSWORD = 'daube';
 
-const browser = await puppeteer.launch({ headless: 'new' });
+const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
 const page = await browser.newPage();
 
 await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 2 });
@@ -38,6 +38,19 @@ await page.pdf({
 await browser.close();
 
 if (existsSync(outPath)) unlinkSync(outPath);
-execSync(`qpdf --encrypt "${PDF_PASSWORD}" "${PDF_PASSWORD}" 256 -- "${tmpPath}" "${outPath}"`);
+try {
+  execFileSync('qpdf', ['--encrypt', PDF_PASSWORD, PDF_PASSWORD, '256', '--', tmpPath, outPath]);
+} catch (err) {
+  execFileSync('python', ['-c', `
+from pypdf import PdfReader, PdfWriter
+reader = PdfReader(${JSON.stringify(tmpPath)})
+writer = PdfWriter()
+for page in reader.pages:
+    writer.add_page(page)
+writer.encrypt(${JSON.stringify(PDF_PASSWORD)}, ${JSON.stringify(PDF_PASSWORD)}, algorithm="AES-256")
+with open(${JSON.stringify(outPath)}, "wb") as f:
+    writer.write(f)
+`]);
+}
 unlinkSync(tmpPath);
 console.log(`Wrote ${outPath} (encrypted, password: ${PDF_PASSWORD})`);
