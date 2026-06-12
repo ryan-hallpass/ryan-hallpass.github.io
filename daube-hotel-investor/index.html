@@ -508,12 +508,19 @@
   }
 
   .property__photo {
-    background-image: url('img/logo-boutique.png');
-    background-size: contain;
-    background-position: center;
+    background-image: url('img/render-exterior.jpg');
+    background-size: cover;
+    background-position: center 42%;
     background-repeat: no-repeat;
     background-color: #01311F;
     position: relative;
+  }
+  .property__photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(14,12,10,0) 55%, rgba(14,12,10,0.55) 100%);
+    pointer-events: none;
   }
 
   .property__photo-tag {
@@ -1758,6 +1765,99 @@
     border-top: 1px solid var(--rule);
   }
 
+  /* ============ PRELIMINARY RENDERINGS (before/after grid) ============ */
+  .renders {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: clamp(12px, 1.8cqi, 26px);
+    flex: 1;
+    margin-top: clamp(16px, 2.2cqi, 30px);
+    min-height: 0;
+  }
+  .render-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .render-tile__img {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--rule);
+    background: #0E0C0A;
+  }
+  .render-tile__cap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: clamp(5px, 0.7cqi, 9px);
+  }
+  .render-tile__name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: clamp(10px, 1.1cqi, 14px);
+    color: var(--ink);
+    letter-spacing: 0;
+  }
+  .render-tile__split {
+    font-family: var(--mono);
+    font-size: clamp(7px, 0.78cqi, 10px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .render-tile__split b { color: var(--oxblood); font-weight: 500; }
+
+  /* ============ FEATURE SLIDE (full-bleed render) ============ */
+  .feature {
+    position: absolute;
+    inset: 0;
+  }
+  .feature__img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .feature__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14,12,10,0.50) 0%, rgba(14,12,10,0) 28%, rgba(14,12,10,0) 50%, rgba(14,12,10,0.88) 100%),
+      linear-gradient(95deg, rgba(14,12,10,0.55) 0%, rgba(14,12,10,0) 55%);
+  }
+  .feature__content {
+    position: absolute;
+    left: clamp(28px, 4.2cqi, 64px);
+    right: clamp(28px, 4.2cqi, 64px);
+    bottom: clamp(28px, 4.2cqi, 60px);
+    z-index: 2;
+  }
+  .feature__title {
+    font-family: var(--serif);
+    font-variation-settings: "opsz" 96, "SOFT" 50;
+    font-weight: 450;
+    font-size: clamp(26px, 4.6cqi, 64px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--bone);
+    margin: clamp(8px, 1.2cqi, 16px) 0 0;
+  }
+  .feature__sub {
+    font-family: var(--sans);
+    font-size: clamp(12px, 1.3cqi, 17px);
+    line-height: 1.45;
+    color: rgba(245, 241, 232, 0.82);
+    max-width: 54ch;
+    margin: clamp(8px, 1cqi, 14px) 0 0;
+  }
+
   /* ============ PRINT MODE ============ */
   @media print {
     body, html {
@@ -2368,7 +2468,7 @@
       </div>
       <div class="property">
         <div class="property__photo" data-reveal data-delay="1">
-          <div class="property__photo-tag">Brand Mark</div>
+          <div class="property__photo-tag">Architectural rendering · 104 E. Main</div>
         </div>
         <div class="property__facts" data-reveal data-delay="2">
           <div class="fact-row">
@@ -2401,10 +2501,54 @@
   </div>
 </section>
 
-<!-- ============ 05 — HEADLINE NUMBERS ============ -->
-<section class="slide" data-slide="05" data-title="Market Numbers">
+<!-- ============ PRELIMINARY RENDERINGS ============ -->
+<section class="slide" data-slide="05" data-title="Preliminary Renderings">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">04 — Market in Four Numbers</div>
+    <div class="frame__corner frame__corner--tl">04 — Preliminary Renderings</div>
+    <div class="frame__corner frame__corner--br">Concept renderings · not final construction documents</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Before &amp; after</div>
+        <h2 class="h2">From boarded-up to boutique.</h2>
+      </div>
+      <div class="renders">
+        <div class="render-tile" data-reveal data-delay="1">
+          <img class="render-tile__img" src="img/ba-frontage.jpg" alt="East Main Street frontage — building today versus preliminary rendering" loading="lazy" />
+          <div class="render-tile__cap">
+            <div class="render-tile__name">East Main Street frontage</div>
+            <div class="render-tile__split">Today&nbsp;·&nbsp;<b>Rendering</b></div>
+          </div>
+        </div>
+        <div class="render-tile" data-reveal data-delay="2">
+          <img class="render-tile__img" src="img/ba-rear.jpg" alt="Rear elevation and entry — building today versus preliminary rendering" loading="lazy" />
+          <div class="render-tile__cap">
+            <div class="render-tile__name">Rear elevation &amp; entry</div>
+            <div class="render-tile__split">Today&nbsp;·&nbsp;<b>Rendering</b></div>
+          </div>
+        </div>
+        <div class="render-tile" data-reveal data-delay="3">
+          <img class="render-tile__img" src="img/ba-rooftop.jpg" alt="Rooftop — bare roof today versus preliminary rendering of terrace and bar" loading="lazy" />
+          <div class="render-tile__cap">
+            <div class="render-tile__name">Rooftop terrace &amp; bar</div>
+            <div class="render-tile__split">Today&nbsp;·&nbsp;<b>Rendering</b></div>
+          </div>
+        </div>
+        <div class="render-tile" data-reveal data-delay="4">
+          <img class="render-tile__img" src="img/ba-interior.jpg" alt="Main hall — antique store today versus preliminary rendering of restaurant and bar" loading="lazy" />
+          <div class="render-tile__cap">
+            <div class="render-tile__name">Main hall → restaurant &amp; bar</div>
+            <div class="render-tile__split">Today&nbsp;·&nbsp;<b>Rendering</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 — HEADLINE NUMBERS ============ -->
+<section class="slide" data-slide="06" data-title="Market Numbers">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">05 — Market in Four Numbers</div>
     <div class="frame__corner frame__corner--br">Combined annual demand within 25 mi: 8M+</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2434,9 +2578,9 @@
 </section>
 
 <!-- ============ 06 — TRIPLE ACCESS ============ -->
-<section class="slide" data-slide="06" data-title="Triple Access">
+<section class="slide" data-slide="07" data-title="Triple Access">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">05 — Location</div>
+    <div class="frame__corner frame__corner--tl">06 — Location</div>
     <div class="frame__corner frame__corner--br">Three transport corridors converge</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2476,9 +2620,9 @@
 </section>
 
 <!-- ============ 07 — DEMAND DRIVERS ============ -->
-<section class="slide" data-slide="07" data-title="Demand Drivers">
+<section class="slide" data-slide="08" data-title="Demand Drivers">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">06 — Demand Drivers</div>
+    <div class="frame__corner frame__corner--tl">07 — Demand Drivers</div>
     <div class="frame__corner frame__corner--br">Year-round, multi-segment, multi-distance</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2522,9 +2666,9 @@
 </section>
 
 <!-- ============ 08 — WHY ARDMORE NOW ============ -->
-<section class="slide" data-slide="08" data-title="Why Ardmore Now">
+<section class="slide" data-slide="09" data-title="Why Ardmore Now">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">07 — Why Now</div>
+    <div class="frame__corner frame__corner--tl">08 — Why Now</div>
     <div class="frame__corner frame__corner--br">The honest economic picture</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2570,9 +2714,9 @@
 </section>
 
 <!-- ============ 09 — COMPETITIVE LANDSCAPE ============ -->
-<section class="slide" data-slide="09" data-title="Competitive Landscape">
+<section class="slide" data-slide="10" data-title="Competitive Landscape">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">08 — Competitive Landscape</div>
+    <div class="frame__corner frame__corner--tl">09 — Competitive Landscape</div>
     <div class="frame__corner frame__corner--br">The gap that has existed for decades</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2624,9 +2768,9 @@
 </section>
 
 <!-- ============ 10 — BOUTIQUE PREMIUM ============ -->
-<section class="slide" data-slide="10" data-title="Boutique Premium">
+<section class="slide" data-slide="11" data-title="Boutique Premium">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">09 — The Boutique Premium</div>
+    <div class="frame__corner frame__corner--tl">10 — The Boutique Premium</div>
     <div class="frame__corner frame__corner--br">National + market data</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2666,10 +2810,44 @@
   </div>
 </section>
 
+<!-- ============ EXPERIENCE — RESTAURANT (feature) ============ -->
+<section class="slide" data-slide="12" data-title="The Restaurant &amp; Speakeasy">
+  <div class="frame frame--dark">
+    <div class="feature">
+      <div class="feature__img" style="background-image: url('img/render-restaurant.jpg'); background-position: center 55%;"></div>
+      <div class="feature__overlay"></div>
+    </div>
+    <div class="frame__corner frame__corner--tl">11 — The Experience</div>
+    <div class="frame__corner frame__corner--br">Concept rendering · restaurant &amp; speakeasy</div>
+    <div class="feature__content">
+      <div class="eyebrow eyebrow--brass" data-reveal>The experience</div>
+      <h2 class="feature__title" data-reveal data-delay="1">A dining room worth the drive.</h2>
+      <p class="feature__sub" data-reveal data-delay="2">The ground-floor restaurant and alley-entry speakeasy anchor the F&amp;B program — a projected 25–35% of revenue, and the reason downtown Ardmore finally has somewhere to linger after dark.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE — ROOFTOP (feature) ============ -->
+<section class="slide" data-slide="13" data-title="Rooftop Terrace &amp; Bar">
+  <div class="frame frame--dark">
+    <div class="feature">
+      <div class="feature__img" style="background-image: url('img/render-rooftop.jpg'); background-position: center 45%;"></div>
+      <div class="feature__overlay"></div>
+    </div>
+    <div class="frame__corner frame__corner--tl">12 — The Experience</div>
+    <div class="frame__corner frame__corner--br">Concept rendering · rooftop terrace &amp; bar</div>
+    <div class="feature__content">
+      <div class="eyebrow eyebrow--brass" data-reveal>The experience</div>
+      <h2 class="feature__title" data-reveal data-delay="1">A rooftop nobody else has.</h2>
+      <p class="feature__sub" data-reveal data-delay="2">An open-air terrace and bar above Main Street — the only elevated sunset view downtown, and a year-round draw for destination drinks and private events.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 11 — ARV THREE METHODS ============ -->
-<section class="slide" data-slide="11" data-title="ARV — Three Methods">
+<section class="slide" data-slide="14" data-title="ARV — Three Methods">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">10 — After-Repair Value</div>
+    <div class="frame__corner frame__corner--tl">13 — After-Repair Value</div>
     <div class="frame__corner frame__corner--br">Source: JLL Q1 2025 boutique benchmarks</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2732,9 +2910,9 @@
 </section>
 
 <!-- ============ 12 — CAPITAL STACK ============ -->
-<section class="slide" data-slide="12" data-title="Capital Stack">
+<section class="slide" data-slide="15" data-title="Capital Stack">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">11 — Capital Stack</div>
+    <div class="frame__corner frame__corner--tl">14 — Capital Stack</div>
     <div class="frame__corner frame__corner--br">Use of funds — $5.46M total</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2784,9 +2962,9 @@
 </section>
 
 <!-- ============ 13 — HISTORIC TAX CREDITS ============ -->
-<section class="slide" data-slide="13" data-title="Historic Tax Credits">
+<section class="slide" data-slide="16" data-title="Historic Tax Credits">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">12 — Historic Tax Credits</div>
+    <div class="frame__corner frame__corner--tl">15 — Historic Tax Credits</div>
     <div class="frame__corner frame__corner--br">20% federal + 20% Oklahoma state</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2838,9 +3016,9 @@
 </section>
 
 <!-- ============ 14 — THREE OPTIONS COMPARE ============ -->
-<section class="slide" data-slide="14" data-title="Three Options">
+<section class="slide" data-slide="17" data-title="Three Options">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">13 — Four Capital Structures</div>
+    <div class="frame__corner frame__corner--tl">16 — Four Capital Structures</div>
     <div class="frame__corner frame__corner--br">All solve the $5,464,200 — differently</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2919,9 +3097,9 @@
 </section>
 
 <!-- ============ 15 — OPTION 1 DETAIL ============ -->
-<section class="slide" data-slide="15" data-title="Option 1">
+<section class="slide" data-slide="18" data-title="Option 1">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">14 — Option 1</div>
+    <div class="frame__corner frame__corner--tl">17 — Option 1</div>
     <div class="frame__corner frame__corner--br">Equity + construction loan</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2973,9 +3151,9 @@
 </section>
 
 <!-- ============ 16 — OPTION 2 DETAIL (RECOMMENDED) ============ -->
-<section class="slide" data-slide="16" data-title="Option 2 — Recommended">
+<section class="slide" data-slide="19" data-title="Option 2 — Recommended">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">15 — Option 2 · ★ Recommended</div>
+    <div class="frame__corner frame__corner--tl">18 — Option 2 · ★ Recommended</div>
     <div class="frame__corner frame__corner--br">Balanced equity + smaller loan</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3029,9 +3207,9 @@
 </section>
 
 <!-- ============ 17 — OPTION 3 DETAIL ============ -->
-<section class="slide" data-slide="17" data-title="Option 3">
+<section class="slide" data-slide="20" data-title="Option 3">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">16 — Option 3</div>
+    <div class="frame__corner frame__corner--tl">19 — Option 3</div>
     <div class="frame__corner frame__corner--br">Full equity · no bank loan</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3083,9 +3261,9 @@
 </section>
 
 <!-- ============ 18 — OPTION 4 DETAIL ============ -->
-<section class="slide" data-slide="18" data-title="Option 4">
+<section class="slide" data-slide="21" data-title="Option 4">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">17 — Option 4</div>
+    <div class="frame__corner frame__corner--tl">20 — Option 4</div>
     <div class="frame__corner frame__corner--br">Two principals · own it outright</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3137,9 +3315,9 @@
 </section>
 
 <!-- ============ 19 — INVESTOR WATERFALL (OPTION 2) ============ -->
-<section class="slide" data-slide="19" data-title="Investor Waterfall">
+<section class="slide" data-slide="22" data-title="Investor Waterfall">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">18 — Investor Waterfall · Option 2</div>
+    <div class="frame__corner frame__corner--tl">21 — Investor Waterfall · Option 2</div>
     <div class="frame__corner frame__corner--br">5-year base case · per investor</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3209,9 +3387,9 @@
 </section>
 
 <!-- ============ 20 — WHY OPTION 2 ============ -->
-<section class="slide" data-slide="20" data-title="Why Option 2">
+<section class="slide" data-slide="23" data-title="Why Option 2">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">19 — Why Option 2</div>
+    <div class="frame__corner frame__corner--tl">22 — Why Option 2</div>
     <div class="frame__corner frame__corner--br">Sponsor's reasoning</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3248,9 +3426,9 @@
 </section>
 
 <!-- ============ 21 — CRITICAL PATH ============ -->
-<section class="slide" data-slide="21" data-title="Critical Path">
+<section class="slide" data-slide="24" data-title="Critical Path">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">20 — Critical Path</div>
+    <div class="frame__corner frame__corner--tl">23 — Critical Path</div>
     <div class="frame__corner frame__corner--br">Earnest goes hard at 5:00 PM CT</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3300,9 +3478,9 @@
 </section>
 
 <!-- ============ 22 — DISCLAIMER & CONTACT ============ -->
-<section class="slide" data-slide="22" data-title="Disclaimer">
+<section class="slide" data-slide="25" data-title="Disclaimer">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">21 — Disclosures &amp; Contact</div>
+    <div class="frame__corner frame__corner--tl">24 — Disclosures &amp; Contact</div>
     <div class="frame__corner frame__corner--br">Confidential · Accredited Investors Only</div>
     <div class="frame__inner">
       <div data-reveal>
