@@ -752,6 +752,47 @@
     letter-spacing: 0.04em;
   }
 
+  .attractions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(12px, 1.7cqi, 24px);
+    margin-top: clamp(14px, 2cqi, 28px);
+    padding-top: clamp(14px, 1.8cqi, 22px);
+    border-top: 1px solid var(--rule);
+  }
+
+  .attraction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(7px, 0.9cqi, 11px);
+  }
+
+  .attraction__img {
+    width: auto;
+    height: clamp(110px, 16cqi, 184px);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--rule);
+  }
+
+  .attraction__link {
+    font-family: var(--mono);
+    font-size: clamp(8.5px, 0.9cqi, 11px);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.35;
+    color: var(--oxblood);
+    text-decoration: underline;
+    text-decoration-color: var(--brass);
+    text-underline-offset: 2px;
+    transition: color 0.2s var(--ease);
+  }
+
+  .attraction__link:hover { color: var(--brass); }
+
   /* ============ SLIDE 08: WHY ARDMORE NOW ============ */
   .transition {
     display: grid;
@@ -2654,6 +2695,24 @@
           <div class="driver-item"><div class="driver-item__name">Chickasaw Nation</div><div class="driver-item__meta">1,500+ employees</div></div>
           <div class="driver-item"><div class="driver-item__name">Mercy Hospital Ardmore</div><div class="driver-item__meta">900+ regional med hub</div></div>
           <div class="driver-item"><div class="driver-item__name">Oil &amp; Gas / Healdton</div><div class="driver-item__meta">Highest-paying sector</div></div>
+        </div>
+      </div>
+      <div class="attractions" data-reveal data-delay="6">
+        <div class="attraction">
+          <img class="attraction__img" src="img/attr-lake-murray.jpg" alt="Tucker Tower overlooking Lake Murray at sunset" />
+          <a class="attraction__link" href="https://www.travelok.com/state-parks/lake-murray-state-park" target="_blank" rel="noopener">Lake Murray State Park</a>
+        </div>
+        <div class="attraction">
+          <img class="attraction__img" src="img/attr-winstar.jpg" alt="WinStar World Casino entrance globe" />
+          <a class="attraction__link" href="https://www.winstar.com/" target="_blank" rel="noopener">WinStar World Casino</a>
+        </div>
+        <div class="attraction">
+          <img class="attraction__img" src="img/attr-goddard.jpg" alt="Performance at the Charles B. Goddard Center" />
+          <a class="attraction__link" href="https://www.goddardcenter.org/" target="_blank" rel="noopener">Charles B. Goddard Center for Visual and Performing Arts</a>
+        </div>
+        <div class="attraction">
+          <img class="attraction__img" src="img/attr-hardy-murphy.jpg" alt="Competitor riding at Hardy Murphy Coliseum" />
+          <a class="attraction__link" href="https://www.hardymurphycoliseum.com/" target="_blank" rel="noopener">Hardy Murphy Coliseum</a>
         </div>
       </div>
     </div>
