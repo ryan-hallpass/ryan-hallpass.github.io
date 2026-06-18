@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Practical AI for Business — Ardmore Chamber Lunch &amp; Learn</title>
+<meta name="description" content="Practical AI for Business — a Lunch & Learn for the Ardmore Chamber of Commerce. By Ryan McNeill, Hallpass Digital." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F2238;--navy-deep:#0A1929;--ink:#1B2733;
+    --cream:#F7F1E5;--cream-2:#FBF7EE;--paper:#FFFFFF;
+    --marigold:#F0A23B;--marigold-deep:#E08A26;
+    --blue:#2A6BD4;--blue-soft:#5C93E6;--coral:#E2603F;
+    --muted:#6A7480;--line:rgba(15,34,56,.12);--line-dk:rgba(247,241,229,.16);
+    --serif:'Fraunces',Georgia,serif;--sans:'Hanken Grotesk',-apple-system,sans-serif;
+    --maxw:1180px;--ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--navy-deep);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .deck::-webkit-scrollbar{display:none}.deck{scrollbar-width:none}
+  .slide{position:relative;min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;justify-content:center;padding:7vh clamp(28px,7vw,120px);overflow:hidden}
+  .slide-inner{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
+
+  .t-cream{background:var(--cream);color:var(--ink)}
+  .t-paper{background:var(--cream-2);color:var(--ink)}
+  .t-navy{background:var(--navy);color:var(--cream)}
+  .t-navy-deep{background:var(--navy-deep);color:var(--cream)}
+  .t-cream::before,.t-paper::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:radial-gradient(rgba(15,34,56,.025) 1px,transparent 1px);background-size:4px 4px;opacity:.7}
+  .t-navy::before,.t-navy-deep::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(900px 500px at 12% -10%,rgba(42,107,212,.22),transparent 60%),radial-gradient(700px 500px at 100% 110%,rgba(240,162,59,.16),transparent 60%)}
+
+  .kicker{font-size:clamp(11px,1.05vw,13px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;color:var(--marigold-deep);margin-bottom:26px}
+  .t-navy .kicker,.t-navy-deep .kicker{color:var(--marigold)}
+  .kicker::before{content:"";width:26px;height:2px;background:currentColor;display:inline-block;opacity:.9}
+  h1{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.015em}
+  h2{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em;font-size:clamp(34px,5.4vw,66px)}
+  .display{font-size:clamp(44px,8vw,104px)}
+  .lede{font-size:clamp(18px,2vw,24px);line-height:1.5;max-width:48ch;font-weight:400}
+  .t-navy .lede,.t-navy-deep .lede{color:rgba(247,241,229,.84)}
+  em.fr{font-style:italic;font-family:var(--serif);font-weight:500}
+  .accent{color:var(--marigold-deep)}.t-navy .accent,.t-navy-deep .accent{color:var(--marigold)}
+
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .slide.active [data-reveal]{opacity:1;transform:none}
+  .slide.active [data-reveal][data-d="1"]{transition-delay:.08s}
+  .slide.active [data-reveal][data-d="2"]{transition-delay:.18s}
+  .slide.active [data-reveal][data-d="3"]{transition-delay:.30s}
+  .slide.active [data-reveal][data-d="4"]{transition-delay:.42s}
+  .slide.active [data-reveal][data-d="5"]{transition-delay:.54s}
+  .slide.active [data-reveal][data-d="6"]{transition-delay:.66s}
+
+  /* step-build fragments: hidden until advanced (press → / space) */
+  [data-step]{opacity:0;transform:translateY(22px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  [data-step].shown{opacity:1;transform:none}
+
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--marigold);z-index:60;transition:width .25s linear}
+  .dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:11px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(127,127,127,.5);background:transparent;cursor:pointer;padding:0;transition:all .3s var(--ease)}
+  .dots button.on{background:var(--marigold);border-color:var(--marigold);transform:scale(1.35)}
+  .brandtag{position:fixed;left:26px;bottom:22px;z-index:60;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);mix-blend-mode:difference}
+  .hint{position:fixed;right:26px;bottom:22px;z-index:60;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px;opacity:.8}
+  .hint kbd{font-family:var(--sans);border:1px solid var(--line);border-radius:5px;padding:2px 6px;font-size:10px;background:rgba(127,127,127,.07)}
+  .slide-num{position:absolute;top:clamp(24px,5vh,44px);right:clamp(28px,7vw,120px);z-index:3;font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--muted)}
+
+  /* brand wordmark */
+  .wordmark{height:clamp(34px,3.6vw,46px);width:auto;display:block}
+  .wordmark.on-dark{filter:brightness(0) invert(1)}
+
+  /* tool logo chip (app-icon style) */
+  .logochip{width:clamp(56px,5.4vw,72px);height:clamp(56px,5.4vw,72px);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px -12px rgba(10,25,41,.45);border:1px solid var(--line);margin-bottom:22px;background:#fff}
+  .t-navy .logochip,.t-navy-deep .logochip{border-color:var(--line-dk)}
+  .logochip img{width:100%;height:100%;object-fit:cover;display:block}
+  .cover-meta{display:flex;gap:38px;flex-wrap:wrap;margin-top:48px}
+  .cover-meta div{font-size:14px}
+  .cover-meta .lab{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--marigold);font-weight:600;margin-bottom:6px}
+
+  .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,70px);align-items:center}
+  .grid2.tight{grid-template-columns:1.15fr .85fr}
+  .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+  .grid-2c{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 1px 0 rgba(15,34,56,.04)}
+  .t-navy .card,.t-navy-deep .card{background:rgba(247,241,229,.05);border-color:var(--line-dk)}
+  .card h3{font-family:var(--sans);font-weight:700;font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  .card p{font-size:14.5px;line-height:1.5;color:var(--muted)}
+  .t-navy .card p,.t-navy-deep .card p{color:rgba(247,241,229,.7)}
+  .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;font-size:15px;background:rgba(240,162,59,.16);color:var(--marigold-deep)}
+  .t-navy .ic,.t-navy-deep .ic{color:var(--marigold)}
+  .ic.ok{background:rgba(42,107,212,.18);color:var(--blue-soft)}
+
+  .findlist{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:10px}
+  .findlist li{display:flex;gap:16px;align-items:flex-start;font-size:clamp(15px,1.5vw,17.5px);line-height:1.45}
+  .findlist .tag{flex:none;margin-top:3px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:7px;background:rgba(240,162,59,.18);color:var(--marigold-deep)}
+
+  /* big checkmark list (light, roomy — for one-idea slides) */
+  .checks{list-style:none;display:flex;flex-direction:column;gap:clamp(16px,2.4vh,26px);margin-top:34px;max-width:46ch}
+  .checks li{position:relative;padding-left:56px;font-size:clamp(18px,2.1vw,26px);line-height:1.4;font-weight:500}
+  .checks li::before{content:"✓";position:absolute;left:0;top:-3px;width:36px;height:36px;border-radius:50%;background:rgba(240,162,59,.18);color:var(--marigold-deep);display:grid;place-items:center;font-size:17px;font-weight:700}
+  .t-navy .checks li::before,.t-navy-deep .checks li::before{color:var(--marigold)}
+  .checks li b{font-weight:700;color:var(--marigold-deep)}
+  .checks.sm{gap:14px;max-width:34ch}
+  .checks.sm li{font-size:clamp(15px,1.65vw,20px);line-height:1.35;padding-left:48px}
+  .checks.sm li::before{width:30px;height:30px;font-size:14px}
+
+  /* big two-column split (intern vs employee, the deal) */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);margin-top:30px}
+  .split .col{border-radius:18px;padding:clamp(26px,3vw,38px);border:1px solid var(--line-dk)}
+  .col .ctag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+  .col h3{font-family:var(--serif);font-weight:600;font-size:clamp(24px,2.8vw,34px);line-height:1.05;margin-bottom:14px}
+  .col p{font-size:clamp(15px,1.5vw,17px);line-height:1.5;color:rgba(247,241,229,.78)}
+  .col .punch{margin-top:18px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(18px,1.9vw,22px)}
+  .col.intern{background:rgba(247,241,229,.045)}
+  .col.intern .ctag{color:var(--blue-soft)}.col.intern .punch{color:var(--blue-soft)}
+  .col.employee{background:linear-gradient(160deg,rgba(240,162,59,.16),rgba(226,96,63,.10));border-color:rgba(240,162,59,.4)}
+  .col.employee .ctag{color:var(--marigold)}.col.employee .punch{color:var(--marigold)}
+
+  /* tactic media placeholder / fallback still */
+  .media-ph{position:relative;width:100%;aspect-ratio:16/10.4;border-radius:16px;border:1.5px dashed var(--line);background:var(--paper);display:grid;place-items:center;text-align:center;overflow:hidden;box-shadow:0 30px 70px -34px rgba(10,25,41,.45)}
+  .media-ph .ph-inner{padding:26px;color:var(--muted);z-index:1}
+  .media-ph .ph-ic{font-size:30px;display:block;margin-bottom:12px;opacity:.7}
+  .media-ph .ph-t{font-weight:700;letter-spacing:.04em;color:var(--ink);font-size:15px}
+  .media-ph .ph-s{font-size:12.5px;margin-top:6px;line-height:1.5}
+  .media-ph code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:rgba(15,34,56,.06);padding:2px 6px;border-radius:5px;color:var(--ink)}
+  .media-ph .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:2}
+
+  /* tactic eyebrow + tool tag */
+  .tnum{font-family:var(--serif);font-weight:600;font-size:clamp(40px,5vw,70px);line-height:.9;color:var(--marigold-deep);letter-spacing:-.02em}
+  .t-navy .tnum,.t-navy-deep .tnum{color:var(--marigold)}
+  .tcount{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .tool-tag{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-deep)}
+  .tool-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--marigold)}
+  .tryon{margin-top:18px;font-size:15px;line-height:1.5;color:var(--muted)}
+  .tryon b{color:var(--ink);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:11.5px;display:block;margin-bottom:5px;color:var(--marigold-deep)}
+
+  /* audio hero */
+  .audio-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px}
+  .play-btn{width:clamp(96px,11vw,124px);height:clamp(96px,11vw,124px);border-radius:50%;background:var(--marigold);color:var(--navy);display:grid;place-items:center;font-size:clamp(34px,4vw,46px);border:none;cursor:pointer;box-shadow:0 24px 60px -16px rgba(240,162,59,.65);transition:transform .25s var(--ease)}
+  .play-btn:hover{transform:scale(1.06)}
+  .play-btn:active{transform:scale(.97)}
+  .play-ring{position:relative;display:grid;place-items:center}
+  .play-ring::before{content:"";position:absolute;width:130%;height:130%;border-radius:50%;border:1px solid rgba(240,162,59,.35);animation:pulse 2.4s var(--ease) infinite}
+  @keyframes pulse{0%{transform:scale(.85);opacity:.8}100%{transform:scale(1.25);opacity:0}}
+  .audio-cap{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(247,241,229,.6)}
+
+  /* mentimeter join */
+  .menti-join{display:flex;align-items:center;gap:clamp(20px,3vw,40px);flex-wrap:wrap;background:rgba(247,241,229,.05);border:1px solid var(--line-dk);border-radius:18px;padding:clamp(20px,2.4vw,30px) clamp(24px,3vw,38px);margin-top:8px}
+  .menti-join .mj-block .lab{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--marigold);font-weight:700;margin-bottom:6px}
+  .menti-join .mj-block .val{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,40px);line-height:1;letter-spacing:.02em}
+  .menti-join .mj-div{width:1px;align-self:stretch;background:var(--line-dk)}
+  .qbar{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .q{background:rgba(247,241,229,.05);border:1px solid var(--line-dk);border-radius:14px;padding:22px 20px}
+  .q .qn{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--marigold);letter-spacing:.08em;margin-bottom:12px}
+  .q h4{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.25;margin-bottom:12px}
+  .q .opts{display:flex;flex-wrap:wrap;gap:7px}
+  .q .opts span{font-size:12px;font-weight:600;color:rgba(247,241,229,.78);background:rgba(247,241,229,.06);border:1px solid var(--line-dk);border-radius:30px;padding:5px 11px}
+  .q .opts.word span{background:rgba(240,162,59,.14);border-color:rgba(240,162,59,.3);color:var(--marigold)}
+
+  /* QR signup card */
+  .qr-card{background:var(--paper);border-radius:22px;padding:clamp(22px,2.6vw,32px);text-align:center;color:var(--ink);box-shadow:0 36px 80px -34px rgba(0,0,0,.55)}
+  .qr-card .qr-eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--marigold-deep);margin-bottom:14px}
+  .qr-box{width:clamp(170px,17vw,210px);height:clamp(170px,17vw,210px);margin:0 auto;border-radius:14px;border:1.5px dashed var(--line);display:grid;place-items:center;overflow:hidden;position:relative;background:var(--cream-2)}
+  .qr-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px}
+  .qr-box .qr-ph{font-size:12px;color:var(--muted);padding:18px;line-height:1.5}
+  .qr-box .qr-ph code{font-family:ui-monospace,Menlo,monospace;font-size:11px}
+  .qr-card .qr-fields{margin-top:16px;font-size:14px;font-weight:600;color:var(--ink)}
+  .qr-card .qr-sub{margin-top:6px;font-size:12.5px;color:var(--muted)}
+
+  .cta-line{display:inline-flex;align-items:center;gap:14px;margin-top:34px;font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);font-weight:500}
+  .cta-line .arrow{width:46px;height:46px;border-radius:50%;background:var(--marigold);color:var(--navy);display:grid;place-items:center;font-size:20px;flex:none}
+
+  .partlabel{font-family:var(--serif);font-weight:600;font-size:clamp(13px,1.4vw,16px);letter-spacing:.3em;text-transform:uppercase;color:var(--marigold);margin-bottom:22px}
+  .tac-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 34px;margin-top:30px;max-width:760px}
+  .tac-list li{display:flex;gap:14px;align-items:baseline;font-size:clamp(16px,1.7vw,20px);font-weight:500;padding-bottom:12px;border-bottom:1px solid var(--line-dk)}
+  .tac-list li .n{font-family:var(--serif);color:var(--marigold);font-weight:600;font-size:15px;flex:none;width:26px}
+
+  @media(max-width:860px){
+    .grid2,.grid2.tight,.grid-cards,.grid-2c,.split,.qbar,.tac-list{grid-template-columns:1fr}
+    .dots,.hint{display:none}
+    .menti-join .mj-div{display:none}
+    .cover-meta{gap:24px}
+  }
+  @media print{
+    @page{size:11in 8.5in;margin:0}
+    body{background:#fff}.deck{height:auto;overflow:visible;display:block}
+    .slide{page-break-after:always;min-height:100vh;break-inside:avoid}
+    .progress,.dots,.hint,.brandtag{display:none}
+    [data-reveal]{opacity:1!important;transform:none!important}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="dots" id="dots"></div>
+<div class="brandtag">Hallpass · Practical AI</div>
+<div class="hint"><kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
+
+<main class="deck" id="deck">
+
+  <!-- 01 COVER + SETTLE-IN QR -->
+  <section class="slide t-navy" data-label="Cover">
+    <div class="slide-inner">
+      <img class="wordmark on-dark" src="assets/hallpass-logo.png" alt="Hallpass" data-reveal data-d="1" style="margin-bottom:42px">
+      <div class="kicker" data-reveal data-d="2">Ardmore Chamber of Commerce · Lunch &amp; Learn</div>
+      <h1 class="display" data-reveal data-d="3">Practical AI<br>for <em class="fr accent">business.</em></h1>
+      <p class="lede" data-reveal data-d="4" style="margin-top:28px">If you're only using AI to write emails,<br>you're missing <em class="fr accent">90% of it.</em></p>
+      <div class="cover-meta" data-reveal data-d="5">
+        <div><div class="lab">Presented by</div>Ryan McNeill · Hallpass Digital</div>
+        <div><div class="lab">Where</div>Ardmore, Oklahoma</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 LISTEN (PEAK 1) -->
+  <section class="slide t-navy-deep" data-label="Listen to this">
+    <span class="slide-num">02</span>
+    <div class="slide-inner">
+      <div class="audio-hero">
+        <h1 class="display" data-reveal data-d="1" style="font-size:clamp(36px,6.2vw,80px)">First — let's hear from<br>my <em class="fr accent">Chief of Staff.</em></h1>
+        <div class="play-ring" data-reveal data-d="2">
+          <button class="play-btn" id="playBtn" aria-label="Play the morning briefing">▶</button>
+        </div>
+        <div class="audio-cap" data-reveal data-d="3" id="audioCap">Press play</div>
+        <audio id="briefing" src="assets/morning-briefing.mp3" preload="auto"></audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 WHAT YOU JUST HEARD -->
+  <section class="slide t-cream" data-label="What you just heard">
+    <span class="slide-num">03</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>What you just heard</div>
+      <h2 data-reveal data-d="1" style="margin-bottom:30px">An AI made that this morning —<br>while I made <em class="fr accent">coffee.</em></h2>
+      <div class="grid-cards">
+        <div class="card" data-reveal data-d="2"><h3><span class="ic">✕</span>No script</h3><p>I didn't write a word of it. It pulled my calendar, my tasks, and the news on its own.</p></div>
+        <div class="card" data-reveal data-d="3"><h3><span class="ic">✕</span>No recording</h3><p>No microphone, no studio, no editing. Generated start to finish, voice and all.</p></div>
+        <div class="card" data-reveal data-d="4"><h3><span class="ic">✕</span>No prompting</h3><p>I didn't even ask. It runs every morning, automatically, before I wake up.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 THESIS — CUSTOM TOOLS -->
+  <section class="slide t-navy" data-label="Custom tools for you">
+    <span class="slide-num">04</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>Where this is all heading</div>
+      <h1 class="display" data-reveal data-d="1" style="font-size:clamp(36px,6vw,84px)">The future isn't using<br>AI's tools. It's AI building<br>tools for <em class="fr accent">you.</em></h1>
+      <p class="lede" data-reveal data-d="2" style="margin-top:30px;max-width:60ch">That morning briefing isn't an app I downloaded. It's a tool built for exactly one person — <em class="fr accent">me.</em> That's the real shift: software that bends to fit <em class="fr">you</em>, instead of you bending to fit it.</p>
+    </div>
+  </section>
+
+  <!-- 05 THE DEAL -->
+  <section class="slide t-cream" data-label="The deal">
+    <span class="slide-num">05</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>The deal for the next hour</div>
+      <h2 data-reveal data-d="1">You'll walk out with <em class="fr accent">two things.</em></h2>
+      <div class="grid-2c">
+        <div class="card" data-reveal data-d="2" style="padding:30px 28px">
+          <h3 style="font-size:20px"><span class="ic">1</span>Tactics for tomorrow</h3>
+          <p style="font-size:16px">A handful of tools you can start using this week — <strong>no technical skill, no budget, no IT department</strong> required.</p>
+        </div>
+        <div class="card" data-reveal data-d="3" style="padding:30px 28px">
+          <h3 style="font-size:20px"><span class="ic">2</span>A look at what's next</h3>
+          <p style="font-size:16px">Where this is actually headed — agents that work like <strong>employees, not tools.</strong> Closer than you think. You heard one five minutes ago.</p>
+        </div>
+      </div>
+      <p class="lede" data-reveal data-d="4" style="margin-top:30px;color:var(--ink)">If you've ever felt behind on this stuff — <em class="fr accent">good.</em> That's exactly who this hour is for.</p>
+    </div>
+  </section>
+
+  <!-- 06 TOOL 01 — WISPR FLOW (the brag) -->
+  <section class="slide t-cream" data-label="Tool 01 — Wispr (brag)">
+    <span class="slide-num">06</span>
+    <div class="slide-inner">
+      <div class="grid2 tight">
+        <div>
+          <div class="logochip" data-reveal><img src="assets/logos/wispr.png" alt="Wispr Flow" onerror="this.parentElement.style.display='none'"></div>
+          <div class="tcount" data-reveal>Tool 01 · Wispr Flow</div>
+          <h2 data-reveal data-d="1" style="font-size:clamp(30px,4vw,52px)">Humble brag… In high school, I was the <em class="fr accent">Oklahoma State Typing Champion.</em></h2>
+        </div>
+        <div data-reveal data-d="2" style="display:flex;flex-direction:column;align-items:center">
+          <img src="assets/typing-champion.jpg" alt="Ryan holding the 1998 Keyboard Champion trophy" style="max-height:64vh;width:auto;max-width:100%;border-radius:16px;box-shadow:0 30px 70px -30px rgba(10,25,41,.5);border:1px solid var(--line)">
+          <div style="margin-top:12px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--marigold-deep)">Exhibit A · Keyboard Champion, 1998</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 TOOL 01 — WISPR FLOW (the stat) -->
+  <!-- PRESENTER SETUP: have a blank Google Doc open in another tab — jump to it here to demo Wispr Flow voice-to-text LIVE. -->
+  <section class="slide t-paper" data-label="Tool 01 — Wispr (stat)">
+    <span class="slide-num">07</span>
+    <div class="slide-inner" style="text-align:center">
+      <div class="tcount" data-reveal>Tool 01 · Wispr Flow</div>
+      <h2 data-reveal data-d="1">These days, I just <em class="fr accent">talk.</em></h2>
+      <p class="lede" data-reveal data-d="2" style="margin:14px auto 0;max-width:48ch;color:var(--ink)">Voice-to-text that's actually good — and you speak about <strong>3× faster</strong> than you type. It adds up fast:</p>
+      <img data-reveal data-d="3" src="assets/wispr-stat.png" alt="Wispr Flow: 202,441 total words dictated — you've written 2 complete books" style="width:min(560px,100%);margin:26px auto 0;border-radius:16px;box-shadow:0 30px 70px -30px rgba(10,25,41,.45);display:block">
+    </div>
+  </section>
+
+  <!-- 08 TOOL 02 — AI NOTETAKERS (concept) -->
+  <section class="slide t-paper" data-label="Tool 02 — AI notetakers">
+    <span class="slide-num">08</span>
+    <div class="slide-inner">
+      <div class="tcount" data-reveal>Tool 02 · AI Meeting Notetakers</div>
+      <h2 data-reveal data-d="1" style="max-width:18ch">Never lose another <em class="fr accent">meeting detail.</em></h2>
+      <p class="lede" data-reveal data-d="2" style="margin-top:24px">An AI notetaker quietly captures every word, then hands you the summary and the action items — so you can actually be <em class="fr">present</em> in the conversation.</p>
+    </div>
+  </section>
+
+  <!-- 09 TOOL 02 — GRANOLA (why) -->
+  <section class="slide t-cream" data-label="Tool 02 — Granola">
+    <span class="slide-num">09</span>
+    <div class="slide-inner">
+      <div class="logochip" data-reveal><img src="assets/logos/granola.png" alt="Granola" onerror="this.parentElement.style.display='none'"></div>
+      <div class="tcount" data-reveal>Tool 02 · Granola</div>
+      <h2 data-reveal data-d="1">My notetaker of choice:<br><em class="fr accent">Granola.</em></h2>
+      <ul class="checks">
+        <li data-step="1">A genuinely <b>generous free tier</b></li>
+        <li data-step="2"><b>No bot</b> — none of that “AI Notetaker wants to join your meeting”</li>
+        <li data-step="3">A <b>phone app that syncs</b> — in-person meetings count too</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10 TOOL 02 — HOW I USE GRANOLA -->
+  <section class="slide t-paper" data-label="Tool 02 — How I use Granola">
+    <span class="slide-num">10</span>
+    <div class="slide-inner">
+      <div class="tcount" data-reveal>Tool 02 · Granola</div>
+      <h2 data-reveal data-d="1">How I actually <em class="fr accent">use it.</em></h2>
+      <ul class="checks">
+        <li data-step="1">Clean, practical <b>action items</b> after every meeting</li>
+        <li data-step="2">Every meeting becomes <b>searchable</b> for later</li>
+        <li data-step="3">Meeting → my AI agent → a <b>custom proposal</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 09 SHOW OF HANDS (podcasts) -->
+  <section class="slide t-navy" data-label="Show of hands">
+    <span class="slide-num">11</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>Show of hands…</div>
+      <h1 class="display" data-reveal data-d="1" style="font-size:clamp(38px,6.2vw,82px)">Who here is a fan of<br>listening to <em class="fr accent">podcasts?</em></h1>
+    </div>
+  </section>
+
+  <!-- 10 TOOL 03 — NOTEBOOKLM -->
+  <!-- PRESENTER SETUP: this follows the show-of-hands slide. Jump to the NotebookLM tab and play the Chamber "Deep Dive" excerpt live. -->
+  <!-- LOGO TODO: drop assets/logos/notebooklm.png (couldn't auto-fetch — Google products share the generic Google favicon). -->
+  <section class="slide t-cream" data-label="Tool 03 — NotebookLM">
+    <span class="slide-num">12</span>
+    <div class="slide-inner">
+      <div class="logochip" data-reveal><img src="assets/logos/notebooklm.png" alt="NotebookLM" onerror="this.parentElement.style.display='none'"></div>
+      <div class="tcount" data-reveal>Tool 03 · NotebookLM</div>
+      <h2 data-reveal data-d="1">Turn any document into a <em class="fr accent">podcast.</em></h2>
+      <p class="lede" data-reveal data-d="2" style="margin-top:20px;color:var(--ink);max-width:56ch">If you'd rather <strong>listen</strong> than slog through a dense report to get the gist — upload it, and two AI hosts talk it through. I even made one about <strong>this Chamber</strong> — let me play you a clip.</p>
+      <div class="tool-tag" data-reveal data-d="3">Tool · NotebookLM</div>
+    </div>
+  </section>
+
+  <!-- 12 TRANSITION — AGENTS -->
+  <section class="slide t-navy" data-label="Agents">
+    <span class="slide-num">13</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>Agents</div>
+      <h1 class="display" data-reveal data-d="1" style="font-size:clamp(38px,6.4vw,84px)">Now: AI that<br>works <em class="fr accent">for you.</em></h1>
+      <p class="lede" data-reveal data-d="2" style="margin-top:28px">Everything so far was things you do <em class="fr">with</em> AI. This is AI that does things <em class="fr">for</em> you — and one distinction explains it.</p>
+      <p class="lede" data-reveal data-d="3" style="margin-top:14px"><em class="fr accent">What if you could hire one for about $20 a month?</em></p>
+    </div>
+  </section>
+
+  <!-- 11 ONE DISTINCTION — INTERN VS EMPLOYEE -->
+  <section class="slide t-navy-deep" data-label="Intern vs employee">
+    <span class="slide-num">14</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>One distinction that explains everything</div>
+      <h2 data-reveal data-d="1">The intern vs. the <em class="fr accent">employee.</em></h2>
+      <div class="split">
+        <div class="col intern" data-step="1">
+          <div class="ctag">ChatGPT, Claude — “the intern”</div>
+          <h3>You ask.<br>It answers.<br>You ask again.</h3>
+          <p>Brilliant — but it only moves when you push it. Every step is on you.</p>
+          <div class="punch">You are the engine.</div>
+        </div>
+        <div class="col employee" data-step="2">
+          <div class="ctag">An agent — “the employee”</div>
+          <h3>You give it a goal.<br>It figures out<br>the steps.</h3>
+          <p>Starts out green — then gets sharper as it learns your business, like any new hire.</p>
+          <div class="punch">It is the engine.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 CODEX — YOUR FIRST AGENT -->
+  <!-- PRESENTER SETUP: have Codex (in ChatGPT) ready with demos queued — (1) daily-brief automation, (2) browser use, (3) "add a user to my Meta Ads account," (4) "brief me on [LinkedIn name]" for your upcoming meeting. -->
+  <section class="slide t-navy" data-label="Codex — your first agent">
+    <span class="slide-num">15</span>
+    <div class="slide-inner">
+      <div class="logochip" data-reveal><img src="assets/logos/openai.png" alt="OpenAI" onerror="this.parentElement.style.display='none'"></div>
+      <div class="kicker" data-reveal>The agent you already have access to</div>
+      <h2 data-reveal data-d="1">Already on ChatGPT?<br>Meet <em class="fr accent">Codex.</em></h2>
+      <p class="lede" data-reveal data-d="2" style="margin-top:20px;max-width:56ch">It doesn't just answer — it goes and <em class="fr">does.</em> Same idea as that morning briefing, except you point it at a task. This is the “employee” — and you can try it today.</p>
+      <div class="tool-tag" data-reveal data-d="3">Tool · ChatGPT — Codex</div>
+    </div>
+  </section>
+
+  <!-- 13 MEET FELIX (intro + live demo) -->
+  <!-- PRESENTER SETUP: live demo with Felix (Telegram). Have the chat open. -->
+  <section class="slide t-navy-deep" data-label="Meet Felix">
+    <span class="slide-num">16</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>My agent</div>
+      <h2 data-reveal data-d="1" style="margin-bottom:18px">Meet <em class="fr accent">Felix.</em></h2>
+      <p class="lede" data-reveal data-d="2" style="max-width:56ch">An AI employee I built on the Hermes platform. I talk to him in Telegram, the same way I'd text a person. He learns my business over time, and saves what works as his own <em class="fr">SOPs.</em> <span style="color:var(--marigold)">You heard him at the start.</span></p>
+    </div>
+  </section>
+
+  <!-- 14 FELIX — GLIMPSE OF THE FUTURE (cards build one-by-one) -->
+  <section class="slide t-navy-deep" data-label="Felix — the future">
+    <span class="slide-num">17</span>
+    <div class="slide-inner">
+      <h2 data-reveal data-d="1" style="max-width:24ch;margin-bottom:34px">Felix is a glimpse into the future of <em class="fr accent">working with AI.</em></h2>
+      <div class="grid-cards" style="grid-template-columns:repeat(4,1fr)">
+        <div class="card" data-step="1"><h3><span class="ic">☀</span>Morning briefing</h3><p>Builds my daily audio dashboard — calendar, tasks, news. That's what you heard.</p></div>
+        <div class="card" data-step="2"><h3><span class="ic">✉</span>His own inbox</h3><p>Felix has his own email address. He's a real teammate, not a chatbot.</p></div>
+        <div class="card" data-step="3"><h3><span class="ic">↗</span>Writes his own SOPs</h3><p>Nails a task once, saves it as a reusable “skill.” He gets better the longer he works for me.</p></div>
+        <div class="card" data-step="4"><h3><span class="ic">⚒</span>Does real work</h3><p>Research, drafts, errands, multi-step jobs — from a single message in Telegram.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 I CAN'T CODE -->
+  <section class="slide t-cream" data-label="I can't code">
+    <span class="slide-num">18</span>
+    <div class="slide-inner">
+      <h2 data-reveal data-d="1" style="margin-bottom:6px">I can't write code, but I've <em class="fr accent">built…</em></h2>
+      <div class="grid2 tight" style="margin-top:24px;align-items:center">
+        <div>
+          <ul class="checks sm">
+            <li data-reveal data-d="2">A <b>fitness iPhone app</b></li>
+            <li data-reveal data-d="3">A <b>Spanish-learning arcade game</b> for my kids</li>
+            <li data-reveal data-d="4">An app that helps nonprofits &amp; small businesses <b>create marketing copy</b></li>
+            <li data-reveal data-d="5">An automation that does <b>keyword research &amp; writes SEO blogs</b></li>
+          </ul>
+          <p class="lede" data-reveal data-d="6" style="margin-top:26px;color:var(--ink);font-size:clamp(16px,1.7vw,20px)">Not because I'm special — the barrier to entry is basically gone. <em class="fr accent">If I can do this, you can do this.</em></p>
+        </div>
+        <div data-reveal data-d="3" style="display:flex;flex-direction:column;gap:12px;align-items:center">
+          <div style="display:flex;gap:12px;justify-content:center">
+            <img src="assets/built-fitness.jpg" alt="Fitness iPhone app" style="height:288px;border-radius:14px;box-shadow:0 22px 54px -26px rgba(10,25,41,.5);border:1px solid var(--line)">
+            <img src="assets/built-spanish.jpg" alt="Spanish-learning arcade game" style="height:288px;border-radius:14px;box-shadow:0 22px 54px -26px rgba(10,25,41,.5);border:1px solid var(--line)">
+          </div>
+          <img src="assets/built-donorspark.jpg" alt="DonorSpark marketing-copy app" style="width:100%;max-width:368px;border-radius:12px;box-shadow:0 22px 54px -26px rgba(10,25,41,.5);border:1px solid var(--line)">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 TOOLKIT -->
+  <section class="slide t-navy" data-label="Take this with you">
+    <span class="slide-num">19</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>Take this with you</div>
+      <h2 data-reveal data-d="1" style="margin-bottom:8px">Start <em class="fr accent">tomorrow.</em></h2>
+      <p class="lede" data-reveal data-d="2" style="margin-bottom:24px">Four tools, in order of “easiest win first.” Snap a photo of this slide.</p>
+      <div class="grid-cards" style="grid-template-columns:repeat(4,1fr)">
+        <div class="card" data-reveal data-d="3"><h3><span class="ic">①</span>Wispr Flow</h3><p>Voice-to-text, everywhere you type.</p></div>
+        <div class="card" data-reveal data-d="4"><h3><span class="ic">②</span>Granola</h3><p>AI meeting notes that write themselves.</p></div>
+        <div class="card" data-reveal data-d="5"><h3><span class="ic">③</span>NotebookLM</h3><p>Turn your documents into a podcast.</p></div>
+        <div class="card" data-reveal data-d="6"><h3><span class="ic">④</span>ChatGPT + Codex</h3><p>Your everyday intern — and your first agent.</p></div>
+      </div>
+      <p class="lede" data-reveal data-d="6" style="margin-top:26px">Referral codes for Wispr Flow &amp; Granola are in your recap email — <em class="fr accent">which you're about to get. Right now.</em></p>
+    </div>
+  </section>
+
+  <!-- 18 PUTTING FELIX TO WORK (live command) -->
+  <!-- PRESENTER SETUP: in Telegram, out loud, tell Felix to email everyone who signed in today. -->
+  <section class="slide t-navy-deep" data-label="Putting Felix to work">
+    <span class="slide-num">20</span>
+    <div class="slide-inner">
+      <div class="kicker" data-reveal>One more thing</div>
+      <h1 class="display" data-reveal data-d="1" style="font-size:clamp(42px,7.6vw,100px)">Now… putting Felix<br>to <em class="fr accent">work.</em></h1>
+      <p class="lede" data-reveal data-d="2" style="margin-top:24px;max-width:50ch">I'm going to ask Felix — out loud, right now — to email everyone who signed in today.</p>
+    </div>
+  </section>
+
+  <!-- 19 EXPECTATION SETTER -->
+  <section class="slide t-navy" data-label="Felix is emailing you">
+    <span class="slide-num">21</span>
+    <div class="slide-inner">
+      <h1 class="display" data-reveal data-d="1" style="font-size:clamp(34px,5.6vw,76px)">In a few minutes, Felix should <em class="fr accent">(hopefully)</em> be emailing you.</h1>
+      <p class="lede" data-reveal data-d="2" style="margin-top:24px"><strong>Note:</strong> check your spam folder. 🙂</p>
+    </div>
+  </section>
+
+  <!-- 20 QUESTIONS / CLOSE -->
+  <section class="slide t-navy-deep" data-label="Questions">
+    <span class="slide-num">22</span>
+    <div class="slide-inner">
+      <h1 class="display" data-reveal data-d="1">Questions?</h1>
+      <div class="cta-line" data-reveal data-d="2"><span class="arrow">→</span> Curious what AI could automate for you? Grab me after.</div>
+      <div class="cover-meta" data-reveal data-d="3" style="margin-top:42px;align-items:center">
+        <img class="wordmark on-dark" src="assets/hallpass-logo.png" alt="Hallpass" style="height:36px">
+        <div><div class="lab">Presented by</div>Ryan McNeill · Hallpass Digital</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const progress=document.getElementById('progress');
+  slides.forEach((s,i)=>{const b=document.createElement('button');b.title=s.dataset.label||('Slide '+(i+1));b.onclick=()=>slides[i].scrollIntoView({behavior:'smooth'});dotsWrap.appendChild(b);});
+  const dots=[...dotsWrap.children];
+  let current=0, buildForward=false;
+  const stepsOf=(s)=>[...s.querySelectorAll('[data-step]')].sort((a,b)=>(+a.dataset.step)-(+b.dataset.step));
+  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{
+    if(e.isIntersecting && e.intersectionRatio>=.55){
+      e.target.classList.add('active');current=slides.indexOf(e.target);
+      dots.forEach((d,i)=>d.classList.toggle('on',i===current));
+      progress.style.width=(current/(slides.length-1)*100)+'%';
+      const st=stepsOf(e.target);
+      if(buildForward){st.forEach(x=>x.classList.remove('shown'));}   // arrived by pressing forward → build steps one by one
+      else{st.forEach(x=>x.classList.add('shown'));}                  // arrived by jump / back / scroll → show whole slide
+      buildForward=false;
+    }});},{threshold:[.55]});
+  slides.forEach(s=>io.observe(s));
+  function next(){
+    const st=stepsOf(slides[current]), hid=st.find(x=>!x.classList.contains('shown'));
+    if(hid){hid.classList.add('shown');return;}                       // reveal next fragment, stay on slide
+    buildForward=true; go(current+1);
+  }
+  function prev(){
+    const st=stepsOf(slides[current]), sh=st.filter(x=>x.classList.contains('shown'));
+    if(sh.length){sh[sh.length-1].classList.remove('shown');return;}  // hide last fragment, stay on slide
+    go(current-1);
+  }
+  window.addEventListener('keydown',(e)=>{const k=e.key;
+    if(['ArrowDown','PageDown',' ','ArrowRight'].includes(k)){e.preventDefault();next()}
+    else if(['ArrowUp','PageUp','ArrowLeft'].includes(k)){e.preventDefault();prev()}
+    else if(k==='Home'){e.preventDefault();go(0)}else if(k==='End'){e.preventDefault();go(slides.length-1)}
+    else if(/^[1-9]$/.test(k)){e.preventDefault();go(parseInt(k)-1)}});
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:'smooth'})}
+
+  // audio hero
+  (function(){
+    const btn=document.getElementById('playBtn'),audio=document.getElementById('briefing'),cap=document.getElementById('audioCap');
+    if(!btn||!audio)return;
+    btn.addEventListener('click',()=>{
+      if(audio.paused){audio.play().then(()=>{btn.textContent='❚❚';cap.textContent='Playing…';}).catch(()=>{cap.textContent='Add assets/morning-briefing.mp3';});}
+      else{audio.pause();btn.textContent='▶';cap.textContent='Paused';}
+    });
+    audio.addEventListener('ended',()=>{btn.textContent='▶';cap.textContent='That was Felix.';});
+  })();
+
+  // NotebookLM "Deep Dive" excerpt
+  (function(){
+    const btn=document.getElementById('ntbPlay'),audio=document.getElementById('ntbAudio'),cap=document.getElementById('ntbCap');
+    if(!btn||!audio)return;
+    btn.addEventListener('click',()=>{
+      if(audio.paused){audio.play().then(()=>{btn.textContent='❚❚';cap.textContent='Playing…';}).catch(()=>{cap.textContent='Add assets/chamber-deepdive.mp3';});}
+      else{audio.pause();btn.textContent='▶';cap.textContent='Paused';}
+    });
+    audio.addEventListener('ended',()=>{btn.textContent='▶';cap.textContent='Made by NotebookLM.';});
+  })();
+
+  slides[0].classList.add('active');
+</script>
+</body>
+</html>
