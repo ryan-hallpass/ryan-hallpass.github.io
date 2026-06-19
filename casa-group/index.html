@@ -82,9 +82,9 @@
 
   /* WHAT WE HEARD bullets */
   .bullets{ list-style:none; margin-top:44px; counter-reset:b; }
-  .bullets li{ display:grid; grid-template-columns:46px 1fr; align-items:start; padding:28px 0; border-bottom:1px solid var(--line); }
-  .bullets li::before{ content:counter(b,upper-roman); counter-increment:b; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--bronze); line-height:1.55; }
-  .bullets li .t{ font-family:var(--sans); font-weight:300; font-size:16px; line-height:1.64; color:var(--ink-soft); }
+  .bullets li{ position:relative; padding:28px 0 28px 46px; border-bottom:1px solid var(--line); }
+  .bullets li::before{ content:counter(b,upper-roman); counter-increment:b; position:absolute; left:0; top:28px; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--bronze); line-height:1.55; }
+  .bullets li .t{ display:block; font-family:var(--sans); font-weight:300; font-size:16px; line-height:1.64; color:var(--ink-soft); }
   .bullets .hi{ color:var(--ink); }
 
   /* OPPORTUNITY (dark) */
