@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Casa Group × Hallpass Digital — Proposal</title>
+<meta name="description" content="A branded home for Emilio & Christina — and a front door that captures every buyer and seller, instead of renting them back from Zillow.">
+<meta property="og:title" content="The Casa Group × Hallpass Digital">
+<meta property="og:description" content="Own your brand. Own your leads. A proposal for The Casa Group.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F2EFE8;
+    --cream-2: #ECE7DC;
+    --ink: #1A1A18;
+    --ink-soft: #3D3D38;
+    --terra: #C4794A;
+    --terra-light: #E8B99A;
+    --terra-deep: #A65F35;
+    --terra-wash: #F7EEE7;
+    --warm-white: #FBF9F4;
+    --line: rgba(26,26,24,0.10);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .section { padding: 120px 7vw; position: relative; }
+  .section--tight { padding: 92px 7vw; }
+  .wrap { max-width: 1080px; margin: 0 auto; width: 100%; }
+  .narrow { max-width: 760px; }
+
+  .section--dark { background: var(--ink); color: var(--cream); }
+  .section--wash { background: var(--terra-wash); }
+  .section--accent { background: var(--terra); color: var(--warm-white); }
+
+  /* ---------- TYPE ---------- */
+  .eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--terra-deep);
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 26px;
+  }
+  .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--terra); display: inline-block; }
+  .section--dark .eyebrow { color: var(--terra-light); }
+  .section--dark .eyebrow::before { background: var(--terra-light); }
+  .section--accent .eyebrow { color: var(--warm-white); }
+  .section--accent .eyebrow::before { background: rgba(255,255,255,0.6); }
+
+  .display {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(34px, 5.2vw, 60px); line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .display em { font-style: italic; color: var(--terra); }
+  .section--dark .display em { color: var(--terra-light); }
+  .section--accent .display em { color: var(--ink); }
+
+  .display-sm {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 40px); line-height: 1.16; letter-spacing: -0.015em;
+  }
+  .display-sm em { font-style: italic; color: var(--terra); }
+  .section--dark .display-sm em { color: var(--terra-light); }
+
+  .lead { font-size: clamp(16px, 1.5vw, 19px); font-weight: 300; line-height: 1.7; color: var(--ink-soft); max-width: 620px; }
+  .section--dark .lead { color: rgba(242,239,232,0.72); }
+  .section--accent .lead { color: rgba(251,249,244,0.92); max-width: 640px; }
+
+  .rule { width: 54px; height: 2px; background: var(--terra); margin: 30px 0; border: 0; }
+  .section--dark .rule { background: var(--terra-light); }
+  .section--accent .rule { background: rgba(255,255,255,0.7); }
+
+  /* ---------- LOGO BAR ---------- */
+  .logo-bar { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); margin-top: 36px; }
+  .logo-bar img { height: 17px; width: auto; opacity: 0.45; }
+  .logo-bar .lf { font-family: var(--serif); font-size: 16px; opacity: 0.6; }
+  .logo-bar span { font-size: 11px; font-weight: 400; letter-spacing: 0.14em; opacity: 0.45; text-transform: uppercase; }
+  .section--dark .logo-bar { border-top-color: rgba(255,255,255,0.12); }
+  .section--dark .logo-bar img { filter: invert(1); opacity: 0.55; }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 7vw; position: relative; overflow: hidden;
+    background: radial-gradient(120% 90% at 80% 10%, #2a2722 0%, var(--ink) 55%);
+    color: var(--cream);
+  }
+  .cover::after {
+    content: ""; position: absolute; right: -10vw; top: -10vw; width: 46vw; height: 46vw;
+    border: 1px solid var(--terra); border-radius: 50%; opacity: 0.16; pointer-events: none;
+  }
+  .cover::before {
+    content: ""; position: absolute; right: 2vw; bottom: -16vw; width: 30vw; height: 30vw;
+    border: 1px solid var(--terra-light); border-radius: 50%; opacity: 0.10; pointer-events: none;
+  }
+  .cover-hero { position: relative; z-index: 2; max-width: 880px; }
+  .cover-headline {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 7vw, 86px);
+    line-height: 1.04; letter-spacing: -0.03em; margin: 30px 0 0;
+  }
+  .cover-headline em { font-style: italic; color: var(--terra-light); }
+  .cover-sub { font-size: clamp(15px, 1.6vw, 18px); font-weight: 300; color: rgba(242,239,232,0.66); margin-top: 26px; max-width: 480px; line-height: 1.7; }
+  .cover-meta { display: flex; gap: 40px; margin-top: 46px; flex-wrap: wrap; }
+  .cover-meta div { }
+  .cover-meta .k { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,239,232,0.4); margin-bottom: 5px; }
+  .cover-meta .v { font-family: var(--serif); font-size: 17px; color: var(--cream); }
+  .cover-foot { position: absolute; left: 7vw; right: 7vw; bottom: 40px; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .cover-foot img { height: 18px; filter: invert(1); opacity: 0.6; }
+  .cover-foot .lf { font-family: var(--serif); font-size: 18px; color: var(--cream); opacity: 0.85; }
+  .cover-foot span { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,239,232,0.42); }
+
+  /* ---------- BULLETS ---------- */
+  .bullets { list-style: none; margin-top: 34px; display: grid; gap: 2px; }
+  .bullets li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.55; }
+  .bullets li::before { content: '—'; color: var(--terra); font-family: var(--serif); flex-shrink: 0; }
+  .bullets li b { font-weight: 600; }
+  .section--dark .bullets li { border-bottom-color: rgba(255,255,255,0.1); }
+  .section--dark .bullets li::before { color: var(--terra-light); }
+
+  /* ---------- STAT ROW ---------- */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px; }
+  .stat { padding: 4px 0; }
+  .stat .stat-num { font-family: var(--serif); font-size: clamp(34px, 4.6vw, 52px); font-weight: 500; color: var(--terra); line-height: 1; }
+  .section--accent .stat .stat-num { color: var(--ink); }
+  .stat .stat-lab { font-size: 12.5px; line-height: 1.45; margin-top: 10px; color: var(--ink-soft); }
+  .section--accent .stat .stat-lab { color: rgba(251,249,244,0.9); }
+  @media (max-width: 720px){ .stat-row { grid-template-columns: 1fr 1fr; gap: 30px 20px; } }
+
+  /* ---------- INITIATIVE CARDS ---------- */
+  .init-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 56px; }
+  .init-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 880px){ .init-grid { grid-template-columns: 1fr; } }
+  .init-card {
+    background: var(--warm-white); border: 1px solid var(--line); padding: 36px 32px 38px;
+    display: flex; flex-direction: column; position: relative;
+  }
+  .init-card .tag { position: absolute; top: 22px; right: 26px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-deep); font-weight: 600; }
+  .init-num { font-family: var(--serif); font-size: 40px; color: var(--terra); line-height: 1; margin-bottom: 20px; }
+  .init-title { font-family: var(--serif); font-size: 22px; font-weight: 500; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .init-body { font-size: 14.5px; line-height: 1.62; color: var(--ink-soft); }
+  .init-list { list-style: none; margin-top: 20px; display: grid; gap: 9px; }
+  .init-list li { font-size: 13px; color: var(--ink-soft); padding-left: 18px; position: relative; line-height: 1.45; }
+  .init-list li::before { content: '✦'; position: absolute; left: 0; color: var(--terra); font-size: 9px; top: 4px; }
+
+  /* ---------- JOURNEY (sticky) ---------- */
+  .journey-section { position: relative; }
+  .journey-pinned { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 7vw; background: var(--cream-2); overflow: hidden; }
+  .journey-head { max-width: 1080px; margin: 0 auto 8px; width: 100%; }
+  .journey-inner { max-width: 1080px; margin: 0 auto; width: 100%; }
+  .journey-track { position: relative; height: 2px; background: var(--line); margin: 60px 0 0; }
+  .journey-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: var(--terra); transition: width 0.1s linear; }
+  .journey-dots { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); display: flex; justify-content: space-between; }
+  .journey-dot { width: 13px; height: 13px; border-radius: 50%; background: var(--cream-2); border: 2px solid var(--line); transition: all 0.3s ease; }
+  .journey-dot.is-active { background: var(--terra); border-color: var(--terra); transform: scale(1.25); }
+  .journey-markers { display: flex; justify-content: space-between; margin-top: 22px; }
+  .journey-marker-label { flex: 1; text-align: center; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-soft); opacity: 0.4; transition: opacity 0.3s ease; padding: 0 6px; }
+  .journey-marker-label.is-active { opacity: 1; color: var(--terra-deep); font-weight: 600; }
+  .journey-stages { position: relative; margin-top: 54px; min-height: 150px; }
+  .journey-stage { position: absolute; inset: 0; opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; pointer-events: none; }
+  .journey-stage.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .journey-stage .js-num { font-family: var(--serif); font-size: 14px; color: var(--terra); letter-spacing: 0.1em; }
+  .journey-stage .js-title { font-family: var(--serif); font-size: clamp(24px, 3vw, 34px); font-weight: 500; margin: 8px 0 12px; letter-spacing: -0.01em; }
+  .journey-stage .js-body { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); max-width: 600px; }
+  @media (max-width: 720px){ .journey-marker-label { font-size: 9px; } .journey-marker-label br { display: none; } }
+
+  /* ---------- HORIZON ---------- */
+  .horizon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+  @media (max-width: 880px){ .horizon-grid { grid-template-columns: 1fr; } }
+  .horizon-card { border: 1px solid rgba(255,255,255,0.14); padding: 30px 26px; }
+  .horizon-card .hc-num { font-family: var(--serif); font-size: 15px; color: var(--terra-light); letter-spacing: 0.1em; }
+  .horizon-card .hc-title { font-family: var(--serif); font-size: 20px; font-weight: 500; margin: 12px 0 10px; }
+  .horizon-card .hc-body { font-size: 13.5px; line-height: 1.6; color: rgba(242,239,232,0.66); }
+
+  /* ---------- TIMELINE ---------- */
+  .tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; }
+  @media (max-width: 880px){ .tl { grid-template-columns: 1fr 1fr; gap: 30px 0; } }
+  .tl-step { padding: 0 26px; border-left: 1px solid var(--line); position: relative; }
+  .tl-step:first-child { padding-left: 0; border-left: 0; }
+  .tl-week { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-deep); font-weight: 600; margin-bottom: 14px; }
+  .tl-title { font-family: var(--serif); font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+  .tl-body { font-size: 13px; line-height: 1.55; color: var(--ink-soft); }
+
+  /* ---------- PRICING ---------- */
+  .price-grid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 22px; margin-top: 56px; align-items: stretch; }
+  @media (max-width: 880px){ .price-grid { grid-template-columns: 1fr; } }
+  .price-card { background: var(--warm-white); border: 1px solid var(--line); padding: 38px 32px 36px; display: flex; flex-direction: column; }
+  .price-card.is-primary { border-color: var(--terra); border-top: 3px solid var(--terra); }
+  .price-card .pc-kicker { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra-deep); font-weight: 600; margin-bottom: 16px; }
+  .price-card .pc-name { font-family: var(--serif); font-size: 24px; font-weight: 500; margin-bottom: 4px; }
+  .price-card .pc-price { font-family: var(--serif); font-size: 44px; font-weight: 500; color: var(--terra-deep); line-height: 1.05; letter-spacing: -0.01em; margin-top: 14px; }
+  .price-card .pc-period { font-family: var(--sans); font-size: 13.5px; color: var(--ink-soft); font-weight: 500; margin-top: 4px; }
+  .price-card .pc-desc { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .price-card .pc-list { list-style: none; margin-top: 18px; display: grid; gap: 11px; }
+  .price-card .pc-list li { font-size: 13.5px; color: var(--ink); padding-left: 22px; position: relative; line-height: 1.45; }
+  .price-card .pc-list li::before { content: '✦'; position: absolute; left: 0; color: var(--terra); font-size: 10px; top: 3px; }
+  .price-card .pc-foot { margin-top: auto; padding-top: 22px; font-size: 12px; color: var(--ink-soft); font-style: italic; opacity: 0.85; }
+  .price-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 28px; line-height: 1.6; max-width: 760px; }
+
+  /* ---------- NEXT STEPS ---------- */
+  .steps { list-style: none; margin-top: 44px; display: grid; gap: 2px; max-width: 760px; }
+  .steps li { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.12); align-items: baseline; }
+  .steps .sn { font-family: var(--serif); font-size: 20px; color: var(--terra-light); min-width: 34px; }
+  .steps .st { font-size: 15.5px; line-height: 1.5; color: var(--cream); }
+  .steps .st b { color: #fff; font-weight: 600; }
+  .steps .who { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra-light); margin-left: auto; white-space: nowrap; padding-left: 16px; }
+  .closeline { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2.4vw, 28px); color: var(--cream); margin-top: 60px; line-height: 1.4; max-width: 640px; }
+
+  /* ---------- REVEAL ---------- */
+  [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  [data-reveal][data-delay="1"] { transition-delay: 0.10s; }
+  [data-reveal][data-delay="2"] { transition-delay: 0.22s; }
+  [data-reveal][data-delay="3"] { transition-delay: 0.34s; }
+  [data-reveal][data-delay="4"] { transition-delay: 0.46s; }
+  [data-reveal][data-delay="5"] { transition-delay: 0.58s; }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<!-- 01 COVER -->
+<header class="cover">
+  <div class="cover-hero">
+    <div class="eyebrow" data-reveal>Prepared for The Casa Group</div>
+    <h1 class="cover-headline" data-reveal data-delay="1">Own your brand.<br><em>Own your leads.</em></h1>
+    <p class="cover-sub" data-reveal data-delay="2">A branded home for Emilio &amp; Christina — and a front door that captures every buyer and seller, instead of renting them back from Zillow.</p>
+    <div class="cover-meta" data-reveal data-delay="3">
+      <div><div class="k">For</div><div class="v">Emilio &amp; Christina</div></div>
+      <div><div class="k">From</div><div class="v">Hallpass Digital</div></div>
+      <div><div class="k">Engagement</div><div class="v">Website &amp; Lead System</div></div>
+    </div>
+  </div>
+  <div class="cover-foot">
+    <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital" onerror="this.outerHTML='<span class=&quot;lf&quot;>Hallpass</span>'">
+    <span>Proposal · June 2026</span>
+  </div>
+</header>
+
+<!-- 02 WHAT WE HEARD -->
+<section class="section">
+  <div class="wrap narrow">
+    <div class="eyebrow" data-reveal>What we heard</div>
+    <h2 class="display" data-reveal data-delay="1">You've built a real business on <em>relationships</em> — with nowhere of your own to send it.</h2>
+    <hr class="rule" data-reveal data-delay="2">
+    <ul class="bullets">
+      <li data-reveal><span>A referral-driven team with a sharp niche — architectural, mid-century, historic homes — but <b>no owned web presence</b> to anchor it.</span></li>
+      <li data-reveal data-delay="1"><span>You're paying <b>Zillow 40%</b> and <b>Realtor.com 26%</b> on the leads they hand you — a tax on every deal that never ends.</span></li>
+      <li data-reveal data-delay="2"><span><b>620 active clients</b> in Follow Up Boss, and a brokerage book of <b>7,600 Grosse Pointe leads</b> sitting mostly cold.</span></li>
+      <li data-reveal data-delay="3"><span>You have the brand — logo, fonts, imagery — but <b>no place that's unmistakably yours</b> to put it.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 THE OPPORTUNITY -->
+<section class="section section--accent">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>The opportunity</div>
+    <h2 class="display" data-reveal data-delay="1">Stop renting your leads.<br>Own the front door.</h2>
+    <p class="lead" data-reveal data-delay="2">On a single ~$600K Grosse Pointe sale, your commission is roughly <b>$18,000</b> — and Zillow's 40% takes <b>~$7,200</b> of it. Per deal. Forever. A site and lead system that's <em>yours</em> turns that variable tax into a fixed cost you control — and an asset that compounds.</p>
+    <div class="stat-row">
+      <div class="stat" data-reveal data-delay="1"><div class="stat-num">40%</div><div class="stat-lab">Zillow's cut on every referred deal</div></div>
+      <div class="stat" data-reveal data-delay="2"><div class="stat-num">26%</div><div class="stat-lab">Realtor.com's cut on theirs</div></div>
+      <div class="stat" data-reveal data-delay="3"><div class="stat-num">620</div><div class="stat-lab">Active clients already in your CRM</div></div>
+      <div class="stat" data-reveal data-delay="4"><div class="stat-num">7,600</div><div class="stat-lab">Grosse Pointe leads waiting to be worked</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 THE PLAN / INITIATIVES -->
+<section class="section">
+  <div class="wrap">
+    <div class="init-head">
+      <div>
+        <div class="eyebrow" data-reveal>The plan — Phase 1</div>
+        <h2 class="display-sm" data-reveal data-delay="1">Three pieces that turn your name<br>into a lead machine.</h2>
+      </div>
+      <p class="lead" data-reveal data-delay="2" style="max-width:340px;">Built and live in 4–6 weeks — a branded site, a capture system wired into Follow Up Boss, and an engine that keeps it fed.</p>
+    </div>
+    <div class="init-grid">
+      <div class="init-card" data-reveal>
+        <div class="init-num">01</div>
+        <div class="init-title">Your branded landing site</div>
+        <p class="init-body">“Hi, we're Emilio &amp; Christina.” A site that looks and feels like <em>you</em> — with a buyer / seller intake flow that asks the right questions and drops every lead straight into Follow Up Boss, tagged and noted.</p>
+        <ul class="init-list">
+          <li>“I want to buy / I want to sell” intake</li>
+          <li>Property type, price, beds, timeline</li>
+          <li>Auto-routed &amp; tagged in Follow Up Boss</li>
+        </ul>
+      </div>
+      <div class="init-card" data-reveal data-delay="1">
+        <div class="init-num">02</div>
+        <div class="init-title">Curated featured listings</div>
+        <p class="init-body">A hand-picked gallery of the homes that define your taste — mid-century and architectural — linking out to Zillow so there's never a photo-rights worry. Your eye, on display.</p>
+        <ul class="init-list">
+          <li>Hand-selected, on-brand homes</li>
+          <li>Link-out to source (no rights risk)</li>
+          <li>Refreshed as the market moves</li>
+        </ul>
+      </div>
+      <div class="init-card" data-reveal data-delay="2">
+        <div class="init-num">03</div>
+        <div class="init-title">A content &amp; SEO engine</div>
+        <p class="init-body">An always-on engine publishing local, architectural content built to rank for the searches your buyers actually make — so new leads find <em>you</em>, not a portal that bills you 40%.</p>
+        <ul class="init-list">
+          <li>Weekly published, search-built articles</li>
+          <li>Listings, profile &amp; review upkeep</li>
+          <li>A monthly visibility read-out</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 THE LEAD JOURNEY (sticky) -->
+<section class="journey-section">
+  <div class="journey-pinned">
+    <div class="journey-head">
+      <div class="eyebrow">How a lead becomes yours</div>
+      <h2 class="display-sm">From a late-night search to a client you <em>own</em>.</h2>
+    </div>
+    <div class="journey-inner">
+      <div class="journey-track">
+        <div class="journey-fill"></div>
+        <div class="journey-dots">
+          <span class="journey-dot is-active"></span>
+          <span class="journey-dot"></span>
+          <span class="journey-dot"></span>
+          <span class="journey-dot"></span>
+          <span class="journey-dot"></span>
+        </div>
+      </div>
+      <div class="journey-markers">
+        <div class="journey-marker-label is-active">They search</div>
+        <div class="journey-marker-label">They land on you</div>
+        <div class="journey-marker-label">They tell you</div>
+        <div class="journey-marker-label">Routed to FUB</div>
+        <div class="journey-marker-label">You close it</div>
+      </div>
+      <div class="journey-stages">
+        <div class="journey-stage is-active">
+          <div class="js-num">01</div>
+          <div class="js-title">They search</div>
+          <p class="js-body">Someone types “Grosse Pointe mid-century homes” at 11pm. Today that click goes to a portal — and if it converts, the portal bills you. Your content engine makes sure they find <em>your</em> page instead.</p>
+        </div>
+        <div class="journey-stage">
+          <div class="js-num">02</div>
+          <div class="js-title">They land on you</div>
+          <p class="js-body">They arrive somewhere that looks like The Casa Group — your brand, your voice, your taste in homes — not a generic template with a brokerage logo bolted on.</p>
+        </div>
+        <div class="journey-stage">
+          <div class="js-num">03</div>
+          <div class="js-title">They tell you what they want</div>
+          <p class="js-body">A simple “I want to buy / I want to sell” flow captures the essentials — property type, price range, beds, timeline — in a few friendly taps.</p>
+        </div>
+        <div class="journey-stage">
+          <div class="js-num">04</div>
+          <div class="js-title">It's routed to Follow Up Boss</div>
+          <p class="js-body">The moment they hit submit, the lead lands in Follow Up Boss — tagged, noted, and ready — alongside the 620 clients you already nurture. No 40% cut. No middleman.</p>
+        </div>
+        <div class="journey-stage">
+          <div class="js-num">05</div>
+          <div class="js-title">You close it — and you keep it</div>
+          <p class="js-body">You work the relationship the way you always have. The difference: the lead was yours from the first click, and so is every one they refer next.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ON THE HORIZON / PHASE 2 -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>On the horizon — Phase 2</div>
+    <h2 class="display-sm" data-reveal data-delay="1">When you're ready, the same brand goes <em>deeper</em>.</h2>
+    <p class="lead" data-reveal data-delay="2">The foundation is built to grow. These are the next plays — scoped once Phase 1 is live and the broker/board green-lights the data access each one needs.</p>
+    <div class="horizon-grid">
+      <div class="horizon-card" data-reveal>
+        <div class="hc-num">A</div>
+        <div class="hc-title">Branded MLS search</div>
+        <p class="hc-body">A Casa-branded listing search built over your MLS feed — the freedom of Luxury Presence without the rigid retainer or locked-down blog. Pending broker/board sign-off and technical feasibility.</p>
+      </div>
+      <div class="horizon-card" data-reveal data-delay="1">
+        <div class="hc-num">B</div>
+        <div class="hc-title">Personalized property decks</div>
+        <p class="hc-body">Swipeable, Instagram-carousel-style listing decks — matched to a specific buyer and texted with their name on it. Bespoke, the way Grosse Pointe expects.</p>
+      </div>
+      <div class="horizon-card" data-reveal data-delay="2">
+        <div class="hc-num">C</div>
+        <div class="hc-title">Smart direct mail</div>
+        <p class="hc-body">Custom-printed mailers carrying a personal URL for each recipient — old-school reach, measured like a digital campaign. Relationship-first, exactly your market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 TIMELINE -->
+<section class="section section--wash">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>The timeline</div>
+    <h2 class="display-sm" data-reveal data-delay="1">Live in <em>four to six weeks</em>.</h2>
+    <div class="tl">
+      <div class="tl-step" data-reveal>
+        <div class="tl-week">Week 1</div>
+        <div class="tl-title">Kickoff &amp; brand</div>
+        <div class="tl-body">Brand assets, voice, and the listings you want featured. Map the intake questions and Follow Up Boss tags.</div>
+      </div>
+      <div class="tl-step" data-reveal data-delay="1">
+        <div class="tl-week">Weeks 2–3</div>
+        <div class="tl-title">Build &amp; wire</div>
+        <div class="tl-body">The branded site and the buyer / seller intake flow, connected and tested end-to-end into Follow Up Boss.</div>
+      </div>
+      <div class="tl-step" data-reveal data-delay="2">
+        <div class="tl-week">Week 4</div>
+        <div class="tl-title">Listings &amp; content</div>
+        <div class="tl-body">Featured listings curated, the content engine stood up, and the first articles queued to publish.</div>
+      </div>
+      <div class="tl-step" data-reveal data-delay="3">
+        <div class="tl-week">Weeks 5–6</div>
+        <div class="tl-title">QA &amp; launch</div>
+        <div class="tl-body">Polish, test on every device, confirm leads land correctly — and go live.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 INVESTMENT -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>The investment</div>
+    <h2 class="display-sm" data-reveal data-delay="1">Built to start small and <em>grow with you</em>.</h2>
+    <div class="price-grid">
+      <div class="price-card is-primary" data-reveal>
+        <div class="pc-kicker">Start here</div>
+        <div class="pc-name">Foundation</div>
+        <div class="pc-price">$7,500</div>
+        <div class="pc-period">one-time &nbsp;·&nbsp; + $50/mo hosting &amp; upkeep</div>
+        <p class="pc-desc">Everything in Phase 1 — your branded site, the buyer/seller intake, the Follow Up Boss connection, and curated listings.</p>
+        <ul class="pc-list">
+          <li>Branded landing site</li>
+          <li>Buyer / seller intake → Follow Up Boss</li>
+          <li>Curated featured listings</li>
+          <li>$50/mo keeps the site &amp; lead pipeline live and monitored</li>
+        </ul>
+      </div>
+      <div class="price-card" data-reveal data-delay="1">
+        <div class="pc-kicker">Add when ready</div>
+        <div class="pc-name">MLS Search</div>
+        <div class="pc-price">$1,500</div>
+        <div class="pc-period">one-time · only if feasible</div>
+        <p class="pc-desc">Casa-branded search built over your MLS feed — the Phase 2 centerpiece.</p>
+        <ul class="pc-list">
+          <li>Branded listing search experience</li>
+          <li>Billed only if technically feasible</li>
+          <li>Any MLS data-feed fees billed separately</li>
+        </ul>
+        <div class="pc-foot">Scoped after broker/board sign-off.</div>
+      </div>
+      <div class="price-card" data-reveal data-delay="2">
+        <div class="pc-kicker">Optional growth</div>
+        <div class="pc-name">Visibility &amp; Growth</div>
+        <div class="pc-price">$450<span style="font-size:20px;">/mo</span></div>
+        <div class="pc-period">month-to-month</div>
+        <p class="pc-desc">The engine that keeps new leads finding you — and proves it every month.</p>
+        <ul class="pc-list">
+          <li>~1 published article per week</li>
+          <li>Listings, profile &amp; review management</li>
+          <li>Monthly visibility &amp; rankings report</li>
+        </ul>
+        <div class="pc-foot">Start anytime after launch.</div>
+      </div>
+    </div>
+    <p class="price-note" data-reveal>One saved Zillow referral on a single Grosse Pointe sale (~$7,200) covers more than a year of the growth engine — on leads you keep, with no recurring cut. The math works after one deal.</p>
+  </div>
+</section>
+
+<!-- 09 NEXT STEPS -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="eyebrow" data-reveal>Next steps</div>
+    <h2 class="display" data-reveal data-delay="1">Let's get <em>started</em>.</h2>
+    <ol class="steps">
+      <li data-reveal><span class="sn">1</span><span class="st"><b>Agreement &amp; project details</b> sent over to Christina &amp; Emilio.</span><span class="who">Hallpass</span></li>
+      <li data-reveal data-delay="1"><span class="sn">2</span><span class="st"><b>Brand assets</b> — logo, fonts, photo bank — shared via Drive or Dropbox.</span><span class="who">Casa Group</span></li>
+      <li data-reveal data-delay="2"><span class="sn">3</span><span class="st"><b>Follow Up Boss &amp; Wylopo access</b> for the CRM integration.</span><span class="who">Casa Group</span></li>
+      <li data-reveal data-delay="3"><span class="sn">4</span><span class="st"><b>MLS / IDX feasibility</b> — investigate API &amp; embed options for Phase 2.</span><span class="who">Hallpass</span></li>
+    </ol>
+    <p class="closeline" data-reveal>Your name, your taste, your relationships — finally with a home of their own.</p>
+    <div class="logo-bar" data-reveal>
+      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital" onerror="this.outerHTML='<span class=&quot;lf&quot;>Hallpass</span>'">
+      <span>Hallpass Digital · Prepared for The Casa Group · 2026</span>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// Reveal on scroll
+(function () {
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+  var coverEls = document.querySelectorAll('.cover [data-reveal]');
+  setTimeout(function () { coverEls.forEach(function (el) { el.classList.add('is-visible'); }); }, 120);
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (el) { if (el.closest('.cover')) return; observer.observe(el); });
+})();
+</script>
+<script>
+// Sticky lead-journey
+(function () {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  var section = document.querySelector('.journey-section');
+  var pinned = document.querySelector('.journey-pinned');
+  var fill = document.querySelector('.journey-fill');
+  var dots = document.querySelectorAll('.journey-dot');
+  var labels = document.querySelectorAll('.journey-marker-label');
+  var stages = document.querySelectorAll('.journey-stage');
+  if (!section || !pinned || !stages.length) return;
+  var n = stages.length;
+  section.style.height = (n * 100) + 'vh';
+  var thresholds = []; for (var i = 0; i < n; i++) thresholds.push(i / n);
+  var dotPos = []; for (var i = 0; i < n; i++) dotPos.push(i / (n - 1));
+  ScrollTrigger.create({
+    trigger: section, start: 'top top', end: 'bottom bottom', pin: pinned,
+    onUpdate: function (self) {
+      var p = self.progress;
+      fill.style.width = (p * 100) + '%';
+      var active = 0;
+      for (var i = n - 1; i >= 0; i--) { if (p >= thresholds[i]) { active = i; break; } }
+      for (var i = 0; i < n; i++) {
+        dots[i] && dots[i].classList.toggle('is-active', p >= dotPos[i] - 0.001);
+        labels[i] && labels[i].classList.toggle('is-active', i === active);
+        stages[i] && stages[i].classList.toggle('is-active', i === active);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
