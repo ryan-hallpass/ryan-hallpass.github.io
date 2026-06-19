@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:1200px; height:630px; overflow:hidden; }
+  body{
+    font-family:'Jost',sans-serif; color:#FBF8F2; position:relative;
+    background-color:#1a1611;
+    background-image:
+      linear-gradient(105deg, rgba(14,11,8,0.9) 0%, rgba(14,11,8,0.62) 52%, rgba(14,11,8,0.5) 100%),
+      url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover; background-position:center 58%;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 84px;
+  }
+  body::after{ content:""; position:absolute; right:-90px; top:-90px; width:420px; height:420px; border:1px solid #C8A64A; border-radius:50%; opacity:0.16; }
+  .wrap{ position:relative; z-index:2; max-width:880px; }
+  .eyebrow{ font-size:18px; font-weight:400; letter-spacing:0.34em; text-transform:uppercase; color:#D8C29A; display:flex; align-items:center; gap:16px; }
+  .eyebrow::before{ content:""; width:40px; height:1px; background:#C8A64A; display:inline-block; }
+  h1{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:92px; line-height:1.02; letter-spacing:-0.01em; margin:26px 0 0; text-shadow:0 2px 30px rgba(0,0,0,0.4); }
+  h1 em{ font-style:italic; color:#EAD9BE; }
+  .sub{ font-size:21px; font-weight:300; color:rgba(251,248,242,0.82); margin-top:28px; max-width:640px; line-height:1.5; }
+  .foot{ position:absolute; left:84px; bottom:46px; z-index:2; display:flex; align-items:center; gap:16px; }
+  .foot .h{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; line-height:1; color:#FBF8F2; }
+  .foot .div{ width:1px; height:30px; background:rgba(251,248,242,0.3); }
+  .foot .name{ font-size:15px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(251,248,242,0.7); }
+  .tag{ position:absolute; right:84px; bottom:50px; z-index:2; font-size:14px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(251,248,242,0.55); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Prepared for The Casa Group</div>
+    <h1>Own your brand.<br>Own your <em>leads</em>.</h1>
+    <div class="sub">A branded website and lead system for Emilio &amp; Christina.</div>
+  </div>
+  <div class="foot">
+    <span class="h">h</span>
+    <span class="div"></span>
+    <span class="name">Hallpass Digital</span>
+  </div>
+  <div class="tag">Proposal · 2026</div>
+</body>
+</html>
