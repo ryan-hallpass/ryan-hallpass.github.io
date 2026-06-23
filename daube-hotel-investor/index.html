@@ -574,6 +574,39 @@
     font-weight: 700;
   }
 
+  /* ============ PARKING ASSET GALLERY ============ */
+  .parking-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.5fr 1fr;
+    gap: 8px;
+    position: relative;
+    min-height: 0;
+  }
+  .parking-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--rule);
+  }
+  .parking-gallery img:first-child {
+    grid-column: 1 / -1;
+  }
+  .parking-gallery__tag {
+    position: absolute;
+    bottom: clamp(10px, 1.4cqi, 16px);
+    left: clamp(10px, 1.4cqi, 16px);
+    z-index: 2;
+    color: rgba(245, 241, 232, 0.85);
+    background: rgba(14, 12, 10, 0.55);
+    padding: 4px 8px;
+    font-family: var(--mono);
+    font-size: clamp(8px, 0.85cqi, 11px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
   /* ============ SLIDE 05: HEADLINE NUMBERS ============ */
   .numbers-grid {
     display: grid;
@@ -2537,10 +2570,58 @@
   </div>
 </section>
 
-<!-- ============ PRELIMINARY RENDERINGS ============ -->
-<section class="slide" data-slide="05" data-title="Preliminary Renderings">
+<!-- ============ PARKING ASSET ============ -->
+<section class="slide" data-slide="05" data-title="Parking Asset">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">04 — Preliminary Renderings</div>
+    <div class="frame__corner frame__corner--tl">04 — The Parking Asset</div>
+    <div class="frame__corner frame__corner--br">North parcel · included under contract</div>
+    <div class="frame__inner">
+      <div data-reveal>
+        <div class="eyebrow" style="margin-bottom: 12px;">Included in the transaction</div>
+        <h2 class="h2">The north lot — an asset hiding in the deal.</h2>
+      </div>
+      <div class="property">
+        <div class="parking-gallery" data-reveal data-delay="1">
+          <img src="img/parking-existing-1.jpg" alt="The north lot today — existing split-level parking structure beside the Daube building" />
+          <img src="img/parking-existing-2.jpg" alt="Ramp up to the existing upper parking deck on the north parcel" />
+          <img src="img/parking-existing-3.jpg" alt="Existing upper deck of the north parking structure looking toward downtown Ardmore" />
+          <div class="parking-gallery__tag">The lot today · existing split-level structure</div>
+        </div>
+        <div class="property__facts" data-reveal data-delay="2">
+          <div class="fact-row">
+            <div class="fact-row__label">In the deal</div>
+            <div class="fact-row__value">North parcel — included in the purchase, <em>under contract</em></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">The plan</div>
+            <div class="fact-row__value">Double-decker, split-level<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">half-down / one-up, sized to the parcel and kept below the roofline so it never competes with the historic facade</span></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Capacity</div>
+            <div class="fact-row__value">Roughly doubles on-site stalls<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">directional — sized to the lot</span></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">The amenity</div>
+            <div class="fact-row__value">Secure, covered, on-site guest &amp; valet parking<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">unique among downtown Ardmore lodging</span></div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-row__label">Monetization</div>
+            <div class="fact-row__value">Supports premium ADR &amp; occupancy and enables valet</div>
+          </div>
+        </div>
+      </div>
+      <div data-reveal data-delay="3" style="margin-top: clamp(10px,1.4cqi,16px); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: clamp(10px,1.1cqi,13px); color: var(--ink-soft); line-height: 1.4;">
+        <span style="font-family: var(--mono); font-size: clamp(9px,0.95cqi,12px); letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass);">Upside →</span>
+        <span><strong style="color: var(--oxblood);">In the basis. Not in the pro forma.</strong> The structured-parking value sits entirely outside the underwriting on the slides that follow.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRELIMINARY RENDERINGS ============ -->
+<section class="slide" data-slide="06" data-title="Preliminary Renderings">
+  <div class="frame">
+    <div class="frame__corner frame__corner--tl">05 — Preliminary Renderings</div>
     <div class="frame__corner frame__corner--br">Concept renderings · not final construction documents</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2582,9 +2663,9 @@
 </section>
 
 <!-- ============ 05 — HEADLINE NUMBERS ============ -->
-<section class="slide" data-slide="06" data-title="Market Numbers">
+<section class="slide" data-slide="07" data-title="Market Numbers">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">05 — Market in Four Numbers</div>
+    <div class="frame__corner frame__corner--tl">06 — Market in Four Numbers</div>
     <div class="frame__corner frame__corner--br">Combined annual demand within 25 mi: 8M+</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2614,9 +2695,9 @@
 </section>
 
 <!-- ============ 06 — TRIPLE ACCESS ============ -->
-<section class="slide" data-slide="07" data-title="Triple Access">
+<section class="slide" data-slide="08" data-title="Triple Access">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">06 — Location</div>
+    <div class="frame__corner frame__corner--tl">07 — Location</div>
     <div class="frame__corner frame__corner--br">Three transport corridors converge</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2656,9 +2737,9 @@
 </section>
 
 <!-- ============ 07 — DEMAND DRIVERS ============ -->
-<section class="slide" data-slide="08" data-title="Demand Drivers">
+<section class="slide" data-slide="09" data-title="Demand Drivers">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">07 — Demand Drivers</div>
+    <div class="frame__corner frame__corner--tl">08 — Demand Drivers</div>
     <div class="frame__corner frame__corner--br">Year-round, multi-segment, multi-distance</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2720,9 +2801,9 @@
 </section>
 
 <!-- ============ 08 — WHY ARDMORE NOW ============ -->
-<section class="slide" data-slide="09" data-title="Why Ardmore Now">
+<section class="slide" data-slide="10" data-title="Why Ardmore Now">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">08 — Why Now</div>
+    <div class="frame__corner frame__corner--tl">09 — Why Now</div>
     <div class="frame__corner frame__corner--br">The honest economic picture</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2768,9 +2849,9 @@
 </section>
 
 <!-- ============ 09 — COMPETITIVE LANDSCAPE ============ -->
-<section class="slide" data-slide="10" data-title="Competitive Landscape">
+<section class="slide" data-slide="11" data-title="Competitive Landscape">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">09 — Competitive Landscape</div>
+    <div class="frame__corner frame__corner--tl">10 — Competitive Landscape</div>
     <div class="frame__corner frame__corner--br">The gap that has existed for decades</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2822,9 +2903,9 @@
 </section>
 
 <!-- ============ 10 — BOUTIQUE PREMIUM ============ -->
-<section class="slide" data-slide="11" data-title="Boutique Premium">
+<section class="slide" data-slide="12" data-title="Boutique Premium">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">10 — The Boutique Premium</div>
+    <div class="frame__corner frame__corner--tl">11 — The Boutique Premium</div>
     <div class="frame__corner frame__corner--br">National + market data</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2865,13 +2946,13 @@
 </section>
 
 <!-- ============ EXPERIENCE — RESTAURANT (feature) ============ -->
-<section class="slide" data-slide="12" data-title="The Restaurant &amp; Speakeasy">
+<section class="slide" data-slide="13" data-title="The Restaurant &amp; Speakeasy">
   <div class="frame frame--dark">
     <div class="feature">
       <div class="feature__img" style="background-image: url('img/render-restaurant.jpg'); background-position: center 55%;"></div>
       <div class="feature__overlay"></div>
     </div>
-    <div class="frame__corner frame__corner--tl">11 — The Experience</div>
+    <div class="frame__corner frame__corner--tl">12 — The Experience</div>
     <div class="frame__corner frame__corner--br">Concept rendering · restaurant &amp; speakeasy</div>
     <div class="feature__content">
       <div class="eyebrow eyebrow--brass" data-reveal>The experience</div>
@@ -2882,13 +2963,13 @@
 </section>
 
 <!-- ============ EXPERIENCE — ROOFTOP (feature) ============ -->
-<section class="slide" data-slide="13" data-title="Rooftop Terrace &amp; Bar">
+<section class="slide" data-slide="14" data-title="Rooftop Terrace &amp; Bar">
   <div class="frame frame--dark">
     <div class="feature">
       <div class="feature__img" style="background-image: url('img/render-rooftop.jpg'); background-position: center 45%;"></div>
       <div class="feature__overlay"></div>
     </div>
-    <div class="frame__corner frame__corner--tl">12 — The Experience</div>
+    <div class="frame__corner frame__corner--tl">13 — The Experience</div>
     <div class="frame__corner frame__corner--br">Concept rendering · rooftop terrace &amp; bar</div>
     <div class="feature__content">
       <div class="eyebrow eyebrow--brass" data-reveal>The experience</div>
@@ -2899,9 +2980,9 @@
 </section>
 
 <!-- ============ 11 — ARV THREE METHODS ============ -->
-<section class="slide" data-slide="14" data-title="ARV — Three Methods">
+<section class="slide" data-slide="15" data-title="ARV — Three Methods">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">13 — After-Repair Value</div>
+    <div class="frame__corner frame__corner--tl">14 — After-Repair Value</div>
     <div class="frame__corner frame__corner--br">Source: JLL boutique benchmarks</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -2964,9 +3045,9 @@
 </section>
 
 <!-- ============ 12 — CAPITAL STACK ============ -->
-<section class="slide" data-slide="15" data-title="Capital Stack">
+<section class="slide" data-slide="16" data-title="Capital Stack">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">14 — Capital Stack</div>
+    <div class="frame__corner frame__corner--tl">15 — Capital Stack</div>
     <div class="frame__corner frame__corner--br">Use of funds — $5.46M total</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3016,9 +3097,9 @@
 </section>
 
 <!-- ============ 13 — HISTORIC TAX CREDITS ============ -->
-<section class="slide" data-slide="16" data-title="Historic Tax Credits">
+<section class="slide" data-slide="17" data-title="Historic Tax Credits">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">15 — Historic Tax Credits</div>
+    <div class="frame__corner frame__corner--tl">16 — Historic Tax Credits</div>
     <div class="frame__corner frame__corner--br">20% federal + 20% Oklahoma state</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3070,9 +3151,9 @@
 </section>
 
 <!-- ============ 14 — THREE OPTIONS COMPARE ============ -->
-<section class="slide" data-slide="17" data-title="Three Options">
+<section class="slide" data-slide="18" data-title="Three Options">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">16 — Four Capital Structures</div>
+    <div class="frame__corner frame__corner--tl">17 — Four Capital Structures</div>
     <div class="frame__corner frame__corner--br">All solve the $5,464,200 — differently</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3151,9 +3232,9 @@
 </section>
 
 <!-- ============ 15 — OPTION 1 DETAIL ============ -->
-<section class="slide" data-slide="18" data-title="Option 1">
+<section class="slide" data-slide="19" data-title="Option 1">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">17 — Option 1</div>
+    <div class="frame__corner frame__corner--tl">18 — Option 1</div>
     <div class="frame__corner frame__corner--br">Equity + construction loan</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3205,9 +3286,9 @@
 </section>
 
 <!-- ============ 16 — OPTION 2 DETAIL (RECOMMENDED) ============ -->
-<section class="slide" data-slide="19" data-title="Option 2 — Recommended">
+<section class="slide" data-slide="20" data-title="Option 2 — Recommended">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">18 — Option 2 · ★ Recommended</div>
+    <div class="frame__corner frame__corner--tl">19 — Option 2 · ★ Recommended</div>
     <div class="frame__corner frame__corner--br">Balanced equity + smaller loan</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3261,9 +3342,9 @@
 </section>
 
 <!-- ============ 17 — OPTION 3 DETAIL ============ -->
-<section class="slide" data-slide="20" data-title="Option 3">
+<section class="slide" data-slide="21" data-title="Option 3">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">19 — Option 3</div>
+    <div class="frame__corner frame__corner--tl">20 — Option 3</div>
     <div class="frame__corner frame__corner--br">Full equity · no bank loan</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3315,9 +3396,9 @@
 </section>
 
 <!-- ============ 18 — OPTION 4 DETAIL ============ -->
-<section class="slide" data-slide="21" data-title="Option 4">
+<section class="slide" data-slide="22" data-title="Option 4">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">20 — Option 4</div>
+    <div class="frame__corner frame__corner--tl">21 — Option 4</div>
     <div class="frame__corner frame__corner--br">Two principals · own it outright</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3369,9 +3450,9 @@
 </section>
 
 <!-- ============ 19 — INVESTOR WATERFALL (OPTION 2) ============ -->
-<section class="slide" data-slide="22" data-title="Investor Waterfall">
+<section class="slide" data-slide="23" data-title="Investor Waterfall">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">21 — Investor Waterfall · Option 2</div>
+    <div class="frame__corner frame__corner--tl">22 — Investor Waterfall · Option 2</div>
     <div class="frame__corner frame__corner--br">5-year base case · per investor</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3441,9 +3522,9 @@
 </section>
 
 <!-- ============ 20 — WHY OPTION 2 ============ -->
-<section class="slide" data-slide="23" data-title="Why Option 2">
+<section class="slide" data-slide="24" data-title="Why Option 2">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">22 — Why Option 2</div>
+    <div class="frame__corner frame__corner--tl">23 — Why Option 2</div>
     <div class="frame__corner frame__corner--br">Sponsor's reasoning</div>
     <div class="frame__inner">
       <div data-reveal>
@@ -3480,9 +3561,9 @@
 </section>
 
 <!-- ============ 21 — DISCLAIMER & CONTACT ============ -->
-<section class="slide" data-slide="24" data-title="Disclaimer">
+<section class="slide" data-slide="25" data-title="Disclaimer">
   <div class="frame">
-    <div class="frame__corner frame__corner--tl">23 — Disclosures &amp; Contact</div>
+    <div class="frame__corner frame__corner--tl">24 — Disclosures &amp; Contact</div>
     <div class="frame__corner frame__corner--br">Confidential · Accredited Investors Only</div>
     <div class="frame__inner">
       <div data-reveal>
