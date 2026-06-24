@@ -138,3 +138,11 @@ Also switched `.parking-gallery img` from `object-fit: cover` to `contain` (on a
 Note: the overflow/overlap a viewer may still see is a **stale browser cache** of the
 pre-`min-height:0` build — the current build fits the frame across desktop widths
 (verified 1280–2560px, screen mode, not just print).
+
+**Overflow robustness (2026-06-23, follow-up):** the Parking Asset slide was over-stuffed —
+the 5 multi-line fact values left ~0px headroom, so the real (larger-metric) web fonts
+tipped it into overflow and clipped the photos in some browsers, even though headless
+(fallback fonts) fit. Hardened by (a) reducing the gallery to a **single** reference
+image and (b) making the **fact values concise/single-line**. Facts natural height now
+sits 90–135px under the available space at short-to-normal desktop heights — comfortable
+headroom for real fonts. The verbose plan/capacity/amenity sub-lines were dropped.

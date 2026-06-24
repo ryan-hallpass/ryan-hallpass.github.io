@@ -577,10 +577,6 @@
 
   /* ============ PARKING ASSET GALLERY ============ */
   .parking-gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1.5fr 1fr;
-    gap: 8px;
     position: relative;
     min-height: 0;
   }
@@ -591,9 +587,6 @@
     background: var(--ink);
     display: block;
     border: 1px solid var(--rule);
-  }
-  .parking-gallery img:first-child {
-    grid-column: 1 / -1;
   }
   .parking-gallery__tag {
     position: absolute;
@@ -2634,36 +2627,34 @@
       <div class="property">
         <div class="parking-gallery" data-reveal data-delay="1">
           <img src="img/parking-existing-1.jpg" alt="Reference photo — a low-profile split-level parking structure, comparable to the proposed north-lot build" />
-          <img src="img/parking-existing-2.jpg" alt="Reference photo — split-level parking ramp, comparable to the proposed structure" />
-          <img src="img/parking-existing-3.jpg" alt="Reference photo — upper deck of a comparable split-level parking structure" />
           <div class="parking-gallery__tag">Reference — example of the proposed split-level build, not the Daube lot</div>
         </div>
         <div class="property__facts" data-reveal data-delay="2">
           <div class="fact-row">
             <div class="fact-row__label">In the deal</div>
-            <div class="fact-row__value">North parcel — included in the purchase, <em>under contract</em></div>
+            <div class="fact-row__value">North parcel — included, <em>under contract</em></div>
           </div>
           <div class="fact-row">
             <div class="fact-row__label">The plan</div>
-            <div class="fact-row__value">Double-decker, split-level<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">half-down / one-up, sized to the parcel and kept below the roofline so it never competes with the historic facade</span></div>
+            <div class="fact-row__value">Double-decker, split-level — stays below the roofline</div>
           </div>
           <div class="fact-row">
             <div class="fact-row__label">Capacity</div>
-            <div class="fact-row__value">Roughly doubles on-site stalls<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">directional — sized to the lot</span></div>
+            <div class="fact-row__value">Roughly doubles on-site stalls</div>
           </div>
           <div class="fact-row">
             <div class="fact-row__label">The amenity</div>
-            <div class="fact-row__value">Secure, covered, on-site guest &amp; valet parking<br/><span style="font-weight: 400; color: var(--ink-soft); font-size: 0.85em;">unique among downtown Ardmore lodging</span></div>
+            <div class="fact-row__value">Secure, covered guest &amp; valet parking</div>
           </div>
           <div class="fact-row">
             <div class="fact-row__label">Monetization</div>
-            <div class="fact-row__value">Supports premium ADR &amp; occupancy and enables valet</div>
+            <div class="fact-row__value">Supports premium ADR; enables valet</div>
           </div>
         </div>
       </div>
       <div data-reveal data-delay="3" style="margin-top: clamp(10px,1.4cqi,16px); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: clamp(10px,1.1cqi,13px); color: var(--ink-soft); line-height: 1.4;">
         <span style="font-family: var(--mono); font-size: clamp(9px,0.95cqi,12px); letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass);">Upside →</span>
-        <span><strong style="color: var(--oxblood);">In the basis. Not in the pro forma.</strong> The structured-parking value sits entirely outside the underwriting on the slides that follow.</span>
+        <span><strong style="color: var(--oxblood);">In the basis, not in the pro forma</strong> — pure upside.</span>
       </div>
     </div>
   </div>
