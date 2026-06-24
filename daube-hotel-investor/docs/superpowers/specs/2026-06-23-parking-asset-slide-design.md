@@ -123,3 +123,18 @@ for a new, second slide (the original Parking Asset slide stays qualitative).
   model), broader than the prior guest/valet-only framing — noted on the slide.
 - Layout reuses the deck's `.arv-footer` dark result band + a new `.parking-calc`
   formula row (150 × 80% × $5 × 365). PDF target becomes 26 pages.
+
+## Correction — 2026-06-23 (photo provenance + display)
+
+Lance clarified the three `parking-existing-*.jpg` photos are **NOT the Daube north
+lot as it exists today** — they are an **example/reference** of the *type* of
+split-level build he's proposing. Captions/alt corrected accordingly (gallery tag now
+"Reference — example of the proposed split-level build, not the Daube lot"). The
+earlier spec/addendum language calling them "the existing structure on the north
+parcel" is superseded.
+
+Also switched `.parking-gallery img` from `object-fit: cover` to `contain` (on a dark
+`--ink` panel) so the reference photos display in full rather than cropped ("cut off").
+Note: the overflow/overlap a viewer may still see is a **stale browser cache** of the
+pre-`min-height:0` build — the current build fits the frame across desktop widths
+(verified 1280–2560px, screen mode, not just print).
