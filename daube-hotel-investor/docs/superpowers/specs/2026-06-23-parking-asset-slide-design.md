@@ -96,3 +96,30 @@ is explicitly directional.
   `~/daube-hotel-investor` standalone is a stray copy — leave it untouched (or
   re-sync on request).
 - Push only when the user asks (switch gh auth to `ryan-hallpass` first).
+
+---
+
+## Addendum — 2026-06-23 (quantitative economics)
+
+Lance subsequently provided quantitative estimates and asked for parking revenue to
+be shown in the deck. This **reverses the "no dollar figures / qualitative" decision**
+for a new, second slide (the original Parking Asset slide stays qualitative).
+
+**Inputs (ownership estimates, Lance):** ~150 spaces · 80% utilization · $5 / car / day
+· ~$2.5M construction cost.
+
+**Derived revenue:**
+- 150 × 80% = **120 cars/day**; 120 × $5 = **$600/day**; × 365 = **$219,000/yr gross**.
+- Less ~30% operating expenses → **est. NOI ~$153,000/yr**.
+- Yield on $2.5M cost: **~6.1% NOI / ~8.8% gross**.
+
+**Decisions:**
+- Placement: a **new "Parking Economics" slide** inserted immediately after the
+  Parking Asset slide (becomes `data-slide="06"`, tl label `05 — Parking Economics`);
+  downstream slides renumber +1 again (now 26 slides total).
+- Framing: **gross + NOI + yield**, all clearly labeled **illustrative / ownership
+  estimates** and explicitly **outside the hotel pro forma**.
+- Monetization shifts to **paid public & event parking** (the $5/car/day, 80%-daily
+  model), broader than the prior guest/valet-only framing — noted on the slide.
+- Layout reuses the deck's `.arv-footer` dark result band + a new `.parking-calc`
+  formula row (150 × 80% × $5 × 365). PDF target becomes 26 pages.
