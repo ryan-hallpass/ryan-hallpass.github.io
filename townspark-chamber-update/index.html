@@ -147,6 +147,7 @@
   .corner--tl { top: clamp(20px, 2.6cqi, 36px); left: clamp(30px, 4.4cqi, 70px); }
   .corner--tr { top: clamp(20px, 2.6cqi, 36px); right: clamp(30px, 4.4cqi, 70px); text-align: right; }
   .corner--br { bottom: clamp(20px, 2.6cqi, 36px); right: clamp(30px, 4.4cqi, 70px); text-align: right; }
+  .fnote { position: absolute; left: clamp(30px,4.4cqi,70px); right: clamp(30px,4.4cqi,70px); bottom: clamp(18px,2.4cqi,32px); margin:0; font-family: var(--mono); font-size: clamp(8px,0.82cqi,11px); letter-spacing: 0.03em; color: var(--ink-soft); line-height: 1.45; }
 
   /* ===== REVEAL ===== */
   [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
@@ -279,24 +280,24 @@
   </div>
 </section>
 
-<!-- 02 WHERE THINGS STAND -->
-<section class="slide" data-title="Status">
+<!-- 02 THE MEMBER DIRECTORY -->
+<section class="slide" data-title="Directory">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">01 — Status</span>
+      <span class="corner corner--tr">01 — Live in production</span>
       <div class="center">
         <div class="stack-sm" data-reveal>
-          <p class="eyebrow">Where things stand</p>
-          <h1 class="h1" style="max-width:20ch;">It's live, and it's <em class="it">working</em>.</h1>
-          <p class="lead" data-reveal data-delay="1">The member-deck system is in production today. Every Ardmore Chamber member now has a place in a public directory — and twenty businesses have full, mobile-first pages they control themselves.</p>
+          <p class="eyebrow">Live now</p>
+          <h1 class="h1" style="max-width:18ch;">The member directory.</h1>
+          <p class="lead" data-reveal data-delay="1">Built from your full member list — and already live with full, mobile-first pages for the <em class="it">14 businesses</em> in our beta cohort, each editable by the owner.</p>
+          <p class="lnk" data-reveal data-delay="2">townspark.app/d/ardmore</p>
         </div>
-        <div class="stats" data-reveal data-delay="2">
-          <div class="stat"><div class="stat__n figure">497</div><div class="stat__l">Chamber members<br>in the directory</div></div>
-          <div class="stat"><div class="stat__n figure figure--sage">20</div><div class="stat__l">Full member decks<br>built &amp; live</div></div>
-          <div class="stat"><div class="stat__n figure">100%</div><div class="stat__l">Owner-editable<br>no login required</div></div>
-          <div class="stat"><div class="stat__n figure figure--terra">$0</div><div class="stat__l">Cost to members<br>during the pilot</div></div>
+        <div class="stats" style="grid-template-columns:repeat(2,1fr);max-width:560px;" data-reveal data-delay="3">
+          <div class="stat"><div class="stat__n figure">497</div><div class="stat__l">Members in<br>the directory</div></div>
+          <div class="stat"><div class="stat__n figure figure--sage">14</div><div class="stat__l">Beta decks<br>built &amp; live</div></div>
         </div>
       </div>
+      <p class="fnote">Member count to reconcile: directory built from a 497-row export · ChamberMaster currently reports 491 · Kelly estimates closer to 600. Worth aligning on the true figure.</p>
     </div>
   </div>
 </section>
@@ -316,7 +317,7 @@
       <div class="phones" data-reveal data-delay="1">
         <div class="phone"><img src="img/deck-chickasaw-nation.png" alt="The Chickasaw Nation deck"><span class="phone__cap">The Chickasaw Nation</span></div>
         <div class="phone"><img src="img/deck-two-frogs-grill.png" alt="Two Frogs Grill deck"><span class="phone__cap">Two Frogs Grill</span></div>
-        <div class="phone"><img src="img/deck-first-national-bank.png" alt="First National Bank deck"><span class="phone__cap">First National Bank &amp; Trust</span></div>
+        <div class="phone"><img src="img/deck-atlas-roofing.png" alt="Atlas Roofing deck"><span class="phone__cap">Atlas Roofing</span></div>
       </div>
       <p class="body soft" style="margin-top:clamp(12px,1.6cqi,22px);" data-reveal data-delay="2">Each deck pulls the business's real photos, reviews, hours, and brand — then the owner refines it. Live at <span class="lnk">townspark.app/s/&lt;business&gt;</span>. Full link list shared separately.</p>
     </div>
@@ -356,7 +357,7 @@
         <div class="stack-sm" data-reveal>
           <p class="eyebrow">The whole chamber, in one place</p>
           <h2 class="h2" style="max-width:16ch;">Every member is already represented.</h2>
-          <p class="body" style="margin-top:clamp(8px,1.2cqi,16px);">All 497 members appear in the public directory, searchable and grouped by category. The 20 built businesses are full live pages; the rest show as <em class="it">“Profile coming soon”</em> — ready to switch on as members opt in.</p>
+          <p class="body" style="margin-top:clamp(8px,1.2cqi,16px);">All 497 members appear in the public directory, searchable and grouped by category. The 14 beta businesses are full live pages; the rest show as <em class="it">“Profile coming soon”</em> — ready to switch on as members opt in.</p>
           <p class="lnk" style="margin-top:clamp(8px,1.2cqi,16px);">townspark.app/d/ardmore</p>
         </div>
         <div class="shot-wrap" style="height:100%;" data-reveal data-delay="1">
@@ -470,6 +471,7 @@
         <div class="card"><span class="card__tag">Decision · easy win</span><span class="card__name">Chamber-branded subdomain</span><span class="card__note">Run the directory + decks at members.ardmorechamber.org — one DNS record, your brand on the URL.</span></div>
         <div class="card"><span class="card__tag">Input · ongoing</span><span class="card__name">Member content &amp; photos</span><span class="card__note">What we need to activate the next batch of member decks.</span></div>
         <div class="card"><span class="card__tag">Decision · revenue</span><span class="card__name">The rev-share model</span><span class="card__note">Your reaction to the premium add-on + 50/50 split.</span></div>
+        <div class="card" style="grid-column:1 / -1;"><span class="card__tag">Question · for the decks</span><span class="card__name">Individual vs. business members</span><span class="card__note">Some members are listed as individuals, not businesses. Do those get a deck — and what's the nature of those memberships? We'd want to understand before building.</span></div>
       </div>
     </div>
   </div>
