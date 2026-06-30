@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TownSpark × Ardmore Chamber — Progress Check-In</title>
-<meta name="description" content="TownSpark member-deck system progress check-in for the Ardmore Chamber of Commerce: live decks, the full member directory, monetization possibilities, and next steps." />
+<title>Hallpass × Ardmore Chamber — Progress Check-In</title>
+<meta name="description" content="Hallpass Digital progress check-in for the Ardmore Chamber of Commerce: the member deck system, the full member directory, monetization possibilities, and next steps." />
 
-<meta property="og:title" content="TownSpark × Ardmore Chamber — Progress Check-In" />
-<meta property="og:description" content="Member deck system: live decks, the full member directory, and where we go next." />
+<meta property="og:title" content="Hallpass × Ardmore Chamber — Progress Check-In" />
+<meta property="og:description" content="The member deck system: live decks, the full member directory, and where we go next. By Hallpass Digital." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ryan-hallpass.github.io/townspark-chamber-update/" />
 <meta property="og:image" content="https://ryan-hallpass.github.io/townspark-chamber-update/img/directory.png" />
@@ -227,6 +227,8 @@
   .cover-top { display: flex; justify-content: space-between; align-items: flex-start; font-family: var(--mono); font-size: clamp(9px,0.92cqi,12px); letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,239,232,0.7); }
   .cover-mark { display:flex; align-items:center; gap:10px; }
   .cover-mark::before { content:''; width:9px; height:9px; border:1px solid var(--terra); transform: rotate(45deg); display:inline-block; }
+  .hp-logo { height: clamp(18px,2cqi,28px); width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.95; }
+  .hp-logo--ink { filter: none; opacity: 1; }
   .cover-word { font-family: var(--serif); font-weight: 600; font-size: clamp(40px,8.4cqi,128px); line-height: 0.92; letter-spacing: -0.02em; color: var(--cream); margin: 0; }
   .cover-rule { width: 60px; height: 1px; background: var(--terra); margin: clamp(14px,1.8cqi,26px) 0; }
   .cover-sub { font-size: clamp(12px,1.35cqi,19px); color: rgba(242,239,232,0.86); letter-spacing: 0.02em; max-width: 48ch; }
@@ -259,7 +261,7 @@
     <div class="frame__inner">
       <div class="cover-inner">
         <div class="cover-top">
-          <span class="cover-mark">TownSpark</span>
+          <img class="hp-logo" src="img/hallpass-logo.png" alt="Hallpass Digital" />
           <span>Ardmore, Oklahoma</span>
         </div>
         <div data-reveal>
@@ -269,7 +271,7 @@
           <p class="cover-sub">Where things stand — and where we can take it together. Prepared for the Ardmore Chamber of Commerce by Hallpass Digital.</p>
         </div>
         <div class="cover-top">
-          <span>townspark.app</span>
+          <span>Hallpass Digital · 2026</span>
           <span>Confidential — Chamber Leadership</span>
         </div>
       </div>
@@ -403,7 +405,7 @@
         <div class="menu-item"><span class="menu-item__mk">01</span><span class="menu-item__t">Video upload &amp; embed<span>A welcome / tour video on the deck</span></span></div>
         <div class="menu-item"><span class="menu-item__mk">02</span><span class="menu-item__t">Fonts &amp; color customization <b class="badge-built">already built</b><span>Theme + heading-font controls, ready to switch on</span></span></div>
         <div class="menu-item"><span class="menu-item__mk">03</span><span class="menu-item__t">Lead-capture form<span>Inquiries sent straight to the member</span></span></div>
-        <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">Remove “Powered by TownSpark”<span>Full white-label for the business</span></span></div>
+        <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">Remove the platform footer<span>Full white-label for the business</span></span></div>
         <div class="menu-item"><span class="menu-item__mk">05</span><span class="menu-item__t">Per-member analytics<span>Views &amp; clicks on their page</span></span></div>
         <div class="menu-item"><span class="menu-item__mk">06</span><span class="menu-item__t">Expanded photo gallery<span>Beyond the first three images</span></span></div>
         <div class="menu-item"><span class="menu-item__mk">07</span><span class="menu-item__t">Booking / reservation CTA<span>Direct “book now” action</span></span></div>
@@ -477,10 +479,11 @@
 <section class="slide" data-title="What's next">
   <div class="frame frame--ink">
     <div class="frame__inner">
-      <span class="corner corner--tl">TownSpark × Ardmore Chamber</span>
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
       <span class="corner corner--br">Hallpass Digital · 2026</span>
       <div class="center">
-        <p class="eyebrow" data-reveal>What's next</p>
+        <img class="hp-logo" src="img/hallpass-logo.png" alt="Hallpass Digital" style="height:clamp(24px,3cqi,42px);width:auto;align-self:flex-start;margin-bottom:clamp(10px,1.6cqi,22px);" data-reveal />
+        <p class="eyebrow" data-reveal data-delay="1">What's next</p>
         <h1 class="h1" style="max-width:18ch;" data-reveal data-delay="1">Activate the roster. Brand it as yours.</h1>
         <ul class="blist" style="max-width:60ch;" data-reveal data-delay="2">
           <li>Build out member decks as businesses opt in — the directory fills itself.</li>
