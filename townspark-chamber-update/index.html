@@ -136,6 +136,12 @@
     text-underline-offset: 2px; word-break: break-all;
   }
   .frame--sage .lnk, .frame--ink .lnk { color: var(--cream); text-decoration-color: var(--terra); }
+  .decgrid { display:grid; grid-template-columns:1fr 1fr; column-gap: clamp(24px,4cqi,64px); row-gap: 0; margin-top: clamp(16px,2.2cqi,30px); }
+  .declink { display:flex; flex-direction:column; gap:1px; padding: clamp(6px,0.85cqi,11px) 0; border-bottom:1px solid var(--rule-soft); text-decoration:none; transition: border-color 0.2s var(--ease); }
+  .declink:hover { border-bottom-color: var(--sage); }
+  .declink__n { font-family: var(--sans); font-weight:600; font-size: clamp(12px,1.3cqi,16px); color: var(--ink); line-height:1.25; }
+  .declink:hover .declink__n { color: var(--sage-deep); }
+  .declink__u { font-family: var(--mono); font-size: clamp(8.5px,0.82cqi,11px); color: var(--sage-deep); text-underline-offset:2px; word-break:break-all; }
 
   /* ===== CORNER CHROME ===== */
   .corner {
@@ -269,7 +275,7 @@
           <p class="eyebrow" style="margin-bottom:18px;">Progress Check-In · July 1, 2026</p>
           <h1 class="cover-word">The member<br>deck system.</h1>
           <div class="cover-rule"></div>
-          <p class="cover-sub">Where things stand — and where we can take it together. Prepared for the Ardmore Chamber of Commerce by Hallpass Digital.</p>
+          <p class="cover-sub">Where things stand — And what comes next. Prepared for the Ardmore Chamber of Commerce by Hallpass Digital.</p>
         </div>
         <div class="cover-top">
           <span>Hallpass Digital · 2026</span>
@@ -290,7 +296,7 @@
           <p class="eyebrow">Live now</p>
           <h1 class="h1" style="max-width:18ch;">The member directory.</h1>
           <p class="lead" data-reveal data-delay="1">Built from your full member list — and already live with full, mobile-first pages for the <em class="it">14 businesses</em> in our beta cohort, each editable by the owner.</p>
-          <p class="lnk" data-reveal data-delay="2">townspark.app/d/ardmore</p>
+          <p class="lnk" data-reveal data-delay="2"><a href="https://townspark.app/d/ardmore" target="_blank" rel="noopener">townspark.app/d/ardmore</a></p>
         </div>
         <div class="stats" style="grid-template-columns:repeat(2,1fr);max-width:560px;" data-reveal data-delay="3">
           <div class="stat"><div class="stat__n figure">497</div><div class="stat__l">Members in<br>the directory</div></div>
@@ -319,16 +325,49 @@
         <div class="phone"><img src="img/deck-two-frogs-grill.png" alt="Two Frogs Grill deck"><span class="phone__cap">Two Frogs Grill</span></div>
         <div class="phone"><img src="img/deck-atlas-roofing.png" alt="Atlas Roofing deck"><span class="phone__cap">Atlas Roofing</span></div>
       </div>
-      <p class="body soft" style="margin-top:clamp(12px,1.6cqi,22px);" data-reveal data-delay="2">Each deck pulls the business's real photos, reviews, hours, and brand — then the owner refines it. Live at <span class="lnk">townspark.app/s/&lt;business&gt;</span>. Full link list shared separately.</p>
+      <p class="body soft" style="margin-top:clamp(12px,1.6cqi,22px);" data-reveal data-delay="2">Each deck pulls the business's real photos, reviews, hours, and brand — then the owner refines it. Live at <span class="lnk">townspark.app/s/&lt;business&gt;</span> — the full list is on the next page.</p>
     </div>
   </div>
 </section>
 
-<!-- 04 OWNERS EDIT -->
+<!-- 04 THE LIVE DECKS -->
+<section class="slide" data-title="Live decks">
+  <div class="frame">
+    <div class="frame__inner">
+      <span class="corner corner--tr">03 — The live decks</span>
+      <div class="head-row" data-reveal>
+        <div class="stack-sm">
+          <p class="eyebrow">Live now · tap any name to open</p>
+          <h2 class="h2" style="max-width:24ch;">The 14 beta decks — every one live today.</h2>
+        </div>
+        <span class="pill pill--sage">14 live</span>
+      </div>
+      <div class="decgrid" data-reveal data-delay="1">
+        <a class="declink" href="https://townspark.app/s/ardmore-atlas-roofing" target="_blank" rel="noopener"><span class="declink__n">Atlas Roofing</span><span class="declink__u">townspark.app/s/ardmore-atlas-roofing</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-carter-county-dodge" target="_blank" rel="noopener"><span class="declink__n">Carter County Dodge</span><span class="declink__u">townspark.app/s/ardmore-carter-county-dodge</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-chickasaw-nation" target="_blank" rel="noopener"><span class="declink__n">The Chickasaw Nation</span><span class="declink__u">townspark.app/s/ardmore-chickasaw-nation</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-family-health-center" target="_blank" rel="noopener"><span class="declink__n">Family Health Center</span><span class="declink__u">townspark.app/s/ardmore-family-health-center</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-fenix-constructors" target="_blank" rel="noopener"><span class="declink__n">Fenix Constructors</span><span class="declink__u">townspark.app/s/ardmore-fenix-constructors</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-first-methodist-church" target="_blank" rel="noopener"><span class="declink__n">First Methodist Church</span><span class="declink__u">townspark.app/s/ardmore-first-methodist-church</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-first-national-bank" target="_blank" rel="noopener"><span class="declink__n">First National Bank</span><span class="declink__u">townspark.app/s/ardmore-first-national-bank</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-grace-center" target="_blank" rel="noopener"><span class="declink__n">Grace Center of S. Oklahoma</span><span class="declink__u">townspark.app/s/ardmore-grace-center</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-jordan-insurance" target="_blank" rel="noopener"><span class="declink__n">Jordan Insurance Group</span><span class="declink__u">townspark.app/s/ardmore-jordan-insurance</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-kxii" target="_blank" rel="noopener"><span class="declink__n">KXII / Gray Television</span><span class="declink__u">townspark.app/s/ardmore-kxii</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-michelin" target="_blank" rel="noopener"><span class="declink__n">Michelin</span><span class="declink__u">townspark.app/s/ardmore-michelin</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-oge" target="_blank" rel="noopener"><span class="declink__n">OG&amp;E</span><span class="declink__u">townspark.app/s/ardmore-oge</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-property-twins" target="_blank" rel="noopener"><span class="declink__n">Property Twins</span><span class="declink__u">townspark.app/s/ardmore-property-twins</span></a>
+        <a class="declink" href="https://townspark.app/s/ardmore-valero" target="_blank" rel="noopener"><span class="declink__n">Valero</span><span class="declink__u">townspark.app/s/ardmore-valero</span></a>
+      </div>
+      <p class="body soft" style="margin-top:clamp(12px,1.6cqi,22px);" data-reveal data-delay="2">Owners refine their own page through a private edit link — the Chamber decides who gets theirs, and when.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 OWNERS EDIT -->
 <section class="slide" data-title="Self-service editing">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">03 — Self-service</span>
+      <span class="corner corner--tr">04 — Self-service</span>
       <div class="grid2 flex1" style="align-items:center;margin-top:clamp(30px,4cqi,52px);">
         <div class="stack-sm" data-reveal>
           <p class="eyebrow">Members edit it themselves</p>
@@ -348,17 +387,17 @@
   </div>
 </section>
 
-<!-- 05 DIRECTORY -->
+<!-- 06 DIRECTORY -->
 <section class="slide" data-title="Directory">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">04 — Directory</span>
+      <span class="corner corner--tr">05 — Directory</span>
       <div class="grid2 flex1" style="grid-template-columns:1fr 1.25fr;align-items:center;margin-top:clamp(28px,3.6cqi,48px);">
         <div class="stack-sm" data-reveal>
           <p class="eyebrow">The whole chamber, in one place</p>
           <h2 class="h2" style="max-width:16ch;">Every member is already represented.</h2>
           <p class="body" style="margin-top:clamp(8px,1.2cqi,16px);">All 497 members appear in the public directory, searchable and grouped by category. The 14 beta businesses are full live pages; the rest show as <em class="it">“Profile coming soon”</em> — ready to switch on as members opt in.</p>
-          <p class="lnk" style="margin-top:clamp(8px,1.2cqi,16px);">townspark.app/d/ardmore</p>
+          <p class="lnk" style="margin-top:clamp(8px,1.2cqi,16px);"><a href="https://townspark.app/d/ardmore" target="_blank" rel="noopener">townspark.app/d/ardmore</a></p>
         </div>
         <div class="shot-wrap" style="height:100%;" data-reveal data-delay="1">
           <img class="shot" src="img/directory.png" alt="The Ardmore Chamber member directory">
@@ -368,11 +407,11 @@
   </div>
 </section>
 
-<!-- 06 TESTIMONIALS -->
+<!-- 07 TESTIMONIALS -->
 <section class="slide" data-title="Testimonials">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">05 — Testimonials</span>
+      <span class="corner corner--tr">06 — Testimonials</span>
       <div class="head-row" data-reveal>
         <div class="stack-sm">
           <p class="eyebrow">Member testimonial program</p>
@@ -393,11 +432,11 @@
   </div>
 </section>
 
-<!-- 07 MONETIZATION -->
+<!-- 08 MONETIZATION -->
 <section class="slide" data-title="Monetization">
   <div class="frame frame--ink">
     <div class="frame__inner">
-      <span class="corner corner--tr">06 — Possibilities</span>
+      <span class="corner corner--tr">07 — Possibilities</span>
       <div class="stack-sm" data-reveal>
         <p class="eyebrow">Floating an idea — premium add-ons</p>
         <h2 class="h2" style="max-width:28ch;">Ways this could generate revenue for the Chamber.</h2>
@@ -416,11 +455,11 @@
   </div>
 </section>
 
-<!-- 08 REVENUE SHARE -->
+<!-- 09 REVENUE SHARE -->
 <section class="slide" data-title="Revenue share">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">07 — The model</span>
+      <span class="corner corner--tr">08 — The model</span>
       <div class="stack-sm" data-reveal>
         <p class="eyebrow">A number to react to</p>
         <h2 class="h2" style="max-width:24ch;">Premium add-on, shared 50/50 with the Chamber.</h2>
@@ -442,11 +481,11 @@
   </div>
 </section>
 
-<!-- 09 RECRUITMENT ONE-PAGER -->
+<!-- 10 RECRUITMENT ONE-PAGER -->
 <section class="slide" data-title="Recruitment one-pager">
   <div class="frame frame--sage">
     <div class="frame__inner">
-      <span class="corner corner--tr">08 — In design</span>
+      <span class="corner corner--tr">09 — In design</span>
       <div class="center" style="max-width:34ch;">
         <p class="eyebrow" data-reveal>Coming next from Hallpass</p>
         <h1 class="h1" data-reveal data-delay="1">The recruitment one-pager.</h1>
@@ -457,11 +496,11 @@
   </div>
 </section>
 
-<!-- 10 OPEN ITEMS -->
+<!-- 11 OPEN ITEMS -->
 <section class="slide" data-title="Open items">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">09 — Open items</span>
+      <span class="corner corner--tr">10 — Open items</span>
       <div class="stack-sm" data-reveal>
         <p class="eyebrow">What we need from you</p>
         <h2 class="h2" style="max-width:22ch;">A few things to move together.</h2>
@@ -469,7 +508,7 @@
       <div class="cards" style="grid-template-columns:repeat(2,1fr);" data-reveal data-delay="1">
         <div class="card"><span class="card__tag">Decision · with you</span><span class="card__name">ChamberMaster API access</span><span class="card__note">Where does the data-access request stand? Our automations depend on it for keeping member info in sync.</span></div>
         <div class="card"><span class="card__tag">Decision · easy win</span><span class="card__name">Chamber-branded subdomain</span><span class="card__note">Run the directory + decks at members.ardmorechamber.org — one DNS record, your brand on the URL.</span></div>
-        <div class="card"><span class="card__tag">Input · ongoing</span><span class="card__name">Member content &amp; photos</span><span class="card__note">What we need to activate the next batch of member decks.</span></div>
+        <div class="card"><span class="card__tag">Input · ongoing</span><span class="card__name">Member content &amp; photos</span><span class="card__note">Most decks build themselves from Google and the member's website. For members with little online presence, a logo and a few photos help us build a strong page.</span></div>
         <div class="card"><span class="card__tag">Decision · revenue</span><span class="card__name">The rev-share model</span><span class="card__note">Your reaction to the premium add-on + 50/50 split.</span></div>
         <div class="card" style="grid-column:1 / -1;"><span class="card__tag">Question · for the decks</span><span class="card__name">Individual vs. business members</span><span class="card__note">Some members are listed as individuals, not businesses. Do those get a deck — and what's the nature of those memberships? We'd want to understand before building.</span></div>
       </div>
@@ -477,7 +516,7 @@
   </div>
 </section>
 
-<!-- 11 WHAT'S NEXT -->
+<!-- 12 WHAT'S NEXT -->
 <section class="slide" data-title="What's next">
   <div class="frame frame--ink">
     <div class="frame__inner">
