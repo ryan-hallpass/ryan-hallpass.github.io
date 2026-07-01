@@ -146,3 +146,22 @@ tipped it into overflow and clipped the photos in some browsers, even though hea
 image and (b) making the **fact values concise/single-line**. Facts natural height now
 sits 90–135px under the available space at short-to-normal desktop heights — comfortable
 headroom for real fonts. The verbose plan/capacity/amenity sub-lines were dropped.
+
+## Update — 2026-07-01 (rendering + test-fit)
+
+Per Lance: replaced the reference photo on the Parking Asset slide with a **conceptual
+rendering of the proposed public-parking structure** (`img/parking-rendering.jpg`),
+presented **full-bleed hero** — rendering fills the frame, headline + a 4-item fact
+strip + caption ("Conceptual rendering — proposed public-parking structure") + the
+upside line overlaid on a top/bottom gradient scrim. The `parking-existing-*.jpg`
+reference photos and the `.parking-gallery` CSS are now unused (left on disk).
+
+Added a **new "Architectural Test Fit" slide** (now `data-slide="07"`, tl label
+`06 — Architectural Test Fit`, inserted after Parking Economics / before Renderings;
+deck is now 27 slides). Shows Method Group's 3-page test fit as image tiles —
+**First Floor** (retail/lobby/restaurant), **Mezzanine** (suites + open floor),
+**Second Floor** (guest rooms & suites) — from
+`260629_Daube Building Test Fit_Option 1.pdf`, exported to
+`img/testfit-{1-first-floor,2-mezzanine,3-second-floor}.jpg`. Framed as credibility
+("the program is already drawn"), not blueprints to study. Note the test fit is the
+**hotel building** program, not the parking. PDF target becomes 27 pages.
