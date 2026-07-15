@@ -375,21 +375,33 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 | `120 cars/day at $5 — incremental income, not included in the hotel pro forma.` | `120 cars/day at $5 — a core revenue line in the pro forma.` |
 | `Figures are directional and sit outside the hotel underwriting on the prior slides.` | `Figures are directional and are included in the pro-forma revenue stack.` |
 
-- [ ] **Step 3: Light STR relabels across remaining slides**
+- [ ] **Step 3: Curated STR relabels (only OUR-project references — leave competitor/market/national-data intact)**
 
-Sweep the remaining slides (Market, Location, Demand Drivers, Why Ardmore, Competitive Landscape, Renderings) for hotel→short-stay language referring to OUR project (leave competitor references like "Six chain hotels on I-35. Zero downtown." intact). Apply:
-```bash
-cd ~/hallpass-proposals/ryan-hallpass.github.io/daube-hotel-investor
-grep -n "boutique hotel\|boutique within 90 miles\|only boutique" index.html
-```
-Replace: `boutique hotel` → `boutique short-stay`; `no other boutique within 90 miles` → `no other boutique short-stay within 90 miles`; any "only boutique in downtown" → "only boutique short-stay in downtown". Do NOT alter competitor-chain-hotel phrasing.
+Apply EXACTLY these five replacements (each occurs once). Do NOT do a blanket "boutique hotel" replace.
+
+| Where | Current | New |
+|---|---|---|
+| Thesis headline | `There is no boutique hotel` | `There is no boutique short-stay` |
+| Triple Access h2 | `A location no other Ardmore hotel can match.` | `A location no other downtown stay can match.` |
+| Triple Access FOOT/RAIL body | `Walk-to-hotel rail access exists in no other Ardmore lodging.` | `Walk-to-door rail access exists in no other Ardmore lodging.` |
+| Why Ardmore pullquote | `this hotel is the private investment that makes that strategy credible` | `this property is the private investment that makes that strategy credible` |
+| Competitive comparison row | `Boutique hotel (proposed)` | `Boutique short-stay (proposed)` |
+
+**Do NOT change these (they are legitimate):**
+- `1,399 hotel rooms sell out on weekends` (WinStar's hotel rooms — market data)
+- `Six chain hotels on I-35. Zero downtown.` (competitor reference)
+- `Boutique hotels nationally outperform chain counterparts by +20–35% in ADR` (national industry benchmark)
+- `daube-hotel-investor/…` URLs in `<head>` (repo path — breaks the live URL if changed)
 
 - [ ] **Step 4: Verify & commit**
 ```bash
 cd ~/hallpass-proposals/ryan-hallpass.github.io/daube-hotel-investor
-grep -c "not in the pro forma\|not included in the hotel pro forma" index.html  # expect 0
-grep -c "core revenue line" index.html   # expect >=2
-grep -ci "boutique hotel" index.html     # expect 0
+grep -c "not in the pro forma\|not included in the hotel pro forma\|outside the hotel underwriting" index.html  # expect 0
+grep -c "core revenue line" index.html   # expect >=2 (parking hero + economics)
+grep -c "There is no boutique short-stay\|no other downtown stay can match\|Boutique short-stay (proposed)\|this property is the private investment" index.html  # expect 4
+# KEEP checks — these must SURVIVE:
+grep -c "Six chain hotels on I-35\|Boutique hotels nationally outperform\|1,399 hotel rooms" index.html  # expect 3
+grep -ci "boutique hotel" index.html     # expect 1 (only the national-benchmark "Boutique hotels nationally…")
 ```
 ```bash
 cd ~/hallpass-proposals/ryan-hallpass.github.io
