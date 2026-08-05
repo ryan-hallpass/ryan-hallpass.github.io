@@ -18,445 +18,513 @@
 <meta name="twitter:title" content="Atlas Roofing × Hallpass Digital">
 <meta name="twitter:description" content="A documentary onboarding film series for the Ardmore plant.">
 <meta name="twitter:image" content="https://ryan-hallpass.github.io/atlas-roofing/img/hero.jpg">
-<!-- Imagery is real Atlas Ardmore plant photography (img/), provided by the client. Cover/band retain dark bg-color fallbacks. -->
+<!-- Real Atlas Ardmore plant photography in img/. Template adapted from the ATA / Ardmore Chamber pitch decks (Playfair Display + DM Sans, GSAP sticky scroll-timeline), with an Atlas-red accent sampled from the client logo. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ivory:#FAF7F0; --paper:#F3EFE6; --paper-2:#EAE4D6;
-    --ink:#1C1A16; --ink-2:#141210; --ink-soft:#57514A; --muted:#8A8377;
-    --amber:#BE7327; --amber-deep:#9A551A; --amber-light:#E4A85C; --amber-glow:#EBC48A;
-    --line:rgba(28,26,22,0.14); --line-soft:rgba(28,26,22,0.08);
-    --serif:'Cormorant Garamond', Georgia, serif;
-    --sans:'Jost', -apple-system, sans-serif;
+    --cream:#F2EFE8; --ink:#1A1A18; --ink-soft:#3D3D38; --warm-white:#FAFAF7;
+    --red:#BD1D2C; --red-deep:#8E1620; --red-light:#E39AA0; --red-wash:#F7E9EA;
+    --rule:rgba(26,26,24,0.12);
+    --serif:'Playfair Display', Georgia, serif;
+    --sans:'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
   *{ margin:0; padding:0; box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
-  body{ background:var(--ivory); color:var(--ink); font-family:var(--sans); font-weight:300; line-height:1.7; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-  a{ color:inherit; text-decoration:none; }
+  body{ background:var(--warm-white); color:var(--ink); font-family:var(--sans); font-weight:300; line-height:1.7; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a{ color:inherit; }
 
-  .container{ max-width:1180px; margin:0 auto; padding:0 clamp(20px, 6vw, 72px); width:100%; }
-  .narrow{ max-width:780px; }
-  .section{ padding:130px 0; }
-  .section--tight{ padding:96px 0; }
+  /* SLIDE SHELL */
+  .slide{ position:relative; width:100%; min-height:100vh; padding:clamp(40px,7vw,96px) clamp(32px,8vw,120px); margin-bottom:2px; background:var(--warm-white); overflow:hidden; display:flex; flex-direction:column; justify-content:center; }
+  .slide::before{ content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(26,26,24,0.05) 1px, transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .slide--dark{ background:var(--ink); color:var(--cream); }
+  .slide--wash{ background:var(--red-wash); }
+  .slide--accent{ background:var(--red); color:var(--warm-white); }
+  .slide--accent::before{ background-image:radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px); }
+  .slide > *{ position:relative; z-index:1; }
+  .slide-num{ position:absolute; top:28px; right:36px; font-size:11px; font-weight:400; letter-spacing:0.12em; opacity:0.35; z-index:2; }
 
-  .eyebrow{ font-family:var(--sans); font-size:11px; font-weight:400; letter-spacing:0.32em; text-transform:uppercase; color:var(--amber-deep); display:inline-block; }
-  .serif{ font-family:var(--serif); font-weight:300; }
-  .display{ font-family:var(--serif); font-weight:300; font-size:clamp(34px,5.4vw,62px); line-height:1.1; letter-spacing:-0.005em; }
-  .display em{ font-style:italic; color:var(--amber-deep); }
-  .display-sm{ font-family:var(--serif); font-weight:300; font-size:clamp(28px,3.8vw,46px); line-height:1.16; }
-  .display-sm em{ font-style:italic; color:var(--amber-deep); }
-  .lead{ font-family:var(--sans); font-weight:300; font-size:clamp(15px,1.5vw,17px); line-height:1.75; color:var(--ink-soft); }
-  .rule{ width:46px; height:1px; background:var(--amber); border:0; margin:30px 0; }
-
-  .pill{ display:inline-flex; align-items:center; justify-content:center; gap:9px; font-family:var(--sans); font-size:11px; font-weight:400; letter-spacing:0.22em; text-transform:uppercase; padding:15px 32px; border:1px solid currentColor; border-radius:999px; cursor:pointer; background:transparent; color:var(--ink); transition:all .4s cubic-bezier(.2,.7,.2,1); }
-  .pill:hover{ background:var(--ink); color:var(--ivory); border-color:var(--ink); }
-  .pill--light{ color:var(--ivory); border-color:rgba(250,247,240,0.55); }
-  .pill--light:hover{ background:var(--ivory); color:var(--ink); border-color:var(--ivory); }
-
-  /* NAV */
-  .nav{ position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:22px 6vw; transition:all .5s ease; }
-  .nav.scrolled{ background:rgba(250,247,240,0.94); backdrop-filter:blur(10px); padding:14px 6vw; box-shadow:0 1px 0 var(--line-soft); }
-  .nav .brand{ color:var(--ivory); transition:color .5s ease; line-height:1.05; }
-  .nav.scrolled .brand{ color:var(--ink); }
-  .nav .brand .bn{ font-family:var(--serif); font-size:21px; letter-spacing:0.04em; }
-  .nav .brand .bs{ font-family:var(--sans); font-size:9px; letter-spacing:0.28em; text-transform:uppercase; opacity:0.75; }
-  .nav .navcta{ font-family:var(--sans); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ivory); border:1px solid rgba(250,247,240,0.5); padding:10px 22px; border-radius:999px; transition:all .4s ease; }
-  .nav.scrolled .navcta{ color:var(--ink); border-color:var(--line); }
-  .nav .navcta:hover{ background:var(--ivory); color:var(--ink); }
-  .nav.scrolled .navcta:hover{ background:var(--ink); color:var(--ivory); border-color:var(--ink); }
+  .eyebrow{ font-size:10px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; opacity:0.5; margin-bottom:20px; }
+  .display{ font-family:var(--serif); font-size:clamp(38px,5.5vw,64px); font-weight:400; line-height:1.08; letter-spacing:-0.02em; }
+  .display em{ font-style:italic; color:var(--red); }
+  .slide--dark .display em{ color:var(--red-light); }
+  .display-sm{ font-family:var(--serif); font-size:clamp(26px,3.5vw,40px); font-weight:400; line-height:1.15; letter-spacing:-0.02em; }
+  .display-sm em{ font-style:italic; color:var(--red); }
+  .slide--dark .display-sm em{ color:var(--red-light); }
+  .slide--accent .display-sm em{ color:rgba(255,255,255,0.75); }
+  .body{ font-size:15px; line-height:1.7; font-weight:300; max-width:560px; opacity:0.8; margin-top:20px; }
+  .body-lg{ font-size:18px; line-height:1.6; font-weight:300; max-width:620px; margin-top:24px; opacity:0.85; }
+  .rule{ width:48px; height:2px; background:var(--red); margin:28px 0; border:0; }
+  .slide--dark .rule{ background:var(--red-light); }
+  .slide--accent .rule{ background:rgba(255,255,255,0.5); }
 
   /* COVER */
-  .cover{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 6vw 90px; position:relative; color:var(--ivory); background-color:#161310;
-    background-image:linear-gradient(180deg, rgba(8,6,4,0.84) 0%, rgba(8,6,4,0.70) 44%, rgba(8,6,4,0.95) 100%), url('img/hero.jpg');
-    background-size:cover; background-position:center 46%; }
-  .cover-inner{ max-width:900px; position:relative; z-index:2; }
-  .cover .eyebrow{ color:rgba(250,247,240,0.85); }
-  .cover h1{ font-family:var(--serif); font-weight:300; font-size:clamp(42px,7vw,84px); line-height:1.05; letter-spacing:-0.01em; margin:26px 0 0; text-wrap:balance; text-shadow:0 2px 36px rgba(0,0,0,0.45); }
-  .cover h1 em{ font-style:italic; color:var(--amber-glow); }
-  .cover .sub{ font-family:var(--sans); font-weight:300; font-size:clamp(14px,1.5vw,16.5px); line-height:1.75; color:rgba(250,247,240,0.9); margin:28px auto 0; max-width:560px; text-shadow:0 1px 20px rgba(0,0,0,0.4); }
-  .cover-meta{ display:flex; gap:48px; justify-content:center; flex-wrap:wrap; margin-top:46px; }
-  .cover-meta .k{ font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(250,247,240,0.5); margin-bottom:6px; }
-  .cover-meta .v{ font-family:var(--serif); font-size:18px; color:var(--ivory); }
-  .cover-foot{ position:absolute; left:6vw; right:6vw; bottom:34px; z-index:2; display:flex; align-items:center; justify-content:space-between; }
-  .cover-foot img{ height:17px; filter:invert(1); opacity:0.6; }
-  .cover-foot .lf{ font-family:var(--serif); font-size:17px; color:var(--ivory); opacity:0.85; }
-  .cover-foot span{ font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(250,247,240,0.45); }
+  .cover-hero{ position:relative; min-height:100vh; background:#161310 url('img/hero.jpg') center 46% / cover no-repeat; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(40px,6vw,80px) clamp(40px,6vw,80px); overflow:hidden; }
+  .cover-hero::before{ content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(18,14,11,0.94) 0%, rgba(18,14,11,0.72) 42%, rgba(120,20,26,0.34) 100%); z-index:0; }
+  .cover-hero::after{ content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px); background-size:24px 24px; z-index:0; }
+  .cover-hero > *{ position:relative; z-index:1; }
+  .cover-badge{ display:inline-flex; align-items:center; align-self:flex-start; background:var(--warm-white); border-radius:8px; padding:14px 20px; box-shadow:0 6px 26px rgba(0,0,0,0.28); }
+  .cover-badge img{ height:38px; width:auto; display:block; }
+  .cover-mid{ }
+  .cover-kicker{ font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); opacity:0.55; margin-bottom:20px; }
+  .cover-headline{ font-family:var(--serif); font-size:clamp(38px,6vw,74px); font-weight:400; line-height:1.05; letter-spacing:-0.02em; color:var(--cream); text-shadow:0 2px 30px rgba(0,0,0,0.45); max-width:14ch; }
+  .cover-headline em{ font-style:italic; color:var(--red-light); }
+  .cover-sub{ font-size:15px; font-weight:300; opacity:0.82; margin-top:22px; line-height:1.65; color:var(--cream); max-width:520px; text-shadow:0 1px 12px rgba(0,0,0,0.5); }
+  .cover-bottom{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; color:var(--cream); flex-wrap:wrap; }
+  .cover-bottom-l .cover-bottom-label{ font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; opacity:0.45; }
+  .cover-bottom-l .cover-bottom-title{ font-family:var(--serif); font-size:clamp(18px,2.2vw,24px); font-weight:400; line-height:1.3; opacity:0.9; margin-top:5px; }
+  .cover-bottom-l .cover-bottom-date{ font-size:12px; opacity:0.45; letter-spacing:0.08em; margin-top:4px; }
+  .cover-bottom-r img{ height:20px; width:auto; filter:invert(1); opacity:0.6; display:block; }
 
-  /* SECTION HEADS */
-  .sec-head{ max-width:760px; }
-  .sec-head.center{ text-align:center; margin:0 auto 60px; }
-  .sec-head h2{ margin-top:16px; }
+  /* LOGO BAR (per-slide footer) */
+  .logo-bar{ display:flex; align-items:center; gap:16px; margin-top:44px; padding-top:22px; border-top:1px solid var(--rule); }
+  .logo-bar img{ height:17px; width:auto; opacity:0.5; }
+  .logo-bar span{ font-size:11px; font-weight:400; letter-spacing:0.1em; opacity:0.45; text-transform:uppercase; }
+  .slide--dark .logo-bar{ border-top-color:rgba(242,239,232,0.14); }
+  .slide--dark .logo-bar img{ filter:invert(1); opacity:0.55; }
+  .slide--wash .logo-bar{ border-top-color:rgba(189,29,44,0.18); }
 
-  /* WHAT WE HEARD bullets */
-  .bullets{ list-style:none; margin-top:44px; counter-reset:b; }
-  .bullets li{ position:relative; padding:28px 0 28px 46px; border-bottom:1px solid var(--line); }
-  .bullets li::before{ content:counter(b,upper-roman); counter-increment:b; position:absolute; left:0; top:28px; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--amber); line-height:1.55; }
-  .bullets li .t{ display:block; font-family:var(--sans); font-weight:300; font-size:16px; line-height:1.64; color:var(--ink-soft); }
-  .bullets .hi{ color:var(--ink); }
+  /* BULLET LIST */
+  .bullet-list{ list-style:none; margin-top:32px; display:flex; flex-direction:column; gap:18px; max-width:820px; }
+  .bullet-list li{ display:flex; align-items:flex-start; gap:16px; font-size:15.5px; line-height:1.6; font-weight:300; }
+  .bullet-list li::before{ content:'—'; color:var(--red); font-family:var(--serif); flex-shrink:0; margin-top:1px; font-weight:400; }
+  .slide--dark .bullet-list li::before{ color:var(--red-light); }
+  .bullet-list .hi{ font-weight:500; opacity:1; }
 
-  /* OPPORTUNITY (dark) */
-  .dark{ background:var(--ink-2); color:var(--ivory); }
-  .dark .eyebrow{ color:var(--amber-light); }
-  .dark .display em, .dark .display-sm em{ color:var(--amber-light); }
-  .dark .lead{ color:rgba(250,247,240,0.74); }
-  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; margin-top:64px; }
-  @media (max-width:720px){ .stat-row{ grid-template-columns:1fr 1fr; gap:44px 30px; } }
-  .stat .n{ font-family:var(--serif); font-weight:300; font-size:clamp(38px,5vw,58px); line-height:1; color:var(--amber-glow); }
-  .stat .l{ font-family:var(--sans); font-size:12.5px; line-height:1.5; color:rgba(250,247,240,0.66); margin-top:14px; padding-top:14px; border-top:1px solid rgba(250,247,240,0.16); }
-  .stat .src{ display:block; margin-top:7px; font-size:10.5px; letter-spacing:0.04em; color:rgba(250,247,240,0.4); }
+  /* STAT ROW */
+  .stat-row{ display:flex; gap:clamp(28px,5vw,56px); margin-top:44px; flex-wrap:wrap; }
+  .stat-item{ display:flex; flex-direction:column; gap:6px; max-width:190px; }
+  .stat-num{ font-family:var(--serif); font-size:clamp(38px,4.5vw,52px); font-weight:400; color:var(--red); line-height:1; }
+  .slide--dark .stat-num{ color:var(--red-light); }
+  .stat-label{ font-size:12.5px; opacity:0.6; letter-spacing:0.02em; line-height:1.5; }
+  .stat-src{ font-size:10.5px; letter-spacing:0.04em; opacity:0.4; margin-top:2px; }
 
-  /* FILMS (editorial rows) */
-  .films{ margin-top:62px; border-top:1px solid var(--line); }
-  .film{ display:grid; grid-template-columns:56px 1fr 0.82fr; gap:34px; padding:40px 0; border-bottom:1px solid var(--line); align-items:start; }
-  @media (max-width:820px){ .film{ grid-template-columns:1fr; gap:16px; padding:34px 0; } }
-  .film .fn{ font-family:var(--serif); font-style:italic; font-weight:300; font-size:32px; color:var(--amber); line-height:1; }
-  .film h3{ font-family:var(--serif); font-weight:400; font-size:clamp(23px,2.6vw,29px); line-height:1.14; }
-  .film .fd{ font-family:var(--sans); font-weight:300; font-size:14.5px; line-height:1.66; color:var(--ink-soft); margin-top:12px; max-width:520px; }
-  .film .fmeta{ display:flex; flex-direction:column; gap:12px; }
-  .film .ftag{ align-self:flex-start; font-family:var(--sans); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--amber-deep); border:1px solid var(--line); border-radius:999px; padding:7px 15px; }
-  .film .fspec{ font-family:var(--sans); font-size:12.5px; line-height:1.55; color:var(--muted); }
-  @media (max-width:820px){ .film .fmeta{ flex-direction:row; flex-wrap:wrap; align-items:center; gap:10px 16px; } }
+  /* FILMS OVERVIEW GRID */
+  .films-intro{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:44px; background:var(--rule); border:1px solid var(--rule); }
+  @media (max-width:820px){ .films-intro{ grid-template-columns:1fr; } }
+  .film-card{ background:var(--warm-white); padding:26px 26px 30px; }
+  .film-card .fnum{ font-family:var(--serif); font-size:30px; color:var(--red); opacity:0.7; line-height:1; margin-bottom:10px; }
+  .film-card .ftitle{ font-family:var(--serif); font-size:19px; font-weight:400; margin-bottom:7px; }
+  .film-card .fbody{ font-size:12.5px; line-height:1.6; opacity:0.7; }
+  .film-card .ftag{ display:inline-block; margin-top:14px; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--red-deep); border:1px solid var(--rule); border-radius:999px; padding:5px 12px; }
 
-  /* IMAGE BAND */
-  .band{ height:60vh; min-height:420px; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--ivory); position:relative; background-color:#161310;
-    background-image:linear-gradient(rgba(12,9,7,0.60),rgba(12,9,7,0.66)), url('img/coating.jpg');
-    background-size:cover; background-position:center 40%; }
-  .band .q{ font-family:var(--serif); font-weight:300; font-style:italic; font-size:clamp(26px,3.6vw,40px); line-height:1.36; max-width:820px; padding:0 24px; }
-  .band .qa{ display:block; margin-top:26px; font-family:var(--sans); font-style:normal; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--amber-glow); }
+  /* FUNNEL STEPS (production process) */
+  .funnel-steps{ display:flex; align-items:stretch; gap:0; margin-top:44px; flex-wrap:wrap; }
+  .funnel-step{ flex:1; min-width:150px; background:var(--cream); padding:24px 20px; position:relative; }
+  .funnel-step::after{ content:'→'; position:absolute; right:-11px; top:50%; transform:translateY(-50%); font-size:18px; color:var(--red); opacity:0.6; z-index:1; }
+  .funnel-step:last-child::after{ display:none; }
+  .funnel-step-num{ font-family:var(--serif); font-size:26px; color:var(--red); opacity:0.6; line-height:1; margin-bottom:8px; }
+  .funnel-step-title{ font-size:13px; font-weight:500; letter-spacing:0.02em; margin-bottom:6px; color:var(--ink); }
+  .funnel-step-body{ font-size:12px; line-height:1.5; color:var(--ink); opacity:0.62; }
 
-  /* APPROACH */
-  .callout{ margin-top:44px; padding:32px 34px; border:1px solid var(--line); border-left:2px solid var(--amber); background:var(--paper); max-width:760px; }
-  .callout .ct{ font-family:var(--serif); font-style:italic; font-size:clamp(19px,2.2vw,24px); line-height:1.4; color:var(--ink); }
-
-  /* FLOOR MOSAIC (dark) */
-  .floor{ background:var(--ink-2); color:var(--ivory); }
-  .floor .eyebrow{ color:var(--amber-light); }
-  .floor .display-sm em{ color:var(--amber-light); }
-  .floor .lead{ color:rgba(250,247,240,0.72); }
-  .floor-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:56px; }
+  /* FLOOR MOSAIC */
+  .floor-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:40px; }
   @media (max-width:820px){ .floor-grid{ grid-template-columns:1fr 1fr; } }
-  .floor-grid figure{ position:relative; overflow:hidden; aspect-ratio:3/4; border:1px solid rgba(250,247,240,0.10); }
-  .floor-grid img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.96) contrast(1.02); transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .floor-grid figure{ position:relative; overflow:hidden; aspect-ratio:3/4; border:1px solid rgba(242,239,232,0.10); border-radius:4px; }
+  .floor-grid img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
   .floor-grid figure:hover img{ transform:scale(1.05); }
-  .floor-cap{ margin-top:30px; font-family:var(--serif); font-style:italic; font-size:clamp(14px,1.6vw,18px); color:rgba(250,247,240,0.58); }
+  .floor-cap{ margin-top:26px; font-family:var(--serif); font-style:italic; font-size:15px; opacity:0.6; }
 
-  /* JOURNEY (production process) */
-  .journey{ background:var(--paper); }
-  .jsteps{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:64px; }
-  @media (max-width:860px){ .jsteps{ grid-template-columns:1fr 1fr; gap:40px 0; } }
-  @media (max-width:480px){ .jsteps{ grid-template-columns:1fr; } }
-  .jstep{ padding:0 22px; border-left:1px solid var(--line); position:relative; }
-  .jstep:first-child{ padding-left:0; border-left:0; }
-  .jstep .n{ font-family:var(--serif); font-style:italic; font-size:26px; color:var(--amber); }
-  .jstep h4{ font-family:var(--serif); font-weight:400; font-size:20px; margin:12px 0 9px; line-height:1.18; }
-  .jstep p{ font-family:var(--sans); font-weight:300; font-size:12.5px; line-height:1.6; color:var(--ink-soft); }
+  /* CALLOUT */
+  .callout{ margin-top:36px; padding:28px 32px; border-left:2px solid var(--red); background:rgba(242,239,232,0.06); max-width:760px; }
+  .slide--dark .callout{ border-left-color:var(--red-light); }
+  .callout .ct{ font-family:var(--serif); font-style:italic; font-size:clamp(19px,2.2vw,24px); line-height:1.4; }
 
-  /* TIMELINE */
-  .timeline{ background:var(--paper-2); }
-  .tl{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:58px; }
-  @media (max-width:860px){ .tl{ grid-template-columns:1fr 1fr; gap:40px 0; } }
-  .tl-step{ padding:0 28px; border-left:1px solid var(--line); }
-  .tl-step:first-child{ padding-left:0; border-left:0; }
-  .tl-step .w{ font-family:var(--sans); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--amber-deep); margin-bottom:14px; }
-  .tl-step h4{ font-family:var(--serif); font-weight:400; font-size:21px; margin-bottom:9px; }
-  .tl-step p{ font-family:var(--sans); font-weight:300; font-size:12.5px; line-height:1.6; color:var(--ink-soft); }
-  .tl-note{ font-family:var(--serif); font-style:italic; font-size:clamp(16px,1.9vw,20px); line-height:1.5; color:var(--ink); margin-top:44px; max-width:720px; }
+  /* PRODUCTION TIMELINE */
+  .timeline{ display:flex; flex-direction:column; gap:0; margin-top:38px; max-width:820px; }
+  .timeline-item{ display:grid; grid-template-columns:150px 1fr; gap:32px; padding:24px 0; border-top:1px solid var(--rule); align-items:start; }
+  .slide--wash .timeline-item{ border-top-color:rgba(189,29,44,0.16); }
+  .timeline-day{ font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--red-deep); padding-top:3px; }
+  .timeline-title{ font-family:var(--serif); font-size:18px; font-weight:400; margin-bottom:6px; }
+  .timeline-desc{ font-size:13px; line-height:1.6; opacity:0.68; }
+  .timeline-note{ font-family:var(--serif); font-style:italic; font-size:clamp(16px,1.9vw,20px); line-height:1.5; margin-top:36px; max-width:720px; }
 
-  /* INVESTMENT (single card) */
-  .invest-wrap{ display:flex; justify-content:center; margin-top:60px; }
-  .price{ border:1px solid var(--amber); box-shadow:0 0 0 1px var(--amber) inset; padding:52px clamp(30px,5vw,60px) 48px; background:var(--ivory); max-width:640px; width:100%; text-align:center; }
-  .price .k{ font-family:var(--sans); font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--amber-deep); margin-bottom:18px; }
-  .price .name{ font-family:var(--serif); font-weight:400; font-size:30px; }
-  .price .amt{ font-family:var(--serif); font-weight:300; font-size:clamp(64px,9vw,90px); line-height:1.02; color:var(--ink); margin-top:10px; letter-spacing:-0.01em; }
-  .price .per{ font-family:var(--sans); font-size:12.5px; color:var(--ink-soft); margin-top:8px; letter-spacing:0.06em; text-transform:uppercase; }
-  .price .desc{ font-family:var(--sans); font-weight:300; font-size:14px; line-height:1.6; color:var(--ink-soft); margin:26px auto 0; max-width:460px; padding-top:24px; border-top:1px solid var(--line-soft); }
-  .price ul{ list-style:none; margin:26px auto 0; display:grid; gap:13px; max-width:420px; text-align:left; }
-  .price li{ font-family:var(--sans); font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; line-height:1.5; }
-  .price li::before{ content:""; position:absolute; left:0; top:10px; width:9px; height:1px; background:var(--amber); }
-  .price-note{ font-family:var(--serif); font-style:italic; font-size:clamp(17px,2vw,22px); line-height:1.5; color:var(--ink); margin:46px auto 0; max-width:780px; text-align:center; }
+  /* INVESTMENT */
+  .price-block{ margin-top:44px; border:1px solid var(--rule); background:var(--warm-white); max-width:640px; padding:48px clamp(28px,5vw,56px); text-align:center; box-shadow:0 0 0 1px var(--red) inset; }
+  .price-k{ font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--red-deep); margin-bottom:16px; }
+  .price-name{ font-family:var(--serif); font-size:26px; font-weight:400; }
+  .price-amt{ font-family:var(--serif); font-size:clamp(58px,8.5vw,84px); font-weight:400; line-height:1.02; color:var(--ink); margin-top:8px; letter-spacing:-0.01em; }
+  .price-per{ font-size:12px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.55; margin-top:6px; }
+  .price-desc{ font-size:14px; line-height:1.6; opacity:0.72; margin:22px auto 0; max-width:440px; padding-top:22px; border-top:1px solid var(--rule); }
+  .price-list{ list-style:none; margin:22px auto 0; display:grid; gap:12px; max-width:420px; text-align:left; }
+  .price-list li{ font-size:13.5px; padding-left:22px; position:relative; line-height:1.5; }
+  .price-list li::before{ content:'—'; position:absolute; left:0; color:var(--red); font-family:var(--serif); }
+  .price-note{ font-family:var(--serif); font-style:italic; font-size:clamp(17px,2vw,22px); line-height:1.5; margin-top:40px; max-width:760px; }
 
-  /* CLOSE */
-  .steps{ list-style:none; margin-top:46px; max-width:820px; }
-  .steps li{ display:flex; gap:22px; align-items:baseline; padding:22px 0; border-bottom:1px solid rgba(250,247,240,0.14); }
-  .steps .sn{ font-family:var(--serif); font-style:italic; font-size:22px; color:var(--amber-light); min-width:30px; }
-  .steps .st{ font-family:var(--sans); font-weight:300; font-size:15px; color:rgba(250,247,240,0.9); }
-  .steps .st b{ color:var(--ivory); font-weight:400; }
-  .steps .who{ font-family:var(--sans); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--amber-light); margin-left:auto; white-space:nowrap; padding-left:16px; }
-  .closeline{ font-family:var(--serif); font-style:italic; font-weight:300; font-size:clamp(22px,2.8vw,32px); line-height:1.4; color:var(--ivory); margin:58px 0 36px; max-width:660px; }
-  .logo-bar{ display:flex; align-items:center; gap:14px; padding-top:24px; border-top:1px solid rgba(250,247,240,0.14); margin-top:54px; }
-  .logo-bar img{ height:16px; filter:invert(1); opacity:0.55; }
-  .logo-bar .lf{ font-family:var(--serif); font-size:16px; opacity:0.7; }
-  .logo-bar span{ font-family:var(--sans); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; }
+  /* CLOSE STEPS + LOCKUP */
+  .steps{ list-style:none; margin-top:40px; max-width:840px; }
+  .steps li{ display:flex; gap:20px; align-items:baseline; padding:20px 0; border-bottom:1px solid rgba(242,239,232,0.14); }
+  .steps .sn{ font-family:var(--serif); font-style:italic; font-size:22px; color:var(--red-light); min-width:30px; }
+  .steps .st{ font-size:15px; font-weight:300; opacity:0.92; }
+  .steps .st b{ font-weight:500; }
+  .steps .who{ font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--red-light); margin-left:auto; white-space:nowrap; padding-left:16px; }
+  .closeline{ font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(22px,2.8vw,32px); line-height:1.4; margin:50px 0 34px; max-width:640px; }
+  .cta-pill{ display:inline-flex; align-self:flex-start; align-items:center; gap:9px; font-size:11px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; padding:15px 32px; border:1px solid rgba(242,239,232,0.55); border-radius:999px; color:var(--cream); transition:all .4s ease; text-decoration:none; }
+  .cta-pill:hover{ background:var(--cream); color:var(--ink); border-color:var(--cream); }
+  .lockup{ display:flex; align-items:center; gap:20px; margin-top:56px; padding-top:26px; border-top:1px solid rgba(242,239,232,0.14); }
+  .lockup .lk-atlas{ height:40px; background:var(--warm-white); border-radius:6px; padding:8px 12px; }
+  .lockup .lk-x{ font-family:var(--serif); font-style:italic; font-size:20px; opacity:0.5; }
+  .lockup .lk-hp{ height:20px; filter:invert(1); opacity:0.7; }
+  .lockup .lk-cap{ font-size:10px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.4; margin-left:auto; }
 
-  /* reveal */
-  [data-reveal]{ opacity:0; transform:translateY(22px); transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
-  [data-reveal].vis{ opacity:1; transform:none; }
-  [data-reveal][data-d="1"]{ transition-delay:.12s; } [data-reveal][data-d="2"]{ transition-delay:.24s; }
-  [data-reveal][data-d="3"]{ transition-delay:.36s; } [data-reveal][data-d="4"]{ transition-delay:.48s; }
+  /* JOURNEY (sticky scroll timeline) */
+  .journey-section{ position:relative; width:100%; background:var(--ink); color:var(--cream); overflow:hidden; }
+  .journey-section::before{ content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .journey-pinned{ position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(40px,7vw,96px) clamp(32px,8vw,120px); }
+  .journey-header{ position:relative; z-index:1; }
+  .journey-track{ position:relative; height:3px; background:rgba(242,239,232,0.1); border-radius:2px; margin-top:34px; }
+  .journey-fill{ position:absolute; left:0; top:0; height:100%; width:0%; background:var(--red-light); border-radius:2px; will-change:width; }
+  .journey-markers{ display:flex; justify-content:space-between; margin-top:14px; position:relative; z-index:1; }
+  .journey-marker{ display:flex; flex-direction:column; align-items:center; flex:1; }
+  .journey-marker:first-child{ align-items:flex-start; }
+  .journey-marker:last-child{ align-items:flex-end; }
+  .journey-dot{ width:10px; height:10px; border-radius:50%; background:rgba(242,239,232,0.12); margin-bottom:8px; transition:background 0.3s; }
+  .journey-dot.is-active{ background:var(--red-light); }
+  .journey-marker-label{ font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; opacity:0.35; transition:opacity 0.3s; white-space:nowrap; color:var(--cream); }
+  .journey-marker-label.is-active{ opacity:1; }
+  .journey-divider{ height:1px; background:rgba(242,239,232,0.08); margin-top:32px; }
+  .journey-content{ position:relative; min-height:360px; margin-top:36px; z-index:1; }
+  .journey-stage{ position:absolute; top:0; left:0; right:0; opacity:0; transition:opacity 0.2s; display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+  .journey-stage.is-active{ opacity:1; }
+  .journey-stage-num{ font-family:var(--serif); font-style:italic; font-size:20px; color:var(--red-light); opacity:0.8; }
+  .journey-stage-headline{ font-family:var(--serif); font-size:clamp(22px,2.8vw,32px); font-weight:400; font-style:italic; line-height:1.25; letter-spacing:-0.01em; color:var(--red-light); margin-top:6px; }
+  .journey-stage-body{ font-size:14.5px; font-weight:300; line-height:1.65; opacity:0.75; max-width:500px; margin-top:14px; }
+  .journey-stage-spec{ font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.45; margin-top:18px; }
+  .journey-stage-image{ display:flex; justify-content:center; align-items:center; }
+  .journey-stage-image img{ width:100%; max-height:440px; object-fit:cover; border-radius:6px; box-shadow:0 8px 32px rgba(0,0,0,0.35); }
+  .journey-footer{ position:absolute; bottom:26px; left:clamp(32px,8vw,120px); right:clamp(32px,8vw,120px); display:flex; align-items:center; gap:14px; font-size:11px; letter-spacing:0.1em; opacity:0.35; z-index:1; }
+  .journey-footer img{ height:16px; width:auto; filter:invert(1); }
+  .journey-footer span{ text-transform:uppercase; }
+  @media (max-width:820px){
+    .journey-stage{ grid-template-columns:1fr; gap:22px; }
+    .journey-stage-image{ order:-1; }
+    .journey-stage-image img{ max-height:230px; }
+    .journey-marker-label{ font-size:8px; letter-spacing:0.05em; }
+    .journey-content{ min-height:460px; }
+  }
+
+  /* REVEAL */
+  [data-reveal]{ opacity:0; transform:translateY(20px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  [data-reveal].is-in{ opacity:1; transform:none; }
+  [data-delay="1"]{ transition-delay:.10s; } [data-delay="2"]{ transition-delay:.20s; }
+  [data-delay="3"]{ transition-delay:.30s; } [data-delay="4"]{ transition-delay:.40s; }
+  [data-delay="5"]{ transition-delay:.50s; } [data-delay="6"]{ transition-delay:.60s; }
+  [data-delay="7"]{ transition-delay:.70s; } [data-delay="8"]{ transition-delay:.80s; }
   @media (prefers-reduced-motion:reduce){ [data-reveal]{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
 </style>
 </head>
 <body>
+<div class="deck">
 
-<nav class="nav" id="nav">
-  <a href="#top" class="brand"><div class="bn">Atlas Roofing · Ardmore</div><div class="bs">× Hallpass Digital</div></a>
-  <a href="#invest" class="navcta">The Investment</a>
-</nav>
-
-<!-- 01 COVER -->
-<header class="cover" id="top">
-  <div class="cover-inner">
-    <div class="eyebrow" data-reveal>Prepared for Atlas Roofing · Ardmore</div>
-    <h1 data-reveal data-d="1">Welcome to the <em>house</em>.</h1>
-    <p class="sub" data-reveal data-d="2">A first-day film series for the Ardmore plant — short, genuine, beautifully shot — that makes a new hire feel they made the right decision before they ever step onto the line.</p>
-    <div class="cover-meta" data-reveal data-d="3">
-      <div><div class="k">For</div><div class="v">Rex Livingston</div></div>
-      <div><div class="k">From</div><div class="v">Hallpass Digital</div></div>
-      <div><div class="k">Engagement</div><div class="v">Onboarding Film Series</div></div>
+  <!-- 01 COVER -->
+  <div class="cover-hero">
+    <div class="cover-badge" data-reveal><img src="atlas-logo.png" alt="Atlas Roofing"></div>
+    <div class="cover-mid">
+      <p class="cover-kicker" data-reveal>Prepared for Atlas Roofing · Ardmore</p>
+      <h1 class="cover-headline" data-reveal data-delay="1">Welcome to the <em>house.</em></h1>
+      <p class="cover-sub" data-reveal data-delay="2">A first-day film series for the Ardmore plant — short, genuine, beautifully shot — that makes a new hire feel they made the right decision before they ever step onto the line.</p>
+    </div>
+    <div class="cover-bottom" data-reveal data-delay="3">
+      <div class="cover-bottom-l">
+        <p class="cover-bottom-label">Prepared by</p>
+        <p class="cover-bottom-title">Hallpass Digital</p>
+        <p class="cover-bottom-date">August 2026</p>
+      </div>
+      <div class="cover-bottom-r"><img src="hallpass-logo.png" alt="Hallpass Digital"></div>
     </div>
   </div>
-  <div class="cover-foot">
-    <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital" onerror="this.outerHTML='<span class=&quot;lf&quot;>Hallpass</span>'">
-    <span>Proposal · August 2026</span>
-  </div>
-</header>
 
-<!-- 02 WHAT WE HEARD -->
-<section class="section">
-  <div class="container narrow">
-    <div class="sec-head">
-      <div class="eyebrow" data-reveal>What we heard</div>
-      <h2 class="display" data-reveal data-d="1">You've turned this plant around. The <em>first day</em> hasn't caught up yet.</h2>
+  <!-- 02 THE FIRST DAY -->
+  <div class="slide">
+    <span class="slide-num">02</span>
+    <div class="eyebrow" data-reveal>Where things stand</div>
+    <div class="display-sm" data-reveal data-delay="1">You've turned this plant around.<br>The <em>first day</em> hasn't caught up yet.</div>
+    <div class="rule" data-reveal data-delay="2"></div>
+    <p class="body" data-reveal data-delay="3">In a year, Ardmore went from a revolving door to a plant people don't leave. But a new hire's first day is still an eight-hour safety slideshow and a desk someone else cleaned out. The welcome hasn't caught up to the turnaround — and the first day is exactly where that turnaround should be felt.</p>
+    <div class="logo-bar" data-reveal data-delay="4">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
-    <ul class="bullets">
-      <li data-reveal><span class="t">A new hire's first day is an eight-hour safety slideshow that half the room sleeps through — and a desk someone else just cleaned out. <span class="hi">The first impression is an accident, not a design.</span></span></li>
-      <li data-reveal><span class="t">Almost everything is taught by tribal knowledge. Passed mouth to mouth across twenty or thirty people, the message waters down until a new hire is <span class="hi">learning something that was never even true.</span></span></li>
-      <li data-reveal><span class="t">You already know the first day sets the tone — people <span class="hi">"ought to feel welcomed, ought to feel like you really want them here."</span> Right now nothing carries that message but a PowerPoint.</span></li>
-      <li data-reveal><span class="t">And the turnaround is real: a plant that once churned close to 200% now loses almost no one, and people walk in <span class="hi">with the community, not away from it.</span> That story deserves to be told on day one.</span></li>
+  </div>
+
+  <!-- 03 WHAT WE HEARD -->
+  <div class="slide slide--dark">
+    <span class="slide-num">03</span>
+    <div class="eyebrow" data-reveal>What we heard</div>
+    <div class="display-sm" data-reveal data-delay="1">A few things that came up<br>on the <em>floor.</em></div>
+    <ul class="bullet-list">
+      <li data-reveal data-delay="2">A new hire's first day is an eight-hour safety slideshow that half the room sleeps through — <span class="hi">the first impression is an accident, not a design.</span></li>
+      <li data-reveal data-delay="3">Almost everything is taught by tribal knowledge. Passed across twenty or thirty people, the message waters down until a new hire is <span class="hi">learning something that was never even true.</span></li>
+      <li data-reveal data-delay="4">You already know the first day sets the tone — people <span class="hi">"ought to feel welcomed, ought to feel like you really want them here."</span> Right now nothing carries that but a PowerPoint.</li>
+      <li data-reveal data-delay="5">And the turnaround is real: a plant that once churned close to 200% now loses almost no one, and people walk in <span class="hi">with the community, not away from it.</span> That story deserves to be told on day one.</li>
     </ul>
-  </div>
-</section>
-
-<!-- 03 THE OPPORTUNITY (dark, stats) -->
-<section class="section dark">
-  <div class="container">
-    <div class="sec-head">
-      <div class="eyebrow" data-reveal>The opportunity</div>
-      <h2 class="display" data-reveal data-d="1">The first week decides whether they <em>stay</em>.</h2>
+    <div class="logo-bar" data-reveal data-delay="6">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
-    <p class="lead" data-reveal data-d="2" style="max-width:660px; margin-top:26px;">The research is blunt: how someone's first days feel is among the strongest predictors of whether they're still here in three years. Atlas has already proven it on the floor — respect people, set them up to succeed, and turnover collapses. A film series makes that first impression <em>deliberate and repeatable</em> — the same welcome, every hire, every shift, done right the first time.</p>
+  </div>
+
+  <!-- 04 THE OPPORTUNITY -->
+  <div class="slide slide--wash">
+    <span class="slide-num">04</span>
+    <div class="eyebrow" data-reveal>The opportunity</div>
+    <div class="display-sm" data-reveal data-delay="1">The first week decides<br>whether they <em>stay.</em></div>
+    <p class="body" data-reveal data-delay="2">The research is blunt: how someone's first days feel is among the strongest predictors of whether they're still here in three years. Atlas has already proven it on the floor — respect people, set them up to succeed, and turnover collapses. A film series makes that first impression deliberate and repeatable — the same welcome, every hire, every shift.</p>
     <div class="stat-row">
-      <div class="stat" data-reveal><div class="n">82%</div><div class="l">higher new-hire retention with a strong onboarding process<span class="src">Brandon Hall Group</span></div></div>
-      <div class="stat" data-reveal data-d="1"><div class="n">69%</div><div class="l">more likely to stay 3+ years after a great onboarding experience<span class="src">SHRM</span></div></div>
-      <div class="stat" data-reveal data-d="2"><div class="n">1 in 3</div><div class="l">new hires leave within their first 90 days, nationally<span class="src">Industry research</span></div></div>
-      <div class="stat" data-reveal data-d="3"><div class="n">1</div><div class="l">voluntary departure at the Ardmore plant this past year<span class="src">Your own proof it works</span></div></div>
+      <div class="stat-item" data-reveal data-delay="3"><div class="stat-num">82%</div><div class="stat-label">higher new-hire retention with strong onboarding</div><div class="stat-src">Brandon Hall Group</div></div>
+      <div class="stat-item" data-reveal data-delay="4"><div class="stat-num">69%</div><div class="stat-label">more likely to stay 3+ years after great onboarding</div><div class="stat-src">SHRM</div></div>
+      <div class="stat-item" data-reveal data-delay="5"><div class="stat-num">1 in 3</div><div class="stat-label">new hires leave within their first 90 days</div><div class="stat-src">Industry research</div></div>
+      <div class="stat-item" data-reveal data-delay="6"><div class="stat-num">1</div><div class="stat-label">voluntary departure at Ardmore this past year</div><div class="stat-src">Your own proof it works</div></div>
+    </div>
+    <div class="logo-bar" data-reveal data-delay="7">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
   </div>
-</section>
 
-<!-- 04 THE FIVE FILMS -->
-<section class="section">
-  <div class="container">
-    <div class="sec-head center">
-      <div class="eyebrow" data-reveal>The series</div>
-      <h2 class="display-sm" data-reveal data-d="1">Five short films. Two to five minutes each — <em>punchy, not padded.</em></h2>
+  <!-- 05 THE SERIES -->
+  <div class="slide">
+    <span class="slide-num">05</span>
+    <div class="eyebrow" data-reveal>The series</div>
+    <div class="display-sm" data-reveal data-delay="1">Five short films.<br>Two to five minutes each — <em>punchy, not padded.</em></div>
+    <div class="films-intro">
+      <div class="film-card" data-reveal data-delay="2"><div class="fnum">I</div><div class="ftitle">The History</div><div class="fbody">Where Atlas came from — and where the Ardmore plant fits in it. Big Chief to Georgia Pacific to Atlas; six decades on this ground.</div><span class="ftag">Documentary</span></div>
+      <div class="film-card" data-reveal data-delay="3"><div class="fnum">II</div><div class="ftitle">The Process</div><div class="fbody">Granules in, shingles out — and where your hands fit in the whole, from glass mat to distributor.</div><span class="ftag">Live action · Drone · Animation</span></div>
+      <div class="film-card" data-reveal data-delay="4"><div class="fnum">III</div><div class="ftitle">Safety</div><div class="fbody">Brief but serious: "we send you home the same way you got here." The promise that Atlas invests in protecting you.</div><span class="ftag">Documentary</span></div>
+      <div class="film-card" data-reveal data-delay="5"><div class="fnum">IV</div><div class="ftitle">The Atlas Promise</div><div class="fbody">A safe floor, fair pay, and a real life outside of work — the promise that turned this plant around, said out loud.</div><span class="ftag">Documentary</span></div>
+      <div class="film-card" data-reveal data-delay="6"><div class="fnum">V</div><div class="ftitle">The Turnaround</div><div class="fbody">Records broken, the cleanest plant in Atlas, respect for people — told with pride, so a new hire knows they're joining a winner.</div><span class="ftag">Documentary</span></div>
     </div>
-    <div class="films">
-      <div class="film" data-reveal>
-        <div class="fn">I</div>
-        <div>
-          <h3>The History</h3>
-          <p class="fd">Where Atlas came from — and where the Ardmore plant fits in it. Big Chief to Georgia Pacific to Atlas; six decades on this ground; "the little shingle plant that could." A new hire learns on day one that they're joining something with roots.</p>
-        </div>
-        <div class="fmeta">
-          <span class="ftag">Documentary</span>
-          <span class="fspec">Archival photos &amp; leadership voices · 2–5 min</span>
-        </div>
-      </div>
-      <div class="film" data-reveal>
-        <div class="fn">II</div>
-        <div>
-          <h3>The Process</h3>
-          <p class="fd">Granules in, shingles out — and where your hands fit in the whole. It follows the line from glass mat and coating through cutting and packaging to the distributor, so every new hire understands their part is contributing to something bigger.</p>
-        </div>
-        <div class="fmeta">
-          <span class="ftag">Live action · Drone · Animation</span>
-          <span class="fspec">Aerials for scale, custom animation for the flow · 2–5 min</span>
-        </div>
-      </div>
-      <div class="film" data-reveal>
-        <div class="fn">III</div>
-        <div>
-          <h3>Safety</h3>
-          <p class="fd">Brief, but serious: "we send you home the same way you got here — if not better." Lockout / tagout, pinch points, heights, confined space — not the details, but the promise that Atlas invests in protecting you, because a respectful organization starts there.</p>
-        </div>
-        <div class="fmeta">
-          <span class="ftag">Documentary</span>
-          <span class="fspec">On-floor · sets up the full safety orientation · 2–5 min</span>
-        </div>
-      </div>
-      <div class="film" data-reveal>
-        <div class="fn">IV</div>
-        <div>
-          <h3>The Atlas Promise</h3>
-          <p class="fd">What Atlas commits to you: a safe floor, fair pay that respects the work, and a real life outside of it — time for your family, and a clean, positive place to spend your day. The promise that turned this plant around, said out loud.</p>
-        </div>
-        <div class="fmeta">
-          <span class="ftag">Documentary</span>
-          <span class="fspec">Leadership &amp; employee voices · 2–5 min</span>
-        </div>
-      </div>
-      <div class="film" data-reveal>
-        <div class="fn">V</div>
-        <div>
-          <h3>The Turnaround</h3>
-          <p class="fd">How far this plant has come. Records broken, the cleanest shingle plant in the whole of Atlas, downtime cut by more than half, a floor that respects its people. Told with pride — so a new hire knows, on their first day, that they're joining a plant that's winning.</p>
-        </div>
-        <div class="fmeta">
-          <span class="ftag">Documentary</span>
-          <span class="fspec">KPIs &amp; the people behind them · 2–5 min</span>
-        </div>
-      </div>
+    <div class="logo-bar" data-reveal data-delay="7">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
   </div>
-</section>
 
-<!-- 05 IMAGE BAND -->
-<section class="band">
-  <p class="q" data-reveal>"I want it to be genuine. I want them to see empathy."
-    <span class="qa">Rex Livingston · Atlas Roofing, Ardmore</span>
-  </p>
-</section>
-
-<!-- 06 THE APPROACH -->
-<section class="section">
-  <div class="container narrow">
-    <div class="sec-head">
-      <div class="eyebrow" data-reveal>The approach</div>
-      <h2 class="display-sm" data-reveal data-d="1">Documentary — not a <em>training video</em>.</h2>
-      <p class="lead" data-reveal data-d="2" style="margin-top:22px;">The moment a new hire hears "training video," they brace for stilted performances and eighties stock music. We go the other way: real people, the real floor, shot with care and cut for energy. It's the difference between something people endure and something they remember — and because it's built on what's genuinely true here, it earns their trust instead of testing their patience.</p>
+  <!-- 06 THE FIVE FILMS — STICKY SCROLL TIMELINE -->
+  <div class="journey-section">
+    <div class="journey-pinned">
+      <span class="slide-num" style="color:var(--cream);">06</span>
+      <div class="journey-header">
+        <div class="eyebrow" data-reveal style="color:var(--cream);">The series, up close</div>
+        <div class="display-sm" data-reveal data-delay="1" style="color:var(--cream);">Five films, one <em style="color:var(--red-light);">first day.</em></div>
+        <div class="journey-track"><div class="journey-fill"></div></div>
+        <div class="journey-markers">
+          <div class="journey-marker" data-stage="0"><div class="journey-dot is-active"></div><div class="journey-marker-label is-active">History</div></div>
+          <div class="journey-marker" data-stage="1"><div class="journey-dot"></div><div class="journey-marker-label">Process</div></div>
+          <div class="journey-marker" data-stage="2"><div class="journey-dot"></div><div class="journey-marker-label">Safety</div></div>
+          <div class="journey-marker" data-stage="3"><div class="journey-dot"></div><div class="journey-marker-label">The Promise</div></div>
+          <div class="journey-marker" data-stage="4"><div class="journey-dot"></div><div class="journey-marker-label">Turnaround</div></div>
+        </div>
+      </div>
+      <div class="journey-divider"></div>
+      <div class="journey-content">
+        <div class="journey-stage is-active" data-stage="0">
+          <div class="journey-stage-text">
+            <div class="journey-stage-num">Film I</div>
+            <div class="journey-stage-headline">You're joining something with roots.</div>
+            <div class="journey-stage-body">The Ardmore plant's own story — Big Chief to Georgia Pacific to Atlas, six decades on this ground, "the little shingle plant that could." A new hire learns on day one that they're stepping into a legacy, not just a job.</div>
+            <div class="journey-stage-spec">Documentary · archival photos · 2–5 min</div>
+          </div>
+          <div class="journey-stage-image"><img src="img/floor-exterior.jpg" alt="Atlas Ardmore plant exterior"></div>
+        </div>
+        <div class="journey-stage" data-stage="1">
+          <div class="journey-stage-text">
+            <div class="journey-stage-num">Film II</div>
+            <div class="journey-stage-headline">Granules in, shingles out — and where your hands fit in.</div>
+            <div class="journey-stage-body">The line from glass mat and coating through cutting and packaging to the distributor, so every new hire understands their part is contributing to something bigger. Live action, drone aerials, and custom animation make the flow easy to follow.</div>
+            <div class="journey-stage-spec">Live action · drone · animation · 2–5 min</div>
+          </div>
+          <div class="journey-stage-image"><img src="img/coating.jpg" alt="Coating rollers and steam on the line"></div>
+        </div>
+        <div class="journey-stage" data-stage="2">
+          <div class="journey-stage-text">
+            <div class="journey-stage-num">Film III</div>
+            <div class="journey-stage-headline">We send you home the same way you got here.</div>
+            <div class="journey-stage-body">Brief but serious — lockout/tagout, pinch points, heights. Not the details, but the promise that Atlas invests in protecting you, because a respectful organization starts with safety. Sets up the full orientation without the eight-hour slideshow.</div>
+            <div class="journey-stage-spec">Documentary · on-floor · 2–5 min</div>
+          </div>
+          <div class="journey-stage-image"><img src="img/floor-line.jpg" alt="The production line and conveyor"></div>
+        </div>
+        <div class="journey-stage" data-stage="3">
+          <div class="journey-stage-text">
+            <div class="journey-stage-num">Film IV</div>
+            <div class="journey-stage-headline">What Atlas commits to you.</div>
+            <div class="journey-stage-body">A safe floor, fair pay that respects the work, and a real life outside of it — time for your family, and a clean, positive place to spend your day. The promise that turned this plant around, said out loud in the voices of the people who mean it.</div>
+            <div class="journey-stage-spec">Documentary · leadership & employee voices · 2–5 min</div>
+          </div>
+          <div class="journey-stage-image"><img src="img/floor-rolls.jpg" alt="Worker beside fiberglass mat rolls"></div>
+        </div>
+        <div class="journey-stage" data-stage="4">
+          <div class="journey-stage-text">
+            <div class="journey-stage-num">Film V</div>
+            <div class="journey-stage-headline">You're joining a plant that's winning.</div>
+            <div class="journey-stage-body">How far Ardmore has come: records broken, the cleanest shingle plant in the whole of Atlas, downtime cut by more than half, a floor that respects its people. Told with pride, so a new hire feels it on their first day.</div>
+            <div class="journey-stage-spec">Documentary · KPIs & the people behind them · 2–5 min</div>
+          </div>
+          <div class="journey-stage-image"><img src="img/floor-blend.jpg" alt="Operator at the blend control station"></div>
+        </div>
+      </div>
     </div>
-    <div class="callout" data-reveal>
+    <div class="journey-footer">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
+    </div>
+  </div>
+
+  <!-- 07 THE APPROACH -->
+  <div class="slide slide--dark">
+    <span class="slide-num">07</span>
+    <div class="eyebrow" data-reveal>The approach</div>
+    <div class="display-sm" data-reveal data-delay="1">Documentary — not a <em>training video.</em></div>
+    <p class="body" data-reveal data-delay="2">The moment a new hire hears "training video," they brace for stilted performances and eighties stock music. We go the other way: real people, the real floor, shot with care and cut for energy. It's the difference between something people endure and something they remember — and because it's built on what's genuinely true here, it earns their trust instead of testing their patience.</p>
+    <div class="callout" data-reveal data-delay="3">
       <p class="ct">Shot well and grounded in what's real, these films don't go stale. This isn't a reel you re-do every time something changes — it's an asset the Ardmore plant welcomes people with for years.</p>
     </div>
-  </div>
-</section>
-
-<!-- 06b STRAIGHT FROM THE FLOOR -->
-<section class="section floor">
-  <div class="container">
-    <div class="sec-head">
-      <div class="eyebrow" data-reveal>Straight from your floor</div>
-      <h2 class="display-sm" data-reveal data-d="1">No stock. No staging. <em>This</em> is what we'd be shooting.</h2>
-      <p class="lead" data-reveal data-d="2" style="margin-top:20px; max-width:660px;">These are real frames from the Ardmore plant — the line, the raw stock, the control room, the people. The material is already cinematic. Our job is to light it, shoot it, and cut it so a new hire feels it on their first day.</p>
+    <div class="logo-bar" data-reveal data-delay="4">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
+  </div>
+
+  <!-- 08 STRAIGHT FROM THE FLOOR -->
+  <div class="slide slide--dark">
+    <span class="slide-num">08</span>
+    <div class="eyebrow" data-reveal>Straight from your floor</div>
+    <div class="display-sm" data-reveal data-delay="1">No stock. No staging.<br><em>This</em> is what we'd be shooting.</div>
+    <p class="body" data-reveal data-delay="2">These are real frames from the Ardmore plant — the line, the raw stock, the control room, the people. The material is already cinematic. Our job is to light it, shoot it, and cut it so a new hire feels it on their first day.</p>
     <div class="floor-grid">
-      <figure data-reveal><img src="img/floor-exterior.jpg" alt="Atlas Ardmore plant — sealant tower and outdoor piping" loading="lazy"></figure>
-      <figure data-reveal data-d="1"><img src="img/floor-rolls.jpg" alt="Fiberglass mat rolls — the raw stock the line runs on" loading="lazy"></figure>
-      <figure data-reveal data-d="2"><img src="img/floor-blend.jpg" alt="Operator at the blend control station" loading="lazy"></figure>
-      <figure data-reveal data-d="3"><img src="img/floor-line.jpg" alt="The production line and conveyor in motion" loading="lazy"></figure>
+      <figure data-reveal data-delay="3"><img src="img/floor-exterior.jpg" alt="Atlas Ardmore plant — sealant tower and outdoor piping"></figure>
+      <figure data-reveal data-delay="4"><img src="img/floor-rolls.jpg" alt="Fiberglass mat rolls — the raw stock"></figure>
+      <figure data-reveal data-delay="5"><img src="img/floor-blend.jpg" alt="Operator at the blend control station"></figure>
+      <figure data-reveal data-delay="6"><img src="img/floor-line.jpg" alt="The production line and conveyor"></figure>
     </div>
     <p class="floor-cap" data-reveal>Frames from the Atlas Roofing plant · Ardmore, OK</p>
   </div>
-</section>
 
-<!-- 07 HOW WE MAKE IT -->
-<section class="section journey">
-  <div class="container">
-    <div class="sec-head center">
-      <div class="eyebrow" data-reveal>How we make it</div>
-      <h2 class="display-sm" data-reveal data-d="1">From the floor to the <em>onboarding room</em>.</h2>
+  <!-- 09 HOW WE MAKE IT -->
+  <div class="slide">
+    <span class="slide-num">09</span>
+    <div class="eyebrow" data-reveal>How we make it</div>
+    <div class="display-sm" data-reveal data-delay="1">From the floor to the <em>onboarding room.</em></div>
+    <div class="funnel-steps">
+      <div class="funnel-step" data-reveal data-delay="2"><div class="funnel-step-num">01</div><div class="funnel-step-title">Discovery &amp; scripting</div><div class="funnel-step-body">Interviews with the people who've lived it; a storyboard that's punchy, never padded.</div></div>
+      <div class="funnel-step" data-reveal data-delay="3"><div class="funnel-step-num">02</div><div class="funnel-step-title">On-location shoot</div><div class="funnel-step-body">A few production days in Ardmore — the line running, the leadership voices, the faces.</div></div>
+      <div class="funnel-step" data-reveal data-delay="4"><div class="funnel-step-num">03</div><div class="funnel-step-title">Drone &amp; animation</div><div class="funnel-step-body">Aerials for scale, custom animation that makes the process easy to follow.</div></div>
+      <div class="funnel-step" data-reveal data-delay="5"><div class="funnel-step-num">04</div><div class="funnel-step-title">Edit &amp; score</div><div class="funnel-step-body">Cut for energy and warmth — engaging, never corny — with music that holds attention.</div></div>
+      <div class="funnel-step" data-reveal data-delay="6"><div class="funnel-step-num">05</div><div class="funnel-step-title">Delivery</div><div class="funnel-step-body">Five finished films, ready for the onboarding-room TV — yours to keep and reuse.</div></div>
     </div>
-    <div class="jsteps">
-      <div class="jstep" data-reveal><div class="n">i</div><h4>Discovery &amp; scripting</h4><p>We sit with you and Kayla, interview the people who've lived it, and shape a storyboard — punchy, never padded.</p></div>
-      <div class="jstep" data-reveal data-d="1"><div class="n">ii</div><h4>On-location shoot</h4><p>A few production days in Ardmore: the line running, the leadership voices, the faces that make this plant what it is.</p></div>
-      <div class="jstep" data-reveal data-d="2"><div class="n">iii</div><h4>Drone &amp; animation</h4><p>Aerials that give scale, and custom animation that turns the process into something a new hire can actually follow.</p></div>
-      <div class="jstep" data-reveal data-d="3"><div class="n">iv</div><h4>Edit &amp; score</h4><p>Cut for energy and warmth — engaging, never corny — with music and pacing that hold attention start to finish.</p></div>
-      <div class="jstep" data-reveal data-d="4"><div class="n">v</div><h4>Delivery</h4><p>Five finished films, ready for the onboarding-room TV — and yours to keep and reuse.</p></div>
+    <div class="logo-bar" data-reveal data-delay="7">
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
   </div>
-</section>
 
-<!-- 08 TIMELINE -->
-<section class="section timeline">
-  <div class="container">
-    <div class="sec-head">
-      <div class="eyebrow" data-reveal>The timeline</div>
-      <h2 class="display-sm" data-reveal data-d="1">A focused production, not a <em>six-month</em> ordeal.</h2>
+  <!-- 10 TIMELINE -->
+  <div class="slide slide--wash">
+    <span class="slide-num">10</span>
+    <div class="eyebrow" data-reveal>The timeline</div>
+    <div class="display-sm" data-reveal data-delay="1">A focused production,<br>not a <em>six-month ordeal.</em></div>
+    <div class="timeline">
+      <div class="timeline-item" data-reveal data-delay="2"><div class="timeline-day">Weeks 1–2</div><div><div class="timeline-title">Discovery &amp; scripts</div><div class="timeline-desc">Interviews, storyboards, and shot lists — shaped and approved together.</div></div></div>
+      <div class="timeline-item" data-reveal data-delay="3"><div class="timeline-day">Weeks 3–4</div><div><div class="timeline-title">Production</div><div class="timeline-desc">On-location shoot days in Ardmore, including aerial drone.</div></div></div>
+      <div class="timeline-item" data-reveal data-delay="4"><div class="timeline-day">Weeks 5–7</div><div><div class="timeline-title">Post &amp; animation</div><div class="timeline-desc">Edit, custom animation, scoring, and first cuts for review.</div></div></div>
+      <div class="timeline-item" data-reveal data-delay="5"><div class="timeline-day">Weeks 8–9</div><div><div class="timeline-title">Review &amp; delivery</div><div class="timeline-desc">Your notes with Kayla, final polish, delivered ready to play.</div></div></div>
     </div>
-    <div class="tl">
-      <div class="tl-step" data-reveal><div class="w">Weeks 1–2</div><h4>Discovery &amp; scripts</h4><p>Interviews, storyboards, and shot lists — shaped and approved together.</p></div>
-      <div class="tl-step" data-reveal data-d="1"><div class="w">Weeks 3–4</div><h4>Production</h4><p>On-location shoot days in Ardmore, including aerial drone.</p></div>
-      <div class="tl-step" data-reveal data-d="2"><div class="w">Weeks 5–7</div><h4>Post &amp; animation</h4><p>Edit, custom animation, scoring, and first cuts for review.</p></div>
-      <div class="tl-step" data-reveal data-d="3"><div class="w">Weeks 8–9</div><h4>Review &amp; delivery</h4><p>Your notes with Kayla, final polish, delivered ready to play.</p></div>
+    <p class="timeline-note" data-reveal>With just you and Kayla approving — no layers of corporate sign-off — this moves at the pace of a decision, not a committee.</p>
+    <div class="logo-bar" data-reveal>
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
     </div>
-    <p class="tl-note" data-reveal>With just you and Kayla approving — no layers of corporate sign-off — this moves at the pace of a decision, not a committee.</p>
   </div>
-</section>
 
-<!-- 09 THE INVESTMENT -->
-<section class="section" id="invest">
-  <div class="container">
-    <div class="sec-head center">
-      <div class="eyebrow" data-reveal>The investment</div>
-      <h2 class="display-sm" data-reveal data-d="1">One series. Built to last <em>years</em>.</h2>
-    </div>
-    <div class="invest-wrap">
-      <div class="price" data-reveal>
-        <div class="k">Complete Onboarding Film Series</div>
-        <div class="name">Five Films</div>
-        <div class="amt">$75,000</div>
-        <div class="per">One-time · all-inclusive</div>
-        <div class="desc">Everything it takes to bring all five films to life — from the first interview to the finished cut on your onboarding-room screen.</div>
-        <ul>
-          <li>Five finished films, 2–5 minutes each</li>
-          <li>On-location production days in Ardmore</li>
-          <li>Aerial drone cinematography</li>
-          <li>Custom animation for the process film</li>
-          <li>Interviews, scripting &amp; storyboarding</li>
-          <li>Full edit, scoring &amp; revisions</li>
-          <li>Full ownership &amp; usage rights — yours to keep and reuse for years</li>
-        </ul>
-      </div>
+  <!-- 11 THE INVESTMENT -->
+  <div class="slide">
+    <span class="slide-num">11</span>
+    <div class="eyebrow" data-reveal>The investment</div>
+    <div class="display-sm" data-reveal data-delay="1">One series. Built to last <em>years.</em></div>
+    <div class="price-block" data-reveal data-delay="2">
+      <div class="price-k">Complete Onboarding Film Series</div>
+      <div class="price-name">Five Films</div>
+      <div class="price-amt">$75,000</div>
+      <div class="price-per">One-time · all-inclusive</div>
+      <div class="price-desc">Everything it takes to bring all five films to life — from the first interview to the finished cut on your onboarding-room screen.</div>
+      <ul class="price-list">
+        <li>Five finished films, 2–5 minutes each</li>
+        <li>On-location production days in Ardmore</li>
+        <li>Aerial drone cinematography</li>
+        <li>Custom animation for the process film</li>
+        <li>Interviews, scripting &amp; storyboarding</li>
+        <li>Full edit, scoring &amp; revisions</li>
+        <li>Full ownership &amp; usage rights — yours to keep and reuse for years</li>
+      </ul>
     </div>
     <p class="price-note" data-reveal>A great first impression is the cheapest retention there is. Do it once, done right, and the same five films welcome every hire for years — a first day you never have to make twice.</p>
   </div>
-</section>
 
-<!-- 10 CLOSE -->
-<section class="section dark" id="next">
-  <div class="container">
+  <!-- 12 NEXT STEPS -->
+  <div class="slide slide--dark">
+    <span class="slide-num">12</span>
     <div class="eyebrow" data-reveal>Next steps</div>
-    <h2 class="display" data-reveal data-d="1">Let's make the <em>first day</em> count.</h2>
+    <div class="display" data-reveal data-delay="1">Let's make the <em>first day</em> count.</div>
     <ol class="steps">
-      <li data-reveal><span class="sn">i</span><span class="st"><b>Agreement &amp; scope</b> confirmed, and a shoot window set.</span><span class="who">Hallpass</span></li>
-      <li data-reveal><span class="sn">ii</span><span class="st"><b>Voices lined up</b> — Rex on camera, plus the sixty-year and forty-four-year veterans and their archival photos.</span><span class="who">Atlas</span></li>
-      <li data-reveal><span class="sn">iii</span><span class="st"><b>Material pulled</b> — KPI highlights and plant history to draw from.</span><span class="who">Atlas</span></li>
-      <li data-reveal><span class="sn">iv</span><span class="st"><b>We build the storyboard</b> and start rolling in Ardmore.</span><span class="who">Hallpass</span></li>
+      <li data-reveal data-delay="2"><span class="sn">i</span><span class="st"><b>Agreement &amp; scope</b> confirmed, and a shoot window set.</span><span class="who">Hallpass</span></li>
+      <li data-reveal data-delay="3"><span class="sn">ii</span><span class="st"><b>Voices lined up</b> — Rex on camera, plus the sixty-year and forty-four-year veterans and their archival photos.</span><span class="who">Atlas</span></li>
+      <li data-reveal data-delay="4"><span class="sn">iii</span><span class="st"><b>Material pulled</b> — KPI highlights and plant history to draw from.</span><span class="who">Atlas</span></li>
+      <li data-reveal data-delay="5"><span class="sn">iv</span><span class="st"><b>We build the storyboard</b> and start rolling in Ardmore.</span><span class="who">Hallpass</span></li>
     </ol>
     <p class="closeline" data-reveal>A welcome worth remembering — for a plant that's earned it.</p>
-    <a class="pill pill--light" href="mailto:ryan@hallpassdigital.com?subject=Atlas%20Roofing%20%E2%80%94%20Onboarding%20Films" data-reveal>Start the conversation</a>
-    <div class="logo-bar" data-reveal>
-      <img src="https://ryan-hallpass.github.io/ardmore-chamber/hallpass_temp_logo.png" alt="Hallpass Digital" onerror="this.outerHTML='<span class=&quot;lf&quot;>Hallpass</span>'">
-      <span>Hallpass Digital · Prepared for Atlas Roofing, Ardmore · 2026</span>
+    <a class="cta-pill" href="mailto:ryan@hallpassdigital.com?subject=Atlas%20Roofing%20%E2%80%94%20Onboarding%20Films" data-reveal>Start the conversation</a>
+    <div class="lockup" data-reveal>
+      <img class="lk-atlas" src="atlas-logo.png" alt="Atlas Roofing">
+      <span class="lk-x">×</span>
+      <img class="lk-hp" src="hallpass-logo.png" alt="Hallpass Digital">
+      <span class="lk-cap">Prepared for Atlas Roofing · Ardmore · 2026</span>
     </div>
   </div>
-</section>
 
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
+// Reveal on scroll
 (function(){
   var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } });
-  }, { threshold:0.12, rootMargin:'0px 0px -50px 0px' });
-  document.querySelectorAll('[data-reveal]').forEach(function(el){ if(el.closest('.cover')) return; io.observe(el); });
-  setTimeout(function(){ document.querySelectorAll('.cover [data-reveal]').forEach(function(el){ el.classList.add('vis'); }); }, 140);
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ if(el.closest('.cover-hero')) return; io.observe(el); });
+  setTimeout(function(){ document.querySelectorAll('.cover-hero [data-reveal]').forEach(function(el){ el.classList.add('is-in'); }); }, 140);
 })();
+// Sticky journey timeline
 (function(){
-  var nav = document.getElementById('nav');
-  function s(){ nav.classList.toggle('scrolled', window.scrollY > 80); }
-  window.addEventListener('scroll', s, { passive:true }); s();
+  if(!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var section = document.querySelector('.journey-section');
+  var pinned = document.querySelector('.journey-pinned');
+  var fill = document.querySelector('.journey-fill');
+  var dots = document.querySelectorAll('.journey-dot');
+  var labels = document.querySelectorAll('.journey-marker-label');
+  var stages = document.querySelectorAll('.journey-stage');
+  var n = stages.length;
+  if(!section || !pinned || !n) return;
+  section.style.height = (n * 100) + 'vh';
+  var thresholds = [], dotPos = [];
+  for(var i=0;i<n;i++){ thresholds.push(i/n); dotPos.push(i/(n-1)); }
+  ScrollTrigger.create({
+    trigger: section, start:'top top', end:'bottom bottom', pin: pinned,
+    onUpdate: function(self){
+      var p = self.progress;
+      fill.style.width = (p*100) + '%';
+      var active = 0;
+      for(var i=n-1;i>=0;i--){ if(p >= thresholds[i]){ active = i; break; } }
+      for(var i=0;i<n;i++){
+        dots[i].classList.toggle('is-active', p >= dotPos[i] - 0.001);
+        labels[i].classList.toggle('is-active', i === active);
+        stages[i].classList.toggle('is-active', i === active);
+      }
+    }
+  });
 })();
 </script>
 </body>
