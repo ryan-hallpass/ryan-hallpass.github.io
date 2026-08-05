@@ -11,14 +11,14 @@
 <meta property="og:description" content="Welcome to the house. A documentary onboarding film series for the Ardmore plant — five short films, beautifully shot, built to last for years.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ryan-hallpass.github.io/atlas-roofing/">
-<meta property="og:image" content="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=70">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://ryan-hallpass.github.io/atlas-roofing/img/hero.jpg">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1125">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Atlas Roofing × Hallpass Digital">
 <meta name="twitter:description" content="A documentary onboarding film series for the Ardmore plant.">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=70">
-<!-- Industrial photography is placeholder imagery (Unsplash), swappable for Atlas's own shoot footage. Cover/band have dark bg-color fallbacks so the deck stays cinematic even if an image fails to load. -->
+<meta name="twitter:image" content="https://ryan-hallpass.github.io/atlas-roofing/img/hero.jpg">
+<!-- Imagery is real Atlas Ardmore plant photography (img/), provided by the client. Cover/band retain dark bg-color fallbacks. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -69,8 +69,8 @@
 
   /* COVER */
   .cover{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:150px 6vw 90px; position:relative; color:var(--ivory); background-color:#161310;
-    background-image:linear-gradient(180deg, rgba(10,8,6,0.80) 0%, rgba(10,8,6,0.62) 42%, rgba(10,8,6,0.93) 100%), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1900&q=74');
-    background-size:cover; background-position:center 50%; }
+    background-image:linear-gradient(180deg, rgba(8,6,4,0.84) 0%, rgba(8,6,4,0.70) 44%, rgba(8,6,4,0.95) 100%), url('img/hero.jpg');
+    background-size:cover; background-position:center 46%; }
   .cover-inner{ max-width:900px; position:relative; z-index:2; }
   .cover .eyebrow{ color:rgba(250,247,240,0.85); }
   .cover h1{ font-family:var(--serif); font-weight:300; font-size:clamp(42px,7vw,84px); line-height:1.05; letter-spacing:-0.01em; margin:26px 0 0; text-wrap:balance; text-shadow:0 2px 36px rgba(0,0,0,0.45); }
@@ -121,14 +121,26 @@
 
   /* IMAGE BAND */
   .band{ height:60vh; min-height:420px; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--ivory); position:relative; background-color:#161310;
-    background-image:linear-gradient(rgba(18,14,11,0.56),rgba(18,14,11,0.56)), url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1900&q=74');
-    background-size:cover; background-position:center 55%; }
+    background-image:linear-gradient(rgba(12,9,7,0.60),rgba(12,9,7,0.66)), url('img/coating.jpg');
+    background-size:cover; background-position:center 40%; }
   .band .q{ font-family:var(--serif); font-weight:300; font-style:italic; font-size:clamp(26px,3.6vw,40px); line-height:1.36; max-width:820px; padding:0 24px; }
   .band .qa{ display:block; margin-top:26px; font-family:var(--sans); font-style:normal; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--amber-glow); }
 
   /* APPROACH */
   .callout{ margin-top:44px; padding:32px 34px; border:1px solid var(--line); border-left:2px solid var(--amber); background:var(--paper); max-width:760px; }
   .callout .ct{ font-family:var(--serif); font-style:italic; font-size:clamp(19px,2.2vw,24px); line-height:1.4; color:var(--ink); }
+
+  /* FLOOR MOSAIC (dark) */
+  .floor{ background:var(--ink-2); color:var(--ivory); }
+  .floor .eyebrow{ color:var(--amber-light); }
+  .floor .display-sm em{ color:var(--amber-light); }
+  .floor .lead{ color:rgba(250,247,240,0.72); }
+  .floor-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:56px; }
+  @media (max-width:820px){ .floor-grid{ grid-template-columns:1fr 1fr; } }
+  .floor-grid figure{ position:relative; overflow:hidden; aspect-ratio:3/4; border:1px solid rgba(250,247,240,0.10); }
+  .floor-grid img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.96) contrast(1.02); transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .floor-grid figure:hover img{ transform:scale(1.05); }
+  .floor-cap{ margin-top:30px; font-family:var(--serif); font-style:italic; font-size:clamp(14px,1.6vw,18px); color:rgba(250,247,240,0.58); }
 
   /* JOURNEY (production process) */
   .journey{ background:var(--paper); }
@@ -329,6 +341,24 @@
     <div class="callout" data-reveal>
       <p class="ct">Shot well and grounded in what's real, these films don't go stale. This isn't a reel you re-do every time something changes — it's an asset the Ardmore plant welcomes people with for years.</p>
     </div>
+  </div>
+</section>
+
+<!-- 06b STRAIGHT FROM THE FLOOR -->
+<section class="section floor">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow" data-reveal>Straight from your floor</div>
+      <h2 class="display-sm" data-reveal data-d="1">No stock. No staging. <em>This</em> is what we'd be shooting.</h2>
+      <p class="lead" data-reveal data-d="2" style="margin-top:20px; max-width:660px;">These are real frames from the Ardmore plant — the line, the raw stock, the control room, the people. The material is already cinematic. Our job is to light it, shoot it, and cut it so a new hire feels it on their first day.</p>
+    </div>
+    <div class="floor-grid">
+      <figure data-reveal><img src="img/floor-exterior.jpg" alt="Atlas Ardmore plant — sealant tower and outdoor piping" loading="lazy"></figure>
+      <figure data-reveal data-d="1"><img src="img/floor-rolls.jpg" alt="Fiberglass mat rolls — the raw stock the line runs on" loading="lazy"></figure>
+      <figure data-reveal data-d="2"><img src="img/floor-blend.jpg" alt="Operator at the blend control station" loading="lazy"></figure>
+      <figure data-reveal data-d="3"><img src="img/floor-line.jpg" alt="The production line and conveyor in motion" loading="lazy"></figure>
+    </div>
+    <p class="floor-cap" data-reveal>Frames from the Atlas Roofing plant · Ardmore, OK</p>
   </div>
 </section>
 
