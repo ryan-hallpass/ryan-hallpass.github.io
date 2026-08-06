@@ -119,12 +119,15 @@
   .funnel-step-body{ font-size:12px; line-height:1.5; color:var(--ink); opacity:0.62; }
 
   /* FLOOR MOSAIC */
-  .floor-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:40px; }
-  @media (max-width:820px){ .floor-grid{ grid-template-columns:1fr 1fr; } }
-  .floor-grid figure{ position:relative; overflow:hidden; aspect-ratio:3/4; border:1px solid rgba(242,239,232,0.10); border-radius:4px; }
-  .floor-grid img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
-  .floor-grid figure:hover img{ transform:scale(1.05); }
-  .floor-cap{ margin-top:26px; font-family:var(--serif); font-style:italic; font-size:15px; opacity:0.6; }
+  /* FILM FORMATS */
+  .format-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px 28px; margin-top:44px; }
+  @media (max-width:820px){ .format-grid{ grid-template-columns:1fr; } }
+  .format{ display:flex; flex-direction:column; }
+  .format-embed{ position:relative; width:100%; padding-bottom:56.25%; border-radius:6px; overflow:hidden; background:#000; border:1px solid rgba(242,239,232,0.12); }
+  .format-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .format-name{ font-family:var(--serif); font-size:20px; font-weight:400; margin-top:16px; }
+  .format-name .fk{ font-family:var(--sans); font-size:10px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--red-light); display:block; margin-bottom:6px; }
+  .format-desc{ font-size:13px; line-height:1.55; opacity:0.72; margin-top:6px; max-width:460px; }
 
   /* CALLOUT */
   .callout{ margin-top:36px; padding:28px 32px; border-left:2px solid var(--red); background:rgba(242,239,232,0.06); max-width:760px; }
@@ -287,7 +290,7 @@
   <div class="slide">
     <span class="slide-num">05</span>
     <div class="eyebrow" data-reveal>The series</div>
-    <div class="display-sm" data-reveal data-delay="1">Five short films.<br>Two to five minutes each — <em>punchy, not padded.</em></div>
+    <div class="display-sm" data-reveal data-delay="1">Five short films.<br>Three to five minutes <em>each.</em></div>
     <div class="films-intro">
       <div class="film-card" data-reveal data-delay="2"><div class="fnum">I</div><div class="ftitle">The History</div><div class="fbody">Where Atlas came from — and where the Ardmore plant fits in it. Big Chief to Georgia Pacific to Atlas; six decades on this ground.</div><span class="ftag">Documentary</span></div>
       <div class="film-card" data-reveal data-delay="3"><div class="fnum">II</div><div class="ftitle">The Process</div><div class="fbody">Granules in, shingles out — and where your hands fit in the whole, from glass mat to distributor.</div><span class="ftag">Live action · Drone · Animation</span></div>
@@ -324,7 +327,7 @@
             <div class="journey-stage-num">Film I</div>
             <div class="journey-stage-headline">You're joining something with roots.</div>
             <div class="journey-stage-body">The Ardmore plant's own story — Big Chief to Georgia Pacific to Atlas, six decades on this ground, "the little shingle plant that could." A new hire learns on day one that they're stepping into a legacy, not just a job.</div>
-            <div class="journey-stage-spec">Documentary · archival photos · 2–5 min</div>
+            <div class="journey-stage-spec">Documentary · archival photos · 3–5 min</div>
           </div>
           <div class="journey-stage-image"><img src="img/floor-exterior.jpg" alt="Atlas Ardmore plant exterior"></div>
         </div>
@@ -333,7 +336,7 @@
             <div class="journey-stage-num">Film II</div>
             <div class="journey-stage-headline">Granules in, shingles out — and where your hands fit in.</div>
             <div class="journey-stage-body">The line from glass mat and coating through cutting and packaging to the distributor, so every new hire understands their part is contributing to something bigger. Live action, drone aerials, and custom animation make the flow easy to follow.</div>
-            <div class="journey-stage-spec">Live action · drone · animation · 2–5 min</div>
+            <div class="journey-stage-spec">Live action · drone · animation · 3–5 min</div>
           </div>
           <div class="journey-stage-image"><img src="img/coating.jpg" alt="Coating rollers and steam on the line"></div>
         </div>
@@ -342,7 +345,7 @@
             <div class="journey-stage-num">Film III</div>
             <div class="journey-stage-headline">We send you home the same way you got here.</div>
             <div class="journey-stage-body">Brief but serious — lockout/tagout, pinch points, heights. Not the details, but the promise that Atlas invests in protecting you, because a respectful organization starts with safety. Sets up the full orientation without the eight-hour slideshow.</div>
-            <div class="journey-stage-spec">Documentary · on-floor · 2–5 min</div>
+            <div class="journey-stage-spec">Documentary · on-floor · 3–5 min</div>
           </div>
           <div class="journey-stage-image"><img src="img/floor-line.jpg" alt="The production line and conveyor"></div>
         </div>
@@ -351,7 +354,7 @@
             <div class="journey-stage-num">Film IV</div>
             <div class="journey-stage-headline">What Atlas commits to you.</div>
             <div class="journey-stage-body">A safe floor, fair pay that respects the work, and a real life outside of it — time for your family, and a clean, positive place to spend your day. The promise that turned this plant around, said out loud in the voices of the people who mean it.</div>
-            <div class="journey-stage-spec">Documentary · leadership & employee voices · 2–5 min</div>
+            <div class="journey-stage-spec">Documentary · leadership & employee voices · 3–5 min</div>
           </div>
           <div class="journey-stage-image"><img src="img/floor-rolls.jpg" alt="Worker beside fiberglass mat rolls"></div>
         </div>
@@ -360,7 +363,7 @@
             <div class="journey-stage-num">Film V</div>
             <div class="journey-stage-headline">You're joining a plant that's winning.</div>
             <div class="journey-stage-body">How far Ardmore has come: records broken, the cleanest shingle plant in the whole of Atlas, downtime cut by more than half, a floor that respects its people. Told with pride, so a new hire feels it on their first day.</div>
-            <div class="journey-stage-spec">Documentary · KPIs & the people behind them · 2–5 min</div>
+            <div class="journey-stage-spec">Documentary · KPIs & the people behind them · 3–5 min</div>
           </div>
           <div class="journey-stage-image"><img src="img/floor-blend.jpg" alt="Operator at the blend control station"></div>
         </div>
@@ -377,7 +380,7 @@
     <span class="slide-num">07</span>
     <div class="eyebrow" data-reveal>The approach</div>
     <div class="display-sm" data-reveal data-delay="1">Documentary — not a <em>training video.</em></div>
-    <p class="body" data-reveal data-delay="2">The moment a new hire hears "training video," they brace for stilted performances and eighties stock music. We go the other way: real people, the real floor, shot with care and cut for energy. It's the difference between something people endure and something they remember — and because it's built on what's genuinely true here, it earns their trust instead of testing their patience.</p>
+    <p class="body" data-reveal data-delay="2">The moment a new hire hears "training video," they brace for stilted performances and nineties stock music. We go the other way: real people, the real floor, shot with care and cut for energy. It's the difference between something people endure and something they remember — and because it's built on what's genuinely true here, it earns their trust instead of testing their patience.</p>
     <div class="callout" data-reveal data-delay="3">
       <p class="ct">Shot well and grounded in what's real, these films don't go stale. This isn't a reel you re-do every time something changes — it's an asset the Ardmore plant welcomes people with for years.</p>
     </div>
@@ -387,19 +390,38 @@
     </div>
   </div>
 
-  <!-- 08 STRAIGHT FROM THE FLOOR -->
+  <!-- 08 FILM FORMATS -->
   <div class="slide slide--dark">
     <span class="slide-num">08</span>
-    <div class="eyebrow" data-reveal>Straight from your floor</div>
-    <div class="display-sm" data-reveal data-delay="1">No stock. No staging.<br><em>This</em> is what we'd be shooting.</div>
-    <p class="body" data-reveal data-delay="2">These are real frames from the Ardmore plant — the line, the raw stock, the control room, the people. The material is already cinematic. Our job is to light it, shoot it, and cut it so a new hire feels it on their first day.</p>
-    <div class="floor-grid">
-      <figure data-reveal data-delay="3"><img src="img/floor-exterior.jpg" alt="Atlas Ardmore plant — sealant tower and outdoor piping"></figure>
-      <figure data-reveal data-delay="4"><img src="img/floor-rolls.jpg" alt="Fiberglass mat rolls — the raw stock"></figure>
-      <figure data-reveal data-delay="5"><img src="img/floor-blend.jpg" alt="Operator at the blend control station"></figure>
-      <figure data-reveal data-delay="6"><img src="img/floor-line.jpg" alt="The production line and conveyor"></figure>
+    <div class="eyebrow" data-reveal>How we'll tell it</div>
+    <div class="display-sm" data-reveal data-delay="1">A range of formats, matched to <em>each story.</em></div>
+    <p class="body" data-reveal data-delay="2">No single technique carries all five films. We draw on documentary-style interviews, archival footage, drone videography, and custom animation — choosing the right approach for each moment so every video lands. A few examples from past Hallpass work:</p>
+    <div class="format-grid">
+      <figure class="format" data-reveal data-delay="2">
+        <div class="format-embed"><iframe src="https://player.vimeo.com/video/1110312496" title="Documentary-style example" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <figcaption class="format-name"><span class="fk">Documentary-style interviews</span>Real voices, straight to camera</figcaption>
+        <p class="format-desc">Leadership and the people on the line, in their own words — the backbone of the History, Safety, Promise, and Turnaround films.</p>
+      </figure>
+      <figure class="format" data-reveal data-delay="3">
+        <div class="format-embed"><iframe src="https://www.youtube.com/embed/mT84-TMIlxU" title="Archival footage example" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <figcaption class="format-name"><span class="fk">Archival footage</span>Six decades, brought back to life</figcaption>
+        <p class="format-desc">Old photos and footage of the plant and its people — the connective tissue of the History film.</p>
+      </figure>
+      <figure class="format" data-reveal data-delay="4">
+        <div class="format-embed"><iframe src="https://videos.cdn.spotlightr.com/watch/MjAwOTYwNA==?fallback=true" title="Drone videography example" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+        <figcaption class="format-name"><span class="fk">Drone videography</span>Scale you can feel</figcaption>
+        <p class="format-desc">Aerials that establish the facility and follow the line — giving a new hire the lay of the land in the Process film.</p>
+      </figure>
+      <figure class="format" data-reveal data-delay="5">
+        <div class="format-embed"><iframe src="https://videos.cdn.spotlightr.com/watch/MjAwOTYwNw==?fallback=true" title="Animation example" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+        <figcaption class="format-name"><span class="fk">Custom animation</span>The parts a camera can't reach</figcaption>
+        <p class="format-desc">Turning the flow from granules to finished shingle into something a new hire can actually follow.</p>
+      </figure>
     </div>
-    <p class="floor-cap" data-reveal>Frames from the Atlas Roofing plant · Ardmore, OK</p>
+    <div class="logo-bar" data-reveal>
+      <img src="hallpass-logo.png" alt="Hallpass Digital">
+      <span>Atlas Roofing · Ardmore</span>
+    </div>
   </div>
 
   <!-- 09 HOW WE MAKE IT -->
@@ -450,7 +472,7 @@
       <div class="price-per">One-time · all-inclusive</div>
       <div class="price-desc">Everything it takes to bring all five films to life — from the first interview to the finished cut on your onboarding-room screen.</div>
       <ul class="price-list">
-        <li>Five finished films, 2–5 minutes each</li>
+        <li>Five finished films, 3–5 minutes each</li>
         <li>On-location production days in Ardmore</li>
         <li>Aerial drone cinematography</li>
         <li>Custom animation for the process film</li>
