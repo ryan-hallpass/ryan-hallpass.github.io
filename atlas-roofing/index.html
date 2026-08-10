@@ -179,9 +179,9 @@
   .lockup .lk-cap{ font-size:10px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.4; margin-left:auto; }
 
   /* JOURNEY (sticky scroll timeline) */
-  .journey-section{ position:relative; width:100%; background:var(--ink); color:var(--cream); overflow:hidden; }
+  .journey-section{ position:relative; width:100%; background:var(--ink); color:var(--cream); }
   .journey-section::before{ content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(242,239,232,0.04) 1px, transparent 1px); background-size:24px 24px; pointer-events:none; }
-  .journey-pinned{ position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(40px,7vw,96px) clamp(32px,8vw,120px); }
+  .journey-pinned{ position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(40px,7vw,96px) clamp(32px,8vw,120px); will-change:transform; backface-visibility:hidden; }
   .journey-header{ position:relative; z-index:1; }
   .journey-track{ position:relative; height:3px; background:rgba(242,239,232,0.1); border-radius:2px; margin-top:34px; }
   .journey-fill{ position:absolute; left:0; top:0; height:100%; width:0%; background:var(--red-light); border-radius:2px; will-change:width; }
@@ -542,6 +542,7 @@
   for(var i=0;i<n;i++){ thresholds.push(i/n); dotPos.push(i/(n-1)); }
   ScrollTrigger.create({
     trigger: section, start:'top top', end:'bottom bottom', pin: pinned,
+    anticipatePin: 1, invalidateOnRefresh: true,
     onUpdate: function(self){
       var p = self.progress;
       fill.style.width = (p*100) + '%';
@@ -554,6 +555,9 @@
       }
     }
   });
+  // Recalculate pin positions once webfonts settle (prevents early/late pin from reflow)
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ ScrollTrigger.refresh(); }); }
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
 })();
 </script>
 </body>
