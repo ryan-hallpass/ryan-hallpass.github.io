@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hallpass × Ardmore Chamber — August Check-In</title>
+<meta name="description" content="Hallpass Digital check-in for the Ardmore Chamber of Commerce: Business Spotlights for every member, the recruitment brochure, member feedback, and making the directory a destination." />
+
+<meta property="og:title" content="Hallpass × Ardmore Chamber — August Check-In" />
+<meta property="og:description" content="Business Spotlights for all 578 members, the recruitment brochure, member feedback, and making the directory a destination. By Hallpass Digital." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ryan-hallpass.github.io/townspark-chamber-update-aug/" />
+<meta property="og:image" content="https://ryan-hallpass.github.io/townspark-chamber-update-aug/img/directory.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F2EFE8;
+    --cream-2: #E8E3D6;
+    --ink: #1A1A18;
+    --ink-2: #34322C;
+    --ink-soft: #6A655B;
+    --sage: #6E9472;
+    --sage-deep: #2F4A34;
+    --terra: #C4794A;
+    --rule: #D9D3C5;
+    --rule-soft: #E6E0D2;
+
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', ui-monospace, monospace;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: #0C0E0C;
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    overflow-x: hidden; overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    height: 100vh;
+  }
+
+  /* ===== 16:9 SLIDE FRAME ===== */
+  .slide {
+    position: relative; width: 100vw; height: 100vh; min-height: 100vh;
+    scroll-snap-align: start; scroll-snap-stop: always;
+    display: flex; align-items: center; justify-content: center;
+    background: #0C0E0C; overflow: hidden;
+  }
+  .frame {
+    position: relative;
+    width: min(96vw, calc((100vh - 32px) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    background: var(--cream); color: var(--ink);
+    overflow: hidden; container-type: inline-size;
+    box-shadow: 0 24px 64px -32px rgba(0,0,0,0.55);
+  }
+  .frame--sage { background: var(--sage-deep); color: var(--cream); }
+  .frame--ink { background: var(--ink); color: var(--cream); }
+  .frame__inner {
+    position: absolute; inset: 0;
+    padding: clamp(30px, 4.4cqi, 70px);
+    display: flex; flex-direction: column;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  .eyebrow {
+    font-family: var(--mono); font-size: clamp(9px, 0.95cqi, 13px);
+    font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sage); line-height: 1;
+  }
+  .frame--sage .eyebrow, .frame--ink .eyebrow { color: var(--terra); }
+  .h1 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(28px, 5.4cqi, 78px); line-height: 1.02;
+    letter-spacing: -0.015em; margin: 0; color: inherit;
+  }
+  .h2 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(22px, 3.5cqi, 50px); line-height: 1.06;
+    letter-spacing: -0.01em; margin: 0; color: inherit;
+  }
+  .h3 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(16px, 2.1cqi, 28px); line-height: 1.15; margin: 0; color: inherit;
+  }
+  .lead {
+    font-size: clamp(13px, 1.45cqi, 21px); line-height: 1.45;
+    color: var(--ink-2); max-width: 60ch; margin: 0;
+  }
+  .frame--sage .lead, .frame--ink .lead { color: rgba(242,239,232,0.86); }
+  .body {
+    font-size: clamp(11px, 1.15cqi, 15px); line-height: 1.5;
+    color: var(--ink-2); margin: 0; max-width: 64ch;
+  }
+  .frame--sage .body, .frame--ink .body { color: rgba(242,239,232,0.78); }
+  .soft { color: var(--ink-soft); }
+  .frame--sage .soft, .frame--ink .soft { color: rgba(242,239,232,0.6); }
+  .figure {
+    font-family: var(--serif); font-weight: 500; line-height: 0.9;
+    letter-spacing: -0.03em; color: var(--ink); margin: 0;
+    font-feature-settings: "lnum","tnum";
+  }
+  .figure--sage { color: var(--sage); } .figure--terra { color: var(--terra); }
+  .mono { font-family: var(--mono); }
+  em.it { font-style: italic; color: var(--terra); font-weight: 500; }
+
+  .rule { height: 1px; background: var(--rule); border: 0; margin: 0; width: 100%; }
+  .frame--sage .rule, .frame--ink .rule { background: rgba(242,239,232,0.18); }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px;
+    border: 1px solid var(--rule); border-radius: 999px;
+    font-family: var(--mono); font-size: clamp(9px, 0.9cqi, 12px);
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+    background: rgba(255,255,255,0.4);
+  }
+  .pill--sage { border-color: var(--sage); color: var(--sage-deep); background: rgba(110,148,114,0.1); }
+
+  a { color: inherit; }
+  .lnk {
+    font-family: var(--mono); font-size: clamp(9.5px, 1cqi, 13px);
+    color: var(--sage-deep); text-decoration: underline; text-decoration-color: var(--sage);
+    text-underline-offset: 2px; word-break: break-all;
+  }
+  .frame--sage .lnk, .frame--ink .lnk { color: var(--cream); text-decoration-color: var(--terra); }
+  .decgrid { display:grid; grid-template-columns:1fr 1fr; column-gap: clamp(24px,4cqi,64px); row-gap: 0; margin-top: clamp(16px,2.2cqi,30px); }
+  .declink { display:flex; flex-direction:column; gap:1px; padding: clamp(6px,0.85cqi,11px) 0; border-bottom:1px solid var(--rule-soft); text-decoration:none; transition: border-color 0.2s var(--ease); }
+  .declink:hover { border-bottom-color: var(--sage); }
+  .declink__n { font-family: var(--sans); font-weight:600; font-size: clamp(12px,1.3cqi,16px); color: var(--ink); line-height:1.25; }
+  .declink:hover .declink__n { color: var(--sage-deep); }
+  .declink__u { font-family: var(--mono); font-size: clamp(8.5px,0.82cqi,11px); color: var(--sage-deep); text-underline-offset:2px; word-break:break-all; }
+
+  /* ===== CORNER CHROME ===== */
+  .corner {
+    position: absolute; font-family: var(--mono);
+    font-size: clamp(8px, 0.8cqi, 11px); letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-soft); line-height: 1; z-index: 5;
+  }
+  .frame--sage .corner, .frame--ink .corner { color: rgba(242,239,232,0.5); }
+  .corner--tl { top: clamp(20px, 2.6cqi, 36px); left: clamp(30px, 4.4cqi, 70px); }
+  .corner--tr { top: clamp(20px, 2.6cqi, 36px); right: clamp(30px, 4.4cqi, 70px); text-align: right; }
+  .corner--br { bottom: clamp(20px, 2.6cqi, 36px); right: clamp(30px, 4.4cqi, 70px); text-align: right; }
+  .frame__inner--fnote { padding-bottom: clamp(78px, 8.6cqi, 136px); }
+  .fnote { position: absolute; left: clamp(30px,4.4cqi,70px); right: clamp(30px,4.4cqi,70px); bottom: clamp(18px,2.4cqi,32px); margin:0; font-family: var(--mono); font-size: clamp(8px,0.82cqi,11px); letter-spacing: 0.03em; color: var(--ink-soft); line-height: 1.45; }
+
+  /* ===== REVEAL ===== */
+  [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
+  [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+  [data-delay="1"]{transition-delay:80ms}[data-delay="2"]{transition-delay:160ms}
+  [data-delay="3"]{transition-delay:240ms}[data-delay="4"]{transition-delay:320ms}
+  [data-delay="5"]{transition-delay:400ms}[data-delay="6"]{transition-delay:480ms}
+  [data-delay="7"]{transition-delay:560ms}[data-delay="8"]{transition-delay:640ms}
+
+  /* ===== SIDE DOTS ===== */
+  .sidedots {
+    position: fixed; right: clamp(12px,1.4vw,24px); top: 50%; transform: translateY(-50%);
+    z-index: 50; display: flex; flex-direction: column; gap: 10px; padding: 10px 6px;
+  }
+  .sidedots__dot {
+    width: 5px; height: 5px; border-radius: 50%; background: rgba(242,239,232,0.28);
+    border: 0; padding: 0; cursor: pointer; transition: all 300ms var(--ease);
+  }
+  .sidedots__dot:hover { background: rgba(242,239,232,0.6); }
+  .sidedots__dot.is-active { background: var(--terra); transform: scale(1.5); }
+
+  /* ===== LAYOUT HELPERS ===== */
+  .center { height: 100%; display: flex; flex-direction: column; justify-content: center; gap: clamp(14px,2cqi,28px); }
+  .stack-sm { display: flex; flex-direction: column; gap: clamp(8px,1.1cqi,14px); }
+  .head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .flex1 { flex: 1; min-height: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px,2.6cqi,44px); }
+  .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,1.8cqi,26px); }
+
+  /* stat tiles */
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: clamp(18px,2.4cqi,32px); }
+  .stat { background: var(--cream); padding: clamp(16px,2.4cqi,32px); display: flex; flex-direction: column; gap: 10px; }
+  .stat__n { font-family: var(--serif); font-weight: 500; font-size: clamp(30px,5cqi,72px); line-height: 0.9; letter-spacing: -0.03em; color: var(--ink); }
+  .stat__l { font-family: var(--mono); font-size: clamp(8.5px,0.9cqi,11px); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.35; }
+
+  /* phone shots */
+  .phones { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2.4cqi,40px); align-items: center; flex: 1; min-height: 0; margin-top: clamp(14px,2cqi,26px); }
+  .phone { display: flex; flex-direction: column; align-items: center; gap: 10px; min-height: 0; height: 100%; justify-content: center; }
+  .phone img { height: 100%; max-height: clamp(220px,42cqi,560px); width: auto; object-fit: contain; border-radius: 14px; box-shadow: 0 16px 40px -20px rgba(0,0,0,0.5); display: block; }
+  .phone__cap { font-family: var(--mono); font-size: clamp(8.5px,0.9cqi,11px); letter-spacing: 0.06em; color: var(--ink-soft); text-transform: uppercase; text-align: center; }
+
+  /* screenshot panel */
+  .shot { width: 100%; height: 100%; object-fit: cover; object-position: top center; border: 1px solid var(--rule); display: block; }
+  .shot--fit { object-fit: contain; object-position: center; border: 0; }
+  .shot-wrap { position: relative; overflow: hidden; border-radius: 6px; min-height: 0; }
+
+  /* bullet list */
+  .blist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: clamp(9px,1.3cqi,16px); }
+  .blist li { font-size: clamp(11px,1.25cqi,16px); line-height: 1.4; color: var(--ink-2); padding-left: 20px; position: relative; }
+  .blist li::before { content: '→'; position: absolute; left: 0; color: var(--sage); font-family: var(--mono); }
+  .blist li strong { color: var(--ink); font-weight: 700; }
+  .frame--sage .blist li, .frame--ink .blist li { color: rgba(242,239,232,0.82); }
+  .frame--sage .blist li strong, .frame--ink .blist li strong { color: var(--cream); }
+  .frame--sage .blist li::before, .frame--ink .blist li::before { color: var(--terra); }
+
+  /* testimonial / feature cards */
+  .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); flex: 1; min-height: 0; margin-top: clamp(14px,2cqi,26px); }
+  .card { background: var(--cream); padding: clamp(13px,1.9cqi,26px); display: flex; flex-direction: column; gap: 7px; }
+  .card__tag { font-family: var(--mono); font-size: clamp(8px,0.82cqi,10.5px); letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); }
+  .card__name { font-family: var(--serif); font-weight: 600; font-size: clamp(14px,1.75cqi,23px); line-height: 1.1; color: var(--ink); }
+  .card__note { font-size: clamp(10px,1.05cqi,13.5px); line-height: 1.4; color: var(--ink-soft); }
+
+  /* two-col feature menu */
+  .menu { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px,1.4cqi,18px) clamp(20px,3cqi,52px); margin-top: clamp(14px,2cqi,26px); flex: 1; align-content: center; }
+  .menu-item { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: baseline; padding-bottom: clamp(8px,1.1cqi,14px); border-bottom: 1px solid var(--rule); }
+  .menu-item__mk { font-family: var(--mono); color: var(--sage); font-size: clamp(10px,1.1cqi,14px); }
+  .menu-item__t { font-size: clamp(11px,1.25cqi,16px); color: var(--ink); font-weight: 500; line-height: 1.3; }
+  .menu-item__t span { display: block; font-family: var(--mono); font-size: clamp(8px,0.82cqi,10.5px); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-top: 3px; font-weight: 400; }
+  .badge-built { display:inline-block; color: var(--sage-deep); border:1px solid var(--sage); border-radius: 999px; padding: 1px 7px; font-family: var(--mono); font-weight: 500; font-size: 0.62em; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: middle; }
+  /* dark-frame overrides for the feature menu (titles are near-black by default) */
+  .frame--sage .menu-item, .frame--ink .menu-item { border-bottom-color: rgba(242,239,232,0.18); }
+  .frame--sage .menu-item__t, .frame--ink .menu-item__t { color: var(--cream); }
+  .frame--sage .menu-item__t span, .frame--ink .menu-item__t span { color: rgba(242,239,232,0.55); }
+  .frame--sage .menu-item__mk, .frame--ink .menu-item__mk { color: var(--terra); }
+  .frame--sage .badge-built, .frame--ink .badge-built { color: var(--cream); border-color: var(--sage); }
+
+  /* cover */
+  .cover-inner { height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; font-family: var(--mono); font-size: clamp(9px,0.92cqi,12px); letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,239,232,0.7); }
+  .cover-mark { display:flex; align-items:center; gap:10px; }
+  .cover-mark::before { content:''; width:9px; height:9px; border:1px solid var(--terra); transform: rotate(45deg); display:inline-block; }
+  .hp-logo { height: clamp(18px,2cqi,28px); width: auto; display: block; filter: brightness(0) invert(1); opacity: 0.95; }
+  .hp-logo--ink { filter: none; opacity: 1; }
+  .cover-word { font-family: var(--serif); font-weight: 600; font-size: clamp(40px,8.4cqi,128px); line-height: 0.92; letter-spacing: -0.02em; color: var(--cream); margin: 0; }
+  .cover-rule { width: 60px; height: 1px; background: var(--terra); margin: clamp(14px,1.8cqi,26px) 0; }
+  .cover-sub { font-size: clamp(12px,1.35cqi,19px); color: rgba(242,239,232,0.86); letter-spacing: 0.02em; max-width: 48ch; }
+
+  /* rev-share hero number */
+  .rev { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px,4cqi,64px); flex: 1; align-items: center; margin-top: clamp(16px,2.4cqi,32px); }
+  .rev__price { font-family: var(--serif); font-weight: 500; font-size: clamp(40px,8cqi,120px); line-height: 0.88; letter-spacing: -0.03em; color: var(--ink); }
+  .rev__price small { display:block; font-family: var(--mono); font-size: 0.16em; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-top: 14px; }
+  .split { display:flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 14px; }
+  .split div { flex:1; background: var(--cream); padding: clamp(12px,1.6cqi,22px); }
+
+  @media print {
+    @page { size: 1280px 720px; margin: 0; }
+    html, body { height: auto; overflow: visible; scroll-snap-type: none; background:#fff; }
+    .slide { page-break-after: always; height: 720px; width: 1280px; background: #fff; }
+    .frame { width: 1280px; height: 720px; max-width: none; aspect-ratio: auto; box-shadow: none; }
+    .sidedots { display: none !important; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="sidedots" id="sidedots" aria-label="Slide navigation"></nav>
+
+<main>
+
+<!-- 01 COVER -->
+<section class="slide" data-title="Cover">
+  <div class="frame frame--sage">
+    <div class="frame__inner">
+      <div class="cover-inner">
+        <div class="cover-top">
+          <img class="hp-logo" src="img/hallpass-logo.png" alt="Hallpass Digital" />
+          <span>Ardmore, Oklahoma</span>
+        </div>
+        <div data-reveal>
+          <p class="eyebrow" style="margin-bottom:18px;">Check-In · August 19, 2026</p>
+          <h1 class="cover-word">Business<br>Spotlights.</h1>
+          <div class="cover-rule"></div>
+          <p class="cover-sub">Every member now has one. Here's what shipped, what members are telling us, and how we turn the directory into a destination.</p>
+        </div>
+        <div class="cover-top">
+          <span>Hallpass Digital · 2026</span>
+          <span>Confidential — Chamber Leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WHERE WE ARE -->
+<section class="slide" data-title="Where we are">
+  <div class="frame">
+    <div class="frame__inner">
+      <span class="corner corner--tr">01 — Live in production</span>
+      <div class="center">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">Where we are</p>
+          <h1 class="h1" style="max-width:20ch;">Every member has a Business Spotlight.</h1>
+        </div>
+        <p class="lead" data-reveal data-delay="1">Not a beta cohort anymore — the whole active roster. Each one is a mobile-first page with the business's own photos, hours, reviews and contact info, and each one is editable by the owner through a private link.</p>
+        <div class="stats" data-reveal data-delay="2">
+          <div class="stat"><span class="stat__n">578</span><span class="stat__l">Members with a live<br>Business Spotlight</span></div>
+          <div class="stat"><span class="stat__n">509</span><span class="stat__l">Verified against a Google<br>Business Profile</span></div>
+          <div class="stat"><span class="stat__n">100%</span><span class="stat__l">Have a private<br>owner edit link</span></div>
+          <div class="stat"><span class="stat__n">Monthly</span><span class="stat__l">Automatic refresh of hours,<br>photos & reviews</span></div>
+        </div>
+        <p class="body soft" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,14px);">The monthly refresh runs on its own — it pulls fresh hours, photos and reviews from Google without touching anything an owner has customized.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE NAME -->
+<section class="slide" data-title="The name">
+  <div class="frame frame--ink">
+    <div class="frame__inner">
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
+      <span class="corner corner--tr">02 — Naming</span>
+      <div class="center">
+        <div class="grid2" style="flex:1;min-height:0;align-items:center;">
+          <div class="stack-sm">
+            <p class="eyebrow" data-reveal>What we call them</p>
+            <h1 class="h1" style="max-width:14ch;" data-reveal data-delay="1">"Business Spotlight."</h1>
+            <p class="lead" data-reveal data-delay="2" style="max-width:52ch;">One name, used everywhere — in the directory, in your social posts, in member emails, on the recruitment brochure. It reads like a benefit a member <em class="it">receives</em>, not a piece of software they have to learn.</p>
+          </div>
+          <div class="shot-wrap" data-reveal data-delay="2" style="height:100%;"><img class="shot shot--fit" src="img/spotlight-two-frogs.png" alt="A member's Business Spotlight on a phone" /></div>
+        </div>
+        <div class="grid3" data-reveal data-delay="3">
+          <div class="stack-sm"><p class="eyebrow" style="color:var(--terra);">Say this</p><p class="body">"Your Business Spotlight is live — here's your link."</p></div>
+          <div class="stack-sm"><p class="eyebrow" style="color:var(--terra);">Not this</p><p class="body">"Your deck / your profile / your TownSpark page."</p></div>
+          <div class="stack-sm"><p class="eyebrow" style="color:var(--terra);">Why</p><p class="body">Consistent naming makes it shareable. Members repeat words they understand.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 RECRUITMENT BROCHURE -->
+<section class="slide" data-title="Recruitment brochure">
+  <div class="frame">
+    <div class="frame__inner">
+      <span class="corner corner--tr">03 — New this round</span>
+      <div class="center" style="gap:clamp(10px,1.4cqi,18px);">
+        <div class="head-row" data-reveal>
+          <div class="stack-sm">
+            <p class="eyebrow">Ready to use</p>
+            <h2 class="h2" style="max-width:22ch;">The Chamber recruitment brochure — now digital.</h2>
+          </div>
+          <span class="pill pill--sage">Live</span>
+        </div>
+        <div class="grid2" style="flex:1;min-height:0;align-items:stretch;">
+          <div class="stack-sm" style="justify-content:center;">
+            <p class="body" data-reveal data-delay="1">A swipeable, mobile-first version of the membership pitch — the same four member outcomes, the programs, the proof, and the pricing, in a format you can text to a prospect or drop into an email.</p>
+            <ul class="blist" data-reveal data-delay="2" style="margin-top:clamp(6px,1cqi,12px);">
+              <li>Works on a phone — built for the hand-delivered postcard QR.</li>
+              <li>Links straight into the <strong>member directory</strong> as proof.</li>
+              <li>Nothing to print or reprint when something changes.</li>
+            </ul>
+            <p class="lnk" data-reveal data-delay="3"><a href="https://ryan-hallpass.github.io/chamber-benefits/brochure/#c1" target="_blank" rel="noopener">ryan-hallpass.github.io/chamber-benefits/brochure/</a></p>
+          </div>
+          <div class="shot-wrap" data-reveal data-delay="2"><img class="shot shot--fit" src="img/brochure.png" alt="The digital recruitment brochure" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 MEMBER FEEDBACK -->
+<section class="slide" data-title="Member feedback">
+  <div class="frame">
+    <div class="frame__inner">
+      <span class="corner corner--tr">04 — Member feedback</span>
+      <div class="center">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">Feedback → shipped</p>
+          <h2 class="h2" style="max-width:24ch;">Ryan at 1NB asked good questions. We built the answers.</h2>
+        </div>
+        <p class="lead" data-reveal data-delay="1">Real member feedback is the fastest way to find what's actually in the way. Three of those questions are now shipped changes.</p>
+        <div class="cards" data-reveal data-delay="2">
+          <div class="card">
+            <span class="card__tag">Fixed</span>
+            <span class="card__name">Better thumbnail</span>
+            <span class="card__note">The image that shows up when a Spotlight is shared or posted now reflects the business properly.</span>
+          </div>
+          <div class="card">
+            <span class="card__tag">Rebuilt</span>
+            <span class="card__name">A clearer edit screen</span>
+            <span class="card__note">Editing is now one page at a time with a live preview beside it — you see the change as you make it, on a phone or a laptop.</span>
+          </div>
+          <div class="card">
+            <span class="card__tag">New</span>
+            <span class="card__name">Premium upgrade options</span>
+            <span class="card__note">The upgrade path we discussed is now in the product and testable — six months free to start.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE EDITOR -->
+<section class="slide" data-title="The editor">
+  <div class="frame frame--ink">
+    <div class="frame__inner">
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
+      <span class="corner corner--tr">05 — Owner experience</span>
+      <div class="center" style="gap:clamp(10px,1.4cqi,18px);">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">What a member sees</p>
+          <h2 class="h2" style="max-width:24ch;">Edit one page at a time. Watch it change.</h2>
+        </div>
+        <div class="grid2" style="flex:1;min-height:0;align-items:center;">
+          <ul class="blist" data-reveal data-delay="1">
+            <li>Step-by-step down the left — cover, what they're known for, story, reviews, hours, contact.</li>
+            <li>A <strong>live preview</strong> of the real page on the right, updating as they type.</li>
+            <li>Photos, logo, brand color and business type are all <strong>free to change</strong>.</li>
+            <li>Nothing to install, no password to remember — a private link is the key.</li>
+          </ul>
+          <div class="shot-wrap" data-reveal data-delay="2" style="height:100%;"><img class="shot shot--fit" src="img/editor.png" alt="The member edit screen" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PREMIUM -->
+<section class="slide" data-title="Premium">
+  <div class="frame">
+    <div class="frame__inner frame__inner--fnote">
+      <span class="corner corner--tr">06 — Premium</span>
+      <div class="center">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">Still testing</p>
+          <h2 class="h2" style="max-width:24ch;">Premium is in the product — free for six months.</h2>
+        </div>
+        <div class="rev" style="flex:0 1 auto;">
+          <div data-reveal data-delay="1">
+            <p class="rev__price" style="font-size:clamp(34px,6.4cqi,92px);">6 months<small>Free, then $19 / month</small></p>
+            <p class="body" style="margin-top:clamp(10px,1.6cqi,18px);">A member turns it on themselves from their edit screen. Nothing is charged during the trial, and they can turn it off at any time.</p>
+            <div class="split" style="margin-top:clamp(10px,1.6cqi,20px);">
+              <div><p class="eyebrow">Chamber share</p><p class="figure" style="font-size:clamp(22px,3cqi,42px);margin-top:8px;">50%</p></div>
+              <div><p class="eyebrow">Hallpass share</p><p class="figure" style="font-size:clamp(22px,3cqi,42px);margin-top:8px;">50%</p></div>
+            </div>
+          </div>
+          <div class="stack-sm" data-reveal data-delay="2">
+            <p class="eyebrow">What premium adds</p>
+            <div class="menu" style="grid-template-columns:1fr;margin-top:6px;">
+              <div class="menu-item"><span class="menu-item__mk">01</span><span class="menu-item__t">Featured placement in the directory<span>Top of their category, with a badge</span></span></div>
+              <div class="menu-item"><span class="menu-item__mk">02</span><span class="menu-item__t">A video on their Spotlight<span>Paste a YouTube, Facebook or Vimeo link</span></span></div>
+              <div class="menu-item"><span class="menu-item__mk">03</span><span class="menu-item__t">Custom typography<span>Named design "Looks" for their page</span></span></div>
+              <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">Their own performance numbers<span>Views and clicks, emailed monthly</span></span></div>
+            </div>
+          </div>
+        </div>
+        <p class="fnote">Pricing is a live test, not a launch. Every subscription is attributed to the Chamber for revenue share — there is no member subscription that isn't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 DISTRIBUTION -->
+<section class="slide" data-title="Getting links to members">
+  <div class="frame frame--sage">
+    <div class="frame__inner frame__inner--fnote">
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
+      <span class="corner corner--tr">07 — Open question</span>
+      <div class="center">
+        <p class="eyebrow" data-reveal>The question on the table</p>
+        <h2 class="h2" style="max-width:26ch;" data-reveal data-delay="1">How do 578 members each get their two links?</h2>
+        <p class="lead" data-reveal data-delay="2" style="max-width:62ch;">Every member has a public Spotlight link and a private edit link. We already have both, for all of them, in one export. What we don't have yet is the <em class="it">send</em>.</p>
+        <div class="grid3" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,22px);">
+          <div class="stack-sm">
+            <p class="eyebrow" style="color:var(--terra);">Have</p>
+            <p class="body">A one-click CSV of every member with their Spotlight link and their private edit link.</p>
+          </div>
+          <div class="stack-sm">
+            <p class="eyebrow" style="color:var(--terra);">Need</p>
+            <p class="body">A mail merge that sends each member their own two links — and a reminder to those who never open it.</p>
+          </div>
+          <div class="stack-sm">
+            <p class="eyebrow" style="color:var(--terra);">Proposal</p>
+            <p class="body">Hallpass builds and sends it, so it's not Jordan's list to maintain by hand. Decision needed: which email tool it sends from.</p>
+          </div>
+        </div>
+        <p class="fnote" style="color:rgba(242,239,232,0.6);">Edit links are private and per-business — anyone holding one can edit that page, so they go to the member directly, never into a public post.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 A DESTINATION -->
+<section class="slide" data-title="A destination">
+  <div class="frame">
+    <div class="frame__inner">
+      <span class="corner corner--tr">08 — The bigger idea</span>
+      <div class="center" style="gap:clamp(10px,1.4cqi,18px);">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">The bigger idea</p>
+          <h2 class="h2" style="max-width:26ch;">An internal tool helps members. A destination brings them customers.</h2>
+        </div>
+        <div class="grid2" style="flex:1;min-height:0;align-items:center;">
+          <div class="stack-sm">
+            <p class="body" data-reveal data-delay="1">Right now the directory is something the Chamber points members to. The asset gets meaningfully more valuable when people <em class="it">outside</em> the Chamber land on it — someone searching for a plumber, a dentist, a place to eat.</p>
+            <p class="body" data-reveal data-delay="2">That's the difference between a member benefit and a member <strong>lead source</strong> — and it's what makes a paid upgrade worth buying.</p>
+            <ul class="blist" data-reveal data-delay="3" style="margin-top:clamp(6px,1cqi,12px);">
+              <li>Every Spotlight is already a real, indexable page.</li>
+              <li>Two ways to drive traffic to them — social, and editorial.</li>
+            </ul>
+          </div>
+          <div class="shot-wrap" data-reveal data-delay="2" style="height:100%;"><img class="shot" src="img/directory.png" alt="The member directory" /></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 TWO PLAYS -->
+<section class="slide" data-title="Two plays">
+  <div class="frame frame--ink">
+    <div class="frame__inner">
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
+      <span class="corner corner--tr">09 — How we drive traffic</span>
+      <div class="center">
+        <p class="eyebrow" data-reveal>Two plays</p>
+        <h2 class="h2" style="max-width:24ch;" data-reveal data-delay="1">One the Chamber runs. One we run for you.</h2>
+        <div class="grid2" data-reveal data-delay="2" style="margin-top:clamp(10px,1.6cqi,22px);">
+          <div class="stack-sm">
+            <p class="eyebrow" style="color:var(--terra);">Play 01 — Chamber social</p>
+            <h3 class="h3">Share the Business Spotlight.</h3>
+            <p class="body">When you post about a member, link their Spotlight instead of a plain photo. Same effort, and the post now sends real traffic to a page that shows their hours, photos and reviews — and a link to their site.</p>
+          </div>
+          <div class="stack-sm">
+            <p class="eyebrow" style="color:var(--terra);">Play 02 — Editorial content</p>
+            <h3 class="h3">Content that doesn't look like the Chamber wrote it.</h3>
+            <p class="body">Guides people actually search for — <em class="it">Best Family Restaurants in Ardmore</em>, <em class="it">Best Pizza in Ardmore</em>, <em class="it">Best Dentists in Ardmore</em> — that read independently and link into member Spotlights.</p>
+          </div>
+        </div>
+        <p class="body soft" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,20px);max-width:70ch;">Hallpass writes and hosts the editorial. It's a separate voice from the Chamber's on purpose — a visitor trusts a "best of" guide differently than a membership page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 PUBLICITY REPORT -->
+<section class="slide" data-title="Publicity report">
+  <div class="frame">
+    <div class="frame__inner frame__inner--fnote">
+      <span class="corner corner--tr">10 — Member publicity report</span>
+      <div class="center">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">Member publicity report</p>
+          <h2 class="h2" style="max-width:26ch;">Automate everything countable. Leave Jordan the judgment calls.</h2>
+        </div>
+        <p class="lead" data-reveal data-delay="1">The goal is a per-member report at renewal that shows what the Chamber actually did for that business — pulled automatically wherever the number exists.</p>
+        <div class="cards" data-reveal data-delay="2">
+          <div class="card">
+            <span class="card__tag">Automatic — Facebook</span>
+            <span class="card__name">Every time a member is posted about</span>
+            <span class="card__note">Connecting the Chamber's Facebook page lets us log each post that mentions or tags a member, with its reach — no one has to write it down.</span>
+          </div>
+          <div class="card">
+            <span class="card__tag">Automatic — Newsletter</span>
+            <span class="card__name">Every newsletter they appeared in</span>
+            <span class="card__note">Forward the newsletter to one address and we read the member mentions out of it automatically. Nothing changes about how Jordan sends it.</span>
+          </div>
+          <div class="card">
+            <span class="card__tag">Manual — Jordan</span>
+            <span class="card__name">The in-person things</span>
+            <span class="card__note">Ribbon cuttings, event attendance, committee service, referrals. Short entries, only for what a computer can't see.</span>
+          </div>
+        </div>
+        <p class="fnote">The ask is small: connect the Facebook page once, and forward the newsletter. Everything else assembles itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 MULTI-LOCATION -->
+<section class="slide" data-title="Multi-location members">
+  <div class="frame">
+    <div class="frame__inner frame__inner--fnote">
+      <span class="corner corner--tr">11 — Question for the Chamber</span>
+      <div class="center">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">Question — raised by a member</p>
+          <h2 class="h2" style="max-width:26ch;">American Nation Bank shows up six times. Is that six memberships?</h2>
+        </div>
+        <p class="lead" data-reveal data-delay="1">Ryan at 1NB flagged it — and the pattern isn't unique to them. Six organizations account for <em class="it">25 separate listings</em> in the roster, because each branch is its own line.</p>
+        <div class="decgrid" data-reveal data-delay="2">
+          <span class="declink"><span class="declink__n">American Nation Bank</span><span class="declink__u">6 listings</span></span>
+          <span class="declink"><span class="declink__n">First National Bank &amp; Trust of Ardmore</span><span class="declink__u">6 listings</span></span>
+          <span class="declink"><span class="declink__n">Citizens Bank &amp; Trust Company</span><span class="declink__u">4 listings</span></span>
+          <span class="declink"><span class="declink__n">Edward Jones</span><span class="declink__u">4 listings</span></span>
+          <span class="declink"><span class="declink__n">BancFirst</span><span class="declink__u">3 listings</span></span>
+          <span class="declink"><span class="declink__n">First Bank &amp; Trust Co</span><span class="declink__u">2 listings</span></span>
+        </div>
+        <p class="body" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,18px);">If each branch is a paid membership, the listings are correct as-is. If it's one membership with locations, we should group them under a single Spotlight with its branches listed — cleaner in search, and fairer to everyone else.</p>
+        <p class="fnote">Either way it's your call, not a technical one. Tell us which and we'll match the directory to it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 ASKS -->
+<section class="slide" data-title="What we need">
+  <div class="frame frame--sage">
+    <div class="frame__inner">
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
+      <span class="corner corner--tr">12 — Asks</span>
+      <div class="center">
+        <p class="eyebrow" data-reveal>What we need from you</p>
+        <h2 class="h2" style="max-width:22ch;" data-reveal data-delay="1">Four asks.</h2>
+        <div class="menu" data-reveal data-delay="2">
+          <div class="menu-item"><span class="menu-item__mk">01</span><span class="menu-item__t">Which ChamberMaster report is the source of truth?<span>We've pulled several exports and they don't agree on who's a member</span></span></div>
+          <div class="menu-item"><span class="menu-item__mk">02</span><span class="menu-item__t">Branch listings — one membership or many?<span>Determines how multi-location members appear in the directory</span></span></div>
+          <div class="menu-item"><span class="menu-item__mk">03</span><span class="menu-item__t">An intro to your webmaster<span>Contact info, or start an email thread with him — once these assets are approved</span></span></div>
+          <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">ChamberMaster API access<span>So the roster syncs itself instead of a CSV every few months</span></span></div>
+        </div>
+        <p class="body" data-reveal data-delay="3" style="margin-top:clamp(12px,2cqi,24px);max-width:64ch;">The first two we can act on the day you answer. The last two are what let this stop being a manual process.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 WHAT'S NEXT -->
+<section class="slide" data-title="What's next">
+  <div class="frame frame--ink">
+    <div class="frame__inner">
+      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
+      <span class="corner corner--br">Hallpass Digital · 2026</span>
+      <div class="center">
+        <img class="hp-logo" src="img/hallpass-logo.png" alt="Hallpass Digital" style="height:clamp(24px,3cqi,42px);width:auto;align-self:flex-start;margin-bottom:clamp(10px,1.6cqi,22px);" data-reveal />
+        <p class="eyebrow" data-reveal data-delay="1">What's next</p>
+        <h1 class="h1" style="max-width:20ch;" data-reveal data-delay="1">Get the links to members. Get outsiders to the directory.</h1>
+        <ul class="blist" style="max-width:62ch;" data-reveal data-delay="2">
+          <li>Stand up the <strong>member email</strong> so all 578 get their Spotlight and edit link.</li>
+          <li>Start posting <strong>Spotlight links</strong> in Chamber social instead of plain photos.</li>
+          <li>Publish the first <strong>editorial guides</strong> and watch what traffic they send.</li>
+          <li>Settle the <strong>roster and branch questions</strong> so the directory is exactly right.</li>
+        </ul>
+        <p class="lead" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,16px);">Thanks — good problems to have at this stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const sidedots = document.getElementById('sidedots');
+  slides.forEach((s, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'sidedots__dot';
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}: ${s.dataset.title || ''}`);
+    dot.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    sidedots.appendChild(dot);
+  });
+  const dots = sidedots.querySelectorAll('.sidedots__dot');
+  let current = 0;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        current = Array.from(slides).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+      }
+    });
+  }, { threshold: [0.5, 0.75] });
+  slides.forEach(s => obs.observe(s));
+
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
+
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(slides.length - 1, idx));
+    current = idx;
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(current + 1); }
+    else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); goTo(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+    else if (/^[1-9]$/.test(e.key)) { e.preventDefault(); goTo(parseInt(e.key,10) - 1); }
+  });
+  if (location.search.includes('print=1')) {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+</body>
+</html>
