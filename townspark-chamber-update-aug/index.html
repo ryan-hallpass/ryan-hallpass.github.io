@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hallpass × Ardmore Chamber — August Check-In</title>
-<meta name="description" content="Hallpass Digital check-in for the Ardmore Chamber of Commerce: Business Spotlights for every member, the recruitment brochure, member feedback, and making the directory a destination." />
+<meta name="description" content="Hallpass Digital update for the Ardmore Chamber of Commerce: Business Spotlights for the whole roster, the digital recruitment brochure, customer journeys, and what comes next." />
 
 <meta property="og:title" content="Hallpass × Ardmore Chamber — August Check-In" />
-<meta property="og:description" content="Business Spotlights for all 578 members, the recruitment brochure, member feedback, and making the directory a destination. By Hallpass Digital." />
+<meta property="og:description" content="Business Spotlights for all 578 members, the digital recruitment brochure, customer journeys, and what comes next. By Hallpass Digital." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ryan-hallpass.github.io/townspark-chamber-update-aug/" />
 <meta property="og:image" content="https://ryan-hallpass.github.io/townspark-chamber-update-aug/img/directory.png" />
@@ -249,6 +249,28 @@
   .split { display:flex; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 14px; }
   .split div { flex:1; background: var(--cream); padding: clamp(12px,1.6cqi,22px); }
 
+  .stats--compact .stat { padding: clamp(11px,1.6cqi,21px); gap: 7px; }
+  .stats--compact .stat__n { font-size: clamp(26px,4cqi,56px); }
+
+  /* journey flow */
+  .flow { display: flex; align-items: stretch; gap: clamp(6px,1cqi,14px); margin-top: clamp(14px,2cqi,28px); }
+  .flow-step { flex: 1; display: flex; flex-direction: column; gap: clamp(6px,0.9cqi,11px); padding-top: clamp(9px,1.2cqi,16px); border-top: 2px solid var(--sage); min-width: 0; }
+  .flow-step__n { font-family: var(--mono); font-size: clamp(8.5px,0.85cqi,11px); letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); }
+  .flow-step__t { font-size: clamp(10.5px,1.15cqi,15px); line-height: 1.35; color: var(--ink); }
+  .flow-step__t em { font-style: italic; color: var(--ink-soft); }
+  .flow-arrow { align-self: center; font-family: var(--mono); font-size: clamp(11px,1.3cqi,17px); color: var(--sage); flex: 0 0 auto; }
+  .frame--sage .flow-step, .frame--ink .flow-step { border-top-color: var(--terra); }
+  .frame--sage .flow-step__n, .frame--ink .flow-step__n,
+  .frame--sage .flow-arrow, .frame--ink .flow-arrow { color: var(--terra); }
+  .frame--sage .flow-step__t, .frame--ink .flow-step__t { color: rgba(242,239,232,0.86); }
+  .frame--sage .flow-step__t em, .frame--ink .flow-step__t em { color: rgba(242,239,232,0.6); }
+
+  /* pull quote */
+  .quote { font-family: var(--serif); font-weight: 500; font-size: clamp(15px,2.2cqi,32px); line-height: 1.22; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+  .frame--sage .quote, .frame--ink .quote { color: var(--cream); }
+  .quote__a { font-family: var(--mono); font-size: clamp(8.5px,0.88cqi,11.5px); line-height: 1.5; letter-spacing: 0.04em; color: var(--ink-soft); margin: clamp(8px,1.2cqi,16px) 0 0; }
+  .frame--sage .quote__a, .frame--ink .quote__a { color: rgba(242,239,232,0.6); }
+
   @media print {
     @page { size: 1280px 720px; margin: 0; }
     html, body { height: auto; overflow: visible; scroll-snap-type: none; background:#fff; }
@@ -275,14 +297,13 @@
           <span>Ardmore, Oklahoma</span>
         </div>
         <div data-reveal>
-          <p class="eyebrow" style="margin-bottom:18px;">Check-In · August 19, 2026</p>
-          <h1 class="cover-word">Business<br>Spotlights.</h1>
+          <p class="eyebrow" style="margin-bottom:18px;">August 19, 2026</p>
+          <h1 class="cover-word">Chamber<br>Updates.</h1>
           <div class="cover-rule"></div>
-          <p class="cover-sub">Every member now has one. Here's what shipped, what members are telling us, and how we turn the directory into a destination.</p>
         </div>
         <div class="cover-top">
-          <span>Hallpass Digital · 2026</span>
-          <span>Confidential — Chamber Leadership</span>
+          <span>Hallpass Digital &middot; 2026</span>
+          <span>Confidential &mdash; Chamber Leadership</span>
         </div>
       </div>
     </div>
@@ -293,39 +314,61 @@
 <section class="slide" data-title="Where we are">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">01 — Live in production</span>
+      <span class="corner corner--tr">01 &mdash; Live in production</span>
       <div class="center">
         <div class="stack-sm" data-reveal>
           <p class="eyebrow">Where we are</p>
-          <h1 class="h1" style="max-width:20ch;">Every member has a Business Spotlight.</h1>
+          <h1 class="h1" style="max-width:20ch;">We've activated the entire roster.</h1>
         </div>
-        <p class="lead" data-reveal data-delay="1">Not a beta cohort anymore — the whole active roster. Each one is a mobile-first page with the business's own photos, hours, reviews and contact info (where available), and each one is editable by the owner through a private link.</p>
-        <div class="stats" data-reveal data-delay="2">
+        <p class="lead" data-reveal data-delay="1">Every member has a Business Spotlight: a mobile-first page with their own photos, hours, reviews, and contact info (where available), editable through a private link.</p>
+        <div class="stats stats--compact" data-reveal data-delay="2" style="grid-template-columns:repeat(3,1fr);">
           <div class="stat"><span class="stat__n">578</span><span class="stat__l">Members with a live<br>Business Spotlight</span></div>
           <div class="stat"><span class="stat__n">509</span><span class="stat__l">Verified against a Google<br>Business Profile</span></div>
           <div class="stat"><span class="stat__n">100%</span><span class="stat__l">Have a private<br>owner edit link</span></div>
-          <div class="stat"><span class="stat__n">Monthly</span><span class="stat__l">Automatic refresh of hours,<br>photos & reviews</span></div>
         </div>
-        <p class="body soft" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,14px);">The monthly refresh runs on its own — it pulls fresh hours, photos and reviews from Google without touching anything an owner has customized.</p>
+        <div class="stack-sm" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,16px);">
+          <p class="eyebrow">Since the last check-in</p>
+          <div class="menu" style="margin-top:clamp(4px,0.6cqi,8px);">
+            <div class="menu-item"><span class="menu-item__mk">01</span><span class="menu-item__t">A clearer edit dashboard</span></div>
+            <div class="menu-item"><span class="menu-item__mk">02</span><span class="menu-item__t">Owners can change their thumbnail</span></div>
+            <div class="menu-item"><span class="menu-item__mk">03</span><span class="menu-item__t">Each page rescans its Google Business Profile monthly</span></div>
+            <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">Premium upgrade options, in testing</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 03 THE NAME -->
-<section class="slide" data-title="The name">
+<!-- 03 QUESTIONS -->
+<section class="slide" data-title="Questions">
   <div class="frame frame--ink">
     <div class="frame__inner">
-      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
-      <span class="corner corner--tr">02 — Naming</span>
+      <span class="corner corner--tl">Hallpass &times; Ardmore Chamber</span>
+      <span class="corner corner--tr">02 &mdash; Questions for you</span>
       <div class="center">
         <div class="grid2" style="flex:1;min-height:0;align-items:center;">
           <div class="stack-sm">
-            <p class="eyebrow" data-reveal>What we call them</p>
-            <h1 class="h1" style="max-width:14ch;" data-reveal data-delay="1">"Business Spotlight."</h1>
-            <p class="lead" data-reveal data-delay="2" style="max-width:52ch;">One name, used everywhere — in the directory, in your social posts, in member emails, on the recruitment brochure. It reads like a benefit a member <em class="it">receives</em>, not a piece of software they have to learn.</p>
+            <p class="eyebrow" data-reveal>Questions for you</p>
+            <h1 class="h1" style="max-width:15ch;" data-reveal data-delay="1">Three questions about the Member Spotlights.</h1>
           </div>
-          <div class="shot-wrap" data-reveal data-delay="2" style="height:100%;"><img class="shot shot--fit" src="img/spotlight-two-frogs.png" alt="A member's Business Spotlight on a phone" /></div>
+          <div class="stack-sm" data-reveal data-delay="2" style="gap:clamp(12px,1.8cqi,24px);">
+            <div class="stack-sm" style="gap:4px;">
+              <p class="eyebrow" style="color:var(--terra);">01</p>
+              <p class="body">American Nation Bank, Glen Rabe Motors, Love's Travel Stops and others have multiple entries. Are they members multiple times?</p>
+              <p class="body soft">25 listings come from 6 organizations.</p>
+            </div>
+            <div class="stack-sm" style="gap:4px;">
+              <p class="eyebrow" style="color:var(--terra);">02</p>
+              <p class="body">Do you have a way to share each member's unique links with them, or should we build one?</p>
+              <p class="body soft">Every member has a public Spotlight link and a private edit link.</p>
+            </div>
+            <div class="stack-sm" style="gap:4px;">
+              <p class="eyebrow" style="color:var(--terra);">03</p>
+              <p class="body">Which ChamberMaster member report should I download?</p>
+              <p class="body soft">Different exports return different membership lists.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -336,58 +379,62 @@
 <section class="slide" data-title="Recruitment brochure">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">03 — New this round</span>
+      <span class="corner corner--tr">03 &mdash; New this round</span>
       <div class="center" style="gap:clamp(10px,1.4cqi,18px);">
         <div class="head-row" data-reveal>
           <div class="stack-sm">
             <p class="eyebrow">Ready to use</p>
-            <h2 class="h2" style="max-width:22ch;">The Chamber recruitment brochure — now digital.</h2>
+            <h2 class="h2" style="max-width:22ch;">We've completed the Digital Chamber Recruitment Brochure.</h2>
           </div>
           <span class="pill pill--sage">Live</span>
         </div>
         <div class="grid2" style="flex:1;min-height:0;align-items:stretch;">
           <div class="stack-sm" style="justify-content:center;">
-            <p class="body" data-reveal data-delay="1">A swipeable, mobile-first version of the membership pitch — the same four member outcomes, the programs, the proof, and the pricing, in a format you can text to a prospect or drop into an email.</p>
-            <ul class="blist" data-reveal data-delay="2" style="margin-top:clamp(6px,1cqi,12px);">
-              <li>Works on a phone — built for the hand-delivered postcard QR.</li>
-              <li>Links straight into the <strong>member directory</strong> as proof.</li>
-              <li>Nothing to print or reprint when something changes.</li>
+            <ul class="blist" data-reveal data-delay="1">
+              <li>Built for the phone.</li>
+              <li>Links to the <strong>member directory</strong>.</li>
+              <li>Update it when information changes &mdash; nothing to reprint.</li>
             </ul>
-            <p class="lnk" data-reveal data-delay="3"><a href="https://ryan-hallpass.github.io/chamber-benefits/brochure/#c1" target="_blank" rel="noopener">ryan-hallpass.github.io/chamber-benefits/brochure/</a></p>
+            <p class="lnk" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,16px);"><a href="https://ryan-hallpass.github.io/chamber-benefits/brochure/#c1" target="_blank" rel="noopener">ryan-hallpass.github.io/chamber-benefits/brochure/</a></p>
           </div>
-          <div class="shot-wrap" data-reveal data-delay="2"><img class="shot shot--fit" src="img/brochure.png" alt="The digital recruitment brochure" /></div>
+          <div class="shot-wrap" data-reveal data-delay="2"><img class="shot shot--fit" src="img/brochure.png" alt="The digital recruitment brochure on a phone" /></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 05 MEMBER FEEDBACK -->
-<section class="slide" data-title="Member feedback">
-  <div class="frame">
+<!-- 05 JOURNEY: NEW MEMBERS -->
+<section class="slide" data-title="Journey: new members">
+  <div class="frame frame--sage">
     <div class="frame__inner">
-      <span class="corner corner--tr">04 — Member feedback</span>
+      <span class="corner corner--tl">Hallpass &times; Ardmore Chamber</span>
+      <span class="corner corner--tr">04 &mdash; Customer journey</span>
       <div class="center">
         <div class="stack-sm" data-reveal>
-          <p class="eyebrow">Feedback → shipped</p>
-          <h2 class="h2" style="max-width:24ch;">Ryan at 1NB asked good questions. We built the answers.</h2>
+          <p class="eyebrow">Customer journey &mdash; prospective members</p>
+          <h2 class="h2" style="max-width:24ch;">How a local business becomes a member.</h2>
         </div>
-        <p class="lead" data-reveal data-delay="1">Real member feedback is the fastest way to find what's actually in the way. Three of those questions are now shipped changes.</p>
-        <div class="cards" data-reveal data-delay="2">
-          <div class="card">
-            <span class="card__tag">Fixed</span>
-            <span class="card__name">Better thumbnail</span>
-            <span class="card__note">The image that shows up when a Spotlight is shared or posted now reflects the business properly.</span>
+        <p class="lead" data-reveal data-delay="1" style="max-width:60ch;">Each step has one job: get them to the next one. The event invitation does the converting, not the sales pitch.</p>
+        <div class="flow" data-reveal data-delay="2">
+          <div class="flow-step">
+            <span class="flow-step__n">Step 01</span>
+            <span class="flow-step__t">They receive the postcard, or you send them the digital brochure.</span>
           </div>
-          <div class="card">
-            <span class="card__tag">Rebuilt</span>
-            <span class="card__name">A clearer edit screen</span>
-            <span class="card__note">Editing is now one page at a time with a live preview beside it — you see the change as you make it, on a phone or a laptop.</span>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <span class="flow-step__n">Step 02</span>
+            <span class="flow-step__t">They land on the Chamber recruitment page.</span>
           </div>
-          <div class="card">
-            <span class="card__tag">New</span>
-            <span class="card__name">Premium upgrade options</span>
-            <span class="card__note">The upgrade path we discussed is now in the product and testable — six months free to start.</span>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <span class="flow-step__n">Step 03</span>
+            <span class="flow-step__t">They sign up for a Business After Hours event.</span>
+          </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <span class="flow-step__n">Step 04</span>
+            <span class="flow-step__t">Kelly follows up by email and sends the sign-up form.</span>
           </div>
         </div>
       </div>
@@ -395,45 +442,20 @@
   </div>
 </section>
 
-<!-- 06 THE EDITOR -->
-<section class="slide" data-title="The editor">
-  <div class="frame frame--ink">
-    <div class="frame__inner">
-      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
-      <span class="corner corner--tr">05 — Owner experience</span>
-      <div class="center" style="gap:clamp(10px,1.4cqi,18px);">
-        <div class="stack-sm" data-reveal>
-          <p class="eyebrow">What a member sees</p>
-          <h2 class="h2" style="max-width:24ch;">Edit one page at a time. Watch it change.</h2>
-        </div>
-        <div class="grid2" style="flex:1;min-height:0;align-items:center;">
-          <ul class="blist" data-reveal data-delay="1">
-            <li>Step-by-step down the left — cover, what they're known for, story, reviews, hours, contact.</li>
-            <li>A <strong>live preview</strong> of the real page on the right, updating as they type.</li>
-            <li>Photos, logo, brand color and business type are all <strong>free to change</strong>.</li>
-            <li>Nothing to install, no password to remember — a private link is the key.</li>
-          </ul>
-          <div class="shot-wrap" data-reveal data-delay="2" style="height:100%;"><img class="shot shot--fit" src="img/editor.png" alt="The member edit screen" /></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 07 PREMIUM -->
+<!-- 06 PREMIUM -->
 <section class="slide" data-title="Premium">
-  <div class="frame">
+  <div class="frame frame__inner--fnote-host">
     <div class="frame__inner frame__inner--fnote">
-      <span class="corner corner--tr">06 — Premium</span>
+      <span class="corner corner--tr">05 &mdash; Premium</span>
       <div class="center">
         <div class="stack-sm" data-reveal>
-          <p class="eyebrow">Still testing</p>
-          <h2 class="h2" style="max-width:24ch;">Premium is in the product — free for six months.</h2>
+          <p class="eyebrow">In testing</p>
+          <h2 class="h2" style="max-width:24ch;">Premium is in the product &mdash; free for six months.</h2>
         </div>
         <div class="rev" style="flex:0 1 auto;">
           <div data-reveal data-delay="1">
             <p class="rev__price" style="font-size:clamp(34px,6.4cqi,92px);">6 months<small>Free, then $19 / month</small></p>
-            <p class="body" style="margin-top:clamp(10px,1.6cqi,18px);">A member turns it on themselves from their edit screen. Nothing is charged during the trial, and they can turn it off at any time.</p>
+            <p class="body" style="margin-top:clamp(10px,1.6cqi,18px);">A member turns it on from their own edit screen. Nothing is charged during the trial, and they can turn it off at any time.</p>
             <div class="split" style="margin-top:clamp(10px,1.6cqi,20px);">
               <div><p class="eyebrow">Chamber share</p><p class="figure" style="font-size:clamp(22px,3cqi,42px);margin-top:8px;">50%</p></div>
               <div><p class="eyebrow">Hallpass share</p><p class="figure" style="font-size:clamp(22px,3cqi,42px);margin-top:8px;">50%</p></div>
@@ -449,47 +471,17 @@
             </div>
           </div>
         </div>
-        <p class="fnote">Pricing is a live test, not a launch. Every subscription is attributed to the Chamber for revenue share — there is no member subscription that isn't.</p>
+        <p class="fnote">Pricing is a live test, not a launch. Every subscription is attributed to the Chamber for revenue share.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 08 DISTRIBUTION -->
-<section class="slide" data-title="Getting links to members">
-  <div class="frame frame--sage">
-    <div class="frame__inner frame__inner--fnote">
-      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
-      <span class="corner corner--tr">07 — Open question</span>
-      <div class="center">
-        <p class="eyebrow" data-reveal>The question on the table</p>
-        <h2 class="h2" style="max-width:26ch;" data-reveal data-delay="1">How do 578 members each get their two links?</h2>
-        <p class="lead" data-reveal data-delay="2" style="max-width:62ch;">Every member has a public Spotlight link and a private edit link. We already have both, for all of them, in one export. What we don't have yet is the <em class="it">send</em>.</p>
-        <div class="grid3" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,22px);">
-          <div class="stack-sm">
-            <p class="eyebrow" style="color:var(--terra);">Have</p>
-            <p class="body">A one-click CSV of every member with their Spotlight link and their private edit link.</p>
-          </div>
-          <div class="stack-sm">
-            <p class="eyebrow" style="color:var(--terra);">Need</p>
-            <p class="body">A mail merge that sends each member their own two links — and a reminder to those who never open it.</p>
-          </div>
-          <div class="stack-sm">
-            <p class="eyebrow" style="color:var(--terra);">Proposal</p>
-            <p class="body">Hallpass builds and sends it, so it's not Jordan's list to maintain by hand. Decision needed: which email tool it sends from.</p>
-          </div>
-        </div>
-        <p class="fnote" style="color:rgba(242,239,232,0.6);">Edit links are private and per-business — anyone holding one can edit that page, so they go to the member directly, never into a public post.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 09 A DESTINATION -->
+<!-- 07 THE BIGGER IDEA -->
 <section class="slide" data-title="A destination">
   <div class="frame">
     <div class="frame__inner">
-      <span class="corner corner--tr">08 — The bigger idea</span>
+      <span class="corner corner--tr">06 &mdash; The bigger idea</span>
       <div class="center" style="gap:clamp(10px,1.4cqi,18px);">
         <div class="stack-sm" data-reveal>
           <p class="eyebrow">The bigger idea</p>
@@ -497,12 +489,10 @@
         </div>
         <div class="grid2" style="flex:1;min-height:0;align-items:center;">
           <div class="stack-sm">
-            <p class="body" data-reveal data-delay="1">Right now the directory is something the Chamber points members to. The asset gets meaningfully more valuable when people <em class="it">outside</em> the Chamber land on it — someone searching for a plumber, a dentist, a place to eat.</p>
-            <p class="body" data-reveal data-delay="2">That's the difference between a member benefit and a member <strong>lead source</strong> — and it's what makes a paid upgrade worth buying.</p>
-            <ul class="blist" data-reveal data-delay="3" style="margin-top:clamp(6px,1cqi,12px);">
-              <li>Every Spotlight is already a real, indexable page.</li>
-              <li>Two ways to drive traffic to them — social, and editorial.</li>
-            </ul>
+            <p class="body" data-reveal data-delay="1">I asked Ryan Youderian at 1NB whether the bank would pay for premium placement in the directory. The answer names the whole problem:</p>
+            <blockquote class="quote" data-reveal data-delay="2" style="margin-top:clamp(6px,1cqi,12px);">"It depends on how people are actually using that directory."</blockquote>
+            <p class="quote__a" data-reveal data-delay="2">Ryan Youderian &mdash; 1NB</p>
+            <p class="body" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,16px);">That's the right test. Premium placement is only worth buying if people outside the Chamber use the directory. So that's what we build next.</p>
           </div>
           <div class="shot-wrap" data-reveal data-delay="2" style="height:100%;"><img class="shot" src="img/directory.png" alt="The member directory" /></div>
         </div>
@@ -511,57 +501,94 @@
   </div>
 </section>
 
-<!-- 10 TWO PLAYS -->
+<!-- 08 TWO PLAYS -->
 <section class="slide" data-title="Two plays">
   <div class="frame frame--ink">
     <div class="frame__inner">
-      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
-      <span class="corner corner--tr">09 — How we drive traffic</span>
+      <span class="corner corner--tl">Hallpass &times; Ardmore Chamber</span>
+      <span class="corner corner--tr">07 &mdash; How we drive traffic</span>
       <div class="center">
         <p class="eyebrow" data-reveal>Two plays</p>
         <h2 class="h2" style="max-width:24ch;" data-reveal data-delay="1">One the Chamber runs. One we run for you.</h2>
         <div class="grid2" data-reveal data-delay="2" style="margin-top:clamp(10px,1.6cqi,22px);">
           <div class="stack-sm">
-            <p class="eyebrow" style="color:var(--terra);">Play 01 — Chamber social</p>
+            <p class="eyebrow" style="color:var(--terra);">Play 01 &mdash; Chamber social</p>
             <h3 class="h3">Share the Business Spotlight.</h3>
-            <p class="body">When you post about a member, link their Spotlight instead of a plain photo. Same effort, and the post now sends real traffic to a page that shows their hours, photos and reviews — and a link to their site.</p>
+            <p class="body">When you post about a member, link their Spotlight instead of a plain photo. Same effort, and the post sends real traffic to a page with their hours, photos, reviews, and a link to their site.</p>
           </div>
           <div class="stack-sm">
-            <p class="eyebrow" style="color:var(--terra);">Play 02 — Editorial content</p>
-            <h3 class="h3">Content that doesn't look like the Chamber wrote it.</h3>
-            <p class="body">Guides people actually search for — <em class="it">Best Family Restaurants in Ardmore</em>, <em class="it">Best Pizza in Ardmore</em>, <em class="it">Best Dentists in Ardmore</em> — that read independently and link into member Spotlights.</p>
+            <p class="eyebrow" style="color:var(--terra);">Play 02 &mdash; Editorial content</p>
+            <h3 class="h3">Content that doesn't read like the Chamber wrote it.</h3>
+            <p class="body">Guides people search for &mdash; <em class="it">Best Family Restaurants in Ardmore</em>, <em class="it">Best Pizza in Ardmore</em>, <em class="it">Best Dentists in Ardmore</em> &mdash; that stand on their own and link into member Spotlights.</p>
           </div>
         </div>
-        <p class="body soft" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,20px);max-width:70ch;">Hallpass writes and hosts the editorial. It's a separate voice from the Chamber's on purpose — a visitor trusts a "best of" guide differently than a membership page.</p>
+        <p class="body soft" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,20px);max-width:70ch;">Hallpass writes and hosts the editorial. It uses a separate voice from the Chamber's on purpose &mdash; a visitor trusts a "best of" guide differently than a membership page.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 11 PUBLICITY REPORT -->
-<section class="slide" data-title="Publicity report">
+<!-- 09 JOURNEY: GENERAL PUBLIC -->
+<section class="slide" data-title="Journey: the public">
+  <div class="frame frame--sage">
+    <div class="frame__inner">
+      <span class="corner corner--tl">Hallpass &times; Ardmore Chamber</span>
+      <span class="corner corner--tr">08 &mdash; Customer journey</span>
+      <div class="center">
+        <div class="stack-sm" data-reveal>
+          <p class="eyebrow">Customer journey &mdash; the general public</p>
+          <h2 class="h2" style="max-width:24ch;">How someone who's never heard of the Chamber finds a member.</h2>
+        </div>
+        <p class="lead" data-reveal data-delay="1" style="max-width:60ch;">This is the path that makes premium placement worth paying for. It starts with a search, not with the Chamber.</p>
+        <div class="flow" data-reveal data-delay="2">
+          <div class="flow-step">
+            <span class="flow-step__n">Step 01</span>
+            <span class="flow-step__t">They search Google for <em>"best breakfast restaurant in Ardmore."</em></span>
+          </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <span class="flow-step__n">Step 02</span>
+            <span class="flow-step__t">They click a listicle-style guide.</span>
+          </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <span class="flow-step__n">Step 03</span>
+            <span class="flow-step__t">They click through to a member's Business Spotlight.</span>
+          </div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step">
+            <span class="flow-step__n">Step 04</span>
+            <span class="flow-step__t">They click through to the Chamber directory to find other businesses.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 METRICS -->
+<section class="slide" data-title="Tracking metrics">
   <div class="frame">
     <div class="frame__inner frame__inner--fnote">
-      <span class="corner corner--tr">10 — Member publicity report</span>
+      <span class="corner corner--tr">09 &mdash; Member publicity report</span>
       <div class="center">
         <div class="stack-sm" data-reveal>
           <p class="eyebrow">Member publicity report</p>
-          <h2 class="h2" style="max-width:26ch;">Automate everything countable. Leave Jordan the judgment calls.</h2>
+          <h2 class="h2" style="max-width:30ch;">When tracking metrics, we'll automate everything we can and leave Jordan with as little manual work as possible.</h2>
         </div>
-        <p class="lead" data-reveal data-delay="1">The goal is a per-member report at renewal that shows what the Chamber actually did for that business — pulled automatically wherever the number exists.</p>
         <div class="cards" data-reveal data-delay="2">
           <div class="card">
-            <span class="card__tag">Automatic — Facebook</span>
+            <span class="card__tag">Automatic &mdash; Facebook</span>
             <span class="card__name">Every time a member is posted about</span>
-            <span class="card__note">Connecting the Chamber's Facebook page lets us log each post that mentions or tags a member, with its reach — no one has to write it down.</span>
+            <span class="card__note">Connect the Chamber's Facebook page once, and we log each post that mentions or tags a member, with its reach.</span>
           </div>
           <div class="card">
-            <span class="card__tag">Automatic — Newsletter</span>
+            <span class="card__tag">Automatic &mdash; Newsletter</span>
             <span class="card__name">Every newsletter they appeared in</span>
-            <span class="card__note">Forward the newsletter to one address and we read the member mentions out of it automatically. Nothing changes about how Jordan sends it.</span>
+            <span class="card__note">Forward the newsletter to one address and we read the member mentions out of it. Nothing changes about how Jordan sends it.</span>
           </div>
           <div class="card">
-            <span class="card__tag">Manual — Jordan</span>
+            <span class="card__tag">Manual &mdash; Jordan</span>
             <span class="card__name">The in-person things</span>
             <span class="card__note">Ribbon cuttings, event attendance, committee service, referrals. Short entries, only for what a computer can't see.</span>
           </div>
@@ -572,70 +599,22 @@
   </div>
 </section>
 
-<!-- 12 MULTI-LOCATION -->
-<section class="slide" data-title="Multi-location members">
-  <div class="frame">
-    <div class="frame__inner frame__inner--fnote">
-      <span class="corner corner--tr">11 — Question for the Chamber</span>
-      <div class="center">
-        <div class="stack-sm" data-reveal>
-          <p class="eyebrow">Question — raised by a member</p>
-          <h2 class="h2" style="max-width:26ch;">American Nation Bank shows up six times. Is that six memberships?</h2>
-        </div>
-        <p class="lead" data-reveal data-delay="1">Ryan at 1NB flagged it — and the pattern isn't unique to them. Six organizations account for <em class="it">25 separate listings</em> in the roster, because each branch is its own line.</p>
-        <div class="decgrid" data-reveal data-delay="2">
-          <span class="declink"><span class="declink__n">American Nation Bank</span><span class="declink__u">6 listings</span></span>
-          <span class="declink"><span class="declink__n">First National Bank &amp; Trust of Ardmore</span><span class="declink__u">6 listings</span></span>
-          <span class="declink"><span class="declink__n">Citizens Bank &amp; Trust Company</span><span class="declink__u">4 listings</span></span>
-          <span class="declink"><span class="declink__n">Edward Jones</span><span class="declink__u">4 listings</span></span>
-          <span class="declink"><span class="declink__n">BancFirst</span><span class="declink__u">3 listings</span></span>
-          <span class="declink"><span class="declink__n">First Bank &amp; Trust Co</span><span class="declink__u">2 listings</span></span>
-        </div>
-        <p class="body" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,18px);">If each branch is a paid membership, the listings are correct as-is. If it's one membership with locations, we should group them under a single Spotlight with its branches listed — cleaner in search, and fairer to everyone else.</p>
-        <p class="fnote">Either way it's your call, not a technical one. Tell us which and we'll match the directory to it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 13 ASKS -->
-<section class="slide" data-title="What we need">
-  <div class="frame frame--sage">
-    <div class="frame__inner">
-      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
-      <span class="corner corner--tr">12 — Asks</span>
-      <div class="center">
-        <p class="eyebrow" data-reveal>What we need from you</p>
-        <h2 class="h2" style="max-width:22ch;" data-reveal data-delay="1">Four asks.</h2>
-        <div class="menu" data-reveal data-delay="2">
-          <div class="menu-item"><span class="menu-item__mk">01</span><span class="menu-item__t">Which ChamberMaster report is the source of truth?<span>We've pulled several exports and they don't agree on who's a member</span></span></div>
-          <div class="menu-item"><span class="menu-item__mk">02</span><span class="menu-item__t">Branch listings — one membership or many?<span>Determines how multi-location members appear in the directory</span></span></div>
-          <div class="menu-item"><span class="menu-item__mk">03</span><span class="menu-item__t">An intro to your webmaster<span>Contact info, or start an email thread with him — once these assets are approved</span></span></div>
-          <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">ChamberMaster API access<span>So the roster syncs itself instead of a CSV every few months</span></span></div>
-        </div>
-        <p class="body" data-reveal data-delay="3" style="margin-top:clamp(12px,2cqi,24px);max-width:64ch;">The first two we can act on the day you answer. The last two are what let this stop being a manual process.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 14 WHAT'S NEXT -->
+<!-- 11 WHAT'S NEXT -->
 <section class="slide" data-title="What's next">
   <div class="frame frame--ink">
     <div class="frame__inner">
-      <span class="corner corner--tl">Hallpass × Ardmore Chamber</span>
-      <span class="corner corner--br">Hallpass Digital · 2026</span>
+      <span class="corner corner--tl">Hallpass &times; Ardmore Chamber</span>
+      <span class="corner corner--br">Hallpass Digital &middot; 2026</span>
       <div class="center">
         <img class="hp-logo" src="img/hallpass-logo.png" alt="Hallpass Digital" style="height:clamp(24px,3cqi,42px);width:auto;align-self:flex-start;margin-bottom:clamp(10px,1.6cqi,22px);" data-reveal />
-        <p class="eyebrow" data-reveal data-delay="1">What's next</p>
-        <h1 class="h1" style="max-width:20ch;" data-reveal data-delay="1">Get the links to members. Get outsiders to the directory.</h1>
-        <ul class="blist" style="max-width:62ch;" data-reveal data-delay="2">
-          <li>Stand up the <strong>member email</strong> so all 578 get their Spotlight and edit link.</li>
-          <li>Start posting <strong>Spotlight links</strong> in Chamber social instead of plain photos.</li>
-          <li>Publish the first <strong>editorial guides</strong> and watch what traffic they send.</li>
-          <li>Settle the <strong>roster and branch questions</strong> so the directory is exactly right.</li>
-        </ul>
-        <p class="lead" data-reveal data-delay="3" style="margin-top:clamp(8px,1.2cqi,16px);">Thanks — good problems to have at this stage.</p>
+        <h1 class="h1" style="max-width:16ch;" data-reveal data-delay="1">What's next.</h1>
+        <div class="menu" data-reveal data-delay="2" style="margin-top:clamp(8px,1.4cqi,20px);">
+          <div class="menu-item"><span class="menu-item__mk">01</span><span class="menu-item__t">Review the links and tell me if you see any edits you need<span>Yours to check before members see them</span></span></div>
+          <div class="menu-item"><span class="menu-item__mk">02</span><span class="menu-item__t">Share the links with all members<span>Each member gets their Spotlight link and their private edit link</span></span></div>
+          <div class="menu-item"><span class="menu-item__mk">03</span><span class="menu-item__t">Request API access from ChamberMaster<span>So the roster syncs itself instead of a CSV every few months</span></span></div>
+          <div class="menu-item"><span class="menu-item__mk">04</span><span class="menu-item__t">Send me your web person's contact info once you approve<span>So we can change the URLs over</span></span></div>
+        </div>
+        <p class="lead" data-reveal data-delay="3" style="margin-top:clamp(10px,1.6cqi,22px);">Thanks &mdash; good problems to have at this stage.</p>
       </div>
     </div>
   </div>
