@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ardmore Means More Events: a hand-picked guide to events in and around Ardmore, Oklahoma, September 4–13, 2026.">
+  <title>Ardmore Means More Events — September 4–13, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d2240;
+      --ink-soft: #4b5d76;
+      --navy-deep: #081a32;
+      --cream: #f4f6fa;
+      --paper: #ffffff;
+      --on-navy: #eaf0fb;
+      --sun: #5b9bd5;
+      --tomato: #e85449;
+      --tomato-deep: #c0392b;
+      --mint: #dce8f7;
+      --line: rgba(13, 34, 64, .14);
+      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      --serif: "Montserrat", Arial, sans-serif;
+      --sans: "Open Sans", Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      background: rgba(13, 34, 64, .94);
+      backdrop-filter: blur(18px);
+    }
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 1.14rem;
+      font-weight: 800;
+      letter-spacing: -.025em;
+      color: white;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: block;
+      border-radius: 7px;
+    }
+    .toplinks { display: flex; align-items: center; gap: 22px; }
+    .toplinks a {
+      text-decoration: none;
+      color: var(--on-navy);
+      font-size: .86rem;
+      font-weight: 600;
+    }
+    .toplinks .submit {
+      padding: 10px 15px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 999px;
+      color: white;
+    }
+    .toplinks .submit:hover { background: white; color: var(--ink); }
+
+    .hero { padding: 46px 0 60px; background: var(--navy-deep); }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      min-height: 640px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 32px;
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      padding: clamp(38px, 6vw, 76px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 72px;
+      position: relative;
+      color: white;
+    }
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      top: 92px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--sun);
+      z-index: 2;
+    }
+    .eyebrow {
+      margin: 0 0 24px;
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--tomato);
+    }
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      max-width: 10ch;
+      font-size: clamp(3.8rem, 7.2vw, 6rem);
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: -.04em;
+    }
+    h1 em { display: block; color: var(--tomato); font-style: normal; }
+    .hero-lede {
+      max-width: 35rem;
+      margin: 28px 0 0;
+      font-size: 1.12rem;
+      line-height: 1.6;
+      color: var(--on-navy);
+    }
+    .button.hero-cta {
+      min-height: 52px;
+      margin-top: 30px;
+      padding: 14px 22px;
+      background: var(--tomato);
+      color: white;
+      font-size: .92rem;
+    }
+    .issue-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .issue-line span { padding: 8px 11px; border-radius: 999px; background: var(--tomato); color: white; }
+    .hero-photo { position: relative; min-height: 460px; overflow: hidden; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9, 27, 21, .72), transparent 52%);
+    }
+    .photo-note {
+      position: absolute;
+      z-index: 2;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: white;
+      font-size: .82rem;
+    }
+    .photo-note strong { font-size: 1rem; }
+
+    .ticker { border-block: 1px solid rgba(255,255,255,.12); background: var(--tomato); color: white; overflow: hidden; }
+    .ticker-track {
+      padding: 15px 0;
+      white-space: nowrap;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .ticker-track span::after { content: "◆"; margin: 0 24px; font-size: .6rem; }
+
+    .section { padding: 86px 0; background: var(--cream); }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+    h2 {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4.7vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+    .section-note { max-width: 65ch; margin: 0; color: var(--ink-soft); line-height: 1.62; }
+
+    .spotlight {
+      display: grid;
+      grid-template-columns: 240px 1fr 220px;
+      align-items: stretch;
+      margin-bottom: 50px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--ink);
+      color: var(--on-navy);
+    }
+    .spotlight-date {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(255,255,255,.22);
+      background: var(--tomato);
+    }
+    .spotlight-date .month { font: 500 .74rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    .spotlight-date .days { font: 700 5.8rem/.82 var(--serif); letter-spacing: -.09em; }
+    .spotlight-copy { padding: 40px 46px; }
+    .spotlight-copy .eyebrow { color: var(--sun); margin-bottom: 14px; }
+    .spotlight h3 { margin: 0; font: 800 clamp(2rem, 4vw, 3.6rem)/1.04 var(--serif); letter-spacing: -.04em; color: white; }
+    .spotlight p { max-width: 660px; margin: 20px 0 0; color: rgba(255,255,255,.76); line-height: 1.65; }
+    .event-thumb { margin: 0; }
+    .event-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      background: var(--mint);
+    }
+    .event-thumb figcaption {
+      margin-top: 10px;
+      color: var(--ink-soft);
+      font-size: .72rem;
+      line-height: 1.5;
+    }
+    .image-source { display: block; margin-top: 3px; font-size: .66rem; font-weight: 600; }
+    .spotlight-thumb { margin-top: 26px; }
+    .spotlight-thumb img { aspect-ratio: 3 / 2; border-radius: 12px; }
+    .spotlight-thumb figcaption { color: #c8d4e5; }
+    .spotlight-meta {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      border-left: 1px solid rgba(255,255,255,.18);
+    }
+    .meta-list { display: grid; gap: 18px; }
+    .meta-label { display: block; margin-bottom: 4px; font: 400 .64rem/1.3 var(--mono); letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+    .meta-value { font-size: .9rem; line-height: 1.4; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--tomato-deep);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .84rem;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #a5301f; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .spotlight .button { background: white; color: var(--ink); }
+    .spotlight .button:hover { background: var(--on-navy); }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 28px; }
+    .filter {
+      min-height: 40px;
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .filter:hover, .filter:focus-visible { border-color: var(--ink); color: var(--ink); }
+    .filter.active { background: var(--tomato-deep); border-color: var(--tomato-deep); color: white; }
+
+    .event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .event-card {
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .event-card:hover { transform: translateY(-4px); border-color: rgba(13,34,64,.46); }
+    .event-card[hidden] { display: none; }
+    .event-top { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+    .date-chip { display: inline-grid; grid-template-columns: auto auto; align-items: baseline; gap: 7px; color: var(--tomato); }
+    .date-chip strong { font: 700 2.7rem/.8 var(--serif); letter-spacing: -.08em; }
+    .date-chip span { font: 500 .67rem/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .tag { padding: 6px 9px; border-radius: 999px; background: var(--mint); font: 500 .62rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .event-card h3 { margin: 33px 0 12px; font: 800 1.55rem/1.08 var(--serif); letter-spacing: -.025em; }
+    .event-card p { margin: 0; max-width: 65ch; color: var(--ink-soft); font-size: 1rem; line-height: 1.58; }
+    .event-card .event-thumb { margin: 22px -24px 0; }
+    .event-card .event-thumb img { aspect-ratio: 3 / 2; }
+    .event-card .event-thumb figcaption { padding: 0 24px; }
+    .event-card.has-thumb h3 { margin-top: 22px; }
+    .event-footer { margin-top: auto; padding-top: 24px; border-top: 1px solid var(--line); display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+    .event-where { font-size: .78rem; line-height: 1.45; }
+    .event-where strong { display: block; }
+    .event-link { font-size: .76rem; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; white-space: nowrap; }
+    .empty { display: none; padding: 44px; border: 1px dashed var(--line); border-radius: 20px; text-align: center; color: var(--ink-soft); }
+    .empty.show { display: block; }
+
+    .field-notes { background: var(--ink); color: white; }
+    .field-notes .section-note, .field-notes .note-row p { color: var(--on-navy); }
+    .notes-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 8vw, 120px); align-items: start; }
+    .notes-list { display: grid; gap: 0; border-top: 1px solid rgba(255,255,255,.2); }
+    .note-row { display: grid; grid-template-columns: 80px 1fr; gap: 22px; padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .note-row time { font: 500 .7rem/1.5 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--tomato); }
+    .note-row h3 { margin: 0 0 7px; font: 800 1.25rem/1.15 var(--serif); letter-spacing: -.02em; color: white; }
+    .note-row p { margin: 0; color: var(--ink-soft); font-size: .86rem; line-height: 1.5; }
+
+    .newsletter {
+      padding: 88px 0;
+      scroll-margin-top: 72px;
+      background: var(--tomato);
+      color: white;
+    }
+    .newsletter-inner { display: grid; grid-template-columns: 1fr .78fr; gap: 70px; align-items: end; }
+    .newsletter .eyebrow { color: white; }
+    .newsletter h2 { max-width: 760px; }
+    .signup { display: flex; padding: 7px; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; background: rgba(255,255,255,.11); }
+    .signup input { min-width: 0; flex: 1; padding: 12px 15px; border: 0; outline: 0; background: transparent; color: white; font: inherit; }
+    .signup input::placeholder { color: rgba(255,255,255,.72); }
+    .signup button { border: 0; background: var(--ink); }
+    .signup button:hover { background: var(--navy-deep); }
+    .signup-note { margin: 12px 8px 0; font-size: .72rem; color: rgba(255,255,255,.74); }
+
+    footer { padding: 30px 0; background: var(--navy-deep); color: rgba(255,255,255,.72); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 25px; font-size: .75rem; }
+    footer a { color: white; text-underline-offset: 4px; }
+
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-copy::after { top: auto; right: 42px; bottom: -31px; }
+      .hero-copy { gap: 54px; }
+      .hero-photo { min-height: 440px; }
+      .spotlight { grid-template-columns: 180px 1fr; }
+      .spotlight-meta { grid-column: 1 / -1; flex-direction: row; align-items: end; border: 0; border-top: 1px solid rgba(255,255,255,.18); }
+      .meta-list { grid-template-columns: repeat(2, 1fr); }
+      .event-grid { grid-template-columns: repeat(2, 1fr); }
+      .notes-grid, .newsletter-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .topbar-inner { gap: 10px; }
+      .brand { gap: 8px; font-size: .94rem; line-height: 1.05; }
+      .brand-mark { width: 34px; height: 34px; }
+      .toplinks a:not(.submit) { display: none; }
+      .toplinks .submit { padding: 9px 11px; }
+      .hero { padding: 20px 0 42px; }
+      .hero-grid { min-height: auto; border-radius: 22px; }
+      .hero-copy { padding: 34px 24px 42px; }
+      h1 { font-size: clamp(3.4rem, 17vw, 4.8rem); }
+      .hero-photo { min-height: 360px; }
+      .photo-note { left: 20px; right: 20px; bottom: 20px; }
+      .section { padding: 64px 0; }
+      .section-head { display: block; }
+      .section-note { margin-top: 18px; }
+      .spotlight { grid-template-columns: 1fr; }
+      .spotlight-date { min-height: 180px; }
+      .spotlight-copy { padding: 30px 24px; }
+      .spotlight-meta { grid-column: auto; padding: 28px 24px; display: block; }
+      .meta-list { grid-template-columns: 1fr 1fr; margin-bottom: 24px; }
+      .event-grid { grid-template-columns: 1fr; }
+      .event-card { min-height: 320px; }
+      .note-row { grid-template-columns: 62px 1fr; }
+      .signup { display: grid; border-radius: 18px; }
+      .signup button { width: 100%; }
+      .footer-inner { display: block; }
+      .footer-inner p { margin: 8px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="Ardmore Means More Events home">
+        <img class="brand-mark" src="https://www.ardmore.org/wp-content/uploads/2021/09/cropped-icon-270x270.jpg" alt="">
+        Ardmore Means More Events
+      </a>
+      <nav class="toplinks" aria-label="Primary navigation">
+        <a href="#events">All events</a>
+        <a href="#newsletter">Sign up the Email</a>
+        <a class="submit" href="https://www.exploreardmore.com/submit-an-event/">Submit an event</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow">The local weekend list · Issue 01</p>
+            <h1>Ardmore<br><em>Means More</em>Events.</h1>
+            <p class="hero-lede">The fair is rolling into town, Friday night lights are back, and there’s plenty to do before Monday ever gets here.</p>
+            <a class="button hero-cta" href="#newsletter">Sign up the Email →</a>
+          </div>
+          <div class="issue-line">
+            <span>Sep 4—13</span>
+            <strong>Ardmore, Oklahoma</strong>
+            <strong>11 hand-picked events</strong>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="assets/depot-park.jpg" alt="The restored Mercy Train and Ardmore Depot at dusk">
+          <div class="photo-note">
+            <strong>Your town. Your plans.</strong>
+            <span>Depot Park · Downtown Ardmore</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-label="Highlights">
+      <div class="ticker-track">
+        <span>Saturday starts at the market</span><span>Home football under the lights</span><span>The county fair returns</span><span>Free art on view</span>
+      </div>
+    </div>
+
+    <section class="section" id="events">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Start here</p>
+            <h2>The big one this week.</h2>
+          </div>
+          <p class="section-note">One can’t-miss local anchor, then a clean list of everything else—deduplicated and sorted by actual event date.</p>
+        </div>
+
+        <article class="spotlight">
+          <div class="spotlight-date">
+            <span class="month">September</span>
+            <span class="days">8—13</span>
+          </div>
+          <div class="spotlight-copy">
+            <p class="eyebrow">84th annual · Free admission</p>
+            <h3>Carter County Free Fair</h3>
+            <figure class="event-thumb spotlight-thumb">
+              <img src="assets/carter-county-fair.jpg" alt="Blue-ribbon baked goods and craft entries displayed at the Carter County Free Fair" width="900" height="600">
+              <figcaption>The Carter County Free Fair features blue-ribbon exhibits, carnival rides and a petting zoo for kids.<span class="image-source">Photo: Carter County Free Fair</span></figcaption>
+            </figure>
+            <p>Six days of county traditions, youth exhibits, agricultural heritage and fair-week energy at Hardy Murphy Coliseum. It’s the kind of local institution worth building the week around.</p>
+          </div>
+          <div class="spotlight-meta">
+            <div class="meta-list">
+              <div><span class="meta-label">Where</span><span class="meta-value">Hardy Murphy Coliseum<br>600 S Lake Murray Dr</span></div>
+              <div><span class="meta-label">Good to know</span><span class="meta-value">Free · All ages<br>Schedule varies by day</span></div>
+            </div>
+            <a class="button" href="https://cartercountyfair.com/">Fair details →</a>
+          </div>
+        </article>
+
+        <div class="filters" role="group" aria-label="Filter events">
+          <button class="filter active" data-filter="all" aria-pressed="true">Everything</button>
+          <button class="filter" data-filter="weekend" aria-pressed="false">This weekend</button>
+          <button class="filter" data-filter="free" aria-pressed="false">Free</button>
+          <button class="filter" data-filter="family" aria-pressed="false">Family</button>
+          <button class="filter" data-filter="arts" aria-pressed="false">Arts & making</button>
+        </div>
+
+        <div class="event-grid" id="event-grid">
+          <article class="event-card" data-tags="weekend sports family">
+            <div class="event-top"><div class="date-chip"><strong>4</strong><span>Fri<br>7pm</span></div><span class="tag">Sports</span></div>
+            <h3>Tigers vs. Ada</h3>
+            <p>Friday night football returns to Ardmore with the varsity Tigers at home against Ada. Bring the school colors.</p>
+            <div class="event-footer"><div class="event-where"><strong>Ardmore High School</strong>Home game</div><a class="event-link" href="https://ardmoreathletics.org/schedules/">Schedule →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="weekend fitness community">
+            <div class="event-top"><div class="date-chip"><strong>5</strong><span>Sat<br>9am</span></div><span class="tag">Workshop</span></div>
+            <h3>Pilates Workshop</h3>
+            <p>Master trainer Rhea Hedin leads a three-hour mat Pilates and Reformer workshop. Register at the YMCA front desk; space is limited.</p>
+            <div class="event-footer"><div class="event-where"><strong>Ardmore Family YMCA</strong>9am–noon</div><a class="event-link" href="https://www.facebook.com/groups/1751110911842495">Community post →</a></div>
+          </article>
+
+          <article class="event-card has-thumb" data-tags="weekend free family community">
+            <div class="event-top"><div class="date-chip"><strong>5</strong><span>Sat<br>11am</span></div><span class="tag">Volunteer</span></div>
+            <figure class="event-thumb">
+              <img src="assets/sinf-community-garden.jpg" alt="Illustrated SINF Community Garden event graphic with flowers, plants and a wheelbarrow" width="750" height="642" loading="lazy">
+              <figcaption>Volunteers help tend raised beds, compost, pollinator habitat and the garden’s bee box.<span class="image-source">Artwork: OSU Extension event listing</span></figcaption>
+            </figure>
+            <h3>Community Garden Workday</h3>
+            <p>Help tend raised beds, compost and pollinator habitat at the SINF garden. Adults, young people and first-time volunteers are welcome.</p>
+            <div class="event-footer"><div class="event-where"><strong>SINF Community Garden</strong>804 7th Ave NE · 11am–3pm</div><a class="event-link" href="https://ag-events.okstate.edu/event/sinf-community-garden-volunteer-workday">Details →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="weekend free food family shopping">
+            <div class="event-top"><div class="date-chip"><strong>5</strong><span>Sat<br>7am</span></div><span class="tag">Market</span></div>
+            <h3>Ardmore Farmers Market</h3>
+            <p>Start Saturday with fresh produce and Oklahoma-made goods at the covered Market Place on Broadway.</p>
+            <div class="event-footer"><div class="event-where"><strong>Market Place on Broadway</strong>7–11am</div><a class="event-link" href="https://www.ardmoremainstreet.com/events/">Details →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="free community games">
+            <div class="event-top"><div class="date-chip"><strong>7</strong><span>Mon<br>4:45pm</span></div><span class="tag">Weekly</span></div>
+            <h3>Mahjong Monday</h3>
+            <p>Drop into the Goddard lobby for free Mahjong play. Beginners and experienced players are both welcome.</p>
+            <div class="event-footer"><div class="event-where"><strong>The Goddard Center</strong>401 1st Ave SW</div><a class="event-link" href="https://www.exploreardmore.com/event/mahjong-mondays-the-goddard-center/2026-09-07/">Details →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="free family library">
+            <div class="event-top"><div class="date-chip"><strong>8</strong><span>Tue<br>10am</span></div><span class="tag">Kids</span></div>
+            <h3>Little Listeners</h3>
+            <p>A Tuesday-morning storytime from Ardmore Public Library Youth Services for the town’s littlest readers and their grown-ups.</p>
+            <div class="event-footer"><div class="event-where"><strong>Ardmore Public Library</strong>320 E St NW</div><a class="event-link" href="https://www.facebook.com/groups/1751110911842495">Community post →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="free arts library community">
+            <div class="event-top"><div class="date-chip"><strong>8</strong><span>Tue<br>1pm</span></div><span class="tag">Make</span></div>
+            <h3>“Scrap Happy” Drop-in</h3>
+            <p>Bring your memories and work at your own pace during a relaxed, self-guided scrapbooking afternoon. Newcomers are welcome.</p>
+            <div class="event-footer"><div class="event-where"><strong>Champion Public Library</strong>1–4pm</div><a class="event-link" href="https://www.facebook.com/groups/1751110911842495">Community post →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="free business community">
+            <div class="event-top"><div class="date-chip"><strong>8</strong><span>Tue<br>5:30pm</span></div><span class="tag">Connect</span></div>
+            <h3>Business After Hours</h3>
+            <p>Networking, conversation and a closer look at one of Ardmore’s local-history anchors. Hosted by the Greater Southwest Historical Museum.</p>
+            <div class="event-footer"><div class="event-where"><strong>Historical Museum</strong>35 Sunset Dr SW · 5:30–7pm</div><a class="event-link" href="https://chamber.ardmore.org/calendar/month/">Details →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="free seniors games community">
+            <div class="event-top"><div class="date-chip"><strong>8</strong><span>Tue<br>1:15pm</span></div><span class="tag">Seniors</span></div>
+            <h3>Senior Bingo</h3>
+            <p>Ten games, prizes and an easy way to meet new friends at the HFV Wilson Community Center. Free to attend.</p>
+            <div class="event-footer"><div class="event-where"><strong>HFV Wilson Center</strong>625 E Main St · 1:15–2:15pm</div><a class="event-link" href="https://www.exploreardmore.com/event/senior-bingo-hfv-wilson-community-center-2/">Details →</a></div>
+          </article>
+
+          <article class="event-card has-thumb" data-tags="arts free family">
+            <div class="event-top"><div class="date-chip"><strong>1–24</strong><span>Sep<br>Ongoing</span></div><span class="tag">Exhibit</span></div>
+            <figure class="event-thumb">
+              <img src="assets/quartz-mountain-exhibit.jpg" alt="Quartz Mountain student exhibit poster featuring a blue and red abstract painting" width="900" height="600" loading="lazy">
+              <figcaption>The exhibit brings bold paintings, sculpture and mixed media inspired by Oklahoma’s landscape to the Goddard Center.<span class="image-source">Artwork: The Goddard Center</span></figcaption>
+            </figure>
+            <h3>Quartz Mountain Student Exhibit</h3>
+            <p>See bold paintings, intricate sculpture and mixed-media work created by Oklahoma art students at the Quartz Mountain Institute.</p>
+            <div class="event-footer"><div class="event-where"><strong>The Goddard Center</strong>Through Oct 24</div><a class="event-link" href="https://www.goddardcenter.org/exhibits/quartz-mountain-student-exhibit">Details →</a></div>
+          </article>
+
+          <article class="event-card" data-tags="sports outdoors">
+            <div class="event-top"><div class="date-chip"><strong>12</strong><span>Sat<br>8am</span></div><span class="tag">Golf</span></div>
+            <h3>Miracles Golf Event</h3>
+            <p>An 18-hole scramble with team prizes, longest drive and closest-to-the-pin contests. Registration opens at 7am.</p>
+            <div class="event-footer"><div class="event-where"><strong>Lake Murray Golf Course</strong>2673 Lodge Rd</div><a class="event-link" href="https://www.tickettailor.com/events/malm/2337845">Tickets →</a></div>
+          </article>
+        </div>
+        <div class="empty" id="empty">No events match that filter yet.</div>
+      </div>
+    </section>
+
+    <section class="section field-notes">
+      <div class="shell notes-grid">
+        <div>
+          <p class="eyebrow">Worth penciling in</p>
+          <h2>A little farther out.</h2>
+          <p class="section-note" style="margin-top:22px">A few good reasons to keep next week from filling up too quickly.</p>
+        </div>
+        <div class="notes-list">
+          <article class="note-row"><time datetime="2026-09-12">Sat<br>Sep 12</time><div><h3>Monarch Butterfly Day</h3><p>A free, family-friendly day at the Chickasaw Cultural Center in Sulphur, 10am–5pm.</p></div></article>
+          <article class="note-row"><time datetime="2026-09-17">Thu<br>Sep 17</time><div><h3>Ardmore Community Baby Shower</h3><p>Free resources, supplies, car-seat checks and refreshments for pregnant mothers and families with children under three, 5–7pm at Colvert Ministry Center.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+      <div class="shell newsletter-inner">
+        <div><p class="eyebrow">A better local inbox</p><h2>Make Thursday feel like the start of the weekend.</h2></div>
+        <div>
+          <form class="signup" id="signup-form"><input type="email" placeholder="you@example.com" aria-label="Email address" required><button class="button" type="submit">Get the list</button></form>
+          <p class="signup-note" id="signup-note">One useful email each week. No noise. (Demo form.)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner"><p>Curated in Ardmore · Updated September 3, 2026</p><p>Sources include <a href="https://www.exploreardmore.com/events/">Explore Ardmore</a>, local organizers and the community bulletin board.</p></div>
+  </footer>
+
+  <script>
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.event-card');
+    const empty = document.getElementById('empty');
+
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        let shown = 0;
+        filters.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+        cards.forEach((card) => {
+          const visible = filter === 'all' || card.dataset.tags.split(' ').includes(filter);
+          card.hidden = !visible;
+          if (visible) shown += 1;
+        });
+        empty.classList.toggle('show', shown === 0);
+      });
+    });
+
+    document.getElementById('signup-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const note = document.getElementById('signup-note');
+      note.textContent = 'You’re on the demo list — this example does not store your address.';
+      event.currentTarget.reset();
+    });
+  </script>
+</body>
+</html>
