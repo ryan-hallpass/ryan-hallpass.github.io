@@ -90,7 +90,7 @@
     .hero { padding: 46px 0 60px; background: var(--navy-deep); }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr);
+      grid-template-columns: 1fr;
       min-height: 640px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.1);
@@ -99,6 +99,7 @@
       box-shadow: var(--shadow);
     }
     .hero-copy {
+      min-height: calc(100svh - 118px);
       padding: clamp(38px, 6vw, 76px);
       display: flex;
       flex-direction: column;
@@ -110,8 +111,8 @@
     .hero-copy::after {
       content: "";
       position: absolute;
-      right: -34px;
-      top: 92px;
+      right: 42px;
+      bottom: -31px;
       width: 68px;
       height: 68px;
       border-radius: 50%;
@@ -171,7 +172,7 @@
       text-transform: uppercase;
     }
     .issue-line span { padding: 8px 11px; border-radius: 999px; background: var(--tomato); color: white; }
-    .hero-photo { position: relative; min-height: 460px; overflow: hidden; }
+    .hero-photo { position: relative; min-height: clamp(460px, 56vw, 720px); overflow: hidden; }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero-photo::after {
       content: "";
@@ -375,8 +376,6 @@
     footer a { color: white; text-underline-offset: 4px; }
 
     @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-copy::after { top: auto; right: 42px; bottom: -31px; }
       .hero-copy { gap: 54px; }
       .hero-photo { min-height: 440px; }
       .spotlight { grid-template-columns: 180px 1fr; }
@@ -395,7 +394,7 @@
       .toplinks .submit { padding: 9px 11px; }
       .hero { padding: 20px 0 42px; }
       .hero-grid { min-height: auto; border-radius: 22px; }
-      .hero-copy { padding: 34px 24px 42px; }
+      .hero-copy { min-height: auto; padding: 34px 24px 42px; }
       h1 { font-size: clamp(3.4rem, 17vw, 4.8rem); }
       .hero-photo { min-height: 360px; }
       .photo-note { left: 20px; right: 20px; bottom: 20px; }
